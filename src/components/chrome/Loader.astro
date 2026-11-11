@@ -1,16 +1,60 @@
 ---
-/* The loader is the press: a poster screen-printed in three passes (yellow, red, black) while the page arrives.
-   Each layer is clipped by --q1/--q2/--q3, set by scripts/loader.js; the sheet is then pulled off, a yellow and a red one behind it. */
-import Poster from '../ui/Poster.astro';
+/* The loader is the box being emptied: stickers, tickets, scores and drawings are thrown onto the table one after the other
+   while the page arrives — the more has arrived, the more there is on the table. A black slab keeps the count.
+   Then the whole sheet is pulled off (a black and a red one behind it) and the poster is there.
+   Each piece carries the percentage at which it lands (data-at); scripts/loader.js switches them on. No photographs here:
+   they are what is being waited for. */
+import Sticker from '../ui/Sticker.astro';
+import Doodle from '../ui/Doodle.astro';
+import Ticket from '../ui/Ticket.astro';
+import { rng } from '../../lib/rng';
+
+type Piece = { k: 's'; type: any; a?: string; b?: string; cls?: string; w: number }
+  | { k: 'd'; name: any; text?: string; cls?: string; w: number }
+  | { k: 't'; match: any }
+  | { k: 'n'; score: string; who: string; cls?: string };
+
+const PIECES: Piece[] = [
+  { k: 's', type: 'oval', a: 'RED DEVILS', b: 'BELGIUM', w: 15 }, { k: 't', match: 13 }, { k: 'd', name: 'ball', w: 9 }, { k: 'n', score: '3—0', who: 'Panama' },
+  { k: 's', type: 'jersey', a: '10', w: 9 }, { k: 'd', name: 'boot', cls: 'r', w: 11 }, { k: 't', match: 29 }, { k: 's', type: 'pent', a: '2018', b: 'WORLD CUP', cls: 'y', w: 10 },
+  { k: 'n', score: '5—2', who: 'Tunisia', cls: 'y' }, { k: 's', type: 'stack', a: 'GOAL!', w: 11 }, { k: 'd', name: 'crown', w: 9 }, { k: 't', match: 45 },
+  { k: 's', type: 'arc', w: 9 }, { k: 'n', score: '1—0', who: 'England' }, { k: 'd', name: 'megaphone', cls: 'r', w: 11 }, { k: 's', type: 'box', a: 'N°3', w: 9 },
+  { k: 't', match: 54 }, { k: 's', type: 'hex', a: 'PLAN B', b: '65′', w: 11 }, { k: 'd', name: 'bolt', w: 7 }, { k: 'n', score: '3—2', who: 'Japan', cls: 'r' },
+  { k: 's', type: 'rnd', a: '94′', b: 'CHADLI', cls: 'k', w: 10 }, { k: 'd', name: 'glove', w: 10 }, { k: 't', match: 58 }, { k: 's', type: 'arrow', a: 'ROSTOV', cls: 'k', w: 12 },
+  { k: 'n', score: '2—1', who: 'Brazil', cls: 'y' }, { k: 'd', name: 'flame', cls: 'r', w: 8 }, { k: 's', type: 'dia', a: 'KAZAN', cls: 'k', w: 11 }, { k: 't', match: 61 },
+  { k: 's', type: 'dots', cls: 'y', w: 8 }, { k: 'n', score: '0—1', who: 'France' }, { k: 'd', name: 'star', w: 8 }, { k: 's', type: 'flag', a: 'BEL', w: 10 },
+  { k: 't', match: 63 }, { k: 'd', name: 'medal', text: '3', w: 8 }, { k: 'n', score: '2—0', who: 'England', cls: 'r' }, { k: 's', type: 'pill', a: '16 GOALS', b: '7 MATCHES', cls: 'y', w: 15 },
+  { k: 's', type: 'rnd', a: '3', b: 'THIRD PLACE', cls: 'y', w: 10 }, { k: 'd', name: 'cup', w: 9 }, { k: 's', type: 'bars', cls: 'y', w: 9 }, { k: 'd', name: 'flag', w: 9 },
+];
+
+// every piece gets a place on the table: one cell of a shuffled grid, jittered (10×4 on a wide screen, 5×8 on a tall one), a tilt, and the moment it lands
+const r = rng(1830), N = PIECES.length;
+const deal = (C: number, R: number) => {
+  const cells = Array.from({ length: C * R }, (_, i) => i);
+  for (let i = cells.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [cells[i], cells[j]] = [cells[j], cells[i]]; }
+  return PIECES.map((_, k) => { const c = cells[k % cells.length]; return [((c % C + .5 + (r() - .5) * .7) / C * 100).toFixed(1), ((Math.floor(c / C) + .5 + (r() - .5) * .6) / R * 100).toFixed(1)]; });
+};
+const wide = deal(10, 4), tall = deal(5, 8);
+const placed = PIECES.map((p, k) => ({
+  p, at: Math.round(3 + k / N * 91),
+  style: `--lx:${wide[k][0]}%;--ly:${wide[k][1]}%;--px:${tall[k][0]}%;--py:${tall[k][1]}%;--rot:${((r() - .5) * 30).toFixed(1)}deg;--spin:${Math.round((r() - .5) * 80)}deg;--pz:${k + 1}${'w' in p ? `;--pw:${p.w}` : ''}`,
+}));
 ---
-<div class="ld" id="ld" aria-hidden="true" data-pass="1">
+<div class="ld ld2" id="ld" aria-hidden="true">
   <i class="ld-c ld-c3" data-torn="b" data-torn-d="24"></i>
   <i class="ld-c ld-c2" data-torn="b" data-torn-d="24"></i>
   <div class="ld-p" data-torn="b" data-torn-d="24">
-    <div class="ld-top"><span>BEL—18 · The Road to Glory</span><span>Three-colour print · Yellow / Red / Black</span></div>
-    <div class="ld-art" id="ldArt">
-      <Poster />
+    <div class="ld-top"><span>BEL—18 · The Road to Glory</span><span>Emptying the box</span></div>
+    <div class="ld-pile">
+      {placed.map(({ p, at, style }) => (
+        <span class:list={['ld-pc', 'ld-pc-' + p.k]} data-at={at} style={style}>
+          {p.k === 's' && <Sticker type={p.type} a={p.a} b={p.b} class={p.cls} />}
+          {p.k === 'd' && <Doodle name={p.name} text={p.text} class={p.cls} />}
+          {p.k === 't' && <Ticket match={p.match} stamped />}
+          {p.k === 'n' && <span class:list={['ld-sc', p.cls]}><b>{p.score}</b><i>{p.who}</i></span>}
+        </span>
+      ))}
     </div>
-    <div class="ld-ui"><div class="ld-bar"><i class="by"><b></b></i><i class="br"><b></b></i><i class="bk"><b></b></i></div><span class="ld-pass" id="ldPass">Pass 1/3 — Yellow</span><b class="ld-n" id="ldN">000</b></div>
+    <div class="ld-ui"><b class="ld-n" id="ldN">000</b><span class="ld-pass" id="ldPass">0 / {N} — everything that was in the box</span></div>
   </div>
 </div>

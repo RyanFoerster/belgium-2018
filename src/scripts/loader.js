@@ -1,7 +1,7 @@
 import { doc, RM, $, $$, clamp } from './core.js';
 import { LOAD } from './photos.js';
 
-// the loader's headline is fitted to its sheet, and the block behind its fourth letter is put where that letter really is
+// the poster's headline (the first screen) is fitted to its sheet, and the block behind its fourth letter is put where that letter really is
 export function fitLoader() {
   $$('.ld-art').forEach(function (art) {
     var h = $('.ld-h', art), g = $('.ld-g', art); if (!h || !g || !art.offsetWidth) return;
@@ -21,7 +21,7 @@ export function runLoader(statics, onReady) {
   // anything not tied to a trigger starts once the loader has left
   var booted = false;
   function boot() { if (booted) return; booted = true; doc.classList.add('booted'); statics.forEach(function (n) { n.classList.add('on'); }); }
-  /* ── the loader is the press: the poster is printed in three passes — yellow, red, black — as the page arrives ── */
+  /* ── the loader is the box being emptied: one more thing lands on the table each time a little more of the page has arrived ── */
   var ld = $('#ld'), gone = false;
   function ready(now) {
     if (gone) return; gone = true;
@@ -32,16 +32,16 @@ export function runLoader(statics, onReady) {
   if (!ld || RM || !doc.classList.contains('ld-on') || /[?&]ld=0/.test(location.search)) ready(true);
   else (function () {
     // the count follows what is really arriving (fonts, the first photographs), never faster than two and a half seconds, never longer than six
-    var t0 = Date.now(), shown = 0, out = $('#ldN'), pass = $('#ldPass'), fonts = !(document.fonts && document.fonts.ready), NAMES = ['Yellow', 'Red', 'Black'];
+    var t0 = Date.now(), shown = 0, out = $('#ldN'), pass = $('#ldPass'), fonts = !(document.fonts && document.fonts.ready);
     if (!fonts) document.fonts.ready.then(function () { fonts = true; });
+    var pcs = $$('.ld-pc', ld).map(function (n) { return { n: n, at: +n.dataset.at, on: false }; }), landed = -1;
     function show(v) {
-      var q = [clamp(v / 33), clamp((v - 33) / 33), clamp((v - 66) / 34)], k = v < 33 ? 0 : v < 66 ? 1 : 2;
       out.textContent = ('00' + Math.round(v)).slice(-3);
-      ld.style.setProperty('--q1', q[0].toFixed(3)); ld.style.setProperty('--q2', q[1].toFixed(3)); ld.style.setProperty('--q3', q[2].toFixed(3));
-      ld.style.setProperty('--sq', q[k].toFixed(3));
-      if (ld.dataset.pass !== String(k + 1)) { ld.dataset.pass = k + 1; pass.textContent = 'Pass ' + (k + 1) + '/3 — ' + NAMES[k]; }
+      var c = 0;
+      for (var i = 0; i < pcs.length; i++) { var q = pcs[i], on = v >= q.at; if (on) c++; if (on !== q.on) { q.on = on; q.n.classList.toggle('on', on); } }
+      if (c !== landed) { landed = c; pass.textContent = c + ' / ' + pcs.length + ' — everything that was in the box'; }
     }
-    function done() { ld.classList.add('done'); pass.textContent = 'Printed — 3/3'; }
+    function done() { ld.classList.add('done'); }
     // ?ld=hold keeps the loader on screen (to look at it); ?ld=hold50 stops it half-way
     var hold = /[?&]ld=hold(\d*)/.exec(location.search);
     if (hold) { show(hold[1] === '' ? 87 : +hold[1]); if (+hold[1] >= 100) done(); return; }
