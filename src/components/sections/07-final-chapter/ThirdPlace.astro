@@ -1,36 +1,41 @@
 ---
-/* 07 · The Final Chapter — England again, four days later. */
-import Photo from '../../ui/Photo.astro';
+/* 07 · The Final Chapter — England again, four days later.
+   Set like the awards (Awards.astro, styles/players.css): one card at a time in the middle of the screen,
+   a word edge to edge behind it — the stadium, the first goal, the second — and the last frame lines the three up. */
+import DeckCard from '../../ui/DeckCard.astro';
 import Ticket from '../../ui/Ticket.astro';
 import Sticker from '../../ui/Sticker.astro';
-import Title from '../../ui/Title.astro';
-import TitleLine from '../../ui/TitleLine.astro';
-import TitleNote from '../../ui/TitleNote.astro';
 import Doodle from '../../ui/Doodle.astro';
 import Marks from '../../ui/Marks.astro';
+
+const letters = (w: string) => Array.from(w).map((c, k) => ({ c, k }));
+const WORDS = ['Again.', 'One.', 'Two.', 'Third.'];
 ---
 <!-- ═══════════ 07 — THE FINAL CHAPTER ═══════════ -->
-<section class="blk s-third bg-y paper" data-chapter="07|The Final Chapter" style="--opp:var(--eng);--opp2:var(--w)">
-  <p class="mono lab">07 — The Final Chapter · Third-place play-off · 14 July 2018<br>Saint Petersburg Stadium · Att. 64,406</p>
-  <Title label="The final chapter."><TitleLine fx="flip" tile={4} data-in>The final chapter</TitleLine><TitleNote x="30%" data-in>England, again</TitleNote></Title>
-  <div class="clg third-clg">
-    <Marks kind="brush" seed={14} n={14} data-in style="--qx:10;--qy:-14;--qw:70" />
-    <i class="disc bg-r th-disc fx-paste" data-in aria-hidden="true"></i>
-    <Photo name="stadium3" print class="th-p1 fx-slap" caption="same pitch, four days later" tape="t" colour="52 96" data-in style="--rot:-2deg;--ar:16/9" />
-    <div class="sc d th-sc" role="img" aria-label="Belgium 2, England 0"><span class="cutn c-bel fx-stamp" data-in style="--rot:-4deg"><i><span data-count="2">2</span></i></span><span class="cutn c-opp pale fx-stamp" data-in style="--rot:5deg;--d:.12s"><i>0</i></span></div>
-    <i class="flag f-eng th-flag fx-drop" data-in aria-hidden="true"></i>
-    <Photo name="meunierMedal" print class="th-p2 fx-slap" caption="Meunier" data-in style="--rot:-6deg;--ar:3/4;--d:.2s;--fx:-30vw" />
-    <Photo name="vertMedal" print class="th-p3 fx-drop" caption="Vertonghen" pin data-in style="--rot:5deg;--ar:4/5;--d:.4s" />
-    <span class="hand c-y th-hand" data-in style="--d:.5s">four minutes in</span>
-    <ul class="m-goals slip th-goals" data-torn="tb" data-in style="--rot:-1.5deg">
-      <li><b class="d">Meunier</b><span class="mono">4′</span></li>
-      <li><b class="d">E. Hazard</b><span class="mono">82′</span></li>
-    </ul>
-    <Ticket match={63} stamped class="th-tk fx-slide" data-in style="--rot:5deg;--fx:60vw" />
-    <p class="slip th-txt" data-torn="tb" data-in style="--rot:-1.2deg">Four days after Saint Petersburg broke them, they come back to the same pitch and play as if it matters. Because it does. Chadli crosses, Meunier scores — the tenth different Belgian to score in Russia. Hazard, late, makes sure.</p>
-    <Sticker type="pill" a="10TH SCORER" b="MEUNIER 4′" class="y th-s1" data-in />
-    <Sticker type="bars" class="th-s2" data-in />
-    <Doodle name="medal" text="3" data-in style="--qx:78;--qy:15;--qw:11;--rot:9deg;--d:.5s" />
-    <Marks kind="rays" seed={6} data-in style="--qx:71;--qy:8;--qw:25;--d:.7s;z-index:4" />
+<section class="scene s-aw s-bz bg-y paper" data-scene data-states="0 .07 .34 .6 .84" data-poster="1" data-chapter="07|The Final Chapter" id="third" style="--len:3.6;--opp:var(--eng);--opp2:var(--w)">
+  <div class="pin">
+    <p class="mono lab aw-lab">07 — The Final Chapter · Third-place play-off · 14 July 2018<br>Saint Petersburg Stadium · Att. 64,406</p>
+    {WORDS.map((w, i) => <div class="d aw-word" data-s={i + 1} aria-hidden="true">{letters(w).map((l) => <span style={`--i:${l.k}`}>{l.c}</span>)}</div>)}
+
+    <ol class="aw-deck">
+      <DeckCard class="aw-c1" photo="stadium3" ink="k" no={63} first="Saint" last="Petersburg" note="Twice"
+        title="England, again" meta="Four days after Saint Petersburg broke them, they come back to the same pitch and play as if it matters. Because it does."
+        facts={[['2—0', 'Belgium — England'], ['4', 'days after the semi-final']]} />
+      <DeckCard class="aw-c2" photo="meunierMedal" ink="rk" no={15} first="Thomas" last="Meunier" note="Tenth"
+        title="Meunier, 4′" meta="Chadli crosses, Meunier scores — the tenth different Belgian to score in Russia."
+        facts={[['4′', 'the opener'], ['10', 'different Belgian scorers']]} />
+      <DeckCard class="aw-c3" photo="bronze" ink="k" no={10} first="Eden" last="Hazard" note="Late"
+        title="Hazard, 82′" meta="Hazard, late, makes sure."
+        facts={[['82′', 'the second'], ['3', 'goals in Russia']]} />
+    </ol>
+
+    <Ticket match={63} stamped class="bz-tk" data-s="1" style="--rot:-7deg" />
+    <Doodle name="goal" class="aw-dd" data-s="2" />
+    <Doodle name="ball" class="w aw-dd" data-s="3" />
+    <Marks kind="brush" seed={14} n={16} class="aw-brush" data-s="1 2 3 4" />
+    <Sticker type="pill" a="10TH SCORER" b="MEUNIER 4′" class="k aw-s aw-s2" data-s="2" style="--rot:8deg" />
+    <Sticker type="rnd" a="82′" b="HAZARD" class="k aw-s aw-s3" data-s="3" style="--rot:-7deg" />
+    <span class="hand aw-hand" data-s="4">two—nil, on the same pitch</span>
+    <ol class="mono aw-dots" aria-hidden="true"><li data-s="1">Again</li><li data-s="2">Meunier</li><li data-s="3">Hazard</li><li data-s="4">Third</li></ol>
   </div>
 </section>

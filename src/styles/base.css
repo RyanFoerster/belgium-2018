@@ -414,7 +414,6 @@ body::after{content:"";position:fixed;inset:-120px;z-index:900;pointer-events:no
 .s-fra [data-in].print.in{animation-duration:1.1s}
 
 /* ═════════ 07 FINAL CHAPTER ═════════ */
-.s-third{min-height:calc(140*var(--vh))}
 .third-meta{position:static;margin-top:calc(5*var(--vh))}
 .third-score{display:flex;align-items:center;gap:2vw;font-size:min(50vw,calc(74*var(--vh)));line-height:.74;letter-spacing:-.03em;margin:calc(4*var(--vh)) 0 0 -.04em;width:fit-content}
 .third-teams{position:static;margin-top:calc(3*var(--vh));mix-blend-mode:normal;color:inherit;justify-content:flex-start;gap:.45em;font-size:min(6.4vw,calc(9*var(--vh)))}
@@ -558,10 +557,8 @@ body::after{content:"";position:fixed;inset:-120px;z-index:900;pointer-events:no
   .fra-ph2{width:44vw;margin:-8vw 0 0 46vw}
   .fra-pencil{right:auto;left:8vw;bottom:calc(7*var(--vh))}
 
-  .s-third{min-height:0}
   .third-score{font-size:60vw}
   .third-teams{font-size:9vw}
-  .s-third .print{position:relative;right:auto;top:auto}
   .third-ph{width:80vw;margin:calc(7*var(--vh)) 0 0 4vw}
   .third-ph2{width:38vw;margin:-8vw 0 0 2vw}
   .third-ph3{width:40vw;margin:-40vw 0 0 46vw}

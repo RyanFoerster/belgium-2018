@@ -11,9 +11,6 @@
 
 /* ═════════ titles: one ink ═════════ */
 .mis,.misreg,.ttl-l,.mega,.aw-word,.wall-s1,.wall-s2,.nine-n,.jn-sub,.fpc-h,.rp-32,.bra-h .d,.end-h .d{text-shadow:none}
-.sh-l{text-shadow:none;-webkit-text-stroke:.024em #080808}
-.sh-l:nth-child(3n+2),.sh-l:nth-child(5n+4){color:inherit}
-.sh-g{display:none}
 
 /* ═════════ buttons: a sticker you can press ═════════ */
 .btn{appearance:none;display:inline-flex;align-items:center;gap:.45em;margin:0;font:900 clamp(15px,1.45vw,22px)/1 var(--display);font-size-adjust:var(--dcap);font-synthesis:none;text-transform:uppercase;letter-spacing:.012em;white-space:nowrap;
@@ -160,8 +157,6 @@
 .jn-plan{left:27vw;top:calc(63*var(--vh));font-size:min(13vw,calc(22*var(--vh)))}
 /* France and the third place: the ticket on top of its pile, clear of the captions */
 .fr-tk{z-index:9}
-.th-tk{--qx:63;--qy:81}
-.th-s1{--qx:87;--qy:29;--qw:12}
 .fr-sc{--qx:32;--qy:71}
 /* the totals: the line beside the big figure sits on its own label */
 .tot-m{position:relative;z-index:3;justify-self:start;background:#080808;color:var(--w);padding:6px 9px 5px}
@@ -173,7 +168,6 @@
   .ge-tk{left:4vw;bottom:calc(24*var(--vh))}
   .alb-miss{left:auto;right:1%;top:-6.5%;font-size:4.2vw}
   .s-plan .sheet-w{top:auto;margin-bottom:calc(5*var(--vh))}
-  .th-hand{--qx:30;--qy:13}
   .fr-t1{--qy:36}
   .s-bra .m-meta{translate:0 calc(4.4*var(--vh))}
   .s-intro .i-tk{left:3vw;bottom:calc(7*var(--vh))}
@@ -395,34 +389,38 @@ main .il,main .dd{pointer-events:auto;cursor:pointer}
   .rp-count,.rp-prog{display:none}
 }
 
-/* ═════════ replays · the goal: a ball rolls across, the word is behind it ═════════ */
+/* ═════════ replays · the goal: a ball rolls across, the scorer's card is behind it ═════════ */
 .rp-final{overflow:hidden;--bx:calc(var(--rev,0)*134vw - 17vw)}
 .rp-sheet{position:absolute;inset:0;overflow:hidden;background:var(--r) var(--tx-riso) 0 0/340px;box-shadow:9px 0 0 #080808;visibility:var(--rev-vis,hidden);transform:translateX(calc(min(var(--bx),100vw) - 100vw));will-change:transform}
 .rp-sheet-in{position:absolute;inset:0;transform:translateX(calc(100vw - min(var(--bx),100vw)));will-change:transform}
 .s-replay-b .rp-sheet{background-color:var(--y)}
 .rp-roll{left:0;top:50%;--dz:min(30vw,calc(42*var(--vh)));z-index:6;visibility:var(--rev-vis,hidden);transform:translate(calc(var(--bx) - 50%),-50%) rotate(calc(var(--rev,0)*680deg));will-change:transform}
-.s-replay .rp-goal{left:2.6vw;top:calc(10*var(--vh));--sz:min(18.6vw,calc(33*var(--vh)));--rot:-3deg;--shc:var(--w)}
-.s-replay-b .rp-goal{--shc:#080808;--sz:min(22vw,calc(33*var(--vh)))}
-.s-replay .rp-goal .sh-l{--q:1}
-.s-replay .rp-ch{left:3vw;right:auto;top:auto;bottom:calc(14*var(--vh));font-size:min(20vw,calc(33*var(--vh)));line-height:.8;white-space:nowrap;text-shadow:none;
-  transform:translateY(calc((1 - var(--ty1,0))*34%));clip-path:inset(0 -4% calc((1 - var(--ty1,0))*104%) -4%)}
-.s-replay-b .rp-ch{color:var(--r);font-size:min(14.5vw,calc(30*var(--vh)))}
-.rp-fm{position:absolute;left:3.3vw;bottom:calc(7.6*var(--vh));margin:0;font-size:11px;color:#080808;opacity:var(--ty1,0)}
-.rp-fs1{right:3.4vw;top:calc(39*var(--vh));--iz:min(12vw,calc(21*var(--vh)));--rot:10deg;z-index:7;scale:var(--ty2,0)}
-.rp-fs2{right:5vw;bottom:calc(9*var(--vh));--iz:min(20vw,calc(33*var(--vh)));--rot:-5deg;z-index:7;scale:clamp(0,calc(var(--ty2,0)*1.6 - .6),1)}
-.s-replay-b .rp-imp{color:var(--w)}
-.s-replay .rp-imp{right:18vw;bottom:calc(43*var(--vh));font-size:clamp(30px,5vw,84px);z-index:8}
+/* what the ball leaves behind is the Awards composition (players.css); here the replay's progress moves it, not a state */
+.rp-final .aw-word span{--q:clamp(0,calc(var(--ty1,0)*1.7 - var(--i)*.17),1);transform:translateY(calc((1 - var(--q))*118%)) rotate(calc((1 - var(--q))*8deg));transition:none}
+.rp-final .aw-c{--tx:calc((1 - var(--ty1,0))*115vw);--tr:calc(-3deg + (1 - var(--ty1,0))*17deg);--tz:5;transition:none}
+.rp-final :is(.aw-what,.aw-facts){opacity:var(--ty2,0);transform:translateY(calc((1 - var(--ty2,0))*26px));transition:none}
+.aw-facts b{white-space:nowrap}
+.rp-final .aw-obj{color:var(--y);font-size:calc(var(--cw)*.32);left:-30%;top:64%;clip-path:inset(-40% calc(112% - var(--ty3,0)*126%) -40% -10%)}
+/* on a yellow ground the yellow figures are printed in red and the word across the card in white */
+:is(.s-replay-b,.s-bz) .aw-facts li:nth-child(odd) b{color:var(--r)}
+:is(.s-replay-b,.s-bz) .aw-obj{color:var(--w)}
+.rp-fs1{left:calc(50% + min(27vw,calc(41*var(--vh)))*.34);top:calc(13*var(--vh));--iz:min(13vw,calc(22*var(--vh)));--rot:-9deg;z-index:7;scale:var(--ty2,0)}
 @media (max-width:820px){
-  .rp-roll{--dz:48vw}
-  .s-replay .rp-goal{left:3vw;top:calc(13*var(--vh));--sz:16.4vw}
-  .s-replay-b .rp-goal{--sz:22.5vw}
-  .s-replay .rp-ch{left:4vw;bottom:calc(30*var(--vh));font-size:26vw}
-  .s-replay-b .rp-ch{font-size:19.5vw}
-  .rp-fm{left:4vw;bottom:calc(25*var(--vh));font-size:9px}
-  .rp-fs1{right:5vw;top:calc(34*var(--vh));--iz:30vw}
-  .rp-fs2{right:auto;left:6vw;bottom:calc(8*var(--vh));--iz:42vw}
-  .s-replay .rp-imp{right:auto;left:5vw;bottom:calc(45*var(--vh));font-size:10.5vw}
+  .rp-roll{--dz:48vw} .rp-final{--bx:calc(var(--rev,0)*160vw - 26vw)}
+  .rp-fs1{left:auto;right:3vw;top:calc(25*var(--vh));--iz:26vw}
 }
+
+/* ═════════ 07 · the third place: the awards' deck on yellow, the match ticket where the others have a drawing ═════════ */
+.s-bz{color:#080808}
+.s-bz .aw-brush{--m1:var(--r);--m2:var(--w);--m3:var(--r)}
+/* the word across a card stops short of the figures beside it; the ticket sits clear of the card's name */
+.s-bz .aw-obj{left:-50%}
+.bz-tk{position:absolute;right:calc(50% + min(27vw,calc(41*var(--vh)))*.62);top:calc(74*var(--vh));z-index:6;visibility:hidden}
+.bz-tk.on{visibility:visible;animation:stamp .34s cubic-bezier(.2,.9,.3,1) .7s backwards}
+@media (max-width:820px){
+  .bz-tk{right:auto;left:3vw;top:calc(84*var(--vh));--ts:.62}
+}
+.rm .bz-tk{position:relative;left:auto;right:auto;top:auto;visibility:visible;margin:0 auto}
 
 /* ═════════ small screens ═════════ */
 @media (max-width:820px){
@@ -446,5 +444,6 @@ main .il,main .dd{pointer-events:auto;cursor:pointer}
 .rm .hero-ui{opacity:1;translate:none}
 .rm .rp-final{--rev:1;--rev-vis:visible}
 .rm .rp-roll,.rm .rp-ctl{display:none}
-.rm .rp-fs1,.rm .rp-fs2{scale:1}
+.rm .rp-fs1{display:none}
+.rm .rp-final .aw-deck{padding-top:calc(4*var(--vh))}
 .rm .nav{transition:none}

@@ -3,7 +3,7 @@
    The publication is printed on a risograph: fresh off-white stock, flat inks that never quite line up,
    halftone where the ink thins out, illustrations drawn by hand, brush and pen around the photographs,
    and a few words so big they are events. Each object has its own material — there is no grain over the whole page.
-   Reusable pieces: <Doodle> (.dd) · <Marks> (.mk) · <Shout> (.shout) · .mis (misregistered type) · the three papers.
+   Reusable pieces: <Doodle> (.dd) · <Marks> (.mk) · .mis (misregistered type) · the three papers.
    Custom properties never reuse the colour token names (--k --w --y --r).
    ══════════════════════════════════════════════════════════ */
 @property --q{syntax:'<number>';inherits:false;initial-value:1}
@@ -17,7 +17,7 @@ body::after{content:none}
 /* flat colour is riso ink: uneven, pinholed, a little lighter where the drum ran dry */
 .bg-y,.bg-r,.bg-y.paper,.bg-r.paper{background-image:var(--tx-riso);background-size:340px 340px}
 /* some sheets show their fibres, some are almost clean */
-.s-roll,.s-np,.s-tot,.s-third,.s-wall .pin{background-image:var(--tx-fib);background-size:420px 420px}
+.s-roll,.s-np,.s-tot,.s-wall .pin{background-image:var(--tx-fib);background-size:420px 420px}
 .slip::before,.cutting::before,.copy::before,.lbl::before{background-image:var(--tx-fib)}
 /* the newspaper pages stay newspapers, but printed this morning */
 .fp-page::after{opacity:.22}
@@ -75,7 +75,7 @@ body::after{content:none}
 @keyframes ddprint{from{transform:translate(17px,-12px)}}
 .dd[data-t] .dd-l path{stroke-dashoffset:calc(1 - clamp(0,calc(var(--t,0)*1.5),1))}
 .dd[data-t] :is(.dd-f,.dd-w,.dd-h,.dd-t){opacity:clamp(0,calc((var(--t,0) - .62)*40),1)}
-.dd.in,.dd.on,.mk.in,.mk.on,.shout.in,.shout.on{animation:none}
+.dd.in,.dd.on,.mk.in,.mk.on{animation:none}
 /* some of them never sit still */
 .dd.spin{animation:ddspin 14s linear infinite!important}
 @keyframes ddspin{to{rotate:calc(var(--rot,0deg) + 360deg)}}
@@ -83,7 +83,7 @@ body::after{content:none}
 .dd.bob.in svg,.dd.bob.on svg{animation:ddbob 2.4s steps(2) infinite,ddrough .01s linear calc(var(--d,0s) + 1.7s) forwards}
 @keyframes ddbob{50%{transform:translate(1.2%,-2%) rotate(2.5deg)}}
 
-/* ═════════ <Marks>: brush, shards, rays, crosses and noughts, pen, spray, grid ═════════ */
+/* ═════════ <Marks>: brush, shards, crosses and noughts, pen, spray, grid ═════════ */
 .mk{position:absolute;display:block;width:var(--mz,30vw);rotate:var(--rot,0deg);z-index:0;pointer-events:none;font-style:normal;--m1:var(--y);--m2:var(--r);--m3:#080808;--m4:var(--w)}
 .bg-y .mk{--m1:var(--r);--m2:var(--w)} .bg-r .mk{--m1:var(--y);--m2:var(--w)} .bg-k .mk{--m3:var(--w);--m4:var(--w)}
 .mk.o{--m1:var(--opp);--m2:var(--opp2,var(--y))}
@@ -111,23 +111,6 @@ body::after{content:none}
 .mk[data-t] .sh{scale:clamp(0,calc(var(--t,0)*3.2 - var(--i)*.2),1)}
 .mk[data-t] :is(.dash,.hair,.sp){opacity:clamp(0,calc(var(--t,0)*3 - 1),1)}
 
-/* ═════════ <Shout>: a word that is an event ═════════ */
-.shout{position:absolute;display:block;font-size:var(--sz,20vw);line-height:.8;white-space:nowrap;z-index:9;pointer-events:none;color:var(--shc,var(--y));rotate:var(--rot,-4deg);letter-spacing:-.01em}
-.sh-w{position:relative;display:block}
-.sh-sp{display:inline-block;width:.24em}
-.sh-l{display:inline-block;transform-origin:50% 78%;margin:0 -.014em;translate:0 var(--dy,0em);text-transform:uppercase;-webkit-text-stroke:.03em #080808;paint-order:stroke fill;
-  text-shadow:.036em .03em 0 var(--mr1,var(--r)),-.022em -.018em 0 #fff,.08em .085em 0 #080808;
-  transform:translate(calc((1 - var(--q))*var(--fx)),calc((1 - var(--q))*var(--fy))) rotate(calc(var(--rz) + (1 - var(--q))*var(--spin))) scale(calc(1 + (1 - var(--q))*1.5));opacity:clamp(0,calc(var(--q)*9),1);
-  font-family:var(--display);font-size-adjust:var(--dcap);font-synthesis:none}
-.sh-l:nth-child(3n+2){color:var(--sh2,var(--w))}
-.sh-l:nth-child(5n+4){color:var(--sh3,var(--r));--mr1:var(--y)}
-.shout[data-t] .sh-l{--q:clamp(0,calc(var(--t,0)*(1 + (var(--n) - 1)*.13) - var(--i)*.13),1)}
-.shout:where([data-in],[data-at],[data-from],[data-s]) .sh-l{--q:0}
-.shout.in .sh-l,.shout.on .sh-l{--q:1;transition:--q .85s cubic-bezier(.2,1.35,.3,1) calc(var(--d,0s) + var(--i)*60ms)}
-/* the same word again behind itself: a second and a third pass that missed */
-.sh-g{position:absolute;left:0;top:0;font-family:var(--display);font-size-adjust:var(--dcap);font-synthesis:none;text-transform:uppercase;color:var(--mr1,var(--r));opacity:.5;translate:calc(var(--g)*.05em) calc(var(--g)*.62em);mix-blend-mode:multiply}
-.bg-k .sh-g,.bg-r .sh-g{mix-blend-mode:normal}
-
 /* ═════════ pinned to the page: every hand-written figure gets a pencil ring, every caption a tick ═════════ */
 .tape{mix-blend-mode:multiply;opacity:.9}
 
@@ -145,7 +128,6 @@ body::after{content:none}
 .rm .dd :is(.dd-f,.dd-w,.dd-h,.dd-t),.rm .mk :is(.dash,.sp){opacity:1!important}
 .rm .mk .hair{opacity:.8!important}
 .rm .mk .sh{scale:1!important;rotate:0deg!important}
-.rm .sh-l{--q:1!important;transition:none!important}
 .rm .dd.spin,.rm .dd.bob svg{animation:none!important}
 .rm .dd svg{filter:url(#rough)}
 
@@ -175,24 +157,15 @@ body::after{content:none}
 .sq-ball{right:19.5vw;top:calc(9.5*var(--vh));--dz:min(6.5vw,calc(11*var(--vh)));z-index:70}
 
 /* 04 / 05 — the goal: GOOOOOAL! across the top, the minute below it, "impossible" printed four times */
-.rp-goal{left:3vw;top:calc(7*var(--vh));--sz:min(19.5vw,calc(34*var(--vh)));--rot:-5deg;--shc:var(--y);--mr1:var(--r)}
-.rp-goal .sh-l{--q:clamp(0,calc(var(--ty1,0)*(1 + (var(--n) - 1)*.13) - var(--i)*.13),1)}
 .rp-burst{left:52vw;top:calc(-6*var(--vh));--dz:min(52vw,calc(88*var(--vh)));--rot:-8deg;z-index:0;scale:var(--ty1,0);opacity:clamp(0,calc(var(--ty1,0)*6),1)}
-.rp-rays{left:-8vw;top:calc(-16*var(--vh));--mz:min(74vw,calc(120*var(--vh)));z-index:0;--m3:var(--w)}
-.rp-rays .ln{stroke-width:1.6;stroke-dasharray:1 1.01;stroke-dashoffset:calc(1 - clamp(0,calc(var(--ty1,0)*2.2 - var(--i)*.04),1))}
 .s-replay .rp-94{left:3vw;top:auto;bottom:calc(5*var(--vh));font-size:min(27vw,calc(40*var(--vh)));text-shadow:.026em .02em 0 var(--r),-.014em -.012em 0 #fff}
 .s-replay .rp-ch{bottom:calc(32*var(--vh));text-shadow:.026em .02em 0 var(--y),-.014em -.012em 0 var(--r)}
-.rp-impo{right:5vw;bottom:calc(21*var(--vh));--sz:min(6.4vw,calc(11*var(--vh)));--rot:-3deg;--shc:var(--w);z-index:8}
-.rp-impo .sh-l{--q:clamp(0,calc(var(--ty3,0)*(1 + (var(--n) - 1)*.13) - var(--i)*.13),1)}
-.rp-impo .sh-g{opacity:calc(var(--ty3,0)*.9);color:var(--y);mix-blend-mode:normal;translate:calc(var(--g)*.07em) calc(var(--g)*.7em);-webkit-text-stroke:.02em #080808;paint-order:stroke fill}
 .rp-ball{right:38vw;bottom:calc(6*var(--vh));--dz:min(10vw,calc(17*var(--vh)));scale:var(--ty3,0);rotate:calc(var(--ty3,0)*360deg)}
-.s-replay-b .rp-goal{--shc:var(--w);--mr1:var(--y)}
 
 /* 04 — the stands: the megaphone and the flag hang on the same line as the prints */
 .strip-row .dd{position:relative;--dz:13vw;align-self:center;flex:none}
 
-/* 05 — Brazil keeps its entrance; rays behind the ticket, one star */
-.bra-rays{right:2vw;top:calc(-4*var(--vh));--mz:min(34vw,calc(56*var(--vh)));z-index:3;--m3:var(--bra2)}
+/* 05 — Brazil keeps its entrance; one star */
 .bra-star{left:46vw;top:calc(12*var(--vh));--dz:min(7vw,calc(12*var(--vh)));--rot:-12deg;z-index:6}
 .plan-tac{right:5vw;top:calc(34*var(--vh));--mz:min(30vw,420px);z-index:3}
 .plan-arr{left:72%;top:40%;--dz:min(12vw,170px);--rot:150deg;z-index:4}
@@ -200,7 +173,6 @@ body::after{content:none}
 
 /* 07 — bronze on a brush of yellow; each award has its object, drawn */
 .end-brush{right:-6vw;top:calc(-6*var(--vh));--mz:min(74vw,calc(120*var(--vh)));z-index:0}
-.end-rays{right:20vw;top:calc(14*var(--vh));--mz:min(40vw,calc(66*var(--vh)));z-index:1;--m3:var(--y)}
 .aw-brush{left:50%;top:calc(52*var(--vh));translate:-50% -50%;--mz:min(96vw,calc(150*var(--vh)));z-index:0;--m1:#080808;--m2:var(--y);--m3:#080808}
 .aw-dd{left:calc(50% - min(27vw,calc(41*var(--vh)))*1.02);top:calc(62*var(--vh));--dz:min(15vw,calc(25*var(--vh)));z-index:6;--rot:-12deg}
 
@@ -209,23 +181,19 @@ body::after{content:none}
   .i-ball{left:4vw;top:calc(72*var(--vh));--dz:18vw} .i-tac{left:44vw;top:calc(80*var(--vh));--mz:44vw}
   .alb-dd{right:4%;top:calc(4*var(--vh));--dz:22vw}
   .sq-ball{display:none}
-  .rp-goal{left:2vw;top:calc(12*var(--vh));--sz:21vw}
-  .rp-burst{left:20vw;--dz:110vw} .rp-rays{--mz:150vw;left:-30vw}
+  .rp-burst{left:20vw;--dz:110vw}
   .s-replay .rp-94{font-size:40vw;bottom:calc(8*var(--vh))}
   .s-replay .rp-ch{bottom:calc(38*var(--vh))}
-  .rp-impo{right:4vw;bottom:calc(27*var(--vh));--sz:10vw}
   .rp-ball{right:6vw;bottom:calc(9*var(--vh));--dz:20vw}
   .strip-row .dd{--dz:26vw}
-  .bra-rays{--mz:60vw} .bra-star{left:8vw;top:calc(56*var(--vh));--dz:13vw}
+  .bra-star{left:8vw;top:calc(56*var(--vh));--dz:13vw}
   .plan-tac{right:2vw;top:calc(30*var(--vh));--mz:50vw} .plan-arr{display:none}
-  .end-brush{--mz:150vw;right:-30vw} .end-rays{--mz:70vw;right:4vw}
+  .end-brush{--mz:150vw;right:-30vw}
   .aw-brush{--mz:170vw}
   .aw-dd{left:3vw;top:calc(66*var(--vh));--dz:24vw}
   /* on a narrow sheet the piles are already full: only the marks behind stay, and the illustrations that have room */
-  .open-clg > .dd,.alb-dd,.g9 > .dd,.s-jpn .panel > .dd,.fra-clg > .dd,.third-clg > .dd,.tot .dd[data-dd="goal"],.tot .dd[data-dd="boot"]{display:none}
+  .open-clg > .dd,.alb-dd,.g9 > .dd,.s-jpn .panel > .dd,.fra-clg > .dd,.tot .dd[data-dd="goal"],.tot .dd[data-dd="boot"]{display:none}
   .tot .dd{--dz:20vw!important}
 }
-.rm .rp-goal .sh-l,.rm .rp-impo .sh-l{--q:1}
 .rm .rp-burst,.rm .rp-ball{scale:1;opacity:1;rotate:0deg}
-.rm .rp-rays .ln{stroke-dashoffset:0}
 .rm .aw-dd,.rm .aw-brush{display:none}

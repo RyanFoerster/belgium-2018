@@ -1,5 +1,5 @@
 ---
-/* Marks thrown around a photograph or a word (lib/marks.ts): brush strokes, shards, rays, a coach's crosses and noughts,
+/* Marks thrown around a photograph or a word (lib/marks.ts): brush strokes, shards, a coach's crosses and noughts,
    a wandering pen line, a spray of ink, a grid, speed lines. They sit behind or over their neighbours and are drawn
    stroke by stroke when they arrive (or along with the scroll, with data-t). Position and size with `style` (left/top/--mz). */
 import { mark, type MarkKind } from '../../lib/marks';
@@ -8,7 +8,7 @@ import { pass } from '../../lib/attrs';
 interface Props {
   kind: MarkKind;
   seed?: number;
-  /** how many strokes / shards / rays */
+  /** how many strokes / shards */
   n?: number;
   class?: string;
   style?: string;

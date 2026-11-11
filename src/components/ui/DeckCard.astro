@@ -1,0 +1,31 @@
+---
+/* One card of a deck (styles/players.css): a print with a number tile and a name bar, a word written across it,
+   what it is on its left and two or three figures on its right. Used by the awards, the third place and the goals. */
+import Photo from './Photo.astro';
+import type { PhotoKey } from '../../data/photos';
+
+interface Props {
+  photo: PhotoKey;
+  ink: 'yk' | 'rk' | 'k';
+  no: number | string;
+  first: string;
+  last: string;
+  /** written across the card */
+  note: string;
+  title: string;
+  meta: string;
+  facts: string[][];
+  class?: string;
+}
+const { photo, ink, no, first, last, note, title, meta, facts, class: cls } = Astro.props;
+---
+<li class:list={['aw-c', cls]}>
+  <article class="aw-card">
+    <Photo name={photo} ink={ink} class="aw-ph" />
+    <b class="d aw-no" aria-hidden="true">{no}</b>
+    <h3 class="d aw-name">{first} <b>{last}</b></h3>
+  </article>
+  <span class="scrawl aw-obj" aria-hidden="true">{note}</span>
+  <p class="aw-what"><b class="d">{title}</b><span class="mono">{meta}</span></p>
+  <ul class="aw-facts">{facts.map((f) => <li><b class="d">{f[0]}</b><span class="mono">{f[1]}</span></li>)}</ul>
+</li>

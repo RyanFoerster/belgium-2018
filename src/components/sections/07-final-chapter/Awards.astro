@@ -1,7 +1,7 @@
 ---
 /* 07 · The three individual awards, one player at a time in the middle of the screen:
    each card lands on the pile, the one before it steps aside, and the last frame lines the three up. */
-import Photo from '../../ui/Photo.astro';
+import DeckCard from '../../ui/DeckCard.astro';
 import Sticker from '../../ui/Sticker.astro';
 import { AWARDS } from '../../../data/squad';
 
@@ -21,18 +21,7 @@ import Marks from '../../ui/Marks.astro';
     <ol class="aw-deck">
       {AWARDS.map((a, i) => {
         const [first, last] = split(a.player);
-        return (
-          <li class={`aw-c aw-c${i + 1}`}>
-            <article class="aw-card">
-              <Photo name={a.photo} ink={INK[i]} class="aw-ph" />
-              <b class="d aw-no" aria-hidden="true">{a.no}</b>
-              <h3 class="d aw-name">{first} <b>{last}</b></h3>
-            </article>
-            <span class="scrawl aw-obj" aria-hidden="true">{a.object}</span>
-            <p class="aw-what"><b class="d">{a.metal} {a.object}</b><span class="mono">{a.what}</span></p>
-            <ul class="aw-facts">{a.facts.map((f) => <li><b class="d">{f[0]}</b><span class="mono">{f[1]}</span></li>)}</ul>
-          </li>
-        );
+        return <DeckCard class={`aw-c${i + 1}`} photo={a.photo} ink={INK[i]} no={a.no} first={first} last={last} note={a.object} title={`${a.metal} ${a.object}`} meta={a.what} facts={a.facts} />;
       })}
     </ol>
 

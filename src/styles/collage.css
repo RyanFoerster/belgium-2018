@@ -118,21 +118,6 @@
 .fr-st{--qx:86;--qy:85;--hz:2.1;--sc:var(--w);background:var(--r)}
 
 /* 07 — third place: the stadium in the middle, the medals on top */
-.s-third{min-height:0;padding-bottom:calc(20*var(--vh))}
-.third-clg{--ca:16/11}
-.th-disc{--qx:27;--qy:2;--qw:46}
-.th-p1{--qx:23;--qy:12;--qw:54}
-.th-sc{--qx:1;--qy:0;--h:15}
-.th-flag{--qx:88;--qy:4;--qw:9;--rot:8deg;z-index:4}
-.th-p2{--qx:5;--qy:37;--qw:19;z-index:4!important}
-.th-p3{--qx:77;--qy:41;--qw:19;z-index:4!important}
-.th-goals{--qx:29;--qy:67;width:max-content!important;padding:1cqw 1.5cqw .7cqw;z-index:6!important}
-.th-goals b{font-size:2.6cqw}
-.th-tk{--qx:57;--qy:72;--tz:.82;z-index:5}
-.th-txt{--qx:1;--qy:82;--qw:27}
-.th-hand{--qx:44;--qy:60;--hz:3.6;--rot:-4deg}
-.th-s1{--qx:83;--qy:82;--qw:15}
-.th-s2{--qx:47;--qy:88;--qw:5}
 
 /* ═════════ poster stickers: one flat shape, a black keyline, a hard black shadow, type set tight inside ═════════ */
 .il{--c1:var(--r);--c2:var(--k);--c3:var(--y);--cf:#F5F3EE;aspect-ratio:auto;filter:none}
@@ -226,19 +211,6 @@
   .fr-hand{--qx:46;--qy:93;--hz:9}
   .fr-st{--qx:58;--qy:1;--hz:4.4}
 
-  .third-clg{--ca:10/21;margin-bottom:46vw}
-  .th-disc{--qx:8;--qy:3;--qw:84}
-  .th-sc{--qx:2;--qy:0;--h:24}
-  .th-flag{--qx:76;--qy:1;--qw:18}
-  .th-p1{--qx:3;--qy:12;--qw:94}
-  .th-p2{--qx:4;--qy:39;--qw:44}
-  .th-p3{--qx:52;--qy:42;--qw:44}
-  .th-hand{--qx:30;--qy:33.5;--hz:8}
-  .th-goals{--qx:4;--qy:73;padding:3cqw 4cqw 2cqw} .th-goals b{font-size:7cqw}
-  .th-s1{--qx:60;--qy:72;--qw:37}
-  .th-s2{display:none}
-  .th-tk{--qx:22;--qy:82;--tz:1.85}
-  .th-txt{--qx:3;--qy:91;--qw:93;--sz:3.6}
 }
 
 /* ═════════ reduced motion ═════════ */

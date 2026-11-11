@@ -1,11 +1,11 @@
-/* The marks thrown around a photograph or a word: dry-brush strokes, paper shards, rays, a coach's crosses and noughts,
+/* The marks thrown around a photograph or a word: dry-brush strokes, paper shards, a coach's crosses and noughts,
    a pen line that wanders, a spray of ink, a grid. Each is generated once from a seed, so it is the same on every visit.
    Strokes carry pathLength="1" and their index (--i): the page draws them one after the other.
    Colour classes: m1 yellow · m2 red · m3 black · m4 paper — remapped per section in CSS. */
 import { rng } from './rng';
 
 const f = (n: number) => n.toFixed(1);
-export type MarkKind = 'brush' | 'rays' | 'shards' | 'tactic' | 'scribble' | 'spray' | 'grid' | 'crosses' | 'speed';
+export type MarkKind = 'brush' | 'shards' | 'tactic' | 'scribble' | 'spray' | 'grid' | 'crosses' | 'speed';
 export interface Mark { w: number; h: number; svg: string }
 
 const GEN: Record<MarkKind, (q: () => number, n: number) => [number, number, string]> = {
@@ -17,15 +17,6 @@ const GEN: Record<MarkKind, (q: () => number, n: number) => [number, number, str
       const x1 = 100 + Math.cos(a) * r1, y1 = 100 + Math.sin(a) * r1, x2 = 100 + Math.cos(a) * r2, y2 = 100 + Math.sin(a) * r2;
       const cx = (x1 + x2) / 2 - Math.sin(a) * b, cy = (y1 + y2) / 2 + Math.cos(a) * b;
       s += '<path class="st m' + (1 + (i % 3 === 2 ? 2 : i % 2)) + '" pathLength="1" style="--i:' + i + '" stroke-width="' + f(w) + '" d="M' + f(x1) + ' ' + f(y1) + 'Q' + f(cx) + ' ' + f(cy) + ' ' + f(x2) + ' ' + f(y2) + '"/>';
-    }
-    return [200, 200, s];
-  },
-  /* short lines radiating from an empty middle: something has just been struck */
-  rays(q, n) {
-    let s = '';
-    for (let i = 0; i < n; i++) {
-      const a = (i / n + (q() - .5) * .04) * Math.PI * 2, r1 = 56 + q() * 10, r2 = r1 + 12 + q() * 26;
-      s += '<path class="ln m3" pathLength="1" style="--i:' + i + '" d="M' + f(100 + Math.cos(a) * r1) + ' ' + f(100 + Math.sin(a) * r1) + 'L' + f(100 + Math.cos(a) * r2) + ' ' + f(100 + Math.sin(a) * r2) + '"/>';
     }
     return [200, 200, s];
   },
@@ -79,7 +70,7 @@ const GEN: Record<MarkKind, (q: () => number, n: number) => [number, number, str
     return [200, 120, s];
   }
 };
-const N: Record<MarkKind, number> = { brush: 13, rays: 18, shards: 11, tactic: 0, scribble: 13, spray: 150, grid: 8, crosses: 6, speed: 7 };
+const N: Record<MarkKind, number> = { brush: 13, shards: 11, tactic: 0, scribble: 13, spray: 150, grid: 8, crosses: 6, speed: 7 };
 
 export function mark(kind: MarkKind, seed = 1, n?: number): Mark {
   const g = GEN[kind](rng(seed * 7919 + 13), n || N[kind]);

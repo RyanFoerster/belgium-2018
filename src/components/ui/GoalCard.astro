@@ -1,0 +1,8 @@
+---
+/* The goal at the end of a replay, set like an award (sections/07-final-chapter/Awards.astro):
+   one word edge to edge and the scorer's card in the middle of it.
+   It is moved by the replay's own progress (styles/v2.css), not by states. Takes the props of <DeckCard>. */
+import DeckCard from './DeckCard.astro';
+---
+<div class="d aw-word" aria-hidden="true">{Array.from('Goal.').map((c, k) => <span style={`--i:${k}`}>{c}</span>)}</div>
+<ol class="aw-deck"><DeckCard {...Astro.props} /></ol>

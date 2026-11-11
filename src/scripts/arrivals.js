@@ -2,7 +2,7 @@ import { RM, $$, clamp, E, rng } from './core.js';
 
 /* ── objects written into the page without a trigger of their own get one: they arrive the first time they are seen ── */
 export function autoEntrances() {
-  var OBJ = '.il,.dd,.mk,.shout,.print,.tkt,.stk,.slip,.cutting,.lbl,.disc,.mega,.scrawl,.hand,.pencil,.stamp,.m-goals,.flag,svg.scr';
+  var OBJ = '.il,.dd,.mk,.print,.tkt,.stk,.slip,.cutting,.lbl,.disc,.mega,.scrawl,.hand,.pencil,.stamp,.m-goals,.flag,svg.scr';
   var HAS = '[data-in],[data-at],[data-t],[data-o],[data-from],[data-s]';
   var SKIP = '#ld,#wall,.fp,.np,.np2,.i-ils,.boot-fx,.pitch,.rp-final,.rp-flood,.rp-stage,.aw-deck,.alb-side,.sheet,.hud,.tkt *,.print *,.stk *,.slip *,.cutting *,.lbl *';
   $$('main ' + OBJ.split(',').join(',main ')).forEach(function (n) {
@@ -15,7 +15,7 @@ export function dealArrivals() {
   /* ── arrivals: anything that has not been given its own entrance is dealt one, so no two neighbours come in alike ── */
   $$('[data-in],[data-at],[data-from]').forEach(function (n, k) {
     var c = n.getAttribute('class') || '';
-    if (/(^|\s)(fx-\S+|stamp|hand|pencil|scr|sp|pr|il|dd|mk|shout|stk|ttl-l|ttl-s|sheet-w|scrawl|rough|alb-miss)(\s|$)/.test(c) || n.hasAttribute('data-split') || n.closest('#wall')) return;
+    if (/(^|\s)(fx-\S+|stamp|hand|pencil|scr|sp|pr|il|dd|mk|stk|ttl-l|ttl-s|sheet-w|scrawl|rough|alb-miss)(\s|$)/.test(c) || n.hasAttribute('data-split') || n.closest('#wall')) return;
     var r = rng(k * 211 + 3), obj = /(^|\s)(print|tkt|flag|cutn|disc)(\s|$)/.test(c), L = obj ? ['fx-slap', 'fx-drop', 'fx-slide', 'fx-paste', 'fx-flip'] : ['fx-paste', 'fx-cut', 'fx-flip', 'fx-unroll', 'fx-paste'];
     n.classList.add(L[Math.floor(r() * L.length)]);
     var dir = r() < .5 ? -1 : 1;

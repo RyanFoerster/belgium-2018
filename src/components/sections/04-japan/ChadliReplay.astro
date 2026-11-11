@@ -1,11 +1,11 @@
 ---
 /* 04 · Chadli, 90+4′ — the counter-attack replayed pass by pass on the tactical board.
-   The board is a black slab; its steps are a list you can click (scripts/nav.js). The goal itself is drawn, not photographed:
-   a ball rolls across the screen and leaves the word behind it. */
+   The board is a black slab; its steps are a list you can click (scripts/nav.js). The goal itself is set like an award:
+   a ball rolls across the screen and leaves the scorer's card behind it. */
 import Photo from '../../ui/Photo.astro';
 import Sticker from '../../ui/Sticker.astro';
 import Doodle from '../../ui/Doodle.astro';
-import Shout from '../../ui/Shout.astro';
+import GoalCard from '../../ui/GoalCard.astro';
 ---
 <!-- Signature 02 + 04 — The Impossible Comeback -->
 <section class="scene s-replay bg-y paper" data-scene data-poster=".7" id="chadli" style="--len:6.4">
@@ -22,14 +22,10 @@ import Shout from '../../ui/Shout.astro';
     </ol>
     <div class="rp-final">
       <div class="rp-sheet"><div class="rp-sheet-in">
-        <Shout text="GOOOOOAL!" seed={5} class="rp-goal" />
-        <span class="d rp-ch">Chadli.</span>
-        <p class="mono rp-fm">90+4′ · Rostov Arena · Belgium 3—2 Japan</p>
+        <GoalCard photo="chadli" ink="yk" no={22} first="Nacer" last="Chadli" note="impossible" title="The winner" meta={'90+4′ · Rostov Arena · Belgium 3⁠—⁠2 Japan'} facts={[['3—2', 'from 0—2 down'], ['65′', 'came on as a substitute']]} />
       </div></div>
       <Doodle name="ball" class="rp-roll" />
       <Sticker type="rnd" a="94′" b="ROSTOV" class="y rp-fs1" />
-      <Sticker type="pill" a="3—2" b="FULL TIME" class="k rp-fs2" />
-      <span class="hand c-y rp-imp">impossible.</span>
     </div>
     <div class="rp-flood bg-y">
       <span class="d rp-32" aria-label="3-2">3—2</span>
