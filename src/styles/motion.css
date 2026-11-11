@@ -1,7 +1,7 @@
 /* ══════════════════════════════════════════════════════════
    EIGHTH LAYER — motion
    How one section hands over to the next, and how words arrive — one set of rules for the whole page.
-   every section climbs over the end of the last, which sinks back and goes dark (scripts/engine.js drives it)
+   every section climbs over the end of the last, which holds back under it — parallax, a clean edge, no shadow (scripts/engine.js drives it)
    labels unroll · list rows come in one after the other · the tilted block of a headline lands after its letters
    scrubbed headlines rise through their baseline, one letter after the other, no fade
    Custom properties never reuse the colour token names (--k --w --y --r).
@@ -9,9 +9,10 @@
 
 /* ═════════ between sections ═════════ */
 /* inside a chapter the climb is shorter than between two chapters */
-.cov-s{margin-top:calc(-17*var(--vh));box-shadow:0 -22px 46px rgba(0,0,0,.4)}
-/* the sheet underneath sinks back from its foot (the engine writes the transform) */
-.scene > .pin{transform-origin:50% 100%}
+.cov-s{margin-top:calc(-17*var(--vh))}
+/* the edge of the sheet that climbs: one line of ink, nothing soft */
+.cov{box-shadow:0 -2px 0 #080808}
+.cov.bg-k{box-shadow:0 -2px 0 var(--y)}
 
 /* ═════════ labels and match captions: unrolled from the left, their text a beat behind ═════════ */
 .lb{clip-path:inset(-40% 104% -40% -4%)}

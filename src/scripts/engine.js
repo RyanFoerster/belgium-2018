@@ -69,15 +69,17 @@ export function createEngine() {
     for (var f = 0; f < s.fns.length; f++) s.fns[f](p);
   }
 
-  // every section climbs over the end of the one before it, which sinks back and goes dark underneath;
-  // between two chapters (a <Join>) the climb is longer and the torn strips cross the seam
+  // every section climbs over the end of the one before it, and the one before it holds back: while it is being covered it
+  // leaves at a fraction of the scroll (parallax), so the new sheet really slides over a page that is still there.
+  // Between two chapters (a <Join>) the climb is longer and the strips cross the seam. No shadow, no dimming: a clean edge.
+  var LAG = .6;
   var covers = RM ? [] : $$('main > section').slice(1).map(function (nx) {
     var pe = nx.previousElementSibling, xf = pe && pe.classList.contains('xf') ? pe : null, pv = xf ? xf.previousElementSibling : pe;
     if (!pv || pv.tagName !== 'SECTION') return null;
     nx.classList.add('cov'); if (!xf) nx.classList.add('cov-s');
-    var dim = el('i', 'xd'); dim.setAttribute('aria-hidden', 'true'); pv.appendChild(dim);
+    // what holds back: the pinned screen of a scene, or a whole flowing section when it is not too tall to be moved as one layer
     var pin = pv.dataset.scene != null ? $('.pin', pv) : null;
-    return { xf: xf, nx: nx, dim: dim, pin: pin, top: 0, o: 0, last: -1, act: false };
+    return { xf: xf, nx: nx, pv: pv, pin: pin, lag: pin, rel: .66, top: 0, o: 0, last: -1, lastL: -1, act: false };
   }).filter(Boolean), tilts = [];
   var chapters = [], parallax = [], vh = window.innerHeight, docH = 1;
   function measure() {
@@ -97,7 +99,12 @@ export function createEngine() {
     });
     stubs.forEach(function (s) { s.top = s.n.getBoundingClientRect().top + y; });
     docH = Math.max(1, doc.scrollHeight - vh);
-    covers.forEach(function (c) { c.top = c.nx.getBoundingClientRect().top + y; c.o = Math.max(0, -parseFloat(getComputedStyle(c.nx).marginTop) || 0); c.last = -1; });
+    covers.forEach(function (c) {
+      c.top = c.nx.getBoundingClientRect().top + y; c.o = Math.max(0, -parseFloat(getComputedStyle(c.nx).marginTop) || 0); c.last = c.lastL = -1;
+      // the sheet underneath is let go by the scroll when the next one has this much of the screen left to climb
+      c.rel = Math.max(.3, 1 - c.o / vh);
+      if (!c.pin) { var ph = c.pv.offsetHeight; c.lag = ph > vh * 1.2 && ph < vh * 2.6 ? c.pv : null; }
+    });
     tilts = RM ? [] : $$('.clg').filter(function (n) { return !n.closest('[data-scene]'); }).map(function (n) { var r = n.getBoundingClientRect(); return { el: n, kids: [].slice.call(n.children), mid: r.top + y + r.height / 2, last: 9 }; });
   }
   // big type leans into the scroll, then stands back up
@@ -137,14 +144,12 @@ export function createEngine() {
     }
     for (i = 0; i < covers.length; i++) {
       var cv = covers[i], sn = (cv.top - y) / vh, ce = clamp(sn / .66), co = Math.round(ce * cv.o);
+      var lg = cv.lag && sn > -.02 && sn < cv.rel ? Math.round((cv.rel - sn) * vh * LAG) : 0;
       // while one sheet climbs over the other, both are moved as layers instead of being repainted at every frame; the layers are given back afterwards
       var act = sn > -.15 && sn < 1.25;
-      if (act !== cv.act) { cv.act = act; cv.nx.style.willChange = act ? 'transform' : ''; if (cv.pin) cv.pin.style.willChange = act ? 'transform' : ''; }
-      if (co !== cv.last) {
-        cv.last = co; cv.nx.style.translate = co ? '0 ' + co + 'px' : 'none'; if (cv.xf) cv.xf.style.translate = '0 ' + (co - cv.o) + 'px';
-        cv.dim.style.opacity = sn < 1.1 ? ((1 - ce) * .62).toFixed(3) : 0;
-        if (cv.pin) cv.pin.style.transform = ce < 1 && sn < 1.1 ? 'scale(' + (1 - (1 - ce) * .07).toFixed(4) + ') rotate(' + ((1 - ce) * -1.1).toFixed(2) + 'deg)' : '';
-      }
+      if (act !== cv.act) { cv.act = act; cv.nx.style.willChange = act ? 'transform' : ''; if (cv.lag) cv.lag.style.willChange = act ? 'transform' : ''; }
+      if (co !== cv.last) { cv.last = co; cv.nx.style.translate = co ? '0 ' + co + 'px' : 'none'; if (cv.xf) cv.xf.style.translate = '0 ' + (co - cv.o) + 'px'; }
+      if (lg !== cv.lastL) { cv.lastL = lg; if (cv.lag) cv.lag.style.transform = lg ? 'translateY(' + lg + 'px)' : ''; }
     }
     for (i = 0; i < tilts.length; i++) {
       var tl = tilts[i], td = (tl.mid - (y + vh / 2)) / vh;

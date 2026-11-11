@@ -113,8 +113,7 @@
 
 /* ═════════ between chapters: the next one climbs over the end of the last, which goes dark under it ═════════ */
 main > section{isolation:isolate}
-.cov{margin-top:calc(-34*var(--vh));box-shadow:0 -30px 60px rgba(0,0,0,.45)}
-.xd{position:absolute;left:0;right:0;bottom:0;height:calc(100*var(--vh));background:#050505;opacity:0;pointer-events:none;z-index:90}
+.cov{margin-top:calc(-34*var(--vh))}
 .xf-s{box-shadow:0 6px 0 var(--bs)}
 
 /* ═════════ the pointer drags a ring of ink behind it ═════════ */
