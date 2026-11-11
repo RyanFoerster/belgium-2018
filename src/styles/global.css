@@ -23,7 +23,8 @@
   --color-paper: #F5F3EE;
   --color-sun: #F7D417;
   --color-devil: #E52B32;
-  --font-display: "Archivo Variable", "Archivo", "Arial Narrow", Arial, sans-serif;
+  --font-display: "Anton", "Archivo Variable", "Arial Narrow", Impact, sans-serif;
+  --font-sans: "Archivo Variable", "Archivo", "Arial Narrow", Arial, sans-serif;
   --font-caption: "IBM Plex Mono", ui-monospace, Menlo, monospace;
   --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-script: "Pinyon Script", "Snell Roundhand", cursive;

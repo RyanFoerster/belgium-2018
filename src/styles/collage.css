@@ -10,7 +10,7 @@
 
 /* ═════════ headlines: edge to edge, solid, with a small handwritten word across them ═════════ */
 .ttl{position:relative;display:block;margin:calc(3*var(--vh)) calc(1.2vw - var(--gut)) 0;z-index:3}
-.ttl-l{position:relative;display:block;width:max-content;font:900 var(--fz,17vw)/.79 var(--sans);font-stretch:62%;text-transform:uppercase;letter-spacing:-.034em;white-space:nowrap}
+.ttl-l{position:relative;display:block;width:max-content;font:900 var(--fz,17vw)/.79 var(--display);font-size-adjust:var(--dcap);font-synthesis:none;text-transform:uppercase;letter-spacing:-.034em;white-space:nowrap}
 .ttl-s{position:relative;display:block;width:max-content;font:400 var(--nz,6vw)/.8 var(--note);text-transform:uppercase;letter-spacing:.03em;color:var(--y);margin:calc(var(--nz,6vw)*-.62) 0 calc(var(--nz,6vw)*-.18) var(--nx,24%);rotate:var(--rot,-2deg);z-index:4;filter:blur(.45px);pointer-events:none}
 .ttl-s.c-r{color:var(--r)} .ttl-s.c-w{color:var(--w)}
 .ttl-l.in,.ttl-l.on{animation:none}
@@ -72,7 +72,7 @@
 .disc.bg-k{background-image:var(--tx-dust)}
 .disc.dk{background-color:#b81f25}
 /* a name torn out of a programme */
-.lbl{display:block;width:max-content;clip-path:none;isolation:isolate;color:var(--k);padding:.42em .6em .26em;font:900 calc(var(--lz,3.4)*1cqw)/.82 var(--sans);font-stretch:62%;text-transform:uppercase;letter-spacing:-.015em;rotate:var(--rot,-3deg);filter:drop-shadow(0 6px 5px rgba(0,0,0,.4));z-index:6}
+.lbl{display:block;width:max-content;clip-path:none;isolation:isolate;color:var(--k);padding:.42em .6em .26em;font:900 calc(var(--lz,3.4)*1cqw)/.82 var(--display);font-size-adjust:var(--dcap);font-synthesis:none;text-transform:uppercase;letter-spacing:-.015em;rotate:var(--rot,-3deg);filter:drop-shadow(0 6px 5px rgba(0,0,0,.4));z-index:6}
 .lbl::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--w) var(--tx-paper) 0 0/420px;clip-path:var(--torn)}
 .lbl b{display:block;color:var(--r);font-size:1.55em;line-height:.8}
 .lbl small{display:block;font:800 .25em/1.3 var(--sans);font-stretch:125%;letter-spacing:.09em;margin-bottom:.55em}
@@ -85,7 +85,7 @@
 .oc-b{--qx:67;--qy:52;--qw:27;z-index:4!important}
 .oc-f{--qx:71;--qy:5;--qw:25;display:grid;grid-template-columns:1fr 1fr;gap:.8em 1.1em}
 .oc-f dt{font-size:.66em;line-height:1.25}
-.oc-f dd{font:900 1.9em/.9 var(--sans);font-stretch:62%;letter-spacing:0;margin-top:.22em}
+.oc-f dd{font:900 1.9em/.9 var(--display);font-size-adjust:var(--dcap);font-synthesis:none;letter-spacing:0;margin-top:.22em}
 .oc-t1{--qx:0;--qy:40;--qw:28}
 .oc-t2{--qx:31;--qy:78;--qw:34}
 .oc-s1{--qx:4;--qy:84;--qw:17}
@@ -117,7 +117,7 @@
 .fr-hand{--qx:35;--qy:89;--hz:4.8;--rot:-4deg}
 .fr-st{--qx:86;--qy:85;--hz:2.1;--sc:var(--w);background:var(--r)}
 /* "So close." — the same weight as every other headline, pulled apart by the tear */
-.close-h{font-weight:900;font-stretch:62%;letter-spacing:-.034em;font-size:min(22vw,calc(44*var(--vh)));line-height:.8}
+.close-h{font-family:var(--display);font-weight:900;font-size-adjust:var(--dcap);font-synthesis:none;letter-spacing:-.034em;font-size:min(22vw,calc(44*var(--vh)));line-height:.8}
 .close-h span:first-child{transform:translateX(calc(var(--t)*-7vw)) rotate(calc(var(--t)*-2deg))}
 .close-h span:last-child{transform:translateX(calc(var(--t)*7vw)) rotate(calc(var(--t)*1.5deg))}
 .close-note{position:absolute;left:50%;top:calc(50% + min(3.4vw,calc(7*var(--vh))));margin:0;translate:-50% 0;--nz:min(7vw,calc(13*var(--vh)));color:var(--r);clip-path:inset(-30% calc((1 - var(--t))*112%) -30% -10%);z-index:4}
@@ -151,7 +151,7 @@
 .bf{fill:none;stroke:var(--c1);stroke-width:4}
 .bf2{fill:none;stroke:var(--c1);stroke-width:2.4}
 .bt{font-family:var(--sans);text-anchor:middle;text-transform:uppercase}
-.bt.a{font-weight:900;font-stretch:62%;letter-spacing:-.01em}
+.bt.a{font-family:var(--display);font-weight:900;font-size-adjust:var(--dcap);font-synthesis:none;letter-spacing:-.01em}
 .bt.s{font-weight:800;font-stretch:125%;letter-spacing:.07em}
 .bt.f{fill:var(--cf)} .bt.k{fill:#080808} .bt.c{fill:var(--c1)}
 .bt.cutt{fill:#F5F3EE;stroke:#F5F3EE;stroke-width:10;stroke-linejoin:round}
@@ -186,7 +186,7 @@
 .rip-w{height:calc(6*var(--vh) + 20px);background:var(--core) var(--tx-paper) 0 0/420px;z-index:3}
 /* strips of tape crossing the join in opposite directions */
 .xf{position:relative;z-index:7;height:0;pointer-events:none}
-.xf-s{position:absolute;left:-80vw;width:260vw;top:var(--ty,-6vh);rotate:var(--rot,-2deg);display:flex;overflow:hidden;white-space:nowrap;padding:.15em 0 .07em;font:900 var(--xs,5.2vw)/.9 var(--sans);font-stretch:62%;text-transform:uppercase;letter-spacing:-.012em;background-image:var(--tx-paper);background-size:420px 420px}
+.xf-s{position:absolute;left:-80vw;width:260vw;top:var(--ty,-6vh);rotate:var(--rot,-2deg);display:flex;overflow:hidden;white-space:nowrap;padding:.15em 0 .07em;font:900 var(--xs,5.2vw)/.9 var(--display);font-size-adjust:var(--dcap);font-synthesis:none;text-transform:uppercase;letter-spacing:-.012em;background-image:var(--tx-paper);background-size:420px 420px}
 .xf-s span{flex:none;padding-right:.34em}
 .xf-s.bg-w{background-color:var(--w);color:var(--k)}
 .xf-c{--cs:2.4vw;height:calc(var(--cs)*2);padding:0;background:conic-gradient(var(--k) 25%,var(--w) 0 50%,var(--k) 0 75%,var(--w) 0) 0 0/calc(var(--cs)*2) calc(var(--cs)*2)}

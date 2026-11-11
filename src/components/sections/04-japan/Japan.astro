@@ -1,45 +1,75 @@
 ---
-/* 04 · Japan — 0–2 down in Rostov, then the two substitutes: a scene in seven states. */
+/* 04 · Japan — the round of 16 as a horizontal track, in the same language as the group stage:
+   half-time in Rostov · 0–2 in four minutes · the double change · level with sixteen minutes to play.
+   Pieces arrive as their panel crosses the screen (data-at is the panel's own progress). */
 import PlayerSticker from '../../ui/PlayerSticker.astro';
 import Photo from '../../ui/Photo.astro';
 import Ticket from '../../ui/Ticket.astro';
 import Sticker from '../../ui/Sticker.astro';
-import Proof from '../../ui/Proof.astro';
 ---
 <!-- ═══════════ 04 — THE MOMENT — JAPAN ═══════════ -->
-<section class="scene s-jp" data-scene data-chapter="04|The Moment — Japan" data-states="0 .14 .28 .42 .56 .7 .85" data-poster=".92" style="--len:4.8">
+<section class="scene s-jpn bg-w paper" data-scene data-track data-chapter="04|The Moment — Japan" data-poster="1" style="--len:4.8;--opp:var(--jpn);--opp2:var(--w)">
   <div class="pin">
-    <div class="d mega jp-mega" aria-hidden="true">Japan</div>
-    <i class="jp-sun" aria-hidden="true"></i>
-    <i class="jp-bel" aria-hidden="true"><b></b><b></b><b></b></i>
-    <p class="mono jp-meta">Round of 16 · 2 July 2018<br>Rostov Arena · Att. 41,466</p>
-    <div class="d jp-min"><span id="jpMin">45</span>′</div>
-    <div class="d jp-score" id="jpScore" role="img" aria-label="Belgium 0, Japan 0">
-      <span class="rollw"><span class="roll roll-b"><i>0</i><i>1</i><i>2</i></span></span>
-      <span class="jp-dash">—</span>
-      <span class="rollw"><span class="roll roll-j"><i>0</i><i>1</i><i>2</i></span></span>
+    <div class="track">
+
+      <!-- half-time -->
+      <div class="panel jn0 bg-w paper">
+        <p class="mono lab jn-lab">04 — The Moment<br>Round of 16 · Rostov Arena · 2 July 2018</p>
+        <i class="jn-sun fx-drop" data-in aria-hidden="true"></i>
+        <h2 class="jn-h" aria-label="Japan."><span class="d mega sp" data-split data-in>Japan</span></h2>
+        <span class="scrawl jn-scr fx-scrawl" data-in style="--d:.6s" aria-hidden="true">round of sixteen</span>
+        <div class="sc d jn-sc0" role="img" aria-label="Half-time: Belgium 0, Japan 0">
+          <span class="cutn c-bel fx-stamp" data-in style="--h:21;--rot:-4deg;--d:.5s"><i>0</i></span>
+          <span class="cutn c-opp fx-stamp" data-in style="--h:21;--rot:5deg;--d:.62s"><i>0</i></span>
+        </div>
+        <Ticket match={54} class="jn-tk fx-slide" data-in style="--rot:-7deg;--fx:-60vw;--d:.3s" />
+        <Sticker type="jersey" a="10" data-in style="left:39vw;top:63vh;--iz:8vw;--rot:-8deg;--d:.8s" /><Sticker type="pill" a="JAPAN" b="ROUND OF 16" class="jn-pill" data-in style="--rot:7deg;--c1:var(--jpn);--d:1s" />
+        <div class="slip jn-slip jn-s0 fx-paste" data-torn="tb" data-in style="--rot:1.4deg;--d:.7s"><b class="d">Half-time.</b><p>Nothing in it. A quiet evening by the Don. Scroll slowly; it is the last calm minute of the night.</p></div>
+        <span class="hand c-r jn-h0" data-in style="--d:1.1s">att. 41,466</span>
+      </div>
+
+      <!-- 0–2 -->
+      <div class="panel jn1 bg-r" data-torn="l" data-torn-d="12">
+        <p class="mono m-meta">Second half<br>48′ · 52′</p>
+        <div class="sc d jn-sc1" role="img" aria-label="Belgium 0, Japan 2">
+          <span class="cutn c-bel inv fx-stamp" data-at=".14" style="--h:56;--rot:-4deg"><i>0</i></span>
+          <span class="cutn c-opp pale fx-stamp" data-at=".2" style="--h:56;--rot:5deg"><i><span data-count="2" data-count-at=".22">2</span></i></span>
+        </div>
+        <Sticker type="hex" a="0—2" b="52′" class="k jn-hex fx-stamp" data-at=".3" style="--rot:9deg" />
+        <div class="slip jn-slip jn-s1 fx-slide" data-torn="tb" data-at=".24" style="--rot:-1.6deg;--fx:50vw"><b class="d">48′ Haraguchi.</b><p>Shibasaki slides a pass through the left side of the Belgian defence. Haraguchi runs on and shoots across Courtois.</p></div>
+        <span class="hand c-y jn-four" data-at=".32">four minutes.</span>
+        <div class="slip jn-slip jn-s2 fx-paste" data-torn="tb" data-at=".34" style="--rot:1.8deg"><b class="d">52′ Inui.</b><p>Twenty-five yards out. A yard of space. Bottom corner.</p></div>
+        <p class="m-cut jn-fact" data-cut data-at=".4">No team had come back from two goals down to win a World Cup knockout match inside ninety minutes since 1966.</p>
+      </div>
+
+      <!-- the double change -->
+      <div class="panel jn2 bg-y paper" data-torn="l" data-torn-d="12">
+        <p class="mono m-meta">65′<br>A double change</p>
+        <h3 class="d jn-sub" data-at=".14"><s>Mertens</s> Fellaini.<br><s>Carrasco</s> Chadli.</h3>
+        <span class="scrawl jn-plan fx-scrawl" data-at=".26" aria-hidden="true">plan B</span>
+        <!-- the two stickers the album was missing -->
+        <PlayerSticker photo="fellaini" number="8" name="Fellaini" class="jn-st1" data-at=".22" style="--rot:-7deg" />
+        <PlayerSticker photo="chadli" number="22" name="Chadli" class="jn-st2" data-at=".28" style="--rot:6deg" />
+        <span class="pencil jn-got" data-at=".36">got them. 65′</span>
+        <Sticker type="rnd" a="65′" b="2 CHANGES" class="k jn-65 fx-stamp" data-at=".2" style="--rot:-9deg" />
+        <div class="slip jn-slip jn-s5 fx-paste" data-torn="tb" data-at=".34" style="--rot:-1.2deg"><p>A double change. It looks like a gamble. It is the whole story.</p></div>
+      </div>
+
+      <!-- level -->
+      <div class="panel jn3 bg-w paper" data-torn="l" data-torn-d="12">
+        <p class="mono m-meta">69′ · 74′<br>Sixteen minutes to play</p>
+        <div class="sc d jn-sc3" role="img" aria-label="Belgium 2, Japan 2">
+          <span class="cutn c-bel fx-stamp" data-at=".14" style="--h:56;--rot:-4deg"><i><span data-count="2" data-count-at=".16">2</span></i></span>
+          <span class="cutn c-opp fx-stamp" data-at=".2" style="--h:56;--rot:5deg"><i>2</i></span>
+        </div>
+        <Photo name="vertonghen" print class="jn-p1 fx-slap" caption="Vertonghen, Rostov" tape="t" data-at=".24" style="--rot:4deg;--ar:4/3" />
+        <Photo name="kdbJapan" print class="jn-p2 fx-drop" caption="watch De Bruyne" pin data-at=".36" style="--rot:-5deg;--ar:3/4" />
+        <Sticker type="rnd" a="69′" b="1—2" class="y jn-69 fx-stamp" data-at=".28" style="--rot:-10deg" /><Sticker type="hex" a="LEVEL" b="74′" class="jn-74 fx-stamp" data-at=".4" style="--rot:8deg" />
+        <div class="slip jn-slip jn-s3 fx-slide" data-torn="tb" data-at=".3" style="--rot:-1.5deg;--fx:-50vw"><b class="d">69′ Vertonghen.</b><p>A half-cleared corner. A header looped from the left of the box, over Kawashima, into the far corner. Nobody is quite sure he meant it.</p></div>
+        <div class="slip jn-slip jn-s4 fx-paste" data-torn="tb" data-at=".38" style="--rot:1.6deg"><b class="d">74′ Fellaini.</b><p>Hazard twists on the left and crosses. Fellaini climbs above his marker. Level. Sixteen minutes to play.</p></div>
+        <span class="hand c-r jn-on" data-at=".44">game on</span>
+      </div>
+
     </div>
-    <p class="mono jp-teams"><span>Belgium</span><span>Japan</span></p>
-
-    <Ticket match={54} class="jp-tk fx-slide" data-from="0" data-to="0" style="--rot:-7deg;--fx:60vw" />
-    <Sticker type="jersey" a="10" data-from="0" data-to="0" style="left:19vw;top:30vh;--iz:10vw;--rot:-8deg" /><Sticker type="pill" a="JAPAN" b="ROUND OF 16" data-from="0" data-to="0" style="right:17vw;top:32vh;--iz:13vw;--rot:7deg;--c1:var(--jpn)" /><Sticker type="hex" a="0—2" b="52′" class="k" data-from="2" data-to="2" style="left:6vw;top:24vh;--iz:12vw;--d:.2s" /><Sticker type="rnd" a="69′" b="1—2" class="y" data-from="5" data-to="5" style="left:44vw;top:7vh;--iz:8vw;--d:.2s" />
-    <svg class="scr c-r jp-hatch" data-from="2" data-to="2"><use href="#s-hatch"/></svg>
-
-    <div class="jp-cap" data-s="0"><h3 class="d">Half-time.</h3><p>Nothing in it. A quiet evening by the Don. Scroll slowly; it is the last calm minute of the night.</p></div>
-    <div class="jp-cap" data-s="1"><h3 class="d">Haraguchi.</h3><p>Shibasaki slides a pass through the left side of the Belgian defence. Haraguchi runs on and shoots across Courtois.</p></div>
-    <div class="jp-cap" data-s="2"><h3 class="d">Inui.</h3><p>Twenty-five yards out. A yard of space. Bottom corner.</p>
-      <span class="hand c-y jp-four">four minutes.</span><svg class="scr c-y jp-zig"><use href="#s-zig"/></svg></div>
-    <div class="jp-cap jp-cap-wide" data-s="3"><h3 class="jp-fact" data-cut="k">No team had come back from two goals down to win a World Cup knockout match inside ninety minutes since 1966.</h3></div>
-    <div class="jp-cap" data-s="4"><h3 class="d jp-sub"><s>Mertens</s> Fellaini.<br><s>Carrasco</s> Chadli.</h3><p>A double change. It looks like a gamble. It is the whole story.</p><span class="hand c-y jp-plan">plan B</span></div>
-    <div class="jp-cap" data-s="5"><h3 class="d">Vertonghen.</h3><p>A half-cleared corner. A header looped from the left of the box, over Kawashima, into the far corner. Nobody is quite sure he meant it.</p></div>
-    <div class="jp-cap" data-s="6"><h3 class="d">Fellaini.</h3><p>Hazard twists on the left and crosses. Fellaini climbs above his marker. Level. Sixteen minutes to play.</p><span class="hand c-r jp-on">game on</span></div>
-
-    <!-- the two stickers the album was missing -->
-    <PlayerSticker photo="fellaini" number="8" name="Fellaini" class="jp-st1" data-from="4" data-to="4" style="--rot:-7deg;--d:.25s" />
-    <PlayerSticker photo="chadli" number="22" name="Chadli" class="jp-st2" data-from="4" data-to="4" style="--rot:6deg;--d:.5s" />
-    <span class="pencil jp-got" data-from="4" data-to="4" style="--d:.8s">got them. 65′</span>
-    <Photo name="vertonghen" print class="jp-ph fx-slap" caption="Vertonghen, Rostov" tape="t" data-from="5" data-to="5" style="--rot:4deg;--ar:4/3;--d:.15s" />
-    <Photo name="kdbJapan" print class="jp-ph jp-ph6 fx-drop" caption="watch De Bruyne" pin data-from="6" style="--rot:-5deg;--ar:3/4;--d:.2s" />
-    <Proof sheet={6} of={21} name="Rostov" />
   </div>
 </section>

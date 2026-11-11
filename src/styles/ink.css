@@ -142,7 +142,7 @@ html.ld-on:not(.ready){overflow:hidden}
 .ld-kk{clip-path:inset(-8% -8% calc((1 - var(--q3,0))*116% - 8%) -8%)}
 .ld-ly > *{position:absolute}
 /* black */
-.ld-h{left:50%;top:1%;translate:-50% 0;width:max-content;white-space:nowrap;font:900 28cqw/.8 var(--sans);font-stretch:62%;letter-spacing:-.03em;text-transform:uppercase;color:#080808;-webkit-mask:var(--worn) 0 0/420px 420px;mask:var(--worn) 0 0/420px 420px}
+.ld-h{left:50%;top:1%;translate:-50% 0;width:max-content;white-space:nowrap;font:900 28cqw/.8 var(--display);font-size-adjust:var(--dcap);font-synthesis:none;letter-spacing:-.03em;text-transform:uppercase;color:#080808;-webkit-mask:var(--worn) 0 0/420px 420px;mask:var(--worn) 0 0/420px 420px}
 .ld-h span{display:inline-block}
 .ld-tile{rotate:-6deg;scale:1.12 1}
 .ld-yu .ld-tile{background:var(--y)}
@@ -155,7 +155,7 @@ html.ld-on:not(.ready){overflow:hidden}
 .ld-f2{left:43.5%;top:50%;width:15.5%;--ar:3/4;--rot:5deg}
 .ld-yu .ld-f1{background:var(--y);aspect-ratio:3/2}
 .ld-ru .ld-f2{background:var(--r);aspect-ratio:3/4}
-.ld-num{left:62%;top:39%;font:900 37cqw/.76 var(--sans);font-stretch:62%;letter-spacing:-.04em;color:var(--y)}
+.ld-num{left:62%;top:39%;font:900 37cqw/.76 var(--display);font-size-adjust:var(--dcap);font-synthesis:none;letter-spacing:-.04em;color:var(--y)}
 .ld-kk .ld-num{color:#080808;-webkit-text-stroke:.026em #080808;text-shadow:.008em .009em 0 #080808,.016em .018em 0 #080808,.024em .027em 0 #080808,.032em .036em 0 #080808,.04em .045em 0 #080808,.048em .054em 0 #080808,.056em .063em 0 #080808,.064em .072em 0 #080808}
 .ld-scr{left:25%;top:30%;font:400 10cqw/1 var(--script);white-space:nowrap;rotate:-6deg;color:var(--y);padding:0 .2em}
 .ld-kk .ld-scr{color:#080808;-webkit-text-stroke:.07em #080808;text-shadow:.035em .05em 0 #080808}
@@ -173,11 +173,6 @@ html.ld-on:not(.ready){overflow:hidden}
 .ld-yu,.ld-yo,.ld-ru,.ld-ro,.ld-kk{transition:clip-path .28s linear}
 .ld[data-pass="2"]{--sqc:var(--r)} .ld[data-pass="3"]{--sqc:#080808}
 .ld.done .ld-sq{opacity:0;transition:opacity .25s}
-.ld-crop{position:absolute;width:2.6cqw;height:2.6cqw;border:0 solid #080808}
-.ld-crop.c1{left:-4%;top:-7%;border-width:0 1.5px 1.5px 0} .ld-crop.c2{right:-4%;top:-7%;border-width:0 0 1.5px 1.5px}
-.ld-crop.c3{left:-4%;bottom:-7%;border-width:1.5px 1.5px 0 0} .ld-crop.c4{right:-4%;bottom:-7%;border-width:1.5px 0 0 1.5px}
-.ld-reg{position:absolute;left:50%;width:2.2cqw;height:2.2cqw;margin-left:-1.1cqw;border:1.5px solid #080808;border-radius:50%;background:linear-gradient(#080808,#080808) 50% 0/1.5px 100% no-repeat,linear-gradient(#080808,#080808) 0 50%/100% 1.5px no-repeat}
-.ld-reg.t{top:-9%} .ld-reg.b{bottom:-9%}
 /* the margin of the proof: what is being printed, and how far along */
 .ld-ui{position:absolute;left:var(--gut);right:var(--gut);bottom:calc(3.4*var(--vh) + 30px);display:flex;align-items:flex-end;gap:18px;font:800 11px/1.2 var(--sans);letter-spacing:.04em;text-transform:uppercase}
 .ld-top{position:absolute;left:var(--gut);right:var(--gut);top:calc(3*var(--vh));display:flex;justify-content:space-between;font:800 11px/1.2 var(--sans);letter-spacing:.04em;text-transform:uppercase}
@@ -186,7 +181,7 @@ html.ld-on:not(.ready){overflow:hidden}
 .ld-bar i b{position:absolute;inset:0;transform-origin:0 50%;transition:transform .28s linear}
 .ld-bar .by b{background:var(--y);transform:scaleX(var(--q1,0))} .ld-bar .br b{background:var(--r);transform:scaleX(var(--q2,0))} .ld-bar .bk b{background:#080808;transform:scaleX(var(--q3,0))}
 .ld-pass{flex:1;padding-bottom:1px}
-.ld-n{font:900 calc(9*var(--u))/.74 var(--sans);font-stretch:62%;letter-spacing:-.03em;font-variant-numeric:tabular-nums;min-width:1.5em;text-align:right}
+.ld-n{font:900 calc(9*var(--u))/.74 var(--display);font-size-adjust:var(--dcap);font-synthesis:none;letter-spacing:-.03em;font-variant-numeric:tabular-nums;min-width:1.5em;text-align:right}
 .ld-n::after{content:"%";font-size:.34em;vertical-align:top;margin-left:.1em;letter-spacing:0}
 /* printed: the sheet is pulled off the press, two more follow it — yellow, then red — and the page is underneath */
 .ld.out .ld-p{transform:translateY(-106%) rotate(-2.2deg);transition:transform 1.05s var(--eio)}
@@ -211,7 +206,7 @@ html.ld-on:not(.ready){overflow:hidden}
   .ld-lbl{left:8%;top:89.5%;font-size:4.2cqw}
   .ld-s1{left:78%;top:19%;--sz:16cqw} .ld-s2{left:1%;top:21%;--sz:12cqw} .ld-s3{left:70%;top:90%;--sz:11cqw}
   .ld-cap{font-size:2.5cqw} .ld-cap1{left:5%;top:96.5%} .ld-cap2{display:none}
-  .ld-sq{height:2cqw} .ld-crop{width:5cqw;height:5cqw} .ld-reg{display:none}
+  .ld-sq{height:2cqw}
   .ld-ui{gap:10px;font-size:9px;bottom:calc(2.6*var(--vh) + 30px)} .ld-top{font-size:9px;top:calc(2.2*var(--vh))}
   .ld-n{font-size:19vw}
 }

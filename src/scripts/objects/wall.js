@@ -1,5 +1,4 @@
 import { $, E, rng, el } from '../core.js';
-import { MATCHES } from '../../data/matches';
 import { ticketHTML } from '../../lib/ticket';
 
 // one object of the archive (print, sticker, ticket, score, cutting, note, badge, drawing): the wall and the loader pin up the same things
@@ -12,7 +11,7 @@ function piece(w, r) {
     n.style.setProperty('--ws', (12 + r() * 6).toFixed(1)); n.style.setProperty('--ar', ['3/2', '4/3', '1/1', '3/2'][Math.floor(r() * 4)]);
   } else if (w[0] === 's') {
     n = el('div', 'stk'); var f = el('figure', 'ph'); f.dataset.photo = w[1]; n.appendChild(f); n.appendChild(el('b', 'd stk-n', w[2])); n.appendChild(el('span', 'd stk-nm', w[3]));
-  } else if (w[0] === 't') { n = el('div', 'tkt'); n.dataset.tkt = w[1]; n.dataset.stamp = ''; n.classList.add(MATCHES[w[1]].cls); n.innerHTML = ticketHTML(w[1], true); rot *= .6; }
+  } else if (w[0] === 't') { n = el('div', 'tkt'); n.dataset.tkt = w[1]; n.dataset.stamp = ''; n.innerHTML = ticketHTML(w[1], true); rot *= .6; }
   else if (w[0] === 'n') {
     var a = w[1].split('—'); n = el('div', 'sc d'); n.style.setProperty('--opp', 'var(--' + w[2] + ')');
     n.innerHTML = '<span class="cutn c-bel inv" style="--h:9;--rot:-4deg"><i>' + a[0] + '</i></span><span class="cutn c-opp" style="--h:7;--rot:5deg"><i>' + a[1] + '</i></span>';

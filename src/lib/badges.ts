@@ -2,7 +2,7 @@
    Pure string builders: the <Sticker> component uses them at build time, the wall uses them in the browser. */
 // stickers: type inside a flat shape, a fat cream die-cut around it — one small generator per shape
 export function esc(t: unknown): string { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
-function fzs(t: string, max: number, cap: number): string { return Math.min(cap, max / (Math.max(1, t.length) * .47)).toFixed(1); }
+function fzs(t: string, max: number, cap: number): string { return Math.min(cap, max / (Math.max(1, t.length) * .4)).toFixed(1); }
 function tx(cls: string, x: number, y: number, size: number | string, max: number, t: string): string { return t ? '<text class="bt ' + cls + '" x="' + x + '" y="' + y + '" font-size="' + size + '" data-max="' + max + '">' + esc(t) + '</text>' : ''; }
 function checker(x: number, y: number, cols: number, rows: number, q: number, cls: string): string { var d = '', i, j; for (j = 0; j < rows; j++) for (i = 0; i < cols; i++) if ((i + j) % 2 === 0) d += 'M' + (x + i * q) + ' ' + (y + j * q) + 'h' + q + 'v' + q + 'h-' + q + 'z'; return '<path class="' + cls + '" d="' + d + '"/>'; }
 type Shape = [width: number, height: number, cut: string, body: string];

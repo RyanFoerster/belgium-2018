@@ -1,5 +1,6 @@
 import { clamp, seg } from '../core.js';
 
+// every horizontal track on the page: the group stage, and Japan
 export function setupGroupStage(engine) {
   var tracks = engine.tracks, sceneOf = engine.sceneOf, apply = engine.apply;
   // 03 · the group stage travels left to right

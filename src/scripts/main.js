@@ -12,7 +12,6 @@ import { dealArrivals, watchReveals } from './arrivals.js';
 import { addRipCores, ripSheets, tornAll } from './paper.js';
 import { createEngine } from './engine.js';
 import { setupGroupStage } from './chapters/group-stage.js';
-import { setupJapan } from './chapters/japan.js';
 import { setupBrazil } from './chapters/brazil.js';
 import { setupDiagrams } from './chapters/diagrams.js';
 import { fitLoader, runLoader } from './loader.js';
@@ -38,7 +37,6 @@ watchReveals();
 /* ── scroll ── */
 var engine = createEngine();
 setupGroupStage(engine);
-setupJapan();
 var measureBrazil = setupBrazil(engine);
 var diagrams = setupDiagrams(engine), Board = diagrams.Board, replays = diagrams.replays;
 
