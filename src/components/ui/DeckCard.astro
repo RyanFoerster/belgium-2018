@@ -3,6 +3,7 @@
    what it is on its left and two or three figures on its right. Used by the awards, the third place and the goals. */
 import Photo from './Photo.astro';
 import type { PhotoKey } from '../../data/photos';
+import { pass } from '../../lib/attrs';
 
 interface Props {
   photo: PhotoKey;
@@ -16,10 +17,11 @@ interface Props {
   meta: string;
   facts: string[][];
   class?: string;
+  [attr: string]: unknown;
 }
-const { photo, ink, no, first, last, note, title, meta, facts, class: cls } = Astro.props;
+const { photo, ink, no, first, last, note, title, meta, facts, class: cls, ...rest } = Astro.props;
 ---
-<li class:list={['aw-c', cls]}>
+<li class:list={['aw-c', cls]} {...pass(rest)}>
   <article class="aw-card">
     <Photo name={photo} ink={ink} class="aw-ph" />
     <b class="d aw-no" aria-hidden="true">{no}</b>

@@ -3,6 +3,20 @@
    and the way round the page: a chapter index that drops over everything, and a rail of chapters down the right edge.
    The index, the rail and what the stubs do when clicked are filled in by scripts/nav.js from the page's own [data-chapter] sections. */
 import Sticker from '../ui/Sticker.astro';
+import DeckCard from '../ui/DeckCard.astro';
+import type { PhotoKey } from '../../data/photos';
+
+/* beside the index, the chapter under the pointer is shown as a card (the awards' composition): number, photograph, two words, one in script */
+const PREVIEW: [string, PhotoKey, string, string, string][] = [
+  ['01', 'hazard', 'Russia', '2018', 'Dream'],
+  ['02', 'team', 'The', 'twenty-three', 'Squad'],
+  ['03', 'januzaj', 'Group', 'G', 'Nine'],
+  ['04', 'street', 'Japan', '3—2', 'Rostov'],
+  ['05', 'kdbJoy', 'Brazil', '2—1', 'Kazan'],
+  ['06', 'france', 'France', '0—1', 'So close'],
+  ['07', 'bronze', 'England', '2—0', 'Bronze'],
+  ['08', 'wall', 'The', 'wall', 'Merci'],
+];
 ---
 <header class="hud" aria-hidden="true">
   <span class="hud-l">BEL—18</span>
@@ -14,6 +28,12 @@ import Sticker from '../ui/Sticker.astro';
   <div class="nav-in">
     <p class="mono nav-top"><span>BEL—18 · The Road to Glory</span><span>Eight chapters · seven matches</span></p>
     <ol class="nav-list" id="navList"></ol>
+    <div class="nav-pv" id="navPv" aria-hidden="true">
+      {PREVIEW.map((p) => <div class="d aw-word" data-no={p[0]}>{Array.from(p[0]).map((c, k) => <span style={`--i:${k}`}>{c}</span>)}</div>)}
+      <ol class="aw-deck">
+        {PREVIEW.map((p, i) => <DeckCard data-no={p[0]} photo={p[1]} ink={i % 2 ? 'rk' : 'k'} no={p[0]} first={p[2]} last={p[3]} note={p[4]} title="" meta="" facts={[]} />)}
+      </ol>
+    </div>
     <div class="nav-more" id="navMore"><span class="mono">Straight to</span></div>
   </div>
 </nav>

@@ -45,9 +45,12 @@ export function setupNav(engine, replays) {
   /* ── the chapter index and the rail ── */
   var chs = [];
   $$('main [data-chapter]').forEach(function (n) { var c = n.dataset.chapter.split('|'); if (!chs.some(function (x) { return x.no === c[0]; })) chs.push({ no: c[0], name: c[1], el: n }); });
+  // the card beside the list: the chapter under the pointer or the focus; when the index opens, the chapter being read
+  var pv = $$('#navPv [data-no]'), show = function (no) { pv.forEach(function (n) { n.classList.toggle('on', n.dataset.no === no); }); };
   var open = false;
   function setOpen(v) {
     if (!nav || v === open) return; open = v;
+    if (v) show($('#hudNo').textContent);
     nav.classList.toggle('open', v); doc.classList.toggle('nav-on', v);
     if (v) nav.removeAttribute('inert'); else nav.setAttribute('inert', '');
     btn.setAttribute('aria-expanded', v ? 'true' : 'false'); $('span', btn).textContent = v ? 'Close' : 'Chapters';
@@ -63,6 +66,7 @@ export function setupNav(engine, replays) {
       var li = el('li'), a = el('a'); a.href = '#'; li.style.setProperty('--i', i); li.dataset.no = c.no;
       a.appendChild(el('b', 'd', c.no)); a.appendChild(el('span', 'd', c.name.replace(/ — .*$/, ''))); a.appendChild(el('i', 'mono', ABOUT[c.no] || ''));
       a.addEventListener('click', function (e) { e.preventDefault(); go(c.el); });
+      a.addEventListener('mouseenter', function () { show(c.no); }); a.addEventListener('focus', function () { show(c.no); });
       li.appendChild(a); list.appendChild(li);
       if (rail) {
         var rl = el('li'), rb = el('button'); rb.type = 'button'; rl.dataset.no = c.no; rb.setAttribute('aria-label', 'Chapter ' + c.no + ' — ' + c.name);
