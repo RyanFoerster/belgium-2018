@@ -8,7 +8,7 @@ export var LOAD = { total: 0, done: 0 };
 export function setupPhotos() {
   /* ── photographs: prints, tape, pencil captions, credits — and each one pulled as a screen print ── */
   (function () {
-    var used = {}, P = PHOTOS, keys = {}, order = [], qi = 0, active = 0, nfig = 0, off = $$('#ld [data-photo]').length;
+    var used = {}, P = PHOTOS, keys = {}, order = [], qi = 0, active = 0, nfig = 0, off = $$('#ld [data-photo], .s-hero [data-photo]').length;
     // [paper, spot colour]: black ink always; "a" leaves everything but the ink transparent
     var TONE = { k: [[245, 243, 238], null], y: [[245, 243, 238], [247, 212, 23]], r: [[245, 243, 238], [229, 43, 50]], yk: [[247, 212, 23], null], rk: [[229, 43, 50], null], g: [[226, 223, 216], [112, 109, 104]], a: [null, null] };
     function toneOf(fig, idx) {

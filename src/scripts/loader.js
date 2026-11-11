@@ -3,14 +3,16 @@ import { LOAD } from './photos.js';
 
 // the loader's headline is fitted to its sheet, and the block behind its fourth letter is put where that letter really is
 export function fitLoader() {
-  var art = $('#ldArt'), h = $('#ldH'), g = $('#ldG'); if (!art || !h || !g || !art.offsetWidth) return;
-  h.style.fontSize = '100px'; var w = h.offsetWidth; if (!w) return;
-  var port = art.offsetHeight > art.offsetWidth;
-  h.style.fontSize = Math.min(100 * art.offsetWidth * (port ? .98 : .95) / w, art.offsetHeight * (port ? .34 : .56)).toFixed(1) + 'px';
-  var a = art.getBoundingClientRect(), b = g.getBoundingClientRect();
-  $$('.ld-tile', art).forEach(function (t) {
-    t.style.left = ((b.left - a.left) / a.width * 100).toFixed(2) + '%'; t.style.top = ((b.top - a.top) / a.height * 100).toFixed(2) + '%';
-    t.style.width = (b.width / a.width * 100).toFixed(2) + '%'; t.style.height = (b.height / a.height * 100).toFixed(2) + '%';
+  $$('.ld-art').forEach(function (art) {
+    var h = $('.ld-h', art), g = $('.ld-g', art); if (!h || !g || !art.offsetWidth) return;
+    h.style.fontSize = '100px'; var w = h.offsetWidth; if (!w) return;
+    var port = art.offsetHeight > art.offsetWidth;
+    h.style.fontSize = Math.min(100 * art.offsetWidth * (port ? .98 : .95) / w, art.offsetHeight * (port ? .34 : .56)).toFixed(1) + 'px';
+    var a = art.getBoundingClientRect(), b = g.getBoundingClientRect();
+    $$('.ld-tile', art).forEach(function (t) {
+      t.style.left = ((b.left - a.left) / a.width * 100).toFixed(2) + '%'; t.style.top = ((b.top - a.top) / a.height * 100).toFixed(2) + '%';
+      t.style.width = (b.width / a.width * 100).toFixed(2) + '%'; t.style.height = (b.height / a.height * 100).toFixed(2) + '%';
+    });
   });
 }
 

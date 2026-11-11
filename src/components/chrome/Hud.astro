@@ -1,5 +1,7 @@
 ---
-/* What stays on screen: the running head, the progress bar, the ticket stubs collected so far, the chapter badge. */
+/* What stays on screen: the running head, the progress bar, the ticket stubs collected so far, the chapter badge —
+   and the way round the page: a chapter index that drops over everything, and a rail of chapters down the right edge.
+   The index, the rail and what the stubs do when clicked are filled in by scripts/nav.js from the page's own [data-chapter] sections. */
 import Sticker from '../ui/Sticker.astro';
 ---
 <header class="hud" aria-hidden="true">
@@ -7,6 +9,17 @@ import Sticker from '../ui/Sticker.astro';
   <span class="hud-c"><b id="hudNo">01</b>/08 — <i id="hudName">The Dream</i></span>
   <span class="hud-r">Russia · 14.06—15.07.2018</span>
 </header>
+<button type="button" class="hud-menu" id="navBtn" aria-controls="nav" aria-expanded="false"><i aria-hidden="true"></i><span>Chapters</span></button>
+<!-- The previous page is kept whole at /v1/: public/v1 is the build of the git tag "v1" (astro build --base /v1/), with this same switch added. -->
+<nav class="vsw" aria-label="Version"><a href="/v1/">V1</a><a href="/" class="on" aria-current="page">V2</a></nav>
+<nav class="nav" id="nav" aria-label="Chapters" data-lenis-prevent inert>
+  <div class="nav-in">
+    <p class="mono nav-top"><span>BEL—18 · The Road to Glory</span><span>Eight chapters · seven matches</span></p>
+    <ol class="nav-list" id="navList"></ol>
+    <div class="nav-more" id="navMore"><span class="mono">Straight to</span></div>
+  </div>
+</nav>
+<ol class="rail" id="rail" aria-label="Chapters"></ol>
 <div class="bar" aria-hidden="true"><i id="bar"></i></div>
-<div class="col" id="col" aria-hidden="true"><span>Stubs</span><i data-c="13">13</i><i data-c="29">29</i><i data-c="45">45</i><i data-c="54">54</i><i data-c="58">58</i><i data-c="61">61</i><i data-c="63">63</i></div>
+<div class="col" id="col"><span>Stubs</span><i data-c="13">13</i><i data-c="29">29</i><i data-c="45">45</i><i data-c="54">54</i><i data-c="58">58</i><i data-c="61">61</i><i data-c="63">63</i></div>
 <Sticker type="rnd" a="01" b="CHAPTER" class="y chap" id="chapSt" />

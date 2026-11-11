@@ -6,6 +6,7 @@ import Loader from '../components/chrome/Loader.astro';
 import Hud from '../components/chrome/Hud.astro';
 import Join from '../components/ui/Join.astro';
 import { JOINS } from '../data/joins';
+import Hero from '../components/sections/01-dream/Hero.astro';
 import Intro from '../components/sections/01-dream/Intro.astro';
 import Opening from '../components/sections/02-beginning/Opening.astro';
 import StickerAlbum from '../components/sections/02-beginning/StickerAlbum.astro';
@@ -37,6 +38,7 @@ import Colophon from '../components/sections/08-wall/Colophon.astro';
   <Hud />
 
   <main>
+    <Hero />
     <Intro />
     <Join strips={JOINS.beginning} />
     <Opening />

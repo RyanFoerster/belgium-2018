@@ -1,7 +1,7 @@
 ---
 /* The loader is the press: a poster screen-printed in three passes (yellow, red, black) while the page arrives.
    Each layer is clipped by --q1/--q2/--q3, set by scripts/loader.js; the sheet is then pulled off, a yellow and a red one behind it. */
-import Photo from '../ui/Photo.astro';
+import Poster from '../ui/Poster.astro';
 ---
 <div class="ld" id="ld" aria-hidden="true" data-pass="1">
   <i class="ld-c ld-c3" data-torn="b" data-torn-d="24"></i>
@@ -9,23 +9,7 @@ import Photo from '../ui/Photo.astro';
   <div class="ld-p" data-torn="b" data-torn-d="24">
     <div class="ld-top"><span>BEL—18 · The Road to Glory</span><span>Three-colour print · Yellow / Red / Black</span></div>
     <div class="ld-art" id="ldArt">
-      <div class="ld-ly ld-yu"><i class="ld-tile"></i><i class="ld-blk ld-f1"></i></div>
-      <div class="ld-ly ld-ru"><i class="ld-blk ld-f2"></i></div>
-      <div class="ld-ly ld-kk">
-        <i class="ld-tile"></i>
-        <b class="ld-h" id="ldH">Bel<span id="ldG">g</span>ium</b>
-        <svg class="ld-star ld-s1" viewBox="0 0 100 96"><path class="sh" d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg><svg class="ld-star ld-s2" viewBox="0 0 100 96"><path class="sh" d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg><svg class="ld-star ld-s3" viewBox="0 0 100 96"><path class="sh" d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg>
-        <b class="ld-num">18</b>
-        <Photo name="team" class="ld-ph ld-f1" ink="a" />
-        <Photo name="hazard" class="ld-ph ld-f2" ink="a" />
-        <span class="ld-scr">The Road to Glory</span>
-        <span class="ld-lbl">Red Devils</span>
-        <span class="ld-cap ld-cap1">FIFA World Cup · Russia<br>14 June — 15 July 2018</span>
-        <span class="ld-cap ld-cap2">Seven matches<br>Sixteen goals</span>
-      </div>
-      <div class="ld-ly ld-yo"><span class="ld-scr">The Road to Glory</span><b class="ld-num">18</b><svg class="ld-star ld-s2" viewBox="0 0 100 96"><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg></div>
-      <div class="ld-ly ld-ro"><svg class="ld-star ld-s1" viewBox="0 0 100 96"><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg><svg class="ld-star ld-s3" viewBox="0 0 100 96"><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg><span class="ld-lbl">Red Devils</span></div>
-      <i class="ld-sq"></i>
+      <Poster />
     </div>
     <div class="ld-ui"><div class="ld-bar"><i class="by"><b></b></i><i class="br"><b></b></i><i class="bk"><b></b></i></div><span class="ld-pass" id="ldPass">Pass 1/3 — Yellow</span><b class="ld-n" id="ldN">000</b></div>
   </div>

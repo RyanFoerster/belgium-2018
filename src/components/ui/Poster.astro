@@ -1,0 +1,22 @@
+---
+/* The three-colour poster (yellow, red, black): printed pass by pass by the loader, and standing whole as the first screen.
+   Its layers are clipped by --q1/--q2/--q3 on an ancestor (0 = bare paper, 1 = printed). Lives inside an element with class "ld-art". */
+import Photo from './Photo.astro';
+---
+      <div class="ld-ly ld-yu"><i class="ld-tile"></i><i class="ld-blk ld-f1"></i></div>
+      <div class="ld-ly ld-ru"><i class="ld-blk ld-f2"></i></div>
+      <div class="ld-ly ld-kk">
+        <i class="ld-tile"></i>
+        <b class="ld-h">Bel<span class="ld-g">g</span>ium</b>
+        <svg class="ld-star ld-s1" viewBox="0 0 100 96"><path class="sh" d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg><svg class="ld-star ld-s2" viewBox="0 0 100 96"><path class="sh" d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg><svg class="ld-star ld-s3" viewBox="0 0 100 96"><path class="sh" d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg>
+        <b class="ld-num">18</b>
+        <Photo name="team" class="ld-ph ld-f1" ink="a" />
+        <Photo name="hazard" class="ld-ph ld-f2" ink="a" />
+        <span class="ld-scr">The Road to Glory</span>
+        <span class="ld-lbl">Red Devils</span>
+        <span class="ld-cap ld-cap1">FIFA World Cup · Russia<br>14 June — 15 July 2018</span>
+        <span class="ld-cap ld-cap2">Seven matches<br>Sixteen goals</span>
+      </div>
+      <div class="ld-ly ld-yo"><span class="ld-scr">The Road to Glory</span><b class="ld-num">18</b><svg class="ld-star ld-s2" viewBox="0 0 100 96"><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg></div>
+      <div class="ld-ly ld-ro"><svg class="ld-star ld-s1" viewBox="0 0 100 96"><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg><svg class="ld-star ld-s3" viewBox="0 0 100 96"><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg><span class="ld-lbl">Red Devils</span></div>
+      <i class="ld-sq"></i>

@@ -253,7 +253,7 @@ Replay.prototype.update = function (p) {
   });
   this.glow.style.opacity = glow;
 
-  this.steps.forEach(function (li, i) { var r = cfg.steps[i]; li.classList.toggle('on', p >= r[0] && p < r[1]); });
+  this.steps.forEach(function (li, i) { var r = cfg.steps[i]; li.classList.toggle('on', p >= r[0] && p < r[1]); li.classList.toggle('done', p >= r[1]); });
 
   var rev = E.io(seg(p, F.rev[0], F.rev[1]));
   st.setProperty('--dis', dis.toFixed(3));

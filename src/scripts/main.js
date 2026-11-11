@@ -16,6 +16,7 @@ import { setupDiagrams } from './chapters/diagrams.js';
 import { fitLoader, runLoader } from './loader.js';
 import { setupGlide } from './glide.js';
 import { setupCursor } from './cursor.js';
+import { setupNav } from './nav.js';
 
 if (RM) doc.classList.add('rm');
 
@@ -38,6 +39,9 @@ watchReveals();
 var engine = createEngine();
 setupGroupStage(engine);
 var diagrams = setupDiagrams(engine), Board = diagrams.Board, replays = diagrams.replays;
+
+/* ── the way round the page: chapter index, rail, stubs, replay controls, things that answer when touched ── */
+setupNav(engine, replays);
 
 /* ── layout: everything that depends on sizes, redone when they change ── */
 var lastW = window.innerWidth, lastO = Board ? Board.Replay.orient() : 'h';

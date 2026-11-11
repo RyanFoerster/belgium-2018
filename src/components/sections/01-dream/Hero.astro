@@ -1,0 +1,18 @@
+---
+/* 00 · The poster — the print the loader has just pulled, standing whole as the first screen.
+   Same sheet, same place, same size as in the loader: when the press lifts, the print is simply there. */
+import Poster from '../../ui/Poster.astro';
+---
+<!-- ═══════════ 00 — THE POSTER ═══════════ -->
+<section class="scene s-hero bg-w paper" data-scene data-poster="0" id="top" style="--len:1.6">
+  <div class="pin">
+    <div class="hero-art" data-t=".1 1" data-ease="io"><div class="ld-art" style="--q1:1;--q2:1;--q3:1"><Poster /></div></div>
+    <div class="hero-ui" data-o="0 .16">
+      <div class="hero-cta">
+        <button type="button" class="btn btn-y" data-jump="next">Start the story <span class="i-arrow">↓</span></button>
+        <button type="button" class="btn" data-nav-open>Chapters</button>
+      </div>
+      <p class="mono hero-m">Seven matches · eight chapters · scroll, or pick one</p>
+    </div>
+  </div>
+</section>

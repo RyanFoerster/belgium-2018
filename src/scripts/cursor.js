@@ -13,7 +13,7 @@ export function setupCursor() {
       if (e.pointerType === 'touch') return;
       x = e.clientX; y = e.clientY;
       if (!seen) { seen = true; cx = x; cy = y; c.classList.add('live'); }
-      c.classList.toggle('big', !!(e.target && e.target.closest && e.target.closest('a,button,.tkt,.stk')));
+      c.classList.toggle('big', !!(e.target && e.target.closest && e.target.closest('a,button,[role="button"],.tkt,.stk,.sq-i,.il,.dd')));
       if (!raf) raf = requestAnimationFrame(step);
     }, { passive: true });
   })();

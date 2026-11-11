@@ -14,6 +14,7 @@
 @import "./players.css" layer(site);
 @import "./motion.css" layer(site);
 @import "./riso.css" layer(site);
+@import "./v2.css" layer(site);
 @import "tailwindcss/utilities.css" layer(utilities) source(none);
 @import "lenis/dist/lenis.css";
 
