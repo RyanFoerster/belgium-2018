@@ -39,6 +39,12 @@
 .hud-c.sw i{animation-delay:.06s}
 @keyframes hudsw{from{transform:translateY(130%)}}
 
+/* ═════════ what moves with the scroll keeps its own layer — only while its part of the page is on screen ═════════ */
+/* (.vis is set by scripts/arrivals.js; a layer is moved by the graphics card, anything else is repainted at every frame) */
+.vis :is([data-par],[data-parx]),.xf.vis .xf-s,.vis .clg > *,.vis .i-ils > :is(.il,.dd){will-change:transform}
+/* endless animations stop when nobody can see them */
+:is(main > section,.band):not(.vis) :is(.dd.spin,.dd.bob svg,.band-in,.i-arrow,.float){animation-play-state:paused!important}
+
 /* ═════════ small screens ═════════ */
 @media (max-width:820px){
   .cov-s{margin-top:calc(-11*var(--vh))}

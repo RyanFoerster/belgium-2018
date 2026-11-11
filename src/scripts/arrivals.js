@@ -55,11 +55,11 @@ export function watchReveals() {
     $$('[data-in]').forEach(function (n) { n.classList.add('in'); $$('[data-count]', n).forEach(count); });
   }
 
-  /* ── crayon marks only "boil" while their section is on screen ── */
+  /* ── what is on screen carries .vis: crayon marks only "boil" there, endless animations only run there, moving pieces only keep a layer there ── */
   (function () {
     if (RM || !('IntersectionObserver' in window)) return;
     var vio = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle('vis', e.isIntersecting); }); }, { rootMargin: '10% 0px' });
-    $$('main > section, .band').forEach(function (n) { vio.observe(n); });
+    $$('main > section, .band, .xf').forEach(function (n) { vio.observe(n); });
   })();
 }
 

@@ -4,6 +4,13 @@
    Static placement uses `rotate` / `translate`; `transform` is kept for motion.
    ══════════════════════════════════════════════════════════ */
 @property --lk{syntax:'<number>';inherits:false;initial-value:1}
+/* Numbers the scroll engine writes every frame. Not inherited: writing one restyles the element it is written on and nothing below it
+   (scripts/engine.js lists the elements whose rules read them — a new rule that reads one must be added to that list). */
+@property --p{syntax:'<number>';inherits:false;initial-value:.5}
+@property --mx{syntax:'<number>';inherits:false;initial-value:0}
+@property --my{syntax:'<number>';inherits:false;initial-value:0}
+@property --lean{syntax:'<number>';inherits:false;initial-value:0}
+@property --vel{syntax:'<number>';inherits:false;initial-value:0}
 :root{
   --k:#080808; --w:#F5F3EE; --y:#F7D417; --r:#E52B32;
   --sans:"Archivo Variable","Archivo","Arial Narrow",Arial,sans-serif;

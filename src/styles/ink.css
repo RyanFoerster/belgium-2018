@@ -58,8 +58,8 @@
 .stk{box-shadow:4px 5px 0 var(--bs),0 12px 14px -7px rgba(0,0,0,.5)}
 .disc{box-shadow:10px 12px 0 var(--bs)}
 /* a pile leans with the scroll and the pointer; its pieces slide over one another, the nearer the further */
-.clg{transform:perspective(1500px) rotateX(calc(var(--sy,0)*6deg + var(--my,0)*-2deg)) rotateY(calc(var(--mx,0)*3deg));transition:transform .8s var(--eo)}
-.clg > *{translate:calc(var(--mx,0)*var(--dz,8)*1px) calc((var(--my,0) + var(--sy,0)*2.4)*var(--dz,8)*1px);transition:translate .7s var(--eo)}
+.clg{transform:perspective(1500px) rotateX(calc(var(--lean,0)*6deg + var(--my,0)*-2deg)) rotateY(calc(var(--mx,0)*3deg));transition:transform .8s var(--eo)}
+.clg > *{translate:calc(var(--mx,0)*var(--dz,8)*1px) calc((var(--my,0) + var(--lean,0)*2.4)*var(--dz,8)*1px);transition:translate .7s var(--eo)}
 .clg > :nth-child(3n){--dz:20} .clg > :nth-child(3n+1){--dz:-7} .clg > :nth-child(4n+2){--dz:32}
 .clg > .disc,.clg > .fb{--dz:-16}
 .wall .wi{translate:calc(-50% + var(--mx,0)*var(--dz,8)*1px) calc(-50% + var(--my,0)*var(--dz,8)*1px);transition:translate .8s var(--eo)}
@@ -193,7 +193,7 @@ html.ld-on:not(.ready){overflow:hidden}
   .lab{padding:5px 7px 4px;border-width:1.5px;box-shadow:3px 3px 0 #080808}
   .ttl-s{font-size:calc(var(--nz,6vw)*1.75)}
   .cov{margin-top:calc(-22*var(--vh))}
-  .clg > *{translate:0 calc(var(--sy,0)*var(--dz,8)*1.6px)}
+  .clg > *{translate:0 calc(var(--lean,0)*var(--dz,8)*1.6px)}
   .print:not(.wi):not(.stack)::after{translate:6px 8px}
   .ld-art{top:calc(45*var(--vh));width:86vw;aspect-ratio:10/15.4}
   .ld-h{top:0}

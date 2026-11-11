@@ -6,6 +6,12 @@ import { count } from './arrivals.js';
    – triggered : [data-at] / [data-from] / [data-in] get .on / .in once, and the CSS plays the entrance
    – states    : [data-states] scenes flip data-state at thresholds, the CSS snaps
    Built once the page's own objects exist (wall, tickets, stickers), so they are scenes' children like any other markup. */
+/* What a frame costs is mostly what it makes the browser recompute, so the engine writes as little as it can, as low in the tree as it can:
+   --p, --mx, --my, --lean and --vel are registered as non-inherited (styles/base.css) and written on the very elements whose rules read them
+   — never on a whole section, whose hundreds of descendants would all be restyled for a number most of them ignore. */
+var P_USERS = '.px,.trk-rail,.wall,.sq-wall';                               // rules that read var(--p)
+var PTR_USERS = '.il,.clg,.clg > *,.wall,.wall .wi,.sq-wall,.sq-i';          // rules that read var(--mx) / var(--my)
+
 export function createEngine() {
   /* ── scenes ── */
   // a scene is anything with its own 0→1 progress: a pinned section, or one panel of a horizontal track
@@ -13,6 +19,7 @@ export function createEngine() {
     var mine = function (m) { return !skipPanels || !m.closest('.panel'); };
     return {
       el: n, p: -1, top: 0, len: 1, left: 0, w: 1,
+      pu: $$(P_USERS, n).filter(mine),
       poster: n.dataset.poster != null ? +n.dataset.poster : 1,
       items: $$('[data-t],[data-o]', n).filter(mine).map(function (m) {
         var t = m.dataset.t ? m.dataset.t.trim().split(/\s+/).map(Number) : null, o = m.dataset.o ? m.dataset.o.trim().split(/\s+/).map(Number) : null;
@@ -40,8 +47,9 @@ export function createEngine() {
   });
   function apply(s, p) {
     if (p === s.p) return; s.p = p;
-    s.el.style.setProperty('--p', p.toFixed(4));
-    var i, it;
+    var i, it, pv = p.toFixed(4);
+    s.el.style.setProperty('--p', pv);
+    for (i = 0; i < s.pu.length; i++) s.pu[i].style.setProperty('--p', pv);
     for (i = 0; i < s.items.length; i++) {
       it = s.items[i];
       if (it.t) { var t = seg(p, it.t[0], it.t[1]); if (it.e) t = it.e(t); if (t !== it.lt) { it.lt = t; it.n.style.setProperty('--t', t.toFixed(4)); } }
@@ -69,7 +77,7 @@ export function createEngine() {
     nx.classList.add('cov'); if (!xf) nx.classList.add('cov-s');
     var dim = el('i', 'xd'); dim.setAttribute('aria-hidden', 'true'); pv.appendChild(dim);
     var pin = pv.dataset.scene != null ? $('.pin', pv) : null;
-    return { xf: xf, nx: nx, dim: dim, pin: pin, top: 0, o: 0, last: -1 };
+    return { xf: xf, nx: nx, dim: dim, pin: pin, top: 0, o: 0, last: -1, act: false };
   }).filter(Boolean), tilts = [];
   var chapters = [], parallax = [], vh = window.innerHeight, docH = 1;
   function measure() {
@@ -90,7 +98,7 @@ export function createEngine() {
     stubs.forEach(function (s) { s.top = s.n.getBoundingClientRect().top + y; });
     docH = Math.max(1, doc.scrollHeight - vh);
     covers.forEach(function (c) { c.top = c.nx.getBoundingClientRect().top + y; c.o = Math.max(0, -parseFloat(getComputedStyle(c.nx).marginTop) || 0); c.last = -1; });
-    tilts = RM ? [] : $$('.clg').filter(function (n) { return !n.closest('[data-scene]'); }).map(function (n) { var r = n.getBoundingClientRect(); return { el: n, mid: r.top + y + r.height / 2, last: 9 }; });
+    tilts = RM ? [] : $$('.clg').filter(function (n) { return !n.closest('[data-scene]'); }).map(function (n) { var r = n.getBoundingClientRect(); return { el: n, kids: [].slice.call(n.children), mid: r.top + y + r.height / 2, last: 9 }; });
   }
   // big type leans into the scroll, then stands back up
   var sway = [], vel = 0, lastY = window.scrollY;
@@ -101,10 +109,19 @@ export function createEngine() {
   var hudNo = $('#hudNo'), hudName = $('#hudName'), bar = $('#bar'), curCh = '', chapSt = $('#chapSt'), chapTx = chapSt && $('text.a', chapSt);
   // stickers lean a few pixels towards the pointer, each by its own amount — only in the sections on screen
   if (!RM && window.matchMedia('(pointer:fine)').matches) {
-    var mraf = 0, mx = 0, my = 0;
+    var mraf = 0, mx = 0, my = 0, lmx = 9, lmy = 9;
+    var ptr = $$('main > section').map(function (s) { return { s: s, ns: $$(PTR_USERS, s), x: 9, y: 9 }; }).filter(function (q) { return q.ns.length; });
     window.addEventListener('pointermove', function (e) {
-      mx = e.clientX / window.innerWidth * 2 - 1; my = e.clientY / window.innerHeight * 2 - 1;
-      if (!mraf) mraf = requestAnimationFrame(function () { mraf = 0; $$('main > section.vis').forEach(function (s) { s.style.setProperty('--mx', mx.toFixed(3)); s.style.setProperty('--my', my.toFixed(3)); }); });
+      mx = Math.round((e.clientX / window.innerWidth * 2 - 1) * 50) / 50; my = Math.round((e.clientY / window.innerHeight * 2 - 1) * 50) / 50;
+      if (mx === lmx && my === lmy) return; lmx = mx; lmy = my;
+      if (!mraf) mraf = requestAnimationFrame(function () {
+        mraf = 0;
+        for (var a = 0; a < ptr.length; a++) {
+          var q = ptr[a]; if ((q.x === mx && q.y === my) || !q.s.classList.contains('vis')) continue;
+          q.x = mx; q.y = my;
+          for (var b = 0; b < q.ns.length; b++) { q.ns[b].style.setProperty('--mx', mx); q.ns[b].style.setProperty('--my', my); }
+        }
+      });
     }, { passive: true });
   }
   function frame() {
@@ -120,6 +137,9 @@ export function createEngine() {
     }
     for (i = 0; i < covers.length; i++) {
       var cv = covers[i], sn = (cv.top - y) / vh, ce = clamp(sn / .66), co = Math.round(ce * cv.o);
+      // while one sheet climbs over the other, both are moved as layers instead of being repainted at every frame; the layers are given back afterwards
+      var act = sn > -.15 && sn < 1.25;
+      if (act !== cv.act) { cv.act = act; cv.nx.style.willChange = act ? 'transform' : ''; if (cv.pin) cv.pin.style.willChange = act ? 'transform' : ''; }
       if (co !== cv.last) {
         cv.last = co; cv.nx.style.translate = co ? '0 ' + co + 'px' : 'none'; if (cv.xf) cv.xf.style.translate = '0 ' + (co - cv.o) + 'px';
         cv.dim.style.opacity = sn < 1.1 ? ((1 - ce) * .62).toFixed(3) : 0;
@@ -128,7 +148,7 @@ export function createEngine() {
     }
     for (i = 0; i < tilts.length; i++) {
       var tl = tilts[i], td = (tl.mid - (y + vh / 2)) / vh;
-      if (td > -1.6 && td < 1.6) { td = clamp(td, -1, 1); if (Math.abs(td - tl.last) > .004) { tl.last = td; tl.el.style.setProperty('--sy', td.toFixed(3)); } }
+      if (td > -1.6 && td < 1.6) { td = clamp(td, -1, 1); if (Math.abs(td - tl.last) > .004) { tl.last = td; var lv = td.toFixed(3); tl.el.style.setProperty('--lean', lv); for (var tk = 0; tk < tl.kids.length; tk++) tl.kids[tk].style.setProperty('--lean', lv); } }
     }
     for (i = 0; i < stubs.length; i++) {
       var sb = stubs[i], got = sb.panel ? sb.panel.p >= .44 : sb.scene ? sb.scene.p >= sb.at : y + vh * .55 >= sb.top;
