@@ -6,6 +6,8 @@ import TitleLine from '../../ui/TitleLine.astro';
 import TitleNote from '../../ui/TitleNote.astro';
 import Doodle from '../../ui/Doodle.astro';
 import Marks from '../../ui/Marks.astro';
+import PlayerSticker from '../../ui/PlayerSticker.astro';
+import Sticker from '../../ui/Sticker.astro';
 ---
 <section class="blk s-plan bg-y paper">
   <Rip />
@@ -38,7 +40,18 @@ import Marks from '../../ui/Marks.astro';
     <p class="pr" data-in>Fellaini and Chadli, the two substitutes who turned Rostov, both start. De&nbsp;Bruyne leaves midfield and plays as the central forward. Lukaku — a number nine all his life — goes out to the right, into the space behind Marcelo.</p>
     <p class="pr" data-in style="--d:.15s">Thirteen minutes in, Chadli's corner, Kompany's flick, Fernandinho's arm: an own goal, and Belgium lead.</p>
   </div>
-  <div class="plan-score" data-in><span class="mono">13′ · Fernandinho o.g.</span><span class="d">1—0</span></div>
+  <div class="plan-score" data-in>
+    <!-- how the first goal came: the three touches of the paragraph above, as a route -->
+    <div class="plan-og" aria-label="Chadli's corner, Kompany's flick, an own goal">
+      <div class="plan-og-i"><PlayerSticker photo="chadli" number="22" name="Chadli" style="--rot:-4deg" /><span class="mono">the corner</span></div>
+      <svg class="scr c-r"><use href="#s-arrow2"/></svg>
+      <div class="plan-og-i"><PlayerSticker photo="kompany" number="4" name="Kompany" style="--rot:3deg" /><span class="mono">the flick</span></div>
+      <svg class="scr c-r"><use href="#s-arrow2"/></svg>
+      <div class="plan-og-i"><Sticker type="hex" a="OWN GOAL" b="13′" class="k" style="--rot:-6deg" /><span class="mono">Fernandinho's arm</span></div>
+    </div>
+    <span class="hand c-r plan-og-h">thirteen minutes in</span>
+    <span class="d">1—0</span>
+  </div>
   <svg class="scr c-r plan-ex" data-in style="--d:.4s"><use href="#s-excl"/></svg>
   <Marks kind="tactic" seed={9} class="plan-tac" data-in />
   <Doodle name="arrow" class="r plan-arr" data-in />

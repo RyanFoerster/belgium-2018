@@ -9,7 +9,7 @@ import { count } from './arrivals.js';
 /* What a frame costs is mostly what it makes the browser recompute, so the engine writes as little as it can, as low in the tree as it can:
    --p, --mx, --my, --lean and --vel are registered as non-inherited (styles/base.css) and written on the very elements whose rules read them
    — never on a whole section, whose hundreds of descendants would all be restyled for a number most of them ignore. */
-var P_USERS = '.px,.trk-rail,.wall,.sq-wall';                               // rules that read var(--p)
+var P_USERS = '.px,.py,.trk-rail,.wall,.sq-wall';                               // rules that read var(--p)
 var PTR_USERS = '.il,.clg,.clg > *,.wall,.wall .wi,.sq-wall,.sq-i';          // rules that read var(--mx) / var(--my)
 
 export function createEngine() {

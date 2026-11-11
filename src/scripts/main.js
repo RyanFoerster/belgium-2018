@@ -18,6 +18,7 @@ import { setupGlide } from './glide.js';
 import { setupCursor } from './cursor.js';
 import { setupNav } from './nav.js';
 import { setupHero } from './chapters/hero.js';
+import { setupInteract } from './interact.js';
 
 if (RM) doc.classList.add('rm');
 
@@ -44,6 +45,7 @@ var diagrams = setupDiagrams(engine), Board = diagrams.Board, replays = diagrams
 
 /* ── the way round the page: chapter index, rail, stubs, replay controls, things that answer when touched ── */
 setupNav(engine, replays);
+setupInteract(engine);
 
 /* ── layout: everything that depends on sizes, redone when they change ── */
 var lastW = window.innerWidth, lastO = Board ? Board.Replay.orient() : 'h';

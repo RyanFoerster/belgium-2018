@@ -12,3 +12,14 @@ export function ticketHTML(no: number | string, stamped = false): string {
     (stamped ? '<span class="stamp tkt-st">' + m.score + '<small>full time</small></span>' : '')
   );
 }
+
+/* The back of the same ticket: the full-time score and who scored, Belgium's goals in full ink, the opponent's in grey.
+   Written by scripts/interact.js when a ticket is made to turn over. */
+export function ticketBackHTML(no: number | string): string {
+  const m = MATCHES[+no];
+  if (!m) return '';
+  return (
+    '<div class="tkb-s"><span class="mono">Full time</span><b class="d">' + m.score + '</b><span class="mono">' + m.teams + '</span></div>' +
+    '<ul class="tkb-g mono">' + m.goals.map((g) => '<li' + (g[2] ? ' class="opp"' : '') + '><span>' + g[0] + '</span><i>' + g[1] + '</i></li>').join('') + '</ul>'
+  );
+}

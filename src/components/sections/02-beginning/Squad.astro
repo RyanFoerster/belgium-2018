@@ -33,7 +33,7 @@ import Marks from '../../ui/Marks.astro';
     <Title label="The twenty-three." class="sq-ttl"><TitleLine fit={17} fx="rise" tile={4} data-at=".01">The twenty-three</TitleLine><TitleNote x="36%" data-at=".06">Every one of them</TitleNote></Title>
     <ol class="sq-wall">
       {cells.map((c) => c.pl
-        ? <li class:list={['sq-i', c.pl.captain && 'sq-cap']} style={c.style}>
+        ? <li class:list={['sq-i', c.pl.captain && 'sq-cap']} style={c.style} data-no={c.pl.no}>
             <PlayerSticker photo={c.pl.photo} focus={c.pl.focus} number={c.pl.no} name={c.pl.captain ? `${c.pl.name} (C)` : c.pl.name} class={c.fx} data-at={c.at} />
             {c.pl.captain && <Sticker type="rnd" a="C" b="CAPTAIN" class="y sq-c fx-stamp" data-at=".72" style="--rot:12deg" />}
             <span class="mono sq-club" data-at={c.at}>{c.pl.club}</span>
@@ -44,6 +44,6 @@ import Marks from '../../ui/Marks.astro';
     </ol>
     <Marks kind="brush" seed={11} n={16} class="sq-brush" data-at=".02" />
     <Doodle name="ball" class="w sq-ball spin" data-at=".7" />
-    <Sticker type="pill" a="23 PLAYERS" b="ONE MANAGER" class="k sq-s1 fx-stamp" data-at=".76" style="--rot:-8deg" />
+    <Sticker type="pill" a="23 PLAYERS" b="ONE MANAGER" class="k sq-s1 fx-stamp" data-at=".76" style="--rot:-8deg" data-peel="PICK ONE|every sticker opens" />
   </div>
 </section>

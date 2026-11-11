@@ -1,5 +1,10 @@
 ---
-/* 01 · The Dream — a newspaper found at the bottom of the box, unfolded by the scroll. */
+/* 01 · The Dream — a newspaper found at the bottom of the box, unfolded by the scroll.
+   Set in the house type only (the display face, the sans, the script, the mono labels): no newspaper serif.
+   Everything here answers the scroll: the stickers round the folded sheet arrive with the section and keep moving, each part
+   of the page is revealed as its flap opens (data-t), and what lies on top drifts with the scroll once it has landed (.py).
+   Nothing is laid over the text: once the page has been read it is set down smaller (.fp-set) and the ticket, the stickers,
+   the print and the script go in the margins round it. */
 import PlayerSticker from '../../ui/PlayerSticker.astro';
 import Photo from '../../ui/Photo.astro';
 import Ticket from '../../ui/Ticket.astro';
@@ -14,34 +19,35 @@ import Marks from '../../ui/Marks.astro';
     <p class="mono i-meta i-meta-c" data-o=".02 .08">Scroll to open it <span class="i-arrow">↓</span></p>
 
     <div class="i-ils" data-t=".02 .3" data-ease="i" aria-hidden="true">
-      <Sticker type="oval" a="RED DEVILS" b="BELGIUM" class="boot-fx" style="left:6vw;top:13vh;--iz:15vw;--d:.5s;--sx:-45vw;--sy:-45vh" /><Doodle name="ball" class="boot-fx" style="left:27vw;top:72vh;--dz:11vw;--rot:14deg;--d:.8s;--sx:-20vw;--sy:50vh" /><Doodle name="star" class="boot-fx" style="left:56vw;top:5vh;--dz:7vw;--rot:-12deg;--d:.9s;--sx:30vw;--sy:-45vh" /><Doodle name="crown" class="r boot-fx" style="left:38vw;top:8vh;--dz:6.5vw;--rot:9deg;--d:1s;--sx:-10vw;--sy:-50vh" /><Doodle name="flag" class="boot-fx" style="right:9vw;top:8vh;--dz:9vw;--rot:8deg;--d:.7s;--sx:45vw;--sy:-45vh" /><Sticker type="pent" a="2018" b="WORLD CUP" class="y boot-fx" style="right:19vw;bottom:11vh;--iz:9vw;--d:.9s;--sx:55vw;--sy:45vh" /><Sticker type="pill" a="RUSSIA" b="14.06 — 15.07" class="k boot-fx" style="left:13vw;bottom:17vh;--iz:14vw;--d:1.1s;--sx:-55vw;--sy:45vh" /><Sticker type="arc" class="boot-fx" style="right:4vw;top:47vh;--iz:9vw;--d:1.3s;--sx:55vw" />
+      <Sticker type="oval" a="RED DEVILS" b="BELGIUM" class="fx-stamp" data-in style="left:6vw;top:13vh;--iz:15vw;--d:.5s;--sx:-45vw;--sy:-45vh" /><Doodle name="ball" class="bob" data-in style="left:27vw;top:72vh;--dz:11vw;--rot:14deg;--d:.8s;--sx:-20vw;--sy:50vh" /><Doodle name="star" class="bob" data-in style="left:56vw;top:5vh;--dz:7vw;--rot:-12deg;--d:.9s;--sx:30vw;--sy:-45vh" /><Doodle name="crown" class="r bob" data-in style="left:38vw;top:8vh;--dz:6.5vw;--rot:9deg;--d:1s;--sx:-10vw;--sy:-50vh" /><Doodle name="flag" class="bob" data-in style="right:9vw;top:8vh;--dz:9vw;--rot:8deg;--d:.7s;--sx:45vw;--sy:-45vh" /><Sticker type="pent" a="2018" b="WORLD CUP" class="y fx-stamp" data-in data-peel="64|matches · 32 teams" style="right:19vw;bottom:11vh;--iz:9vw;--d:.9s;--sx:55vw;--sy:45vh" /><Sticker type="pill" a="RUSSIA" b="14.06 — 15.07" class="k fx-stamp" data-in style="left:13vw;bottom:17vh;--iz:14vw;--d:1.1s;--sx:-55vw;--sy:45vh" /><Sticker type="arc" class="fx-stamp" data-in style="right:4vw;top:47vh;--iz:9vw;--d:1.3s;--sx:55vw" />
     </div>
     <Marks kind="brush" seed={4} n={15} class="i-brush" data-t="-.16 .1" />
     <Marks kind="scribble" seed={3} class="i-scrib" data-t="-.3 .16" />
     <Marks kind="crosses" seed={2} class="i-x" data-t="-.2 .1" />
     <!-- one page, shown through three windows: the quarter you see first, then two flaps -->
     <div class="fp-c3" data-t="0 .5" data-ease="io"><div class="fp-c1" data-t=".04 .24" data-ease="io"><div class="fp-c2" data-t=".24 .5" data-ease="io">
-      <div class="fp boot-fx" style="--fx:30vw;--fy:-110vh;--spin:38deg;--d:.2s">
+      <div class="fp-set" data-t=".64 .8" data-ease="io">
+      <div class="fp fx-slap" data-in style="--fx:30vw;--spin:16deg">
         <i class="fp-under"></i><i class="fp-under b"></i>
         <div class="fp-w fp-tl">
           <div class="fp-page" id="fpPage">
-            <div class="fp-mast"><span class="mono">Russia · 14 June — 15 July 2018</span><b>The Road to Glory</b><span class="mono">Unofficial fanzine edition · No. 1 of 7</span></div>
+            <div class="fp-mast" data-t=".06 .2"><span class="mono">Russia · 14 June — 15 July 2018</span><b>The Road to Glory</b><span class="mono">Unofficial fanzine edition · No. 1 of 7</span></div>
             <div class="fp-rule mono"><span>Seven matches</span><span>Six wins</span><span>Sixteen goals</span><span>One bronze medal</span></div>
             <h1 class="fp-h" aria-label="One generation. One dream.">
-              <span class="d">One generation.</span>
-              <span class="d fp-h2"><span class="fp-deck">Hazard. De&nbsp;Bruyne. Lukaku. Courtois. Kompany. Born a few years apart, all reaching their peak in the same summer.</span><b>One dream.</b></span>
+              <span class="d fp-l1" data-t=".07 .22"><i>One generation.</i></span>
+              <span class="d fp-h2"><span class="fp-deck" data-t=".14 .3">Hazard. De&nbsp;Bruyne. Lukaku. Courtois. Kompany. Born a few years apart, all reaching their peak in the same summer.</span><b class="fp-l2" data-t=".22 .36"><i>One dream.</i></b></span>
             </h1>
             <div class="fp-low">
-              <Photo name="team" class="fp-ph" />
-              <p class="fp-capt">Moscow, 23 June 2018. The eleven who start against Tunisia.</p>
+              <Photo name="team" class="fp-ph" ink="rk" data-t=".3 .48" />
+              <p class="fp-capt" data-t=".42 .54">Moscow, 23 June 2018. The eleven who start against Tunisia.</p>
               <article class="fp-art">
-                <h3 class="d">The one they were supposed to win.</h3>
-                <p class="serif">Belgium had never finished higher than fourth at a World Cup. In June 2018 they were ranked third in the world, with a group of players who would not get many more summers like this one.</p>
+                <h3 class="d" data-t=".34 .48">The one they were supposed to win.</h3>
+                <p data-t=".4 .56">Belgium had never finished higher than fourth at a World Cup. In June 2018 they were ranked third in the world, with a group of players who would not get many more summers like this one.</p>
               </article>
               <aside class="fp-art fp-idx">
-                <b class="d">N°3</b>
+                <b class="d" data-t=".38 .5" data-ease="o">N°3</b>
                 <span class="mono">FIFA ranking, June 2018</span>
-                <ol><li>01 The Dream</li><li>02 The Beginning</li><li>03 The Group Stage</li><li>04 Japan</li><li>05 Brazil</li><li>06 France</li><li>07 The Final Chapter</li><li>08 The Wall</li></ol>
+                <ol data-t=".42 .6"><li>01 The Dream</li><li>02 The Beginning</li><li>03 The Group Stage</li><li>04 Japan</li><li>05 Brazil</li><li>06 France</li><li>07 The Final Chapter</li><li>08 The Wall</li></ol>
               </aside>
             </div>
           </div>
@@ -55,19 +61,20 @@ import Marks from '../../ui/Marks.astro';
         <div class="fp-w fp-tr" data-t=".04 .24" data-ease="io" aria-hidden="true"></div>
         <div class="fp-w fp-bot" data-t=".24 .5" data-ease="io" aria-hidden="true"></div>
       </div>
+      <svg class="scr c-y i-a1" data-t=".56 .66"><use href="#s-loop"/></svg>
+      <span class="hand c-r i-a1t" data-t=".6 .7">golden generation</span>
+      </div>
     </div></div></div>
 
     <!-- what was lying on top of it -->
-    <span class="scrawl i-scr" data-t=".54 .66" data-ease="s8" aria-hidden="true">Russia 2018</span>
-    <svg class="scr c-y i-a1" data-t=".62 .72"><use href="#s-loop"/></svg>
-    <span class="hand c-r i-a1t" data-t=".66 .76">golden generation</span>
-    <Ticket match={13} class="i-tk fx-slide" data-at=".72" style="--rot:-8deg;--fx:-60vw" />
-    <PlayerSticker photo="hazard" number="10" name="E. Hazard (C)" class="i-st" data-at=".78" style="--rot:7deg" />
-    <Photo name="flag" print class="duo-y i-p1 fx-slap" caption="Moscow, 23.06" tape="t" data-at=".84" style="--rot:5deg" />
-    <Sticker type="box" a="N°3" class="fx-slap" data-at=".8" style="left:58vw;top:37vh;--iz:11vw" /><Sticker type="bars" class="y" data-at=".87" style="left:1.5vw;top:10vh;--iz:5vw" />
-    <Doodle name="ball" class="i-ball spin" data-at=".8" />
+    <span class="scrawl i-scr" data-t=".74 .86" data-ease="s8" aria-hidden="true">Russia 2018</span>
+    <Ticket match={13} class="i-tk fx-slide py" data-at=".72" style="--rot:-8deg;--fx:-60vw;--py:-34" />
+    <PlayerSticker photo="hazard" number="10" name="E. Hazard (C)" class="i-st py" data-at=".78" style="--rot:7deg;--py:-52" />
+    <Photo name="flag" print class="duo-y i-p1 fx-slap py" caption="Moscow, 23.06" tape="t" data-at=".84" style="--rot:5deg;--py:-26" />
+    <Sticker type="box" a="N°3" class="fx-slap py i-n3" data-at=".8" style="--py:-60" /><Sticker type="bars" class="y py i-bars" data-at=".87" style="--py:44" />
+    <Doodle name="ball" class="i-ball spin py" data-at=".8" style="--py:-40" />
     <Marks kind="tactic" seed={5} class="i-tac" data-at=".76" />
     <Marks kind="rays" seed={2} class="i-rays" data-at=".82" />
-    <span class="stamp i-stp" data-at=".9">Archive<small>Belgium · Russia 2018</small></span>
+    <span class="stamp i-stp py" data-at=".9" style="--py:-30">Archive<small>Belgium · Russia 2018</small></span>
   </div>
 </section>

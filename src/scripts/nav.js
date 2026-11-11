@@ -6,7 +6,7 @@ import { goTo, playTo, stopPlay, playing } from './glide.js';
    – a rail of chapters runs down the right edge
    – the ticket stubs at the bottom take you back to their match
    – each replay has a list of steps to click and a button that plays the move for you
-   – stickers answer when poked, doodles draw themselves again, a player sticker comes forward when picked.
+   – stickers and drawings jump when poked, a player sticker comes forward when picked.
    Everything is built from what the page already says about itself ([data-chapter], [data-collect], [data-step]). */
 
 var ABOUT = { '01': 'One generation, one dream', '02': 'Twenty-three players', '03': 'Group G · three matches, nine points', '04': 'Japan · two down, 3—2', '05': 'Brazil · the quarter-final, 2—1', '06': 'France · the semi-final, 0—1', '07': 'England · third place, 2—0', '08': 'Everything that was in the box' };
@@ -123,6 +123,24 @@ export function setupNav(engine, replays) {
       setTimeout(function () { playTo(at(endP), (endP - from) * s.len / vh() * 3.6, label); label(); }, 40);
     });
     pb.addEventListener('mousedown', function (e) { e.stopPropagation(); });
+    // the line of the move is a handle: drag it (or click it) to go to any moment, forwards or backwards
+    var a0 = cfg.steps[0][0], a1 = cfg.steps[N - 1][1], drag = false;
+    var seek = function (x) { var r = prog.getBoundingClientRect(); stopPlay(); goTo(at(a0 + clamp((x - r.left) / Math.max(1, r.width)) * (a1 - a0)), true); };
+    prog.setAttribute('role', 'slider'); prog.setAttribute('tabindex', '0'); prog.setAttribute('aria-label', 'Moment of the move'); prog.dataset.cur = 'drag';
+    prog.addEventListener('pointerdown', function (e) { e.stopPropagation(); e.preventDefault(); drag = true; try { prog.setPointerCapture(e.pointerId); } catch (err) {} seek(e.clientX); });
+    prog.addEventListener('pointermove', function (e) { if (drag) seek(e.clientX); });
+    var undrag = function () { drag = false; }; prog.addEventListener('pointerup', undrag); prog.addEventListener('pointercancel', undrag);
+    // and the keyboard, while the board is on screen: ← → one step back or on, the space bar plays and pauses
+    var stepTo = function (d) {
+      var k = 0; for (var i = 0; i < N; i++) if (s.p >= cfg.steps[i][0] - .002) k = i;
+      k = Math.max(0, Math.min(N - 1, k + d)); stopPlay(); goTo(at(cfg.steps[k][0] + (cfg.steps[k][1] - cfg.steps[k][0]) * .12), .7);
+    };
+    window.addEventListener('keydown', function (e) {
+      if (e.metaKey || e.ctrlKey || e.altKey || !(s.p > 0 && s.p < 1) || /^(INPUT|TEXTAREA|SELECT|BUTTON)$/.test((e.target && e.target.tagName) || '')) return;
+      if (e.key === 'ArrowRight') { e.preventDefault(); stepTo(1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); stepTo(-1); }
+      else if (e.key === ' ') { e.preventDefault(); pb.click(); }
+    });
     var last = -2;
     s.fns.push(function (p) {
       var k = -1; for (var i = 0; i < N; i++) if (p >= cfg.steps[i][0]) k = i;
@@ -149,12 +167,24 @@ export function setupNav(engine, replays) {
     var pl = t.closest('.sq-i'), was = $('.sq-i.pick');
     if (was && was !== pl) was.classList.remove('pick');
     if (pl) { pl.classList.toggle('pick'); return; }
-    // a doodle draws itself again
-    var dd = t.closest('.dd');
-    if (dd && !RM) { var c = dd.classList.contains('on') ? 'on' : dd.classList.contains('in') ? 'in' : ''; if (c) { dd.classList.remove(c); void dd.offsetWidth; dd.classList.add(c); } return; }
-    // a sticker jumps under the finger
-    var il = t.closest('.il');
-    if (il && !RM) { il.classList.remove('poke'); void il.offsetWidth; il.classList.add('poke'); }
+    // a sticker or a drawing jumps under the finger. The jump is played on top of whatever the thing is doing and leaves
+    // its own animations alone: swapping its `animation` for the jump and back made its arrival play again afterwards.
+    var it = t.closest('.il,.dd');
+    if (it && !RM && it.animate && it.dataset.peel == null) {
+      // where it rests is read once, while nothing is moving it; a new jump starts from wherever the last one had got to,
+      // so clicking again and again never snaps
+      var cs = getComputedStyle(it), spin = it.classList.contains('spin');
+      if (!it._rest || !it._jump || it._jump.playState !== 'running') it._rest = [parseFloat(cs.scale) || 1, parseFloat(cs.rotate) || 0];
+      var s0 = it._rest[0], r0 = it._rest[1], sc = parseFloat(cs.scale) || 1, rc = parseFloat(cs.rotate) || 0;
+      if (it._jump) it._jump.cancel();
+      var kf = [
+        { scale: sc, easing: 'cubic-bezier(.2,.7,.3,1)' },
+        { scale: s0 * 1.11, offset: .28, easing: 'cubic-bezier(.45,0,.3,1)' },
+        { scale: s0 * .975, offset: .62, easing: 'cubic-bezier(.4,0,.4,1)' },
+        { scale: s0 }
+      ];
+      if (!spin) [rc, r0 + 6, r0 - 2.5, r0].forEach(function (v, i) { kf[i].rotate = v + 'deg'; });
+      it._jump = it.animate(kf, { duration: 880 });
+    }
   });
-  if (main) main.addEventListener('animationend', function (e) { if (e.animationName === 'poke') e.target.classList.remove('poke'); });
 }
