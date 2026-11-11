@@ -1,4 +1,4 @@
-import { $, E, rng, el } from '../core.js';
+import { doc, RM, $, E, rng, el } from '../core.js';
 import { ticketHTML } from '../../lib/ticket';
 import { doodle } from '../../lib/doodles';
 
@@ -61,4 +61,37 @@ export function buildWall() {
       wall.appendChild(n);
     });
   })();
+}
+
+// the loader: the same things, pinned round the drawing of the 94th minute (components/chrome/Loader.astro).
+// They take the cells of a loose grid that the drawing does not cover (a second layer when there are more pieces than cells),
+// and each is given the touch of the ball that throws it (data-b, 0–7: scripts/loader.js).
+export function buildLoaderWall() {
+  var wall = $('#ldWall'), sheet = $('#lbSheet'); if (!wall || !sheet || RM || !doc.classList.contains('ld-on') || /[?&]ld=0/.test(location.search)) return;
+  var W = [
+    ['p', 'team', 'Moscow, 23.06'], ['i', 'oval', 'RED DEVILS', 'BELGIUM'], ['t', 13], ['s', 'hazard', 10, 'E. Hazard'], ['n', '3—0', 'pan'], ['g', 'ball'],
+    ['p', 'mertens', '47′, volley'], ['i', 'pent', '2018', 'WORLD CUP', 'y'], ['t', 29], ['s', 'lukaku', 9, 'R. Lukaku'], ['n', '5—2', 'tun'], ['h', '4 in 2', 'r'],
+    ['p', 'januzaj', 'Kaliningrad'], ['g', 'boot', 'r'], ['t', 45], ['n', '1—0', 'eng'], ['p', 'fansKal', 'red devils', 'duo-y'], ['i', 'jersey', '10'],
+    ['p', 'japan', 'Rostov'], ['t', 54], ['s', 'chadli', 22, 'Chadli'], ['i', 'rnd', '94′', 'CHADLI', 'k'], ['h', 'impossible.', 'r'], ['s', 'courtois', 1, 'Courtois'],
+    ['p', 'kdbJoy', '31′'], ['t', 58], ['s', 'kdb', 7, 'De Bruyne'], ['n', '2—1', 'bra'], ['g', 'flame', 'r'], ['p', 'kontich', 'Kontich, 22:43'], ['i', 'pill', 'KAZAN', '6 JULY', 'k'],
+    ['t', 61], ['p', 'france', 'Hazard / Mbappé'], ['n', '0—1', 'fra'], ['g', 'glove'],
+    ['t', 63], ['n', '2—0', 'eng'], ['p', 'bronze', '3rd'], ['i', 'rnd', '3', 'THIRD PLACE', 'y'], ['g', 'medal', '', '3'], ['h', 'merci', 'y']
+  ];
+  var r = rng(1830), port = window.innerWidth < 820 && window.innerHeight > window.innerWidth;
+  if (port) W = W.filter(function (w, k) { return k % 3 !== 2; });
+  var C = port ? 5 : 10, R = port ? 8 : 5, wr = wall.getBoundingClientRect(), sr = sheet.getBoundingClientRect(), cells = [], i;
+  // a cell is free when its middle is not well inside the drawing
+  var ix0 = (sr.left - wr.left + sr.width * .12) / wr.width, ix1 = (sr.right - wr.left - sr.width * .12) / wr.width;
+  var iy0 = (sr.top - wr.top + sr.height * .14) / wr.height, iy1 = (sr.bottom - wr.top - sr.height * .14) / wr.height;
+  for (i = 0; i < C * R; i++) { var mx = (i % C + .5) / C, my = (Math.floor(i / C) + .5) / R; if (!(mx > ix0 && mx < ix1 && my > iy0 && my < iy1)) cells.push(i); }
+  for (i = cells.length - 1; i > 0; i--) { var j = Math.floor(r() * (i + 1)), t = cells[i]; cells[i] = cells[j]; cells[j] = t; }
+  W.forEach(function (w, k) {
+    var c = cells[k % cells.length], cx = c % C, cy = Math.floor(c / C), q = piece(w, r), n = q[0], layer = k >= cells.length;
+    n.style.setProperty('--wx', ((cx + .5 + (r() - .5) * (layer ? 1 : .6)) / C * 100).toFixed(1) + '%');
+    n.style.setProperty('--wy', ((cy + .5 + (r() - .5) * (layer ? .9 : .5)) / R * 100).toFixed(1) + '%');
+    n.style.setProperty('--rot', q[1].toFixed(1) + 'deg'); n.style.setProperty('--wz', k + 1);
+    n.style.setProperty('--spin', Math.round((r() - .5) * 140) + 'deg'); n.style.setProperty('--dur', (.5 + r() * .22).toFixed(2) + 's');
+    n.dataset.b = Math.min(7, Math.floor(k / W.length * 8));
+    wall.appendChild(n);
+  });
 }

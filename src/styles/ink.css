@@ -128,10 +128,6 @@ main > section{isolation:isolate}
 .ld-x .ld{display:none}
 html.ld-on:not(.ready){overflow:hidden}
 .ld-on:not(.ready) .boot-fx{animation-play-state:paused}
-.ld-c,.ld-p{position:absolute;left:0;right:0;top:0;height:calc(100% + 30px)}
-.ld-c3{background-color:var(--r);z-index:1}
-.ld-c2{background-color:var(--y);z-index:2}
-.ld-p{z-index:3;background-color:var(--w);background-image:var(--tx-paper);background-size:420px 420px;color:#080808}
 /* the sheet on the press */
 .ld-art{position:absolute;left:50%;top:calc(47*var(--vh));width:calc(94*var(--u));aspect-ratio:16/9;translate:-50% -50%;container-type:size}
 .ld-ly{position:absolute;inset:0}
@@ -172,20 +168,7 @@ html.ld-on:not(.ready){overflow:hidden}
 .ld[data-pass="2"]{--sqc:var(--r)} .ld[data-pass="3"]{--sqc:#080808}
 .ld.done .ld-sq{opacity:0;transition:opacity .25s}
 /* the margin of the proof: what is being printed, and how far along */
-.ld-ui{position:absolute;left:var(--gut);right:var(--gut);bottom:calc(3.4*var(--vh) + 30px);display:flex;align-items:flex-end;gap:18px;font:800 11px/1.2 var(--sans);letter-spacing:.04em;text-transform:uppercase}
-.ld-top{position:absolute;left:var(--gut);right:var(--gut);top:calc(3*var(--vh));display:flex;justify-content:space-between;font:800 11px/1.2 var(--sans);letter-spacing:.04em;text-transform:uppercase}
-.ld-bar{display:flex;gap:5px}
-.ld-bar i{position:relative;width:calc(5.4*var(--u));min-width:38px;height:calc(2.1*var(--u));min-height:14px;border:1.5px solid #080808;overflow:hidden}
-.ld-bar i b{position:absolute;inset:0;transform-origin:0 50%;transition:transform .28s linear}
-.ld-bar .by b{background:var(--y);transform:scaleX(var(--q1,0))} .ld-bar .br b{background:var(--r);transform:scaleX(var(--q2,0))} .ld-bar .bk b{background:#080808;transform:scaleX(var(--q3,0))}
-.ld-pass{flex:1;padding-bottom:1px}
-.ld-n{font:900 calc(9*var(--u))/.74 var(--display);font-size-adjust:var(--dcap);font-synthesis:none;letter-spacing:-.03em;font-variant-numeric:tabular-nums;min-width:1.5em;text-align:right}
-.ld-n::after{content:"%";font-size:.34em;vertical-align:top;margin-left:.1em;letter-spacing:0}
 /* printed: the sheet is pulled off the press, two more follow it — yellow, then red — and the page is underneath */
-.ld.out .ld-p{transform:translateY(-106%) rotate(-2.2deg);transition:transform 1.05s var(--eio)}
-.ld.out .ld-art{transform:scale(.9) rotate(3deg);transition:transform 1.05s var(--eio)}
-.ld.out .ld-c2{transform:translateY(-106%) rotate(1.6deg);transition:transform 1.05s var(--eio) .13s}
-.ld.out .ld-c3{transform:translateY(-106%) rotate(-1.2deg);transition:transform 1.05s var(--eio) .26s}
 
 /* ═════════ small screens ═════════ */
 @media (max-width:820px){
@@ -205,8 +188,6 @@ html.ld-on:not(.ready){overflow:hidden}
   .ld-s1{left:78%;top:19%;--sz:16cqw} .ld-s2{left:1%;top:21%;--sz:12cqw} .ld-s3{left:70%;top:90%;--sz:11cqw}
   .ld-cap{font-size:2.5cqw} .ld-cap1{left:5%;top:96.5%} .ld-cap2{display:none}
   .ld-sq{height:2cqw}
-  .ld-ui{gap:10px;font-size:9px;bottom:calc(2.6*var(--vh) + 30px)} .ld-top{font-size:9px;top:calc(2.2*var(--vh))}
-  .ld-n{font-size:19vw}
 }
 
 /* ═════════ reduced motion ═════════ */
@@ -217,5 +198,5 @@ html.ld-on:not(.ready){overflow:hidden}
 .rm .cur{display:none}
 .ld-scr{z-index:2}
 .ttl-s{margin-left:calc(var(--nx,24%) + 16%);translate:-50% 0}
-@media (max-width:820px){.ld-top span + span{display:none} .ld-scr{left:3%;font-size:13.4cqw}}
+@media (max-width:820px){.ld-scr{left:3%;font-size:13.4cqw}}
 .ttl-l[data-fx="slice"]{clip-path:inset(-16% -6% -30% -6%)}

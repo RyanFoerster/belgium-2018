@@ -123,7 +123,7 @@ export function setupPhotos() {
         rim.style.setProperty('--tear2', tb[1]); cw.style.setProperty('--tear', tb[0]);
         inner.appendChild(rim); inner.appendChild(cw);
       }
-      var first = nfig++ < 12; if (first) LOAD.total++;
+      var first = nfig++ < 12 || !!fig.closest('#ld,.s-hero'); if (first) LOAD.total++;
       var K = keys[key]; if (!K) { K = keys[key] = { p: p, figs: [], src: '', cors: false }; order.push(K); }
       K.figs.push({ fig: fig, img: img, tone: toneOf(fig, idx), scr: screenOf(fig, idx), col: col, first: first });
       used[key] = p;

@@ -1,12 +1,14 @@
 ---
-/* 00 · The poster — three colours (yellow, red, black), standing whole as the first screen.
-   It is what the loader's pile is pulled off: the table is cleared, the poster is there. */
+/* 00 · The poster — three colours (yellow, red, black), the first screen.
+   When the loader's last sheet is lifted its pieces come in one after the other, as on the other chapters: the letters of the
+   headline rise, the prints are slapped on, the 18 flips up, the script is written, the stars and the label are stamped
+   (class hero-go on the root, styles/v2.css). */
 import Poster from '../../ui/Poster.astro';
 ---
 <!-- ═══════════ 00 — THE POSTER ═══════════ -->
 <section class="scene s-hero bg-w paper" data-scene data-poster="0" id="top" style="--len:1.6">
   <div class="pin">
-    <div class="hero-art" data-t=".1 1" data-ease="io"><div class="ld-art" style="--q1:1;--q2:1;--q3:1"><Poster /></div></div>
+    <div class="hero-art" data-t=".1 1" data-ease="io"><div class="ld-art" id="heroArt"><Poster /></div></div>
     <div class="hero-ui" data-o="0 .16">
       <div class="hero-cta">
         <button type="button" class="btn btn-y" data-jump="next">Start the story <span class="i-arrow">↓</span></button>

@@ -3,7 +3,7 @@
    then photographs and type, then the scroll engine that reads the finished page, then the loader that releases it. */
 import { doc, RM } from './core.js';
 import { drawSurfaces } from './surfaces.js';
-import { buildWall } from './objects/wall.js';
+import { buildWall, buildLoaderWall } from './objects/wall.js';
 import { hydrateStickers, fitStickers } from './objects/stickers.js';
 import { cloneFrontPage } from './objects/frontpage.js';
 import { setupPhotos } from './photos.js';
@@ -17,12 +17,14 @@ import { fitLoader, runLoader } from './loader.js';
 import { setupGlide } from './glide.js';
 import { setupCursor } from './cursor.js';
 import { setupNav } from './nav.js';
+import { setupHero } from './chapters/hero.js';
 
 if (RM) doc.classList.add('rm');
 
 /* ── the page's own objects ── */
 drawSurfaces();
 buildWall();
+buildLoaderWall();
 hydrateStickers();
 cloneFrontPage();
 
@@ -69,4 +71,5 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
 
 /* ── pointer, wheel, and the press that releases the page ── */
 setupCursor();
+setupHero();
 runLoader(statics, setupGlide());
