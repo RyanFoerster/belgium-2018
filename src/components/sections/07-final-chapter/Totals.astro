@@ -1,7 +1,6 @@
 ---
 /* 07 · The whole road in numbers. */
 import Sticker from '../../ui/Sticker.astro';
-import Rip from '../../ui/Rip.astro';
 import Title from '../../ui/Title.astro';
 import TitleLine from '../../ui/TitleLine.astro';
 import TitleNote from '../../ui/TitleNote.astro';
@@ -9,7 +8,6 @@ import Doodle from '../../ui/Doodle.astro';
 import Marks from '../../ui/Marks.astro';
 ---
 <section class="blk s-tot bg-w paper">
-  <Rip colour="var(--r)" />
   <p class="mono lab">The numbers</p>
   <Title label="The whole road."><TitleLine fx="slice" tile={10} data-in>The whole road.</TitleLine><TitleNote x="40%" data-in>Seven matches</TitleNote></Title>
   <div class="tot tot-a" data-in><span class="d tot-n sway"><span data-count="16">16</span></span><p class="d tot-t">goals.</p><p class="mono tot-m">More than any other team<br>at the tournament.</p><Sticker type="box" a="N°1" class="fx-stamp" style="left:44vw;top:-3%;--iz:12vw" /><svg class="scr c-r tot-s"><use href="#s-loop"/></svg><Doodle name="ball" class="spin" style="right:9vw;top:8%;--dz:11vw" /><Doodle name="goal" style="left:24%;top:60%;--dz:13vw;--rot:-6deg" /></div>

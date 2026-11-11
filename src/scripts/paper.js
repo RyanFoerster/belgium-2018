@@ -1,4 +1,4 @@
-import { $$, rng, seeded, el } from './core.js';
+import { $$, rng, seeded } from './core.js';
 
 /* ── shapes: pure functions of a seeded generator ── */
 // cut with scissors: five snips a side, corners lopped off
@@ -26,12 +26,6 @@ function tearBand(r, y0, y1) {
   for (i = 0; i <= n; i++) { x = -4 + i / n * 108; a.push([x, y0 + (r() - .5) * 7 + (i % 3 === 1 ? 3 : 0)]); b.push([x, y1 + (r() - .5) * 7 - (i % 4 === 2 ? 3 : 0)]); }
   var poly = function (g) { return 'polygon(' + a.map(function (q) { return q[0].toFixed(1) + '% ' + (q[1] - g).toFixed(1) + '%'; }).concat(b.slice().reverse().map(function (q) { return q[0].toFixed(1) + '% ' + (q[1] + g).toFixed(1) + '%'; })).join(',') + ')'; };
   return [poly(0), poly(1.5)];
-}
-
-/* ── edges in the page ── */
-export function addRipCores() {
-  // every torn chapter edge gets a paper core that slides out from under it
-  $$('.rip').forEach(function (n) { var w = el('i', 'rip rip-w'); w.dataset.torn = 'b'; w.dataset.tornD = '30'; w.dataset.par = '-.05'; n.dataset.tornD = '26'; n.parentNode.insertBefore(w, n); });
 }
 
 /* ── paper: torn edges, and one sheet ripped in two ── */

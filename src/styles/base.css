@@ -168,7 +168,6 @@ body::after{content:"";position:fixed;inset:-120px;z-index:900;pointer-events:no
 .cutting p{font-size:clamp(15px,1.25vw,18px);line-height:1.42}
 .cutting p::first-line{font-weight:900;text-transform:uppercase;letter-spacing:.02em}
 .copy::before{box-shadow:inset 0 0 0 100vmax rgba(8,8,8,.09)}
-.rip{position:absolute;left:0;right:0;top:-1px;height:34px;background:var(--c,var(--k));z-index:4;pointer-events:none}
 .scrap{position:absolute;width:26px;height:20px;background:var(--y);rotate:var(--rot,12deg);clip-path:polygon(8% 12%,92% 0,100% 78%,58% 100%,0 86%);z-index:2;pointer-events:none}
 .scrap.r{background:var(--r)} .scrap.w{background:var(--w)} .scrap.k{background:var(--k)}
 /* highlighter */

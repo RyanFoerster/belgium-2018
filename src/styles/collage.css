@@ -178,18 +178,16 @@
 .s-tot .ttl{margin-bottom:calc(-2*var(--vh))}
 
 /* ═════════ between chapters ═════════ */
-/* the torn edge now has a paper core that slides out from under it */
-.rip{height:calc(6*var(--vh))}
-.rip-w{height:calc(6*var(--vh) + 20px);background:var(--core) var(--tx-paper) 0 0/420px;z-index:3}
-/* strips of tape crossing the join in opposite directions */
+/* two straight bands on the seam, cut clean: the big one sits on it, a smaller one hangs under it, sliding opposite ways */
 .xf{position:relative;z-index:7;height:0;pointer-events:none}
-.xf-s{position:absolute;left:-80vw;width:260vw;top:var(--ty,-6vh);rotate:var(--rot,-2deg);display:flex;overflow:hidden;white-space:nowrap;padding:.15em 0 .07em;font:900 var(--xs,5.2vw)/.9 var(--display);font-size-adjust:var(--dcap);font-synthesis:none;text-transform:uppercase;letter-spacing:-.012em;background-image:var(--tx-paper);background-size:420px 420px}
+.xf-s + .xf-s{bottom:auto;top:0;--xs:2.4vw}
+.xf-s{position:absolute;left:-80vw;width:260vw;bottom:0;display:flex;overflow:hidden;white-space:nowrap;padding:.15em 0 .07em;font:900 var(--xs,5.2vw)/.9 var(--display);font-size-adjust:var(--dcap);font-synthesis:none;text-transform:uppercase;letter-spacing:-.012em;background-image:var(--tx-paper);background-size:420px 420px}
 .xf-s span{flex:none;padding-right:.34em}
 .xf-s.bg-w{background-color:var(--w);color:var(--k)}
 
 /* ═════════ small screens ═════════ */
 @media (max-width:820px){
-  .xf-s{--xs:9vw}
+  .xf-s{--xs:9vw} .xf-s + .xf-s{--xs:4.4vw}
   .plan-ttl{margin-right:calc(1.2vw - var(--gut))}
   .chap{--iz:44px}
   .strip-row .il{--iz:34vw}

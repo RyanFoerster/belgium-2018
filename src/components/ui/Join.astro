@@ -1,5 +1,5 @@
 ---
-/* The join between two chapters: torn strips crossing the seam in opposite directions.
+/* The join between two chapters: two straight bands on the seam, sliding in opposite directions.
    Each strip repeats its text along its length. Content lives in data/joins.ts. */
 import type { Strip } from '../../data/joins';
 
@@ -7,10 +7,10 @@ interface Props {
   strips: Strip[];
 }
 const { strips } = Astro.props;
-const REPEAT = 5;
+const REPEAT = 16; // enough for the small band to run the whole width
 ---
 <div class="xf" aria-hidden="true">
   {strips.map((s) => (
-    <div class:list={['xf-s', s.class]} data-torn="tb" data-torn-d="6" data-parx={s.drift} style={s.style}>{Array.from({ length: REPEAT }, () => <span>{s.text}</span>)}</div>
+    <div class:list={['xf-s', s.class]} data-parx={s.drift} style={s.style}>{Array.from({ length: REPEAT }, () => <span>{s.text}</span>)}</div>
   ))}
 </div>

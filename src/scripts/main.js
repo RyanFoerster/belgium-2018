@@ -9,7 +9,7 @@ import { cloneFrontPage } from './objects/frontpage.js';
 import { setupPhotos } from './photos.js';
 import { setupType, statics, fitAll, lineUp } from './type.js';
 import { autoEntrances, dealArrivals, watchReveals } from './arrivals.js';
-import { addRipCores, ripSheets, tornAll } from './paper.js';
+import { ripSheets, tornAll } from './paper.js';
 import { createEngine } from './engine.js';
 import { setupGroupStage } from './chapters/group-stage.js';
 import { setupDiagrams } from './chapters/diagrams.js';
@@ -34,7 +34,6 @@ autoEntrances();
 setupPhotos();
 setupType();
 dealArrivals();
-addRipCores();
 ripSheets();
 watchReveals();
 

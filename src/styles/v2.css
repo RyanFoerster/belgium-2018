@@ -117,7 +117,6 @@
 .s-intro .i-n3{left:.9vw;top:calc(36*var(--vh));--iz:min(9.2vw,calc(15*var(--vh)))}
 .s-intro .i-bars{left:1.6vw;top:calc(11*var(--vh));--iz:4.6vw}
 .s-intro .i-ball{left:2.6vw;top:calc(61*var(--vh));--dz:min(7vw,calc(11.5*var(--vh)))}
-.s-intro .i-rays{left:calc(2.6vw - min(3.5vw,calc(5.7*var(--vh))));top:calc(61*var(--vh) - min(3.5vw,calc(5.7*var(--vh))));--mz:min(14vw,calc(23*var(--vh)))}
 .s-intro .i-tac{left:74.5vw;top:calc(86*var(--vh));--mz:12vw}
 .s-intro .i-stp{right:17vw;top:calc(1.6*var(--vh))}
 /* the stickers round the folded sheet arrive one after the other */
@@ -136,7 +135,7 @@
   .s-intro .i-scr{left:5vw;top:calc(5.5*var(--vh));font-size:11.5vw}
   .s-intro .i-ball{left:auto;right:26vw;top:calc(86.5*var(--vh));--dz:13vw}
   .s-intro .i-stp{right:5vw;top:calc(6.5*var(--vh));font-size:12px}
-  .s-intro :is(.i-n3,.i-bars,.i-tac,.i-rays){display:none}
+  .s-intro :is(.i-n3,.i-bars,.i-tac){display:none}
   .s-intro .i-a1{right:17vw;top:calc(68*var(--vh));width:27vw}
   .s-intro .fp-deck{font-size:13px}
   .s-intro .fp-art{border-left:0}
