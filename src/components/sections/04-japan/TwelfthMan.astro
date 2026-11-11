@@ -3,6 +3,7 @@
 import Photo from '../../ui/Photo.astro';
 import Sticker from '../../ui/Sticker.astro';
 import Rip from '../../ui/Rip.astro';
+import Doodle from '../../ui/Doodle.astro';
 ---
 <!-- the stands: a line of prints that travels sideways as you scroll -->
 <section class="blk s-strip bg-r paper">
@@ -14,10 +15,11 @@ import Rip from '../../ui/Rip.astro';
   <div class="strip-row" data-parx="1">
     <Photo name="flag" print class="duo-y" caption="Moscow, 23.06" tape="t" style="--rot:-4deg;--ar:3/2" />
     <Photo name="fansOutside" print class="stack" caption="outside Spartak" pin style="--rot:5deg;--ar:3/2" />
+    <Doodle name="megaphone" />
     <Sticker type="oval" a="RED DEVILS" b="THE 12TH MAN" class="k" />
     <Photo name="fansKal" class="cutout" data-cutout style="--rot:-6deg;--op:50% 30%" />
     <Photo name="wall" print class="crease" caption="Kaliningrad, 28.06" tape="tl" style="--rot:3deg;--ar:3/2" />
-    <Sticker type="flag" a="BEL" />
+    <Doodle name="flag" />
     <Photo name="bench" print class="duo-r" caption="the bench, Saint Petersburg" tape="t" style="--rot:-3deg;--ar:3/2" />
     <Photo name="street" print class="dog" caption="2.07.18" pin style="--rot:6deg;--ar:3/4;--op:50% 35%" />
   </div>

@@ -6,6 +6,8 @@ import Sticker from '../../ui/Sticker.astro';
 import Title from '../../ui/Title.astro';
 import TitleLine from '../../ui/TitleLine.astro';
 import TitleNote from '../../ui/TitleNote.astro';
+import Doodle from '../../ui/Doodle.astro';
+import Marks from '../../ui/Marks.astro';
 ---
 <!-- ═══════════ 06 — FRANCE: one pile in the middle of the table ═══════════ -->
 <section class="scene s-fra bg-k" data-scene data-chapter="06|France — The Semi-final" data-poster="1" data-collect="61" data-collect-at=".72" style="--len:4.4;--opp:var(--fra);--opp2:var(--fra2)">
@@ -16,6 +18,7 @@ import TitleNote from '../../ui/TitleNote.astro';
       <i class="fb fb1 fx-drop" data-at=".05" data-torn="trbl" data-torn-d="8" aria-hidden="true"></i>
       <i class="fb fb2 fx-drop" data-at=".08" data-torn="trbl" data-torn-d="8" aria-hidden="true"></i>
       <i class="fb fb3 fx-drop" data-at=".11" data-torn="trbl" data-torn-d="8" aria-hidden="true"></i>
+      <Marks kind="scribble" seed={11} n={16} data-at=".14" style="--qx:6;--qy:-8;--qw:90;z-index:0" />
       <Photo name="stadiumSP" print class="fr-p1 fx-slap" caption="the anthems" tape="tl" data-at=".16" style="--rot:-4deg;--ar:3/2;--fx:-40vw" />
       <Ticket match={61} class="fr-tk fx-slide" data-at=".2" style="--rot:-6deg;--fx:-60vw" />
       <Photo name="france" print class="fr-p2 fx-slap" caption="Hazard / Mbappé" tape="t" colour="30 78" data-at=".26" style="--rot:2deg;--ar:4/3" />
@@ -28,6 +31,8 @@ import TitleNote from '../../ui/TitleNote.astro';
       <div class="sc d fr-sc" role="img" aria-label="France 1, Belgium 0"><span class="cutn c-opp fx-drop" data-at=".72" style="--rot:-4deg"><i>1</i></span><span class="cutn c-bel fx-drop" data-at=".75" style="--rot:3deg"><i>0</i></span></div>
       <Photo name="walkOff" print class="fr-p5 fx-slap" caption="no way through" data-at=".82" style="--rot:-6deg;--ar:4/3;--fx:-30vw;--fy:40vh" />
       <p class="slip fr-t3 fx-slide" data-torn="tb" data-at=".86" style="--rot:-1.4deg;--fx:40vw">Belgium have the ball for the rest of the night and never find the way through. It is their first defeat in almost two years.</p>
+      <Doodle name="goal" data-at=".56" style="--qx:2;--qy:62.5;--qw:9;--rot:-6deg" />
+      <Marks kind="crosses" seed={8} n={5} data-at=".7" style="--qx:52;--qy:86;--qw:20" />
       <span class="hand c-y fr-hand" data-at=".9">one corner.</span>
       <span class="stamp fr-st" data-at=".93">Full time<small>France 1—0 Belgium</small></span>
     </div>

@@ -6,6 +6,8 @@ import PlayerSticker from '../../ui/PlayerSticker.astro';
 import Photo from '../../ui/Photo.astro';
 import Ticket from '../../ui/Ticket.astro';
 import Sticker from '../../ui/Sticker.astro';
+import Doodle from '../../ui/Doodle.astro';
+import Marks from '../../ui/Marks.astro';
 ---
 <!-- ═══════════ 04 — THE MOMENT — JAPAN ═══════════ -->
 <section class="scene s-jpn bg-w paper" data-scene data-track data-chapter="04|The Moment — Japan" data-poster="1" style="--len:4.8;--opp:var(--jpn);--opp2:var(--w)">
@@ -14,6 +16,8 @@ import Sticker from '../../ui/Sticker.astro';
 
       <!-- half-time -->
       <div class="panel jn0 bg-w paper">
+        <Marks kind="shards" seed={6} n={13} class="o" data-in style="left:34vw;top:-6vh;--mz:min(62vw,104vh)" />
+        <Doodle name="ball" data-in style="left:72vw;top:57.5vh;--dz:8vw;--rot:-14deg;--d:.6s" />
         <p class="mono lab jn-lab">04 — The Moment<br>Round of 16 · Rostov Arena · 2 July 2018</p>
         <i class="jn-sun fx-drop" data-in aria-hidden="true"></i>
         <h2 class="jn-h" aria-label="Japan."><span class="d mega sp" data-split data-in>Japan</span></h2>
@@ -39,11 +43,13 @@ import Sticker from '../../ui/Sticker.astro';
         <div class="slip jn-slip jn-s1 fx-slide" data-torn="tb" data-at=".24" style="--rot:-1.6deg;--fx:50vw"><b class="d">48′ Haraguchi.</b><p>Shibasaki slides a pass through the left side of the Belgian defence. Haraguchi runs on and shoots across Courtois.</p></div>
         <span class="hand c-y jn-four" data-at=".32">four minutes.</span>
         <div class="slip jn-slip jn-s2 fx-paste" data-torn="tb" data-at=".34" style="--rot:1.8deg"><b class="d">52′ Inui.</b><p>Twenty-five yards out. A yard of space. Bottom corner.</p></div>
-        <p class="m-cut jn-fact fx-unroll" data-at=".4"><span>No team had come back from two goals down to win a World Cup knockout match inside ninety minutes <em>since 1966.</em></span></p>
+        <Doodle name="bolt" class="w" data-at=".3" style="left:90vw;top:60vh;--dz:8vw;--rot:12deg" /><Marks kind="speed" seed={6} data-at=".34" style="left:30vw;top:8vh;--mz:16vw;z-index:4" /><p class="m-cut jn-fact fx-unroll" data-at=".4"><span>No team had come back from two goals down to win a World Cup knockout match inside ninety minutes <em>since 1966.</em></span></p>
       </div>
 
       <!-- the double change -->
       <div class="panel jn2 bg-y paper" data-torn="l" data-torn-d="12">
+        <Marks kind="brush" seed={12} n={12} data-at=".16" style="left:42vw;top:-4vh;--mz:min(58vw,100vh)" />
+        <Doodle name="bolt" class="r" data-at=".3" style="left:40vw;top:58vh;--dz:9vw;--rot:-10deg" />
         <p class="mono m-meta">65′<br>A double change</p>
         <h3 class="d jn-sub" data-at=".14"><s>Mertens</s> Fellaini.<br><s>Carrasco</s> Chadli.</h3>
         <span class="scrawl jn-plan fx-scrawl" data-at=".26" aria-hidden="true">plan B</span>
@@ -57,6 +63,9 @@ import Sticker from '../../ui/Sticker.astro';
 
       <!-- level -->
       <div class="panel jn3 bg-w paper" data-torn="l" data-torn-d="12">
+        <Marks kind="rays" seed={7} n={22} data-at=".3" style="left:22vw;top:38vh;--mz:30vw;z-index:4" />
+        <Doodle name="flame" data-at=".4" style="left:56vw;top:60vh;--dz:8vw;--rot:8deg" />
+        <Marks kind="crosses" seed={5} data-at=".36" style="left:40vw;top:10vh;--mz:20vw" />
         <p class="mono m-meta">69′ · 74′<br>Sixteen minutes to play</p>
         <div class="sc d jn-sc3" role="img" aria-label="Belgium 2, Japan 2">
           <span class="cutn c-bel fx-stamp" data-at=".14" style="--h:56;--rot:-4deg"><i><span data-count="2" data-count-at=".16">2</span></i></span>

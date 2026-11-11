@@ -8,7 +8,7 @@ import { hydrateStickers, fitStickers } from './objects/stickers.js';
 import { cloneFrontPage } from './objects/frontpage.js';
 import { setupPhotos } from './photos.js';
 import { setupType, statics, fitAll, lineUp } from './type.js';
-import { dealArrivals, watchReveals } from './arrivals.js';
+import { autoEntrances, dealArrivals, watchReveals } from './arrivals.js';
 import { addRipCores, ripSheets, tornAll } from './paper.js';
 import { createEngine } from './engine.js';
 import { setupGroupStage } from './chapters/group-stage.js';
@@ -26,6 +26,7 @@ hydrateStickers();
 cloneFrontPage();
 
 /* ── photographs, type, arrivals, paper edges ── */
+autoEntrances();
 setupPhotos();
 setupType();
 dealArrivals();

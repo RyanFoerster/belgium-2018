@@ -6,6 +6,8 @@ import Rip from '../../ui/Rip.astro';
 import Title from '../../ui/Title.astro';
 import TitleLine from '../../ui/TitleLine.astro';
 import TitleNote from '../../ui/TitleNote.astro';
+import Doodle from '../../ui/Doodle.astro';
+import Marks from '../../ui/Marks.astro';
 ---
 <!-- ═══════════ 02 — THE BEGINNING ═══════════ -->
 <section class="blk s-open bg-y paper" data-chapter="02|The Beginning">
@@ -19,6 +21,7 @@ import TitleNote from '../../ui/TitleNote.astro';
   </Title>
 
   <div class="clg open-clg">
+    <Marks kind="brush" seed={7} n={14} data-in style="--qx:-9;--qy:-12;--qw:62" />
     <i class="disc bg-k oc-disc fx-paste" data-in aria-hidden="true"></i>
     <Photo name="martinez" print class="oc-a fx-slap" caption="R. Martínez — Kazan, 6.07" tape="tl" colour="8 46" data-in style="--rot:-3deg;--ar:4/3;--op:50% 40%" />
     <div class="lbl oc-l fx-slide" data-in data-torn="trbl" data-torn-d="5" style="--fx:-60vw"><small>The manager</small>Roberto<b>Martínez</b></div>
@@ -35,6 +38,7 @@ import TitleNote from '../../ui/TitleNote.astro';
     <div class="cutting oc-t2 fx-slide" data-in data-torn="trb" style="--rot:1.3deg;--fx:60vw;--d:.14s"><p class="serif">The talk at home was no longer about getting out of the group. It was about what a generation owes itself when it knows it will not get many more summers like this.</p><i class="staple"></i></div>
     <Sticker type="pill" a="43 GOALS" b="QUALIFYING" class="k oc-s1" data-in />
     <Sticker type="box" a="N°3" class="oc-s2" data-in style="--d:.3s" />
-    <Sticker type="dots" class="y oc-s3" data-in style="--d:.4s" />
+    <Marks kind="tactic" seed={2} data-in style="--qx:40;--qy:36;--qw:20;--d:.5s;z-index:6" />
+    <Doodle name="megaphone" class="r" data-in style="--qx:74;--qy:30;--qw:11;--rot:-12deg;--d:.5s" />
   </div>
 </section>

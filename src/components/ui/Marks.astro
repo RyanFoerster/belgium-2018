@@ -1,0 +1,20 @@
+---
+/* Marks thrown around a photograph or a word (lib/marks.ts): brush strokes, shards, rays, a coach's crosses and noughts,
+   a wandering pen line, a spray of ink, a grid, speed lines. They sit behind or over their neighbours and are drawn
+   stroke by stroke when they arrive (or along with the scroll, with data-t). Position and size with `style` (left/top/--mz). */
+import { mark, type MarkKind } from '../../lib/marks';
+import { pass } from '../../lib/attrs';
+
+interface Props {
+  kind: MarkKind;
+  seed?: number;
+  /** how many strokes / shards / rays */
+  n?: number;
+  class?: string;
+  style?: string;
+  [attr: string]: unknown;
+}
+const { kind, seed = 1, n, class: cls, style = '', ...rest } = Astro.props;
+const g = mark(kind, seed, n);
+---
+<i class:list={['mk', `mk-${kind}`, cls]} aria-hidden="true" style={`aspect-ratio:${g.w}/${g.h};${style}`} set:html={g.svg} {...pass(rest)} />

@@ -2,6 +2,9 @@
 /* 05 · De Bruyne, 31′ — the second goal against Brazil replayed on the tactical board. */
 import Photo from '../../ui/Photo.astro';
 import Sticker from '../../ui/Sticker.astro';
+import Doodle from '../../ui/Doodle.astro';
+import Marks from '../../ui/Marks.astro';
+import Shout from '../../ui/Shout.astro';
 ---
 <!-- Replay 2: De Bruyne 31' -->
 <section class="scene s-replay s-replay-b bg-r" data-scene data-poster=".66" id="kdb" style="--len:4.2">
@@ -14,7 +17,7 @@ import Sticker from '../../ui/Sticker.astro';
       <li data-step="3"><b class="d">03</b><h4 class="d">The strike</h4><p>The pass goes right. De&nbsp;Bruyne takes it to the edge of the area and hits it low, across Alisson, inside the far post.</p></li>
     </ol>
     <Photo name="kdbJoy" class="rp-photo" />
-    <div class="rp-final"><Sticker type="stack" a="GOAL!" class="rp-il" /><Sticker type="bars" class="y rp-il2" />
+    <div class="rp-final"><Doodle name="burst" class="r rp-burst" /><Marks kind="rays" seed={4} n={26} class="rp-rays" /><Shout text="GOOOAL!" seed={11} class="rp-goal" />
       <span class="d rp-94">31′</span>
       <span class="d rp-ch">De&nbsp;Bruyne.</span>
       <span class="hand c-y rp-imp">2—0. to Belgium.</span>

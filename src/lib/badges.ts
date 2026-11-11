@@ -1,10 +1,15 @@
-/* Poster stickers: one flat shape, a black keyline, a hard black shadow, type set tight inside — the language of the loader's sheet.
+/* Printed stickers: a flat colour slightly out of register with its black keyline, a white edge, a halftone shadow,
+   type set tight inside — two passes of a risograph, never quite aligned.
    One small generator per shape. Pure string builders: the <Sticker> component uses them at build time, the wall uses them in the browser.
    Colour classes on the shapes: b1 = the sticker's colour, b2 = its second colour, bw cream, bk black, by yellow, br red; "kl" adds the keyline. */
 export function esc(t: unknown): string { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
 function fzs(t: string, max: number, cap: number): string { return Math.min(cap, max / (Math.max(1, t.length) * .4)).toFixed(1); }
 function tx(cls: string, x: number, y: number, size: number | string, max: number, t: string, extra = ''): string { return t ? '<text class="bt ' + cls + '" x="' + x + '" y="' + y + '" font-size="' + size + '" data-max="' + max + '"' + extra + '>' + esc(t) + '</text>' : ''; }
-function shape(cls: string, d: string): string { return '<path class="' + cls + '" d="' + d + '"/>'; }
+/* a shape with a keyline ("kl") is printed twice: the flat colour, a little out of register, then the black line */
+function shape(cls: string, d: string): string {
+  if (/(^| )kl( |$)/.test(cls) && !/(^| )nf( |$)/.test(cls)) return '<path class="' + cls.replace(/(^| )kl( |$)/, ' ').trim() + ' fl" d="' + d + '"/><path class="kl nf" d="' + d + '"/>';
+  return '<path class="' + cls + '" d="' + d + '"/>';
+}
 /* a toothed seal: n points between two radii */
 function burst(cx: number, cy: number, R: number, r: number, n: number): string {
   let d = '';
@@ -40,7 +45,7 @@ const BD: Record<string, (a: string, b: string) => Shape> = {
   /* a seal: a toothed disc, the figure in a cream eye, the small line on a band across it */
   rnd: function (a, b) {
     const p = burst(50, 50, 48, 41.5, 18), band = 'M2 60H98V79H2Z';
-    return [100, 100, p + (b ? band : ''), shape('b1 kl', p) + '<circle class="bw kl" cx="50" cy="50" r="31.5"/>' + tx('a k', 50, b ? 54 : 62.5, fzs(a, 52, b ? 30 : 38), 52, a) + (b ? shape('b2 kl', band) + tx('s w', 50, 72.6, 7.4, 86, b) : '')];
+    return [100, 100, p + (b ? band : ''), shape('b1 kl', p) + '<circle class="bw fl" cx="50" cy="50" r="31.5"/><circle class="kl nf" cx="50" cy="50" r="31.5"/>' + tx('a k', 50, b ? 54 : 62.5, fzs(a, 52, b ? 30 : 38), 52, a) + (b ? shape('b2 kl', band) + tx('s w', 50, 72.6, 7.4, 86, b) : '')];
   },
   /* a capsule, with the small line on a tab hanging from it */
   pill: function (a, b) {
@@ -103,5 +108,5 @@ export interface Badge { w: number; h: number; svg: string }
 
 export function badge(type: string, a = '', b = ''): Badge {
   const q = (BD[type] || BD.rnd)(a, b), w = q[0] + 12, h = q[1] + 13;
-  return { w, h, svg: '<svg viewBox="-3 -3 ' + w + ' ' + h + '" aria-hidden="true">' + (q[2] ? '<path class="bd-sh" d="' + q[2] + '" transform="translate(5 6)"/>' : '') + '<g class="bd-in">' + q[3] + '</g></svg>' };
+  return { w, h, svg: '<svg viewBox="-3 -3 ' + w + ' ' + h + '" aria-hidden="true">' + (q[2] ? '<path class="bd-sh" fill="url(#ht)" d="' + q[2] + '" transform="translate(5.5 6.5)"/><path class="bd-w" d="' + q[2] + '" transform="translate(-1.8 -1.5)"/>' : '') + '<g class="bd-in">' + q[3] + '</g></svg>' };
 }

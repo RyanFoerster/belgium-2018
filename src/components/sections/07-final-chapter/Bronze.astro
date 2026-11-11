@@ -2,13 +2,15 @@
 /* 07 · Third place: Belgium's best finish. */
 import Photo from '../../ui/Photo.astro';
 import Sticker from '../../ui/Sticker.astro';
+import Doodle from '../../ui/Doodle.astro';
+import Marks from '../../ui/Marks.astro';
 ---
 <section class="scene s-end bg-r" data-scene data-poster=".92" data-collect="63" style="--len:2.8">
   <div class="pin">
     <div class="d end-3" data-t="0 .46" data-ease="s8" aria-hidden="true">3<sup>rd</sup></div>
     <Photo name="bronze" print class="end-ph" caption="bronze." tape="t" data-t=".26 .48" data-ease="back" style="--ar:3/4" />
     <svg class="scr c-y end-x" data-t=".46 .56"><use href="#s-loop"/></svg>
-    <Sticker type="rnd" a="3" b="THIRD PLACE" class="y fx-stamp" data-at=".5" style="right:27vw;bottom:8vh;--iz:12vw" /><Sticker type="star" class="y fx-stamp" data-at=".56" style="right:19vw;bottom:24vh;--iz:6vw;--rot:-14deg" />
+    <Sticker type="rnd" a="3" b="THIRD PLACE" class="y fx-stamp" data-at=".5" style="right:27vw;bottom:8vh;--iz:12vw" /><Doodle name="medal" text="3" data-at=".56" style="right:16vw;bottom:22vh;--dz:9vw;--rot:-10deg" /><Marks kind="brush" seed={8} n={15} class="end-brush" data-t=".2 .5" /><Marks kind="rays" seed={3} n={24} class="end-rays" data-at=".5" />
     <h2 class="end-h" aria-label="Not the ending we wanted. But a generation we'll never forget.">
       <span class="d sp" data-split data-t=".32 .46">Not the ending</span>
       <span class="d sp" data-split data-t=".4 .52">we wanted.</span>

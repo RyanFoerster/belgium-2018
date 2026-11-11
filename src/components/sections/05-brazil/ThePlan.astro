@@ -4,6 +4,8 @@ import Rip from '../../ui/Rip.astro';
 import Title from '../../ui/Title.astro';
 import TitleLine from '../../ui/TitleLine.astro';
 import TitleNote from '../../ui/TitleNote.astro';
+import Doodle from '../../ui/Doodle.astro';
+import Marks from '../../ui/Marks.astro';
 ---
 <section class="blk s-plan bg-y paper">
   <Rip />
@@ -38,4 +40,7 @@ import TitleNote from '../../ui/TitleNote.astro';
   </div>
   <div class="plan-score" data-in><span class="mono">13′ · Fernandinho o.g.</span><span class="d">1—0</span></div>
   <svg class="scr c-r plan-ex" data-in style="--d:.4s"><use href="#s-excl"/></svg>
+  <Marks kind="tactic" seed={9} class="plan-tac" data-in />
+  <Doodle name="arrow" class="r plan-arr" data-in />
+  <Marks kind="brush" seed={5} n={11} class="plan-brush" data-in />
 </section>

@@ -19,7 +19,14 @@ export function setupPhotos() {
       return 'g';
     }
     // the photograph is cut down to one black ink: where it thins out it breaks into stipple; the mid-tones take the flat colour, the lights are bare paper
-    function ink(img, tone) {
+    // which screen a figure is printed through: stipple (default), round halftone dots, or a line screen
+    function screenOf(fig, idx) {
+      if (fig.dataset.screen) return fig.dataset.screen;
+      if (fig.closest('.stk,#wall,.fp,.np,.np2') || fig.classList.contains('wi')) return 's';
+      if (fig.classList.contains('print') || fig.classList.contains('aw-ph')) return ['s', 'd', 's', 'l', 'd', 's', 'd'][Math.abs(idx) % 7];
+      return 's';
+    }
+    function ink(img, tone, scr) {
       var T = TONE[tone] || TONE.k, w = Math.min(tone === 'g' ? 1100 : 820, img.naturalWidth), h = Math.max(1, Math.round(w * img.naturalHeight / img.naturalWidth));
       var c = document.createElement('canvas'); c.width = w; c.height = h;
       var x = c.getContext('2d', { willReadFrequently: true }); x.drawImage(img, 0, 0, w, h);
@@ -27,8 +34,21 @@ export function setupPhotos() {
       for (i = 0; i < n; i++) { v = (d[i * 4] * 77 + d[i * 4 + 1] * 150 + d[i * 4 + 2] * 29) >> 8; L[i] = v; hist[v]++; }
       function pct(q) { var a = 0; for (var k = 0; k < 256; k++) { a += hist[k]; if (a >= n * q) return k; } return 255; }
       var t1 = pct(.41) * .62 + 104 * .38, t2 = pct(.75) * .62 + 176 * .38, s = (w * 40503 + h * 97 + tone.charCodeAt(0)) >>> 0, pa = T[0], sp = T[1], a1 = tone === 'g' ? 30 : 62, a2 = 34;
+      // a halftone screen: the darker the photograph, the fatter the dot (or the line); the second ink has its own angle
+      var cell = Math.max(4.2, w / 118), lo = pct(.03), hi = Math.max(lo + 40, pct(.97)), TAU = 6.2832, px, py, k1, k2;
+      var ca = Math.cos(.785) / cell, sa = Math.sin(.785) / cell, cb = Math.cos(.26) / (cell * 1.12), sb = Math.sin(.26) / (cell * 1.12);
       for (i = 0; i < n; i++) {
         s = (s * 1664525 + 1013904223) >>> 0; nz = (s >>> 24) / 255 - .5; v = L[i]; o = i * 4;
+        if (scr === 'd' || scr === 'l') {
+          px = i % w; py = (i - px) / w; var lv = (v - lo) / (hi - lo) + nz * .06;
+          k1 = scr === 'd' ? .5 + (Math.cos(TAU * (px * ca + py * sa)) + Math.cos(TAU * (py * ca - px * sa))) / 4 : .5 + Math.cos(TAU * (py * ca - px * sa)) / 2;
+          k2 = .5 + (Math.cos(TAU * (px * cb + py * sb)) + Math.cos(TAU * (py * cb - px * sb))) / 4;
+          if (lv < k1 * .92 - .04) { d[o] = d[o + 1] = d[o + 2] = 9; d[o + 3] = 255; }
+          else if (sp && lv < .34 + k2 * .62) { d[o] = sp[0]; d[o + 1] = sp[1]; d[o + 2] = sp[2]; d[o + 3] = 255; }
+          else if (pa) { d[o] = pa[0]; d[o + 1] = pa[1]; d[o + 2] = pa[2]; d[o + 3] = 255; }
+          else d[o + 3] = 0;
+          continue;
+        }
         if (v + nz * a1 < t1) { d[o] = d[o + 1] = d[o + 2] = 9; d[o + 3] = 255; }
         else if (sp && v + nz * a2 < t2) { d[o] = sp[0]; d[o + 1] = sp[1]; d[o + 2] = sp[2]; d[o + 3] = 255; }
         else if (pa) { d[o] = pa[0]; d[o + 1] = pa[1]; d[o + 2] = pa[2]; d[o + 3] = 255; }
@@ -40,7 +60,7 @@ export function setupPhotos() {
     function work() {
       if (busy || !jobs.length) return; busy = true;
       var j = jobs.shift(), end = function (u) { busy = false; j.cb(u); setTimeout(work, 0); };
-      try { ink(j.img, j.tone).toBlob(function (b) { end(b ? URL.createObjectURL(b) : null); }, 'image/png'); } catch (e) { end(null); }
+      try { ink(j.img, j.tone, j.scr).toBlob(function (b) { end(b ? URL.createObjectURL(b) : null); }, 'image/png'); } catch (e) { end(null); }
     }
     function loadKey(K) {
       active++;
@@ -54,8 +74,9 @@ export function setupPhotos() {
             f.img.src = u || K.src; if (u) f.fig.classList.add('inked', 'ink-' + f.tone); if (f.col) f.col.src = K.src;
           };
           if (!K.cors || f.tone === 'none') return fin(null);
-          if (urls[f.tone] === undefined) { urls[f.tone] = []; (function (t) { jobs.push({ img: im, tone: t, cb: function (u) { var w = urls[t]; urls[t] = u || ''; w.forEach(function (g) { g(u); }); } }); })(f.tone); }
-          if (typeof urls[f.tone] === 'string') fin(urls[f.tone] || null); else urls[f.tone].push(fin);
+          var key = f.tone + f.scr;
+          if (urls[key] === undefined) { urls[key] = []; (function (t, sc, k) { jobs.push({ img: im, tone: t, scr: sc, cb: function (u) { var w = urls[k]; urls[k] = u || ''; w.forEach(function (g) { g(u); }); } }); })(f.tone, f.scr, key); }
+          if (typeof urls[key] === 'string') fin(urls[key] || null); else urls[key].push(fin);
         });
         work(); done();
       };
@@ -91,7 +112,7 @@ export function setupPhotos() {
       }
       var first = nfig++ < 12; if (first) LOAD.total++;
       var K = keys[key]; if (!K) { K = keys[key] = { p: p, figs: [], src: '', cors: false }; order.push(K); }
-      K.figs.push({ fig: fig, img: img, tone: toneOf(fig, idx), col: col, first: first });
+      K.figs.push({ fig: fig, img: img, tone: toneOf(fig, idx), scr: screenOf(fig, idx), col: col, first: first });
       used[key] = p;
     });
     // one question to Commons gives every photograph an address a canvas may read; with no answer the plain links are used, un-inked

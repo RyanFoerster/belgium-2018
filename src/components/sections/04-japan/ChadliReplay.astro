@@ -2,6 +2,9 @@
 /* 04 · Chadli, 90+4′ — the counter-attack replayed pass by pass on the tactical board. */
 import Photo from '../../ui/Photo.astro';
 import Sticker from '../../ui/Sticker.astro';
+import Doodle from '../../ui/Doodle.astro';
+import Marks from '../../ui/Marks.astro';
+import Shout from '../../ui/Shout.astro';
 ---
 <!-- Signature 02 + 04 — The Impossible Comeback / Archive transition -->
 <section class="scene s-replay bg-y paper" data-scene data-poster=".7" id="chadli" style="--len:6.4">
@@ -17,11 +20,11 @@ import Sticker from '../../ui/Sticker.astro';
       <li data-step="6"><b class="d">06</b><h4 class="d">The finish</h4><p>Chadli has run the length of the pitch. At the far post, he cannot miss.</p></li>
     </ol>
     <Photo name="japan" class="rp-photo" />
-    <div class="rp-final"><Sticker type="stack" a="GOAL!" class="rp-il" /><Sticker type="bars" class="y rp-il2" />
+    <div class="rp-final"><Doodle name="burst" class="rp-burst" /><Marks kind="rays" seed={9} n={26} class="rp-rays" /><Shout text="GOOOOOAL!" seed={5} class="rp-goal" />
       <span class="d rp-94">94′</span>
       <span class="d rp-ch">Chadli.</span>
-      <span class="hand c-y rp-imp">impossible.</span>
-      <svg class="scr c-y rp-under"><use href="#s-line"/></svg>
+      <Shout text="Impossible." seed={8} ghost={3} class="rp-impo" />
+      <Doodle name="ball" class="rp-ball" />
     </div>
     <div class="rp-flood bg-y">
       <span class="d rp-32" aria-label="3-2">3—2</span>

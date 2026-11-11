@@ -23,6 +23,8 @@ const cells = [...SQUAD, null].map((pl, i) => {
     style: `--ax:${a[0]};--ay:${a[1]};--bx:${b[0]};--by:${b[1]};--rot:${((r() - .5) * 15).toFixed(1)}deg;--wz:${1 + Math.floor(r() * 9)};--fx:${Math.round((r() - .5) * 120)}vw;--spin:${Math.round((r() - .5) * 60)}deg`,
   };
 });
+import Doodle from '../../ui/Doodle.astro';
+import Marks from '../../ui/Marks.astro';
 ---
 <!-- The twenty-three -->
 <section class="scene s-sq bg-r" data-scene data-poster="1" id="squad" style="--len:2.5">
@@ -40,6 +42,8 @@ const cells = [...SQUAD, null].map((pl, i) => {
             <Photo name="martinez" print class="fx-slap" caption="R. Martínez, manager" tape="t" data-at={c.at} style="--ar:3/4;--op:50% 40%" />
           </li>)}
     </ol>
+    <Marks kind="brush" seed={11} n={16} class="sq-brush" data-at=".02" />
+    <Doodle name="ball" class="w sq-ball spin" data-at=".7" />
     <Sticker type="pill" a="23 PLAYERS" b="ONE MANAGER" class="k sq-s1 fx-stamp" data-at=".76" style="--rot:-8deg" />
   </div>
 </section>

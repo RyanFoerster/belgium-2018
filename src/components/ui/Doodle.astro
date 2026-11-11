@@ -1,0 +1,19 @@
+---
+/* A hand-drawn football illustration (lib/doodles.ts), printed in two inks slightly out of register.
+   It draws itself when it arrives: the line first, stroke by stroke, then the colour.
+   class: "y" yellow · "r" red · "k" black · "w" paper · "o" opponent colour. Position it with `style` (left/top/--dz width). */
+import { doodle, type DoodleName } from '../../lib/doodles';
+import { pass } from '../../lib/attrs';
+
+interface Props {
+  name: DoodleName;
+  /** a number or a word lettered inside (medal) */
+  text?: string;
+  class?: string;
+  style?: string;
+  [attr: string]: unknown;
+}
+const { name, text = '', class: cls, style = '', ...rest } = Astro.props;
+const g = doodle(name, text);
+---
+<i class:list={['dd', cls]} data-dd={name} aria-hidden="true" style={`aspect-ratio:${g.w}/${g.h};${style}`} set:html={g.svg} {...pass(rest)} />

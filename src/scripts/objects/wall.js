@@ -1,5 +1,6 @@
 import { $, E, rng, el } from '../core.js';
 import { ticketHTML } from '../../lib/ticket';
+import { doodle } from '../../lib/doodles';
 
 // one object of the archive (print, sticker, ticket, score, cutting, note, badge, drawing): the wall and the loader pin up the same things
 var DRAW = '<svg viewBox="0 0 120 78"><rect x="2" y="2" width="116" height="74"/><path d="M60 2v74M2 22h16v34H2M118 22h-16v34h16"/><circle cx="60" cy="39" r="9" style="fill:none;stroke:currentColor"/><path class="hl" d="M92 14 108 42"/><path class="a" d="M12 40 56 41M58 41 92 14M92 14 108 42"/><g><circle cx="12" cy="40" r="5"/><text x="12" y="42">1</text><circle cx="57" cy="41" r="5"/><text x="57" y="43">7</text><circle cx="92" cy="14" r="5"/><text x="92" y="16">15</text><circle cx="108" cy="43" r="5"/><text x="108" y="45">22</text></g></svg><span class="pencil">90+4′ — box to box</span>';
@@ -18,6 +19,7 @@ function piece(w, r) {
   } else if (w[0] === 'c') { n = el('div', 'cutting'); n.dataset.torn = 'tb'; n.appendChild(el('p', '', w[1])); rot *= .4; }
   else if (w[0] === 'h') { n = el('span', 'hand ' + (w[2] === 'y' ? 'c-y' : 'c-r'), w[1]); rot *= .5; }
   else if (w[0] === 'i') { n = el('i', 'il ' + (w[4] || '')); n.dataset.il = w[1]; if (w[2]) n.dataset.a = w[2]; if (w[3]) n.dataset.b = w[3]; }
+  else if (w[0] === 'g') { var g = doodle(w[1], w[3] || ''); n = el('i', 'dd ' + (w[2] || '')); n.innerHTML = g.svg; n.style.aspectRatio = g.w + '/' + g.h; n.setAttribute('aria-hidden', 'true'); }
   else { n = el('div', 'w-draw'); n.innerHTML = DRAW; rot *= .4; }
   n.classList.add('wi');
   return [n, rot];
@@ -37,11 +39,11 @@ export function buildWall() {
       ['t', 63], ['n', '2—0', 'eng'], ['p', 'vertMedal', 'bronze'], ['p', 'meunierMedal', 'Meunier'], ['s', 'vertonghen', 5, 'Vertonghen'], ['s', 'witsel', 6, 'Witsel'], ['c', '16 goals. 10 scorers. 6 wins.'], ['p', 'bronze', '3rd'], ['h', 'merci', 'y'], ['p', 'braSalute', 'thank you'],
       ['i', 'oval', 'RED DEVILS', 'BELGIUM'], ['i', 'jersey', '10'], ['i', 'pent', '2018', 'WORLD CUP', 'y'], ['i', 'box', 'N°3'], ['i', 'stack', 'GOAL!'], ['i', 'arc'], ['i', 'dots', '', '', 'y'], ['i', 'arrow', 'ROSTOV', '', 'k'], ['i', 'flag', 'BEL'],
       ['i', 'pill', '16 GOALS', '7 MATCHES', 'y'], ['i', 'rnd', '3', 'THIRD PLACE', 'y'], ['i', 'bars', '', '', 'y'], ['i', 'dia', 'ROSTOV', '', 'k'], ['i', 'hex', 'PLAN B', '65′'], ['i', 'rnd', '94′', 'CHADLI', 'k'], ['i', 'pill', 'KAZAN', '6 JULY', 'k'],
-      ['i', 'star', '', '', 'y'], ['i', 'star'], ['i', 'star', '', '', 'y']
+      ['g', 'ball'], ['g', 'boot', 'r'], ['g', 'glove'], ['g', 'medal', '', '3'], ['g', 'flame', 'r'], ['g', 'star'], ['g', 'bolt'], ['g', 'megaphone', 'r'], ['g', 'crown']
     ];
     // the illustrated stickers are dealt evenly through the story instead of arriving in one batch at the end
-    var extra = W.filter(function (w) { return w[0] === 'i'; }), base = W.length - extra.length;
-    W = W.filter(function (w) { return w[0] !== 'i'; });
+    var extra = W.filter(function (w) { return w[0] === 'i' || w[0] === 'g'; }), base = W.length - extra.length;
+    W = W.filter(function (w) { return w[0] !== 'i' && w[0] !== 'g'; });
     extra.forEach(function (w, j) { W.splice(Math.round((j + 1) * base / (extra.length + 1)) + j, 0, w); });
     var r = rng(2018), port = window.innerWidth < 820 && window.innerHeight > window.innerWidth;
     var C = port ? 5 : 10, R = Math.ceil(W.length / C), cells = [], i;
@@ -50,7 +52,7 @@ export function buildWall() {
     var FX = ['fx-slap', 'fx-drop', 'fx-slide', '', 'fx-slap'];
     W.forEach(function (w, k) {
       var c = cells[k], cx = c % C, cy = Math.floor(c / C), q = piece(w, r), n = q[0], rot = q[1];
-      var fx = FX[Math.floor(r() * FX.length)]; if (fx && w[0] !== 's' && w[0] !== 'h' && w[0] !== 'i') n.classList.add(fx);
+      var fx = FX[Math.floor(r() * FX.length)]; if (fx && w[0] !== 's' && w[0] !== 'h' && w[0] !== 'i' && w[0] !== 'g') n.classList.add(fx);
       n.style.setProperty('--wx', ((cx + .5 + (r() - .5) * .7) / C * 100).toFixed(1) + '%');
       n.style.setProperty('--wy', ((cy + .5 + (r() - .5) * .6) / R * 100).toFixed(1) + '%');
       n.style.setProperty('--rot', rot.toFixed(1) + 'deg'); n.style.setProperty('--wz', k + 1);

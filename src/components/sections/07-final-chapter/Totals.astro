@@ -5,14 +5,16 @@ import Rip from '../../ui/Rip.astro';
 import Title from '../../ui/Title.astro';
 import TitleLine from '../../ui/TitleLine.astro';
 import TitleNote from '../../ui/TitleNote.astro';
+import Doodle from '../../ui/Doodle.astro';
+import Marks from '../../ui/Marks.astro';
 ---
 <section class="blk s-tot bg-w paper">
   <Rip colour="var(--r)" />
   <p class="mono lab">The numbers</p>
   <Title label="The whole road."><TitleLine fx="slice" tile={10} data-in>The whole road.</TitleLine><TitleNote x="40%" data-in>Seven matches</TitleNote></Title>
-  <div class="tot tot-a" data-in><span class="d tot-n sway"><span data-count="16">16</span></span><p class="d tot-t">goals.</p><p class="mono tot-m">More than any other team<br>at the tournament.</p><Sticker type="box" a="N°1" class="fx-stamp" style="left:44vw;top:-3%;--iz:12vw" /><svg class="scr c-r tot-s"><use href="#s-loop"/></svg></div>
-  <div class="tot tot-b" data-in><span class="d tot-n ol"><span data-count="10">10</span></span><p class="d tot-t">different<br>scorers.</p><p class="mono tot-m">Mertens · Lukaku · E. Hazard · Batshuayi · Januzaj<br>Vertonghen · Fellaini · Chadli · De Bruyne · Meunier</p></div>
-  <div class="tot tot-c" data-in><span class="d tot-n"><span data-count="6">6</span></span><p class="d tot-t">wins<br>out of seven.</p><svg class="scr c-r tot-tally"><use href="#s-tally"/></svg></div>
+  <div class="tot tot-a" data-in><span class="d tot-n sway"><span data-count="16">16</span></span><p class="d tot-t">goals.</p><p class="mono tot-m">More than any other team<br>at the tournament.</p><Sticker type="box" a="N°1" class="fx-stamp" style="left:44vw;top:-3%;--iz:12vw" /><svg class="scr c-r tot-s"><use href="#s-loop"/></svg><Doodle name="ball" class="spin" style="right:9vw;top:8%;--dz:11vw" /><Doodle name="goal" style="left:24%;top:60%;--dz:13vw;--rot:-6deg" /></div>
+  <div class="tot tot-b" data-in><span class="d tot-n ol"><span data-count="10">10</span></span><p class="d tot-t">different<br>scorers.</p><p class="mono tot-m">Mertens · Lukaku · E. Hazard · Batshuayi · Januzaj<br>Vertonghen · Fellaini · Chadli · De Bruyne · Meunier</p><Doodle name="boot" class="r" style="left:42%;top:0;--dz:13vw;--rot:12deg" /></div>
+  <div class="tot tot-c" data-in><span class="d tot-n"><span data-count="6">6</span></span><p class="d tot-t">wins<br>out of seven.</p><svg class="scr c-r tot-tally"><use href="#s-tally"/></svg><Doodle name="medal" text="3" style="right:16vw;top:0;--dz:9vw;--rot:8deg" /></div>
   <Sticker type="pent" a="BRONZE" b="14.07.2018" class="k fx-drop" data-in style="right:6vw;margin-top:-10vw;--iz:13vw" />
   <span class="hand c-r tot-hand" data-in>bronze. real, heavy bronze.</span>
 </section>

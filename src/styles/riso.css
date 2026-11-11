@@ -1,0 +1,226 @@
+/* ══════════════════════════════════════════════════════════
+   NINTH LAYER — riso
+   The publication is printed on a risograph: fresh off-white stock, flat inks that never quite line up,
+   halftone where the ink thins out, illustrations drawn by hand, brush and pen around the photographs,
+   and a few words so big they are events. Each object has its own material — there is no grain over the whole page.
+   Reusable pieces: <Doodle> (.dd) · <Marks> (.mk) · <Shout> (.shout) · .mis (misregistered type) · the three papers.
+   Custom properties never reuse the colour token names (--k --w --y --r).
+   ══════════════════════════════════════════════════════════ */
+@property --q{syntax:'<number>';inherits:false;initial-value:1}
+
+/* ═════════ paper: contemporary stock, not an old newspaper ═════════ */
+:root{--w:#F4F2EC}
+body::after{content:none}
+.paper{background-image:var(--tx-paper);background-size:420px 420px}
+/* no creases, no ageing */
+.paper::before,.paper > .pin::before{content:none}
+/* flat colour is riso ink: uneven, pinholed, a little lighter where the drum ran dry */
+.bg-y,.bg-r,.bg-y.paper,.bg-r.paper{background-image:var(--tx-riso);background-size:340px 340px}
+/* some sheets show their fibres, some are almost clean */
+.s-roll,.s-np,.s-tot,.s-third,.s-wall .pin{background-image:var(--tx-fib);background-size:420px 420px}
+.slip::before,.cutting::before,.copy::before,.lbl::before{background-image:var(--tx-fib)}
+/* the newspaper pages stay newspapers, but printed this morning */
+.fp-page::after{opacity:.22}
+.fp-under{background-color:#dedcd5} .fp-under.b{background-color:#d2d0c9}
+.np-top,.np-bot{box-shadow:none}
+/* the first screen: the sheet lies on a brush of colour, not on a yellow slab */
+.s-intro .fp::before{content:none}
+
+/* ═════════ misregistration: every big word is two passes that do not line up ═════════ */
+.bg-w,.paper{--mr1:var(--y);--mr2:var(--r)}
+.bg-y{--mr1:var(--r);--mr2:#fff}
+.bg-r{--mr1:var(--y);--mr2:#080808}
+.bg-k{--mr1:var(--r);--mr2:var(--y)}
+.mis,.ttl-l,.mega,.aw-word,.wall-s1,.wall-s2,.nine-n,.jn-sub,.fpc-h,.rp-32,.bra-h .d,.end-h .d{text-shadow:.026em .02em 0 var(--mr1),-.014em -.012em 0 var(--mr2)}
+.ttl-l .tl{text-shadow:none}
+/* white ink, slightly off: the cut-out photographs and the album stickers */
+.cutout.inked .ph-i{filter:drop-shadow(-4px -3px 0 #fff) drop-shadow(5px 5px 0 var(--mr1,var(--y)))}
+.stk{outline:none;box-shadow:-3px -3px 0 #fff,5px 6px 0 #080808}
+.stk .ph.inked{outline-width:2px}
+
+/* ═════════ stickers: colour out of register with the line, a white edge, a halftone shadow ═════════ */
+.il svg{filter:url(#rough)}
+.bd-in{filter:none}
+.fl{transform:translate(2.6px,2.1px)}
+.kl{stroke-width:2.8}
+.bd-w{fill:#fff;stroke:#fff;stroke-width:6.5;stroke-linejoin:round}
+.bd-sh{stroke:none}
+.bg-k .bd-sh,.s-bra .bd-sh,.s-fra .bd-sh{fill:var(--y);stroke:none;opacity:.9}
+/* they fly in and land: one bounce, a last small turn */
+:where(.il).in:not([class*="fx-"]),:where(.il).on:not([class*="fx-"]),.alb-cap.on .il{animation:land .95s cubic-bezier(.3,1,.4,1) var(--d,0s) backwards;transform-origin:50% 60%}
+@keyframes land{0%{opacity:0;transform:translate(calc(var(--md,10)*1.3vw),-52vh) rotate(calc(var(--md,10)*2.6deg)) scale(1.55)}18%{opacity:1}58%{transform:translate(0,1.4vh) rotate(-4deg) scale(.93)}76%{transform:translate(0,-.6vh) rotate(1.6deg) scale(1.035)}100%{opacity:1;transform:none}}
+
+/* ═════════ <Doodle>: hand-drawn illustrations, two inks, drawn in front of you ═════════ */
+.dd{position:absolute;display:block;width:var(--dz,10vw);rotate:var(--rot,0deg);z-index:5;pointer-events:none;font-style:normal;--c1:var(--y);--c2:var(--r)}
+.dd.r{--c1:var(--r);--c2:var(--y)} .dd.k{--c1:#080808;--c2:var(--y)} .dd.w{--c1:var(--w);--c2:var(--r)} .dd.o{--c1:var(--opp);--c2:var(--opp2,var(--y))}
+.dd svg{display:block;width:100%;height:100%;overflow:visible;filter:url(#rough)}
+.dd-w{fill:#fff;stroke:#fff;stroke-width:9;stroke-linejoin:round;transform:translate(-2.2px,-1.8px)}
+.dd-f{transform:translate(3.2px,2.6px)}
+.f1{fill:var(--c1)} .f2{fill:var(--c2)} .fk{fill:#080808} .fw{fill:var(--w)} .fy{fill:var(--y)} .fr{fill:var(--r)}
+.dd-h{opacity:.9}
+.dd-l path{fill:none;stroke:#080808;stroke-width:2.7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 1.01}
+.dd-t{font-family:var(--display);font-size-adjust:var(--dcap);font-synthesis:none;text-anchor:middle;fill:#080808}
+.bg-k .dd-w{fill:var(--w);stroke:var(--w)}
+/* the line first, stroke after stroke; then the colour drops in, out of register, and stays there */
+.dd:where([data-in],[data-at],[data-from],[data-s]) .dd-l path{stroke-dashoffset:1}
+.dd:where([data-in],[data-at],[data-from],[data-s]) :is(.dd-f,.dd-w,.dd-h,.dd-t){opacity:0}
+.dd.in .dd-l path,.dd.on .dd-l path{stroke-dashoffset:0;transition:stroke-dashoffset .75s var(--eio) calc(var(--d,0s) + var(--i)*75ms)}
+.dd.in :is(.dd-f,.dd-w,.dd-h,.dd-t),.dd.on :is(.dd-f,.dd-w,.dd-h,.dd-t){opacity:1;transition:opacity .01s linear calc(var(--d,0s) + .55s)}
+.dd.in .dd-f,.dd.on .dd-f{animation:ddprint .42s steps(3) calc(var(--d,0s) + .55s) backwards}
+@keyframes ddprint{from{transform:translate(17px,-12px)}}
+.dd[data-t] .dd-l path{stroke-dashoffset:calc(1 - clamp(0,calc(var(--t,0)*1.5),1))}
+.dd[data-t] :is(.dd-f,.dd-w,.dd-h,.dd-t){opacity:clamp(0,calc((var(--t,0) - .62)*40),1)}
+.dd.in,.dd.on,.mk.in,.mk.on,.shout.in,.shout.on{animation:none}
+/* some of them never sit still */
+.dd.spin{animation:ddspin 14s linear infinite!important}
+@keyframes ddspin{to{rotate:calc(var(--rot,0deg) + 360deg)}}
+.dd.bob svg{animation:ddbob 2.4s steps(2) infinite}
+@keyframes ddbob{50%{transform:translate(1.2%,-2%) rotate(2.5deg)}}
+
+/* ═════════ <Marks>: brush, shards, rays, crosses and noughts, pen, spray, grid ═════════ */
+.mk{position:absolute;display:block;width:var(--mz,30vw);rotate:var(--rot,0deg);z-index:0;pointer-events:none;font-style:normal;--m1:var(--y);--m2:var(--r);--m3:#080808;--m4:var(--w)}
+.bg-y .mk{--m1:var(--r);--m2:var(--w)} .bg-r .mk{--m1:var(--y);--m2:var(--w)} .bg-k .mk{--m3:var(--w);--m4:var(--w)}
+.mk.o{--m1:var(--opp);--m2:var(--opp2,var(--y))}
+.mk svg{display:block;width:100%;height:100%;overflow:visible}
+/* textures are masks drawn once (scripts/surfaces.js), not live filters: these marks are large */
+.mk-brush{-webkit-mask:var(--tx-dry) 0 0/360px 360px;mask:var(--tx-dry) 0 0/360px 360px}
+.mk-shards,.mk-spray{-webkit-mask:var(--worn) 0 0/520px 520px;mask:var(--worn) 0 0/520px 520px}
+.mk .st{fill:none;stroke-linecap:butt;mix-blend-mode:multiply}
+.bg-k .mk .st,.bg-r .mk .st{mix-blend-mode:normal}
+.mk .ln{fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.mk .thin{stroke-width:1.2} .mk .hair{stroke-width:.55;opacity:.8}
+.mk .dash{stroke-width:2.6;stroke-dasharray:.6 6}
+.mk :is(.st,.ln).m1{stroke:var(--m1)} .mk :is(.st,.ln).m2{stroke:var(--m2)} .mk :is(.st,.ln).m3{stroke:var(--m3)} .mk :is(.st,.ln).m4{stroke:var(--m4)}
+.mk :is(.sh,.sp).m1{fill:var(--m1)} .mk :is(.sh,.sp).m2{fill:var(--m2)} .mk :is(.sh,.sp).m3{fill:var(--m3)}
+.mk .sh{transform-box:fill-box;transform-origin:50% 50%}
+/* drawn stroke by stroke; shards are thrown; the spray lands all at once */
+.mk:where([data-in],[data-at],[data-from],[data-s]) :is(.st,.ln):not(.dash,.hair){stroke-dasharray:1 1.01;stroke-dashoffset:1}
+.mk.in :is(.st,.ln):not(.dash,.hair),.mk.on :is(.st,.ln):not(.dash,.hair){stroke-dashoffset:0;transition:stroke-dashoffset .6s var(--eio) calc(var(--d,0s) + var(--i)*48ms)}
+.mk:where([data-in],[data-at],[data-from],[data-s]) :is(.dash,.hair,.sp){opacity:0}
+.mk.in :is(.dash,.hair,.sp),.mk.on :is(.dash,.hair,.sp){opacity:1;transition:opacity .5s calc(var(--d,0s) + .35s)}
+.mk.in .hair,.mk.on .hair{opacity:.8}
+.mk:where([data-in],[data-at],[data-from],[data-s]) .sh{scale:0;rotate:-40deg}
+.mk.in .sh,.mk.on .sh{scale:1;rotate:0deg;transition:scale .7s cubic-bezier(.2,1.5,.3,1) calc(var(--d,0s) + var(--i)*42ms),rotate .7s var(--eo) calc(var(--d,0s) + var(--i)*42ms)}
+.mk[data-t] :is(.st,.ln):not(.dash,.hair){stroke-dasharray:1 1.01;stroke-dashoffset:calc(1 - clamp(0,calc(var(--t,0)*3.4 - var(--i)*.2),1))}
+.mk[data-t] .sh{scale:clamp(0,calc(var(--t,0)*3.2 - var(--i)*.2),1)}
+.mk[data-t] :is(.dash,.hair,.sp){opacity:clamp(0,calc(var(--t,0)*3 - 1),1)}
+
+/* ═════════ <Shout>: a word that is an event ═════════ */
+.shout{position:absolute;display:block;font-size:var(--sz,20vw);line-height:.8;white-space:nowrap;z-index:9;pointer-events:none;color:var(--shc,var(--y));rotate:var(--rot,-4deg);letter-spacing:-.01em}
+.sh-w{position:relative;display:block}
+.sh-sp{display:inline-block;width:.24em}
+.sh-l{display:inline-block;transform-origin:50% 78%;margin:0 -.014em;translate:0 var(--dy,0em);text-transform:uppercase;-webkit-text-stroke:.03em #080808;paint-order:stroke fill;
+  text-shadow:.036em .03em 0 var(--mr1,var(--r)),-.022em -.018em 0 #fff,.08em .085em 0 #080808;
+  transform:translate(calc((1 - var(--q))*var(--fx)),calc((1 - var(--q))*var(--fy))) rotate(calc(var(--rz) + (1 - var(--q))*var(--spin))) scale(calc(var(--sx)*(1 + (1 - var(--q))*1.5)),calc(var(--sy)*(1 + (1 - var(--q))*1.5)));opacity:clamp(0,calc(var(--q)*9),1)}
+.sf0{font-family:var(--display);font-size-adjust:var(--dcap);font-synthesis:none}
+.sf1{font-family:var(--sans);font-weight:900;font-stretch:125%;font-size:.74em}
+.sf2{font-family:var(--serif);font-weight:900;font-style:italic;font-size:.84em}
+.sf3{font-family:var(--hand);font-size:.8em}
+.sh-l:nth-child(3n+2){color:var(--sh2,var(--w))}
+.sh-l:nth-child(5n+4){color:var(--sh3,var(--r));--mr1:var(--y)}
+.shout[data-t] .sh-l{--q:clamp(0,calc(var(--t,0)*(1 + (var(--n) - 1)*.13) - var(--i)*.13),1)}
+.shout:where([data-in],[data-at],[data-from],[data-s]) .sh-l{--q:0}
+.shout.in .sh-l,.shout.on .sh-l{--q:1;transition:--q .85s cubic-bezier(.2,1.35,.3,1) calc(var(--d,0s) + var(--i)*60ms)}
+/* the same word again behind itself: a second and a third pass that missed */
+.sh-g{position:absolute;left:0;top:0;font-family:var(--display);font-size-adjust:var(--dcap);font-synthesis:none;text-transform:uppercase;color:var(--mr1,var(--r));opacity:.5;translate:calc(var(--g)*.05em) calc(var(--g)*.62em);mix-blend-mode:multiply}
+.bg-k .sh-g,.bg-r .sh-g{mix-blend-mode:normal}
+
+/* ═════════ pinned to the page: every hand-written figure gets a pencil ring, every caption a tick ═════════ */
+.tape{mix-blend-mode:multiply;opacity:.9}
+
+/* ═════════ small screens: the same print, fewer filters ═════════ */
+@media (max-width:820px){
+  .il svg,.dd svg{filter:none}
+  .dd-l path{stroke-width:3.2}
+  .cutout.inked .ph-i{filter:drop-shadow(-3px -2px 0 #fff)}
+}
+
+/* ═════════ reduced motion: everything printed, nothing drawn ═════════ */
+.rm .dd-l path,.rm .mk :is(.st,.ln){stroke-dashoffset:0!important;transition:none!important}
+.rm .dd :is(.dd-f,.dd-w,.dd-h,.dd-t),.rm .mk :is(.dash,.sp){opacity:1!important}
+.rm .mk .hair{opacity:.8!important}
+.rm .mk .sh{scale:1!important;rotate:0deg!important}
+.rm .sh-l{--q:1!important;transition:none!important}
+.rm .dd.spin,.rm .dd.bob svg{animation:none!important}
+
+/* ══════════════════════════════════════════════════════════
+   where the illustrations and marks sit, chapter by chapter
+   ══════════════════════════════════════════════════════════ */
+.clg > .dd{--dz:calc(var(--qw,10)*1cqw)}
+.clg > .mk{--mz:calc(var(--qw,30)*1cqw)}
+.wi.dd{width:calc(7.5*var(--wu))}
+.panel > .mk{z-index:0} .panel > .dd{z-index:6}
+
+/* 01 — the folded sheet lies on brush strokes; a pen wanders around it */
+.i-brush{left:50%;top:50%;translate:-50% -50%;--mz:min(104vw,calc(150*var(--vh)));--rot:-8deg}
+.i-scrib{left:6vw;top:calc(12*var(--vh));--mz:88vw}
+.i-x{right:5vw;bottom:calc(14*var(--vh));--mz:24vw}
+.i-ils .dd{translate:calc(var(--t)*var(--sx,0vw)) calc(var(--t)*var(--sy,0vh))}
+.i-ball{left:3vw;top:calc(62*var(--vh));--dz:min(9vw,calc(15*var(--vh)));z-index:6}
+.i-tac{left:60vw;top:calc(70*var(--vh));--mz:22vw;z-index:6}
+.i-rays{left:calc(3vw - min(4.5vw,calc(7.5*var(--vh))));top:calc(62*var(--vh) - min(4.5vw,calc(7.5*var(--vh))));--mz:min(18vw,calc(30*var(--vh)));z-index:5}
+
+/* 02 — one illustration per name in the album; the squad on a brush of black */
+.alb-dd{right:2%;top:calc(40*var(--vh));--dz:min(11vw,calc(19*var(--vh)));--rot:-9deg;z-index:3}
+.alb-cap.on .alb-dd .dd-l path{animation:dddraw .8s var(--eio) calc(.15s + var(--i)*70ms) backwards}
+.alb-cap.on .alb-dd :is(.dd-f,.dd-w,.dd-h){animation:ddshow .01s linear .6s backwards}
+@keyframes dddraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes ddshow{from{opacity:0}}
+.sq-brush{left:50%;top:calc(58*var(--vh));translate:-50% -50%;--mz:min(120vw,calc(170*var(--vh)));--m1:#080808;--m2:var(--y);--m3:#080808;z-index:1}
+.sq-ball{right:19.5vw;top:calc(9.5*var(--vh));--dz:min(6.5vw,calc(11*var(--vh)));z-index:70}
+
+/* 04 / 05 — the goal: GOOOOOAL! across the top, the minute below it, "impossible" printed four times */
+.rp-goal{left:3vw;top:calc(7*var(--vh));--sz:min(19.5vw,calc(34*var(--vh)));--rot:-5deg;--shc:var(--y);--mr1:var(--r)}
+.rp-goal .sh-l{--q:clamp(0,calc(var(--ty1,0)*(1 + (var(--n) - 1)*.13) - var(--i)*.13),1)}
+.rp-burst{left:52vw;top:calc(-6*var(--vh));--dz:min(52vw,calc(88*var(--vh)));--rot:-8deg;z-index:0;scale:var(--ty1,0);opacity:clamp(0,calc(var(--ty1,0)*6),1)}
+.rp-rays{left:-8vw;top:calc(-16*var(--vh));--mz:min(74vw,calc(120*var(--vh)));z-index:0;--m3:var(--w)}
+.rp-rays .ln{stroke-width:1.6;stroke-dasharray:1 1.01;stroke-dashoffset:calc(1 - clamp(0,calc(var(--ty1,0)*2.2 - var(--i)*.04),1))}
+.s-replay .rp-94{left:3vw;top:auto;bottom:calc(5*var(--vh));font-size:min(27vw,calc(40*var(--vh)));text-shadow:.026em .02em 0 var(--r),-.014em -.012em 0 #fff}
+.s-replay .rp-ch{bottom:calc(32*var(--vh));text-shadow:.026em .02em 0 var(--y),-.014em -.012em 0 var(--r)}
+.rp-impo{right:5vw;bottom:calc(21*var(--vh));--sz:min(6.4vw,calc(11*var(--vh)));--rot:-3deg;--shc:var(--w);z-index:8}
+.rp-impo .sh-l{--q:clamp(0,calc(var(--ty3,0)*(1 + (var(--n) - 1)*.13) - var(--i)*.13),1)}
+.rp-impo .sh-g{opacity:calc(var(--ty3,0)*.9);color:var(--y);mix-blend-mode:normal;translate:calc(var(--g)*.07em) calc(var(--g)*.7em);-webkit-text-stroke:.02em #080808;paint-order:stroke fill}
+.rp-ball{right:38vw;bottom:calc(6*var(--vh));--dz:min(10vw,calc(17*var(--vh)));scale:var(--ty3,0);rotate:calc(var(--ty3,0)*360deg)}
+.s-replay-b .rp-goal{--shc:var(--w);--mr1:var(--y)}
+
+/* 04 — the stands: the megaphone and the flag hang on the same line as the prints */
+.strip-row .dd{position:relative;--dz:13vw;align-self:center;flex:none}
+
+/* 05 — Brazil keeps its entrance; rays behind the ticket, one star */
+.bra-rays{right:2vw;top:calc(-4*var(--vh));--mz:min(34vw,calc(56*var(--vh)));z-index:3;--m3:var(--bra2)}
+.bra-star{left:46vw;top:calc(12*var(--vh));--dz:min(7vw,calc(12*var(--vh)));--rot:-12deg;z-index:6}
+.plan-tac{right:5vw;top:calc(34*var(--vh));--mz:min(30vw,420px);z-index:3}
+.plan-arr{left:72%;top:40%;--dz:min(12vw,170px);--rot:150deg;z-index:4}
+.plan-brush{left:-10vw;top:calc(40*var(--vh));--mz:min(70vw,900px);z-index:0}
+
+/* 07 — bronze on a brush of yellow; each award has its object, drawn */
+.end-brush{right:-6vw;top:calc(-6*var(--vh));--mz:min(74vw,calc(120*var(--vh)));z-index:0}
+.end-rays{right:20vw;top:calc(14*var(--vh));--mz:min(40vw,calc(66*var(--vh)));z-index:1;--m3:var(--y)}
+.aw-brush{left:50%;top:calc(52*var(--vh));translate:-50% -50%;--mz:min(96vw,calc(150*var(--vh)));z-index:0;--m1:#080808;--m2:var(--y);--m3:#080808}
+.aw-dd{left:calc(50% - min(27vw,calc(41*var(--vh)))*1.02);top:calc(62*var(--vh));--dz:min(15vw,calc(25*var(--vh)));z-index:6;--rot:-12deg}
+
+@media (max-width:820px){
+  .i-brush{--mz:150vw} .i-scrib{--mz:120vw;left:-10vw} .i-x{display:none}
+  .i-ball{left:4vw;top:calc(72*var(--vh));--dz:18vw} .i-rays{display:none} .i-tac{left:44vw;top:calc(80*var(--vh));--mz:44vw}
+  .alb-dd{right:4%;top:calc(4*var(--vh));--dz:22vw}
+  .sq-ball{display:none}
+  .rp-goal{left:2vw;top:calc(12*var(--vh));--sz:21vw}
+  .rp-burst{left:20vw;--dz:110vw} .rp-rays{--mz:150vw;left:-30vw}
+  .s-replay .rp-94{font-size:40vw;bottom:calc(8*var(--vh))}
+  .s-replay .rp-ch{bottom:calc(38*var(--vh))}
+  .rp-impo{right:4vw;bottom:calc(27*var(--vh));--sz:10vw}
+  .rp-ball{right:6vw;bottom:calc(9*var(--vh));--dz:20vw}
+  .strip-row .dd{--dz:26vw}
+  .bra-rays{--mz:60vw} .bra-star{left:8vw;top:calc(56*var(--vh));--dz:13vw}
+  .plan-tac{right:2vw;top:calc(30*var(--vh));--mz:50vw} .plan-arr{display:none}
+  .end-brush{--mz:150vw;right:-30vw} .end-rays{--mz:70vw;right:4vw}
+  .aw-brush{--mz:170vw}
+  .aw-dd{left:3vw;top:calc(66*var(--vh));--dz:24vw}
+  /* on a narrow sheet the piles are already full: only the marks behind stay, and the illustrations that have room */
+  .open-clg > .dd,.alb-dd,.g9 > .dd,.s-jpn .panel > .dd,.fra-clg > .dd,.third-clg > .dd,.tot .dd[data-dd="goal"],.tot .dd[data-dd="boot"]{display:none}
+  .tot .dd{--dz:20vw!important}
+}
+.rm .rp-goal .sh-l,.rm .rp-impo .sh-l{--q:1}
+.rm .rp-burst,.rm .rp-ball{scale:1;opacity:1;rotate:0deg}
+.rm .rp-rays .ln{stroke-dashoffset:0}
+.rm .aw-dd,.rm .aw-brush{display:none}

@@ -2,6 +2,7 @@
 /* 02 · The sticker album: the 23, pasted in one state at a time. */
 import PlayerSticker from '../../ui/PlayerSticker.astro';
 import Sticker from '../../ui/Sticker.astro';
+import Doodle from '../../ui/Doodle.astro';
 ---
 <!-- Sticker album -->
 <section class="scene s-roll bg-w paper" data-scene data-states="0 .17 .34 .5 .66 .82" data-poster="1" style="--len:3.3">
@@ -14,38 +15,38 @@ import Sticker from '../../ui/Sticker.astro';
         <h3 class="d">Eden<br>Hazard</h3>
         <p class="mono">Captain · Chelsea · 27</p>
         <p class="alb-txt">The armband and the ball. Everything Belgium does in the final third starts at his feet.</p>
-        <span class="hand c-r alb-hand">the captain</span><Sticker type="rnd" a="C" b="CAPTAIN" class="y alb-il" />
+        <span class="hand c-r alb-hand">the captain</span><Sticker type="rnd" a="C" b="CAPTAIN" class="y alb-il" /><Doodle name="crown" class="alb-dd" />
       </div>
       <div class="alb-cap" data-s="1">
         <span class="d alb-n" aria-hidden="true">7</span>
         <h3 class="d">Kevin<br>De&nbsp;Bruyne</h3>
         <p class="mono">Manchester City · 26</p>
         <p class="alb-txt">A league champion in May. He begins the tournament deep in midfield. He will not finish it there.</p>
-        <span class="hand c-r alb-hand">watch this one</span><Sticker type="pent" a="N°7" b="MIDFIELD" class="alb-il k" />
+        <span class="hand c-r alb-hand">watch this one</span><Sticker type="pent" a="N°7" b="MIDFIELD" class="alb-il k" /><Doodle name="bolt" class="alb-dd" />
       </div>
       <div class="alb-cap" data-s="2">
         <span class="d alb-n" aria-hidden="true">9</span>
         <h3 class="d">Romelu<br>Lukaku</h3>
         <p class="mono">Manchester United · 25</p>
         <p class="alb-txt">Already his country's all-time top scorer. Four goals in his first two matches in Russia.</p>
-        <span class="hand c-r alb-hand">4 in 2</span><Sticker type="pill" a="4 IN 2" b="GOALS · GAMES" class="alb-il y" />
+        <span class="hand c-r alb-hand">4 in 2</span><Sticker type="pill" a="4 IN 2" b="GOALS · GAMES" class="alb-il y" /><Doodle name="boot" class="r alb-dd" />
       </div>
       <div class="alb-cap" data-s="3">
         <span class="d alb-n" aria-hidden="true">1</span>
         <h3 class="d">Thibaut<br>Courtois</h3>
         <p class="mono">Chelsea · 26</p>
         <p class="alb-txt">One metre ninety-nine. He will leave Russia with the Golden Glove.</p>
-        <span class="hand c-r alb-hand">1,99 m</span><Sticker type="box" a="1,99 M" class="alb-il" />
+        <span class="hand c-r alb-hand">1,99 m</span><Sticker type="box" a="1,99 M" class="alb-il" /><Doodle name="glove" class="alb-dd" />
       </div>
       <div class="alb-cap" data-s="4">
         <span class="d alb-n ol" aria-hidden="true">4</span>
         <h3 class="d">Vincent<br>Kompany</h3>
         <p class="mono">Manchester City · 32</p>
         <p class="alb-txt">Injured in the last friendly before the flight. Not ready for the opener. Back in time for the nights that matter.</p>
-        <span class="hand c-r alb-hand">fit?</span><Sticker type="jersey" a="4" class="alb-il" />
+        <span class="hand c-r alb-hand">fit?</span><Sticker type="jersey" a="4" class="alb-il" /><Doodle name="flame" class="r alb-dd" />
       </div>
       <div class="alb-cap alb-end" data-s="5">
-        <h3 class="d">And<br>eighteen<br>more.</h3><Sticker type="stack" a="+18" class="alb-il k" />
+        <h3 class="d">And<br>eighteen<br>more.</h3><Sticker type="stack" a="+18" class="alb-il k" /><Doodle name="ball" class="alb-dd spin" />
         <p class="mono">Alderweireld · Vermaelen · Vertonghen · Witsel · Fellaini · Carrasco · Mignolet · Casteels · Mertens · Meunier · T. Hazard · Tielemans · Januzaj · Dembélé · Boyata · Batshuayi · Chadli · Dendoncker</p>
       </div>
     </div>
