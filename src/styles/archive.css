@@ -271,10 +271,14 @@
 .strip-string{left:0;top:calc(27*var(--vh));width:100%;height:28px;stroke-width:2;z-index:1;color:var(--w);opacity:.5}
 
 /* ═════════ 05 — BRAZIL: green, yellow, blue — cut and thrown ═════════ */
-.bra-fl{position:absolute;right:-5vw;top:calc(5*var(--vh));width:46vw;height:calc(66*var(--vh));z-index:2;pointer-events:none}
-.bra-g{position:absolute;inset:0;background:var(--bra) var(--tx-paper) 0 0/420px;rotate:5deg;--fx:70vw;--spin:30deg}
-.bra-y{position:absolute;left:7%;top:9%;width:86%;height:82%;background:var(--bra2);clip-path:polygon(50% 0,100% 49%,51% 100%,0 51%);rotate:3deg}
-.bra-b{position:absolute;left:50%;top:50%;width:calc(30*var(--vh));aspect-ratio:1;margin:calc(-15*var(--vh)) 0 0 calc(-15*var(--vh));border-radius:50% 48% 52% 50%;background:var(--bra3)}
+.bra-fl{position:absolute;right:-5vw;top:calc(5*var(--vh));width:46vw;height:calc(66*var(--vh));z-index:2;pointer-events:none;--u:calc(1 - var(--t,1));transform:translate(calc(var(--u)*var(--fdx,-32vw)),calc(var(--u)*var(--fdy,12)*var(--vh))) scale(calc(1 + var(--u)*var(--fds,2.4))) rotate(calc(var(--u)*-5deg));will-change:transform}
+.bra-g{position:absolute;inset:0;background:var(--bra) var(--tx-paper) 0 0/420px;rotate:5deg;translate:0 calc((1 - var(--t,1))*130%)}
+.bra-y{position:absolute;left:7%;top:9%;width:86%;height:82%;background:var(--bra2);clip-path:polygon(50% 0,100% 49%,51% 100%,0 51%);rotate:3deg;scale:var(--t,1)}
+.bra-b{position:absolute;left:50%;top:50%;width:calc(30*var(--vh));aspect-ratio:1;margin:calc(-15*var(--vh)) 0 0 calc(-15*var(--vh));border-radius:50% 48% 52% 50%;background:var(--bra3);scale:var(--t,1)}
+/* the banner across the disc carries the name of the night */
+.bra-band{position:absolute;left:50%;top:50%;translate:-50% -50%;rotate:-9deg;display:block;background:var(--w) var(--tx-paper) 0 0/420px;color:#080808;border:.5px solid #080808;box-shadow:1.5px 2px 0 #080808;padding:.05em .16em 0;font-size:calc(9.4*var(--vh));line-height:.9;letter-spacing:-.02em;white-space:nowrap;clip-path:inset(-20% calc((1 - var(--t,1))*110% - 6%) -20% -6%)}
+.bra-band span{display:block}
+.bra-lab{position:absolute;left:var(--gut);top:calc(6.4*var(--vh));z-index:8;opacity:var(--t,1)}
 .s-bra .bra-tk{right:8vw;top:calc(11*var(--vh));z-index:4}
 .s-bra .bra-fan{right:4vw;top:calc(38*var(--vh));width:min(20vw,calc(32*var(--vh)));z-index:4}
 .bra-cut{position:absolute;right:25vw;top:calc(22*var(--vh));width:min(19vw,calc(32*var(--vh)));aspect-ratio:3/2;z-index:5;--rot:-7deg}
@@ -444,7 +448,8 @@
   .strip-word{--fs:70vw;--fh:34}
   .strip-scr{left:8vw;font-size:13vw;top:calc(13*var(--vh))}
 
-  .bra-fl{right:-10vw;top:calc(6*var(--vh));width:74vw;height:calc(40*var(--vh))}
+  .bra-fl{right:-10vw;top:calc(6*var(--vh));width:74vw;height:calc(40*var(--vh));--fdx:-23vw;--fdy:24;--fds:2.6}
+  .bra-band{font-size:calc(5.6*var(--vh))}
   .bra-b{width:calc(18*var(--vh));margin:calc(-9*var(--vh)) 0 0 calc(-9*var(--vh))}
   .s-bra .bra-tk{right:5vw;top:calc(10*var(--vh));--ts:.74}
   .s-bra .bra-fan{right:6vw;top:calc(26*var(--vh));width:40vw}
@@ -490,7 +495,6 @@
 .gp .mt-opp{color:var(--pan2)}
 .fra-mega{color:var(--fra);-webkit-text-stroke:0}
 .strip-word{color:var(--r);-webkit-text-stroke:0}
-.xi-shape{color:var(--y);-webkit-text-stroke:0}
 .slot-q{color:rgba(8,8,8,.13);-webkit-text-stroke:0}
 .rp-steps li:nth-child(odd) b{color:var(--r);-webkit-text-stroke:0}
 /* photographs printed on the opponent's colour */

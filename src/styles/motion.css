@@ -1,0 +1,50 @@
+/* ══════════════════════════════════════════════════════════
+   EIGHTH LAYER — motion
+   How one section hands over to the next, and how words arrive — one set of rules for the whole page.
+   every section climbs over the end of the last, which sinks back and goes dark (scripts/engine.js drives it)
+   labels unroll · list rows come in one after the other · the tilted block of a headline lands after its letters
+   scrubbed headlines rise through their baseline, one letter after the other, no fade
+   Custom properties never reuse the colour token names (--k --w --y --r).
+   ══════════════════════════════════════════════════════════ */
+
+/* ═════════ between sections ═════════ */
+/* inside a chapter the climb is shorter than between two chapters */
+.cov-s{margin-top:calc(-17*var(--vh));box-shadow:0 -22px 46px rgba(0,0,0,.4)}
+/* the sheet underneath sinks back from its foot (the engine writes the transform) */
+.scene > .pin{transform-origin:50% 100%}
+
+/* ═════════ labels and match captions: unrolled from the left, their text a beat behind ═════════ */
+.lb{clip-path:inset(-40% 104% -40% -4%)}
+.lb.in{clip-path:inset(-40% -6% -40% -4%);transition:clip-path .8s var(--eio) var(--d,.1s)}
+
+/* ═════════ headlines ═════════ */
+/* the tilted block lands once the letters are up */
+.ttl-l .tl::before{scale:0;rotate:-24deg;transform-origin:50% 100%}
+.ttl-l.in .tl::before,.ttl-l.on .tl::before{scale:1;rotate:0deg;transition:scale .7s cubic-bezier(.2,1.5,.3,1) calc(var(--d,0s) + .5s),rotate .7s var(--eo) calc(var(--d,0s) + .5s)}
+/* scrubbed headlines (Brazil, the bronze): each letter comes up through its word's baseline — no fade, no scatter */
+.sp .ch{transform-origin:0 100%;transform:translateY(calc((1 - var(--lk))*122%)) rotate(calc((1 - var(--lk))*9deg));opacity:1}
+.sp[data-t] .ch{--lk:clamp(0,calc(var(--t)*(1 + (var(--n) - 1)*.16) - var(--i)*.16),1)}
+
+/* ═════════ rows of a list come in one after the other, under their slip ═════════ */
+.m-goals li,.nine-dl > div,.oc-f > div,.aw-facts li{--ri:0}
+:is(.m-goals,.aw-facts) li:nth-child(2),:is(.nine-dl,.oc-f) > div:nth-child(2){--ri:1}
+:is(.m-goals,.aw-facts) li:nth-child(3),:is(.nine-dl,.oc-f) > div:nth-child(3){--ri:2}
+:is(.m-goals,.aw-facts) li:nth-child(4),:is(.nine-dl,.oc-f) > div:nth-child(4){--ri:3}
+.m-goals.on li,.nine-dl.on > div,.oc-f.in > div{animation:rowin .8s var(--eo) calc(var(--d,0s) + .32s + var(--ri)*95ms) backwards}
+@keyframes rowin{from{opacity:0;transform:translateX(-22px) skewX(-8deg)}}
+
+/* ═════════ the running head: the chapter's name is swapped like a departure board ═════════ */
+.hud-c{overflow:hidden}
+.hud-c.sw b,.hud-c.sw i{display:inline-block;animation:hudsw .6s var(--eo) backwards}
+.hud-c.sw i{animation-delay:.06s}
+@keyframes hudsw{from{transform:translateY(130%)}}
+
+/* ═════════ small screens ═════════ */
+@media (max-width:820px){
+  .cov-s{margin-top:calc(-11*var(--vh))}
+}
+
+/* ═════════ reduced motion ═════════ */
+.rm .lb{clip-path:none}
+.rm .ttl-l .tl::before{scale:1;rotate:0deg}
+.rm .scene > .pin{transform:none!important}

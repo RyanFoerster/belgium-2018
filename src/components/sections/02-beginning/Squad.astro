@@ -1,0 +1,45 @@
+---
+/* 02 · The twenty-three: every player of the squad pinned up as a sticker, in shirt-number order, plus the manager.
+   The pile is laid out here, once: a loose grid (8 × 3 on a wide screen, 4 × 6 on a tall one) with seeded jitter and tilt. */
+import PlayerSticker from '../../ui/PlayerSticker.astro';
+import Photo from '../../ui/Photo.astro';
+import Sticker from '../../ui/Sticker.astro';
+import Title from '../../ui/Title.astro';
+import TitleLine from '../../ui/TitleLine.astro';
+import TitleNote from '../../ui/TitleNote.astro';
+import { SQUAD } from '../../../data/squad';
+import { rng } from '../../../lib/rng';
+
+const r = rng(2318);
+const spot = (i: number, cols: number, rows: number, jx: number, jy: number) =>
+  [((i % cols) + .5) / cols * 100 + (r() - .5) * jx, (Math.floor(i / cols) + .5) / rows * 100 + (r() - .5) * jy].map((v) => v.toFixed(1));
+const FX = ['', 'fx-slap', '', 'fx-drop', '', 'fx-slap', 'fx-slide'];
+const cells = [...SQUAD, null].map((pl, i) => {
+  const a = spot(i, 8, 3, 3, 5), b = spot(i, 4, 6, 5, 3);
+  return {
+    pl,
+    fx: FX[Math.floor(r() * FX.length)],
+    at: (.05 + i * .026).toFixed(3),
+    style: `--ax:${a[0]};--ay:${a[1]};--bx:${b[0]};--by:${b[1]};--rot:${((r() - .5) * 15).toFixed(1)}deg;--wz:${1 + Math.floor(r() * 9)};--fx:${Math.round((r() - .5) * 120)}vw;--spin:${Math.round((r() - .5) * 60)}deg`,
+  };
+});
+---
+<!-- The twenty-three -->
+<section class="scene s-sq bg-r" data-scene data-poster="1" id="squad" style="--len:2.5">
+  <div class="pin">
+    <p class="mono lab sq-lab">The squad · Russia 2018</p>
+    <Title label="The twenty-three." class="sq-ttl"><TitleLine fit={17} fx="rise" tile={4} data-at=".01">The twenty-three</TitleLine><TitleNote x="36%" data-at=".06">Every one of them</TitleNote></Title>
+    <ol class="sq-wall">
+      {cells.map((c) => c.pl
+        ? <li class:list={['sq-i', c.pl.captain && 'sq-cap']} style={c.style}>
+            <PlayerSticker photo={c.pl.photo} focus={c.pl.focus} number={c.pl.no} name={c.pl.captain ? `${c.pl.name} (C)` : c.pl.name} class={c.fx} data-at={c.at} />
+            {c.pl.captain && <Sticker type="rnd" a="C" b="CAPTAIN" class="y sq-c fx-stamp" data-at=".72" style="--rot:12deg" />}
+            <span class="mono sq-club" data-at={c.at}>{c.pl.club}</span>
+          </li>
+        : <li class="sq-i sq-mgr" style={c.style}>
+            <Photo name="martinez" print class="fx-slap" caption="R. Martínez, manager" tape="t" data-at={c.at} style="--ar:3/4;--op:50% 40%" />
+          </li>)}
+    </ol>
+    <Sticker type="pill" a="23 PLAYERS" b="ONE MANAGER" class="k sq-s1 fx-stamp" data-at=".76" style="--rot:-8deg" />
+  </div>
+</section>

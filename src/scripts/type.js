@@ -1,6 +1,6 @@
 import { $, $$, rng, seeded, el } from './core.js';
 
-/* ── type: letters that arrive one by one, handwriting that is written, headlines cut from papers ── */
+/* ── type: letters that arrive one by one, handwriting that is written, headlines fitted to the page ── */
 function split(node, mode, seed) {
   var r = rng(seed), i = 0;
   (function walk(n) {
@@ -39,23 +39,6 @@ export function setupType() {
     else { split(n, 'hw', k * 61 + 5); n.classList.add('hw', n.dataset.t ? 'hw-s' : 'hw-a'); }
     if (!n.dataset.t && !n.closest('[data-in],[data-at],[data-from],[data-s]')) statics.push(n);
   });
-  $$('[data-cut]').forEach(function (n, k) {
-    var dark = n.dataset.cut === 'k', r = rng(k * 53 + 17), txt = n.textContent.replace(/\s+/g, ' ').trim(), last = '';
-    var V = dark ? ['v2', 'v3', 'v2', 'v6', 'v3', 'v5'] : ['v1', 'v2', 'v3', 'v1', 'v5', 'v2'];
-    n.textContent = ''; n.appendChild(el('span', 'vh', txt));
-    txt.split(' ').forEach(function (w, i) {
-      var v = w.length <= 3 ? 'v4' : V[Math.floor(r() * V.length)];
-      if (v === last && v !== 'v4') v = V[(V.indexOf(v) + 1) % V.length];
-      last = v;
-      var o = el('span', 'cw ' + v), inner = el('span', 'cw-i', w);
-      o.setAttribute('aria-hidden', 'true');
-      o.style.cssText = '--i:' + i + ';--rot:' + ((r() - .5) * 8).toFixed(1) + 'deg;--dy:' + Math.round((r() - .5) * 12) + 'px;--j:' + Math.round(r() * 70) + 'ms;--fs:' + (.86 + r() * .32).toFixed(2) + 'em';
-      var q = function (a, b) { return (a + r() * b).toFixed(1) + '%'; };
-      // cut with scissors, not a ruler: four corners, none of them square
-      inner.style.clipPath = 'polygon(' + q(0, 4) + ' ' + q(0, 10) + ',' + q(96, 4) + ' ' + q(0, 10) + ',' + q(96, 4) + ' ' + q(90, 10) + ',' + q(0, 4) + ' ' + q(90, 10) + ')';
-      o.appendChild(inner); n.appendChild(o);
-    });
-  });
   /* ── headlines: fitted to the full width, each line with its own way of arriving ── */
   $$('.ttl-l').forEach(function (n) {
     var t = n.textContent.replace(/\s+/g, ' ').trim(), tile = n.dataset.tile != null ? +n.dataset.tile : -1;
@@ -65,7 +48,7 @@ export function setupType() {
   });
   /* ── running text arrives line by line: every word is its own small mask, and words on the same line share a delay ── */
   $$('main p').forEach(function (p) {
-    if (!p.closest('[data-in],[data-at],[data-from],[data-s]') || p.closest('#wall,.tkt,.cutting,.fp,.np,.np2,[data-cut],[data-split],.hand,.pencil,.lab,.ttl') || p.querySelector('.hand,.pencil,[data-count],svg,img,figure,.il,.stamp')) return;
+    if (!p.closest('[data-in],[data-at],[data-from],[data-s]') || p.classList.contains('m-cut') || p.closest('#wall,.tkt,.cutting,.fp,.np,.np2,.m-cut,[data-split],.hand,.pencil,.lab,.ttl,.aw-what') || p.querySelector('.hand,.pencil,[data-count],svg,img,figure,.il,.stamp')) return;
     var ws = [];
     (function walk(n) {
       [].slice.call(n.childNodes).forEach(function (c) {

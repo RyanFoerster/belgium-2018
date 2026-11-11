@@ -31,7 +31,7 @@ export const PHOTOS = {
   fanCup:      { file: "ENG-BEL (36).jpg", w: 960, by: VEN, lic: S3, alt: "A Belgian supporter holding a replica trophy in Kaliningrad" },
   wall:        { file: "ENG-BEL (12).jpg", w: 1280, by: VEN, lic: S3, alt: "The Belgian end in Kaliningrad, a wall of red shirts" },
   hazardBench: { file: "ENG-BEL (17).jpg", w: 500, by: VEN, lic: S3, alt: "Eden Hazard, rested, watches England v Belgium from the bench" },
-  benchKal:    { file: "Januzaj and Hazard.jpg", w: 960, by: VEN, lic: S3, alt: "Belgian players on the bench in Kaliningrad" },
+  bench:       { file: "Januzaj and Hazard.jpg", w: 960, by: VEN, lic: S3, alt: "Adnan Januzaj and Thorgan Hazard on the bench before the third-place play-off, 14 July 2018" },
   street:      { file: "2018-07-02 22-04-45 ILCE-6500 DSC01200 DxO (55425635929).jpg", w: 500, by: "Miguel Discart & Kiri Karma", lic: S4, alt: "A supporter holds a Belgium scarf aloft in the street on the evening of Belgium v Japan, 2 July 2018" },
   kontich:     { file: "Football fans at “Gemeenteplein, 2550 Kontich, Province of Antwerp, Kingdom of Belgium” on 6 July 2018, 22.43PM, after the Belgium team had defeated the Brazilan one during the quarter finals of the FIFA World Cup 2018.jpg", w: 960, by: "Vincent Mia Edie Verheyen", lic: S4, alt: "Supporters on the Gemeenteplein in Kontich, Belgium, minutes after the win over Brazil, 6 July 2018" },
   martinez:    { file: BRA + "01.jpg", w: 960, by: TAT, lic: B4, alt: "Roberto Martínez and the Belgian bench during the anthems in Kazan" },
@@ -59,7 +59,19 @@ export const PHOTOS = {
   fellaini:    { file: "Fellaini 2018 2 (cropped).jpg", w: 500, by: VEN, lic: S3, alt: "Marouane Fellaini at the 2018 World Cup" },
   chadli:      { file: "Nacer Chadli 2018.jpg", w: 250, by: BRE, lic: S3, alt: "Nacer Chadli at the 2018 World Cup" },
   kompany:     { file: "Vincent Kompany.jpg", w: 250, by: BEK, lic: S3, alt: "Vincent Kompany at the 2018 World Cup" },
-  alderweireld:{ file: "Alderweireld na Copa do Mundo de 2018 (cortado).jpg", w: 330, by: VEN, lic: S3, alt: "Toby Alderweireld at the 2018 World Cup" }
+  alderweireld:{ file: "Alderweireld na Copa do Mundo de 2018 (cortado).jpg", w: 330, by: VEN, lic: S3, alt: "Toby Alderweireld at the 2018 World Cup" },
+
+  /* ── the rest of the 23 (Casteels has no free photograph from the tournament: his sticker is a number) ── */
+  vermaelen:   { file: "Thomas Vermaelen 2018.jpg", w: 500, by: VEN, lic: S3, alt: "Thomas Vermaelen at the third-place play-off, 14 July 2018" },
+  carrasco:    { file: "Yannick Ferreira Carrasco.jpg", w: 500, by: BEK, lic: S3, alt: "Yannick Carrasco against Japan in Rostov" },
+  mignolet:    { file: "Simon Mignolet 2018.jpg", w: 500, by: BRE, lic: S3, alt: "Simon Mignolet in Kazan, 6 July 2018" },
+  thazard:     { file: "Januzaj and Hazard (cropped) 2.jpg", w: 500, by: VEN, lic: S3, alt: "Thorgan Hazard at the third-place play-off, 14 July 2018" },
+  tielemans:   { file: "Youri Tielemans 2018.jpg", w: 500, by: VEN, lic: S3, alt: "Youri Tielemans against England in Kaliningrad, 28 June 2018" },
+  januzajP:    { file: "Januzaj and Hazard (cropped) (cropped).jpg", w: 426, by: VEN, lic: S3, alt: "Adnan Januzaj at the third-place play-off, 14 July 2018" },
+  dembele:     { file: "A54i6791 (cropped).jpg", w: 201, by: VEN, lic: S3, alt: "Mousa Dembélé against England in Kaliningrad, 28 June 2018" },
+  boyata:      { file: "Bel-Tun (23) 2 (cropped).jpg", w: 500, by: SAD, lic: S3, alt: "Dedryck Boyata against Tunisia in Moscow, 23 June 2018" },
+  batshuayi:   { file: "Michy Batshuayi.jpg", w: 500, by: VEN, lic: S3, alt: "Michy Batshuayi against England in Kaliningrad, 28 June 2018" },
+  dendoncker:  { file: "ENG-BEL (24) (cropped).jpg", w: 196, by: VEN, lic: S3, alt: "Leander Dendoncker against England in Kaliningrad, 28 June 2018" }
 } satisfies Record<string, Photo>;
 
 export interface Photo {

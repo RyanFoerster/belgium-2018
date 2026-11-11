@@ -1,8 +1,8 @@
 /* What is printed on the torn strips that cross the join between two chapters (<Join>).
-   A strip without text is a checkerboard. drift: how far it slides sideways with the scroll (sign = direction). */
+   drift: how far it slides sideways with the scroll (sign = direction). */
 export interface Strip {
-  text?: string;
-  /** ground colour (bg-r, bg-y, bg-w) or, for a checkerboard, "r" for red */
+  text: string;
+  /** ground colour (bg-r, bg-y, bg-w) */
   class?: string;
   drift: string;
   /** tilt (--rot) and vertical offset (--ty) */
@@ -12,12 +12,11 @@ export interface Strip {
 export const JOINS = {
   beginning: [
     { text: "02 — The Beginning — Twenty-three players — One manager — ", class: "bg-r", drift: ".45", style: "--rot:-2.5deg;--ty:-9vh" },
-    { drift: "-.5", style: "--rot:1.6deg;--ty:1vh" },
+    { text: "Russia — 14 June to 15 July 2018 — ", class: "bg-y", drift: "-.5", style: "--rot:1.6deg;--ty:1vh" },
   ],
   japan: [
     { text: "Next: Japan — Rostov-on-Don — Round of 16 — ", class: "bg-r", drift: ".45", style: "--rot:-2.2deg;--ty:-10vh" },
     { text: "2 July 2018 — Rostov Arena — ", class: "bg-y", drift: "-.5", style: "--rot:1.8deg;--ty:-1vh" },
-    { drift: ".3", style: "--rot:-1deg;--ty:7vh" },
   ],
   brazil: [
     { text: "Quarter-final — Kazan Arena — 6 July 2018 — ", class: "bg-y", drift: "-.45", style: "--rot:2.2deg;--ty:-10vh" },
@@ -33,6 +32,6 @@ export const JOINS = {
   ],
   wall: [
     { text: "08 — The Wall — Everything that was in the box — ", class: "bg-r", drift: ".45", style: "--rot:-2.2deg;--ty:-10vh" },
-    { class: "r", drift: "-.5", style: "--rot:1.6deg;--ty:0vh" },
+    { text: "Merci — Dank u — Danke — ", class: "bg-y", drift: "-.5", style: "--rot:1.6deg;--ty:0vh" },
   ],
 } satisfies Record<string, Strip[]>;

@@ -1,0 +1,43 @@
+---
+/* 07 · The three individual awards, one player at a time in the middle of the screen:
+   each card lands on the pile, the one before it steps aside, and the last frame lines the three up. */
+import Photo from '../../ui/Photo.astro';
+import Sticker from '../../ui/Sticker.astro';
+import { AWARDS } from '../../../data/squad';
+
+const INK = ['yk', 'k', 'rk'] as const;
+const split = (n: string) => { const i = n.indexOf(' '); return [n.slice(0, i), n.slice(i + 1)]; };
+const letters = (w: string) => Array.from(w).map((c, k) => ({ c, k }));
+---
+<!-- Silver Ball · Golden Glove · Bronze Boot -->
+<section class="scene s-aw bg-r" data-scene data-states="0 .07 .34 .6 .84" data-poster="1" id="awards" style="--len:3.6">
+  <div class="pin">
+    <p class="mono lab aw-lab">Individual awards · FIFA World Cup 2018</p>
+    {AWARDS.map((a, i) => <div class="d aw-word" data-s={i + 1} aria-hidden="true">{letters(a.metal).map((l) => <span style={`--i:${l.k}`}>{l.c}</span>)}</div>)}
+    <div class="d aw-word" data-s="4" aria-hidden="true">{letters('Three.').map((l) => <span style={`--i:${l.k}`}>{l.c}</span>)}</div>
+
+    <ol class="aw-deck">
+      {AWARDS.map((a, i) => {
+        const [first, last] = split(a.player);
+        return (
+          <li class={`aw-c aw-c${i + 1}`}>
+            <article class="aw-card">
+              <Photo name={a.photo} ink={INK[i]} class="aw-ph" />
+              <b class="d aw-no" aria-hidden="true">{a.no}</b>
+              <h3 class="d aw-name">{first} <b>{last}</b></h3>
+            </article>
+            <span class="scrawl aw-obj" aria-hidden="true">{a.object}</span>
+            <p class="aw-what"><b class="d">{a.metal} {a.object}</b><span class="mono">{a.what}</span></p>
+            <ul class="aw-facts">{a.facts.map((f) => <li><b class="d">{f[0]}</b><span class="mono">{f[1]}</span></li>)}</ul>
+          </li>
+        );
+      })}
+    </ol>
+
+    <Sticker type="rnd" a="N°2" b="SILVER BALL" class="k aw-s aw-s1" data-s="1" style="--rot:-9deg" />
+    <Sticker type="rnd" a="N°1" b="GOLDEN GLOVE" class="y aw-s aw-s2" data-s="2" style="--rot:8deg" />
+    <Sticker type="rnd" a="N°3" b="BRONZE BOOT" class="k aw-s aw-s3" data-s="3" style="--rot:-7deg" />
+    <span class="hand aw-hand" data-s="4">three trophies went home</span>
+    <ol class="mono aw-dots" aria-hidden="true"><li data-s="1">Ball</li><li data-s="2">Glove</li><li data-s="3">Boot</li><li data-s="4">All three</li></ol>
+  </div>
+</section>

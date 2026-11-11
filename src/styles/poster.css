@@ -48,9 +48,8 @@
 .wi.w-draw{box-shadow:5px 6px 0 #080808}
 .tkt{outline:1.5px solid #080808}
 .stk{outline:1.5px solid #080808}
-/* stars: flat colour, black keyline, hard shadow — no cream die-cut */
-.il[data-il="star"] .bd-cut{fill:#080808;stroke:#080808;stroke-width:6}
-.il[data-il="star"]{filter:drop-shadow(4px 5px 0 #080808)}
+/* stickers carry their own keyline and shadow (lib/badges.ts): nothing soft under them */
+.il{filter:none}
 
 /* ═════════ small screens ═════════ */
 @media (max-width:820px){

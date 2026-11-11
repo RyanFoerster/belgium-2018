@@ -116,11 +116,6 @@
 .fr-p5{--qx:13;--qy:61;--qw:17;z-index:4!important}
 .fr-hand{--qx:35;--qy:89;--hz:4.8;--rot:-4deg}
 .fr-st{--qx:86;--qy:85;--hz:2.1;--sc:var(--w);background:var(--r)}
-/* "So close." — the same weight as every other headline, pulled apart by the tear */
-.close-h{font-family:var(--display);font-weight:900;font-size-adjust:var(--dcap);font-synthesis:none;letter-spacing:-.034em;font-size:min(22vw,calc(44*var(--vh)));line-height:.8}
-.close-h span:first-child{transform:translateX(calc(var(--t)*-7vw)) rotate(calc(var(--t)*-2deg))}
-.close-h span:last-child{transform:translateX(calc(var(--t)*7vw)) rotate(calc(var(--t)*1.5deg))}
-.close-note{position:absolute;left:50%;top:calc(50% + min(3.4vw,calc(7*var(--vh))));margin:0;translate:-50% 0;--nz:min(7vw,calc(13*var(--vh)));color:var(--r);clip-path:inset(-30% calc((1 - var(--t))*112%) -30% -10%);z-index:4}
 
 /* 07 — third place: the stadium in the middle, the medals on top */
 .s-third{min-height:0;padding-bottom:calc(20*var(--vh))}
@@ -139,23 +134,25 @@
 .th-s1{--qx:83;--qy:82;--qw:15}
 .th-s2{--qx:47;--qy:88;--qw:5}
 
-/* ═════════ typographic stickers: flat colour, fat cream die-cut, type inside a shape ═════════ */
-.il{--c1:var(--r);--c2:var(--k);--c3:var(--y);--cf:#F5F3EE;aspect-ratio:auto;filter:drop-shadow(1px 3px 0 rgba(0,0,0,.26)) drop-shadow(0 9px 7px rgba(0,0,0,.34))}
+/* ═════════ poster stickers: one flat shape, a black keyline, a hard black shadow, type set tight inside ═════════ */
+.il{--c1:var(--r);--c2:var(--k);--c3:var(--y);--cf:#F5F3EE;aspect-ratio:auto;filter:none}
 .il.y{--c1:var(--y);--c2:var(--k);--cf:#080808}
 .il.k{--c1:var(--k);--c2:var(--r);--cf:#F5F3EE}
 .il.o{--c1:var(--opp);--c2:var(--opp2,var(--k));--cf:#F5F3EE}
-.bd-cut{fill:#F5F3EE;stroke:#F5F3EE;stroke-width:10;stroke-linejoin:round}
+.bd-sh{fill:#080808;stroke:#080808;stroke-width:2.6;stroke-linejoin:round}
+.bg-k .bd-sh,.s-bra .bd-sh,.s-fra .bd-sh{fill:var(--sh2,#F5F3EE);stroke:var(--sh2,#F5F3EE)}
 .bd-in{filter:url(#print)}
-.b1{fill:var(--c1)} .b2{fill:var(--c2)} .bw{fill:#F5F3EE} .bk{fill:#080808} .by{fill:#F7D417} .br{fill:#E52B32}
-.bo{fill:none;stroke:#F5F3EE;stroke-width:1.5}
-.bf{fill:none;stroke:var(--c1);stroke-width:4}
-.bf2{fill:none;stroke:var(--c1);stroke-width:2.4}
+.b1{fill:var(--c1)} .b2{fill:var(--c2)} .bw{fill:#F5F3EE} .bk{fill:#080808} .by{fill:#F7D417} .br{fill:#E52B32} .bf{fill:var(--cf)}
+.kl{stroke:#080808;stroke-width:2.6;stroke-linejoin:round} .nf{fill:none}
+.rim{fill:none;stroke:var(--cf);stroke-width:1.6}
+.chev{fill:none;stroke:var(--cf);stroke-width:3.4;stroke-linejoin:miter}
 .bt{font-family:var(--sans);text-anchor:middle;text-transform:uppercase}
-.bt.a{font-family:var(--display);font-weight:900;font-size-adjust:var(--dcap);font-synthesis:none;letter-spacing:-.01em}
+.bt.a{font-family:var(--display);font-weight:400;font-size-adjust:var(--dcap);font-synthesis:none;letter-spacing:-.01em}
 .bt.s{font-weight:800;font-stretch:125%;letter-spacing:.07em}
-.bt.f{fill:var(--cf)} .bt.k{fill:#080808} .bt.c{fill:var(--c1)}
-.bt.cutt{fill:#F5F3EE;stroke:#F5F3EE;stroke-width:10;stroke-linejoin:round}
-.bt.b2s{fill:var(--c2);stroke:var(--c2);stroke-width:1.3;stroke-linejoin:round}
+.bt.f{fill:var(--cf)} .bt.k{fill:#080808} .bt.c{fill:var(--c1)} .bt.w{fill:#F5F3EE}
+.bt.ext{fill:#080808;stroke:#080808;stroke-width:2.4;stroke-linejoin:round}
+.bt.face{fill:var(--c1);stroke:#080808;stroke-width:2.4;stroke-linejoin:round;paint-order:stroke fill}
+.il[data-il="stack"]{--c1:var(--y)} .il[data-il="stack"].k{--c1:var(--r)}
 .chap{--iz:58px}
 .rp-il{--iz:min(30vw,calc(50*var(--vh)));top:calc(13*var(--vh))}
 .rp-il2{--iz:min(5vw,calc(9*var(--vh)))}
@@ -189,13 +186,10 @@
 .xf-s{position:absolute;left:-80vw;width:260vw;top:var(--ty,-6vh);rotate:var(--rot,-2deg);display:flex;overflow:hidden;white-space:nowrap;padding:.15em 0 .07em;font:900 var(--xs,5.2vw)/.9 var(--display);font-size-adjust:var(--dcap);font-synthesis:none;text-transform:uppercase;letter-spacing:-.012em;background-image:var(--tx-paper);background-size:420px 420px}
 .xf-s span{flex:none;padding-right:.34em}
 .xf-s.bg-w{background-color:var(--w);color:var(--k)}
-.xf-c{--cs:2.4vw;height:calc(var(--cs)*2);padding:0;background:conic-gradient(var(--k) 25%,var(--w) 0 50%,var(--k) 0 75%,var(--w) 0) 0 0/calc(var(--cs)*2) calc(var(--cs)*2)}
-.xf-c.r{background-image:conic-gradient(var(--r) 25%,var(--w) 0 50%,var(--r) 0 75%,var(--w) 0)}
 
 /* ═════════ small screens ═════════ */
 @media (max-width:820px){
   .xf-s{--xs:9vw}
-  .xf-c{--cs:4.4vw}
   .plan-ttl{margin-right:calc(1.2vw - var(--gut))}
   .chap{--iz:44px}
   .strip-row .il{--iz:34vw}
@@ -233,8 +227,6 @@
   .fr-sc{--qx:8;--qy:87;--h:19}
   .fr-hand{--qx:46;--qy:93;--hz:9}
   .fr-st{--qx:58;--qy:1;--hz:4.4}
-  .close-h{font-size:33vw;letter-spacing:-.034em;line-height:.8}
-  .close-note{top:calc(50% + 24vw);--nz:13vw}
 
   .third-clg{--ca:10/21;margin-bottom:46vw}
   .th-disc{--qx:8;--qy:3;--qw:84}
@@ -254,4 +246,3 @@
 /* ═════════ reduced motion ═════════ */
 .rm .ld{display:none!important}
 .rm .ttl-l .tc,.rm .ttl-l .sl{transform:none!important}
-.rm .close-note{clip-path:none}

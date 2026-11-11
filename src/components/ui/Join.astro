@@ -1,6 +1,6 @@
 ---
 /* The join between two chapters: torn strips crossing the seam in opposite directions.
-   A strip with text repeats it along its length; one without is a checkerboard. Content lives in data/joins.ts. */
+   Each strip repeats its text along its length. Content lives in data/joins.ts. */
 import type { Strip } from '../../data/joins';
 
 interface Props {
@@ -10,9 +10,7 @@ const { strips } = Astro.props;
 const REPEAT = 5;
 ---
 <div class="xf" aria-hidden="true">
-  {strips.map((s) =>
-    s.text
-      ? <div class:list={['xf-s', s.class]} data-torn="tb" data-torn-d="6" data-parx={s.drift} style={s.style}>{Array.from({ length: REPEAT }, () => <span>{s.text}</span>)}</div>
-      : <div class:list={['xf-s', 'xf-c', s.class]} data-parx={s.drift} style={s.style}></div>
-  )}
+  {strips.map((s) => (
+    <div class:list={['xf-s', s.class]} data-torn="tb" data-torn-d="6" data-parx={s.drift} style={s.style}>{Array.from({ length: REPEAT }, () => <span>{s.text}</span>)}</div>
+  ))}
 </div>

@@ -33,9 +33,9 @@ export function buildWall() {
       ['t', 45], ['p', 'januzaj', 'Kaliningrad'], ['n', '1—0', 'eng'], ['p', 'fansKal', 'red devils', 'duo-y'], ['c', 'Nine points out of nine.'],
       ['t', 54], ['p', 'japan', 'Rostov'], ['h', 'plan B', 'y'], ['s', 'fellaini', 8, 'Fellaini'], ['s', 'chadli', 22, 'Chadli'], ['d'], ['n', '3—2', 'jpn'], ['h', 'impossible.', 'r'], ['p', 'street', '2.07.18'],
       ['s', 'kdb', 7, 'De Bruyne'], ['t', 58], ['p', 'brazilTeam', 'Kazan, 6.07'], ['c', 'Belgium are in the semi-final.'], ['n', '2—1', 'bra'], ['p', 'kdbJoy', '31′'], ['p', 'braHug', 'Kazan', 'duo-r'], ['h', 'we can win this thing', 'r'], ['p', 'kontich', 'Kontich, 22:43'], ['s', 'kompany', 4, 'Kompany'],
-      ['t', 61], ['p', 'france', 'Hazard / Mbappé'], ['n', '0—1', 'fra'], ['h', 'so close', 'r'], ['p', 'fanWig', 'Saint Petersburg', 'duo-y'],
+      ['t', 61], ['p', 'france', 'Hazard / Mbappé'], ['n', '0—1', 'fra'], ['h', 'one corner', 'r'], ['p', 'fanWig', 'Saint Petersburg', 'duo-y'],
       ['t', 63], ['n', '2—0', 'eng'], ['p', 'vertMedal', 'bronze'], ['p', 'meunierMedal', 'Meunier'], ['s', 'vertonghen', 5, 'Vertonghen'], ['s', 'witsel', 6, 'Witsel'], ['c', '16 goals. 10 scorers. 6 wins.'], ['p', 'bronze', '3rd'], ['h', 'merci', 'y'], ['p', 'braSalute', 'thank you'],
-      ['i', 'oval', 'RED DEVILS', 'BELGIUM'], ['i', 'jersey', '10'], ['i', 'pent', '2018', 'WORLD CUP', 'y'], ['i', 'box', 'N°3'], ['i', 'stack', 'GOAL!'], ['i', 'chk', '', '', 'k'], ['i', 'flag', 'BEL'],
+      ['i', 'oval', 'RED DEVILS', 'BELGIUM'], ['i', 'jersey', '10'], ['i', 'pent', '2018', 'WORLD CUP', 'y'], ['i', 'box', 'N°3'], ['i', 'stack', 'GOAL!'], ['i', 'arc'], ['i', 'dots', '', '', 'y'], ['i', 'arrow', 'ROSTOV', '', 'k'], ['i', 'flag', 'BEL'],
       ['i', 'pill', '16 GOALS', '7 MATCHES', 'y'], ['i', 'rnd', '3', 'THIRD PLACE', 'y'], ['i', 'bars', '', '', 'y'], ['i', 'dia', 'ROSTOV', '', 'k'], ['i', 'hex', 'PLAN B', '65′'], ['i', 'rnd', '94′', 'CHADLI', 'k'], ['i', 'pill', 'KAZAN', '6 JULY', 'k'],
       ['i', 'star', '', '', 'y'], ['i', 'star'], ['i', 'star', '', '', 'y']
     ];

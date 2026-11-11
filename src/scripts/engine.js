@@ -34,7 +34,9 @@ export function createEngine() {
     var c = $('#col [data-c="' + n.dataset.collect + '"]'), panel = null;
     tracks.forEach(function (t) { t.panels.forEach(function (ps) { if (ps.el === n) panel = ps; }); });
     if (c) c.style.setProperty('--rot', ((k * 37 % 9) - 4) + 'deg');
-    return { n: n, c: c, panel: panel, top: 0, got: false };
+    // a pinned scene may say how far it has to be played before its stub is handed over
+    var own = null; scenes.forEach(function (sc) { if (sc.el === n) own = sc; });
+    return { n: n, c: c, panel: panel, scene: n.dataset.collectAt != null ? own : null, at: +n.dataset.collectAt || 0, top: 0, got: false };
   });
   function apply(s, p) {
     if (p === s.p) return; s.p = p;
@@ -59,16 +61,20 @@ export function createEngine() {
     for (var f = 0; f < s.fns.length; f++) s.fns[f](p);
   }
 
-  // chapter joins: the next chapter climbs over the end of the last one, which goes dark underneath it
-  var covers = RM ? [] : $$('.xf').map(function (x) {
-    var nx = x.nextElementSibling, pv = x.previousElementSibling; if (!nx || !pv) return null;
-    nx.classList.add('cov'); var dim = el('i', 'xd'); dim.setAttribute('aria-hidden', 'true'); pv.appendChild(dim);
-    return { xf: x, nx: nx, dim: dim, top: 0, o: 0, last: -1 };
+  // every section climbs over the end of the one before it, which sinks back and goes dark underneath;
+  // between two chapters (a <Join>) the climb is longer and the torn strips cross the seam
+  var covers = RM ? [] : $$('main > section').slice(1).map(function (nx) {
+    var pe = nx.previousElementSibling, xf = pe && pe.classList.contains('xf') ? pe : null, pv = xf ? xf.previousElementSibling : pe;
+    if (!pv || pv.tagName !== 'SECTION') return null;
+    nx.classList.add('cov'); if (!xf) nx.classList.add('cov-s');
+    var dim = el('i', 'xd'); dim.setAttribute('aria-hidden', 'true'); pv.appendChild(dim);
+    var pin = pv.dataset.scene != null ? $('.pin', pv) : null;
+    return { xf: xf, nx: nx, dim: dim, pin: pin, top: 0, o: 0, last: -1 };
   }).filter(Boolean), tilts = [];
   var chapters = [], parallax = [], vh = window.innerHeight, docH = 1;
   function measure() {
     vh = window.innerHeight; var y = window.scrollY;
-    covers.forEach(function (c) { c.nx.style.translate = 'none'; c.xf.style.translate = 'none'; });
+    covers.forEach(function (c) { c.nx.style.translate = 'none'; if (c.xf) c.xf.style.translate = 'none'; });
     scenes.forEach(function (s) { var r = s.el.getBoundingClientRect(); s.top = r.top + y; s.len = Math.max(1, r.height - vh); });
     chapters = $$('[data-chapter]').map(function (n) { var c = n.dataset.chapter.split('|'); return { top: n.getBoundingClientRect().top + y, no: c[0], name: c[1] }; });
     parallax = RM ? [] : $$('[data-par],[data-parx]').map(function (n) {
@@ -115,8 +121,9 @@ export function createEngine() {
     for (i = 0; i < covers.length; i++) {
       var cv = covers[i], sn = (cv.top - y) / vh, ce = clamp(sn / .66), co = Math.round(ce * cv.o);
       if (co !== cv.last) {
-        cv.last = co; cv.nx.style.translate = co ? '0 ' + co + 'px' : 'none'; cv.xf.style.translate = '0 ' + (co - cv.o) + 'px';
+        cv.last = co; cv.nx.style.translate = co ? '0 ' + co + 'px' : 'none'; if (cv.xf) cv.xf.style.translate = '0 ' + (co - cv.o) + 'px';
         cv.dim.style.opacity = sn < 1.1 ? ((1 - ce) * .62).toFixed(3) : 0;
+        if (cv.pin) cv.pin.style.transform = ce < 1 && sn < 1.1 ? 'scale(' + (1 - (1 - ce) * .07).toFixed(4) + ') rotate(' + ((1 - ce) * -1.1).toFixed(2) + 'deg)' : '';
       }
     }
     for (i = 0; i < tilts.length; i++) {
@@ -124,7 +131,7 @@ export function createEngine() {
       if (td > -1.6 && td < 1.6) { td = clamp(td, -1, 1); if (Math.abs(td - tl.last) > .004) { tl.last = td; tl.el.style.setProperty('--sy', td.toFixed(3)); } }
     }
     for (i = 0; i < stubs.length; i++) {
-      var sb = stubs[i], got = sb.panel ? sb.panel.p >= .44 : y + vh * .55 >= sb.top;
+      var sb = stubs[i], got = sb.panel ? sb.panel.p >= .44 : sb.scene ? sb.scene.p >= sb.at : y + vh * .55 >= sb.top;
       if (got !== sb.got && sb.c) { sb.got = got; sb.c.classList.toggle('got', got); }
     }
     if (sway.length) {
@@ -136,7 +143,9 @@ export function createEngine() {
     var ch = chapters[0];
     for (var c = 0; c < chapters.length; c++) if (y + vh * .5 >= chapters[c].top) ch = chapters[c];
     if (ch && ch.no !== curCh) {
+      var first = !curCh, hc = hudNo.parentNode;
       curCh = ch.no; hudNo.textContent = ch.no; hudName.textContent = ch.name;
+      if (!RM && !first) { hc.classList.remove('sw'); void hc.offsetWidth; hc.classList.add('sw'); }
       if (chapTx) { chapTx.textContent = ch.no; if (!RM) { chapSt.classList.remove('pop'); void chapSt.offsetWidth; chapSt.classList.add('pop'); } }
     }
     bar.style.transform = 'scaleX(' + clamp(y / docH).toFixed(4) + ')';

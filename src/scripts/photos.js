@@ -101,17 +101,22 @@ export function setupPhotos() {
       order.forEach(function (K) { var u = map && K.p.file && map[nm(K.p.file)]; if (u) { K.cors = true; K.src = u; } else K.src = photoSrc(K.p); });
       pump();
     }
-    var files = order.filter(function (K) { return K.p.file && !K.p.src; }).map(function (K) { return nm(K.p.file); }).slice(0, 50), cached = null;
+    var files = order.filter(function (K) { return K.p.file && !K.p.src; }).map(function (K) { return nm(K.p.file); }), cached = null;
     try { cached = JSON.parse(sessionStorage.getItem('bel18.thumbs') || 'null'); } catch (e) {}
     if (/[?&]ink=0/.test(location.search) || !window.fetch || !files.length) start(null);
     else if (cached && files.every(function (f) { return cached[f]; })) start(cached);
     else {
       setTimeout(function () { start(null); }, 3200);
-      fetch('https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&prop=imageinfo&iiprop=url&iiurlwidth=960&titles=' + encodeURIComponent(files.map(function (f) { return 'File:' + f; }).join('|')))
-        .then(function (r) { return r.json(); })
-        .then(function (j) {
-          var m = {}, pg = (j.query && j.query.pages) || {};
-          Object.keys(pg).forEach(function (id) { var q = pg[id]; if (q.imageinfo && q.imageinfo[0]) m[nm(q.title.replace(/^File:/, ''))] = q.imageinfo[0].thumburl || q.imageinfo[0].url; });
+      // Commons answers fifty titles per question: the list is asked in batches
+      var asks = [];
+      for (var b0 = 0; b0 < files.length; b0 += 50) asks.push(fetch('https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&prop=imageinfo&iiprop=url&iiurlwidth=960&titles=' + encodeURIComponent(files.slice(b0, b0 + 50).map(function (f) { return 'File:' + f; }).join('|'))).then(function (r) { return r.json(); }));
+      Promise.all(asks)
+        .then(function (js) {
+          var m = {};
+          js.forEach(function (j) {
+            var pg = (j.query && j.query.pages) || {};
+            Object.keys(pg).forEach(function (id) { var q = pg[id]; if (q.imageinfo && q.imageinfo[0]) m[nm(q.title.replace(/^File:/, ''))] = q.imageinfo[0].thumburl || q.imageinfo[0].url; });
+          });
           try { sessionStorage.setItem('bel18.thumbs', JSON.stringify(m)); } catch (e) {}
           start(m);
         })

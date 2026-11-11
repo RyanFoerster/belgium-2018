@@ -12,7 +12,6 @@ import { dealArrivals, watchReveals } from './arrivals.js';
 import { addRipCores, ripSheets, tornAll } from './paper.js';
 import { createEngine } from './engine.js';
 import { setupGroupStage } from './chapters/group-stage.js';
-import { setupBrazil } from './chapters/brazil.js';
 import { setupDiagrams } from './chapters/diagrams.js';
 import { fitLoader, runLoader } from './loader.js';
 import { setupGlide } from './glide.js';
@@ -37,13 +36,12 @@ watchReveals();
 /* ── scroll ── */
 var engine = createEngine();
 setupGroupStage(engine);
-var measureBrazil = setupBrazil(engine);
 var diagrams = setupDiagrams(engine), Board = diagrams.Board, replays = diagrams.replays;
 
 /* ── layout: everything that depends on sizes, redone when they change ── */
 var lastW = window.innerWidth, lastO = Board ? Board.Replay.orient() : 'h';
 function layout() {
-  fitAll(); fitStickers(); fitLoader(); lineUp(); tornAll(); engine.measure(); measureBrazil();
+  fitAll(); fitStickers(); fitLoader(); lineUp(); tornAll(); engine.measure();
   replays.forEach(function (rp) { rp.locate(); });
   if (RM) {
     // reduced motion: every scene is shown as its poster frame

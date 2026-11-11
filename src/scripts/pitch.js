@@ -103,83 +103,7 @@ function placeHand(pitch, t, x, y, dx, dy) {
   t.setAttribute('transform', 'translate(' + f2(p[0] + (dx || 0)) + ' ' + f2(p[1] + (dy || 0)) + ') rotate(' + t._rot + ')');
 }
 
-/* ───────── Signature 01 — Starting XI ───────── */
-var XI_DATA = [
-  { n: 1, name: 'Courtois', full: 'Thibaut Courtois', role: 'Goalkeeper · Chelsea', x: 5.5, y: 34 },
-  { n: 2, name: 'Alderweireld', full: 'Toby Alderweireld', role: 'Centre-back, right · Tottenham', x: 23, y: 51 },
-  { n: 20, name: 'Boyata', full: 'Dedryck Boyata', role: 'Centre-back · Celtic', x: 20, y: 34 },
-  { n: 5, name: 'Vertonghen', full: 'Jan Vertonghen', role: 'Centre-back, left · Tottenham', x: 23, y: 17 },
-  { n: 15, name: 'Meunier', full: 'Thomas Meunier', role: 'Right wing-back · Paris SG', x: 47, y: 61.5 },
-  { n: 7, name: 'De Bruyne', full: 'Kevin De Bruyne', role: 'Central midfield · Man. City', x: 42, y: 43 },
-  { n: 6, name: 'Witsel', full: 'Axel Witsel', role: 'Central midfield · Tianjin Quanjian', x: 40, y: 25 },
-  { n: 11, name: 'Carrasco', full: 'Yannick Carrasco', role: 'Left wing-back · Dalian Yifang', x: 47, y: 6.5 },
-  { n: 14, name: 'Mertens', full: 'Dries Mertens', role: 'Forward, right · Napoli', x: 68, y: 47 },
-  { n: 10, name: 'E. Hazard', full: 'Eden Hazard', role: 'Forward, left · Captain · Chelsea', x: 68, y: 21 },
-  { n: 9, name: 'Lukaku', full: 'Romelu Lukaku', role: 'Centre-forward · Man. United', x: 85, y: 34 }
-];
-var XI_LINKS = [[0, 2], [1, 2], [2, 3], [1, 4], [3, 7], [5, 6], [1, 5], [3, 6], [4, 8], [7, 9], [5, 8], [6, 9], [8, 9], [8, 10], [9, 10]];
-var XI_NOTES = [
-  { i: 9, color: 'r', text: 'capt.', dx: -9, dy: -5.5 },
-  { i: 5, color: 'y', text: 'deep. for now.', dx: 11, dy: -5.5 },
-  { i: 2, color: 'r', text: 'in for Kompany', dx: 15.5, dy: 7.5, rot: -3 },
-  { i: 10, color: 'y', text: 'scores twice', dx: 14, dy: -5.5 }
-];
-function XI(scene) {
-  this.scene = scene; this.svg = scene.querySelector('svg.pitch');
-  this.num = scene.querySelector('#xiNum'); this.nm = scene.querySelector('#xiName'); this.role = scene.querySelector('#xiRole');
-  this.list = scene.querySelector('#xiList'); this.cur = -2; this.p = 0;
-  this.build();
-}
-XI.prototype.build = function () {
-  var self = this;
-  this.pitch = new Pitch(this.svg, { orient: 'v', big: true, edge: ['Belgium v Panama · 18.06.2018', 'Attacking ↑'] });
-  this.links = XI_LINKS.map(function () { return mk('path', { 'class': 'link' }, self.pitch.g.links); });
-  this.players = XI_DATA.map(function (d) { return self.pitch.addPlayer({ n: d.n, name: d.name, label: 'b' }); });
-  this.notes = XI_NOTES.map(function (n, k) {
-    var ring = self.pitch.addRing(4.6, n.color, k + 2), d = XI_DATA[n.i], p = self.pitch.P(d.x, d.y);
-    ring.setAttribute('transform', 'translate(' + f2(p[0]) + ' ' + f2(p[1]) + ')');
-    var t = self.pitch.addHand(n.text, n.color, 3.6, n.rot); placeHand(self.pitch, t, d.x, d.y, n.dx, n.dy);
-    return { ring: ring, t: t };
-  });
-  this.list.innerHTML = '';
-  this.items = XI_DATA.map(function (d) { var li = document.createElement('li'); li.textContent = (d.n < 10 ? '0' : '') + d.n + ' ' + d.name; self.list.appendChild(li); return li; });
-  this.cur = -2; this.update(this.p);
-};
-XI.prototype.update = function (p) {
-  this.p = p; var self = this, idx = -1;
-  this.svg.style.setProperty('--draw', E.io(seg(p, 0, .1)).toFixed(3));
-  this.players.forEach(function (pl, i) {
-    var a = .1 + i * .062, t = seg(p, a, a + .075), e = E.o(t), d = XI_DATA[i];
-    if (p >= a) idx = i;
-    pl.set(lerp(52.5, d.x, e), lerp(-13, d.y, e), lerp(2.6, 1, e));
-    pl.g.style.opacity = t > 0 ? 1 : 0;
-    pl.g.classList.toggle('key', t > 0 && t < 1);
-    self.items[i].classList.toggle('on', t > 0);
-  });
-  this.links.forEach(function (ln, k) {
-    var t = E.o(seg(p, .79 + k * .005, .85 + k * .005)), a = XI_DATA[XI_LINKS[k][0]], b = XI_DATA[XI_LINKS[k][1]];
-    ln.setAttribute('d', 'M' + self.pitch.S(a.x, a.y) + 'L' + self.pitch.S(lerp(a.x, b.x, t), lerp(a.y, b.y, t)));
-    ln.style.opacity = t > 0 ? .7 : 0;
-  });
-  this.notes.forEach(function (n, k) {
-    var a = .885 + k * .026;
-    n.ring.setAttribute('stroke-dashoffset', (1 - E.io(seg(p, a, a + .03))).toFixed(3));
-    n.t.setAttribute('opacity', seg(p, a + .022, a + .03).toFixed(2));
-  });
-  if (idx !== this.cur) {
-    this.cur = idx;
-    var d = XI_DATA[idx];
-    this.num.textContent = d ? d.n : 'XI';
-    this.nm.textContent = d ? d.full.split(' ').slice(1).join(' ') : 'Belgium';
-    this.role.textContent = d ? d.role : 'Eleven names · one shape';
-    this.items.forEach(function (li, i) { li.classList.toggle('cur', i === idx); });
-    if (!document.documentElement.classList.contains('rm')) {
-      [this.num, this.nm].forEach(function (el) { el.classList.remove('slam'); void el.offsetWidth; el.classList.add('slam'); });
-    }
-  }
-};
-
-/* ───────── Signature 02 — animated replays ───────── */
+/* ───────── animated replays ───────── */
 function Replay(scene, cfg) {
   this.scene = scene; this.cfg = cfg; this.svg = scene.querySelector('svg.pitch');
   this.steps = [].slice.call(scene.querySelectorAll('[data-step]'));
@@ -331,9 +255,7 @@ Replay.prototype.update = function (p) {
 
   this.steps.forEach(function (li, i) { var r = cfg.steps[i]; li.classList.toggle('on', p >= r[0] && p < r[1]); });
 
-  var fl = F.flash, flash = p < fl[1] ? seg(p, fl[0], fl[1]) : 1 - seg(p, fl[1], fl[2]);
   var rev = E.io(seg(p, F.rev[0], F.rev[1]));
-  st.setProperty('--flash', (flash * .92).toFixed(3));
   st.setProperty('--dis', dis.toFixed(3));
   st.setProperty('--rev', rev.toFixed(3));
   st.setProperty('--rev-vis', rev > 0 ? 'visible' : 'hidden');
@@ -393,7 +315,7 @@ var CHADLI = {
     { text: 'leaves it!', at: 'luk', off: [-13, 8], voff: [14, 6], color: 'y', size: 3.6, p: [.615, .64], end: .70 },
     { ring: 1, at: 'cha', color: 'r', p: [.685, .71], end: .76 }
   ],
-  fx: { flash: [.708, .722, .77], dis: [.74, .83], rev: [.76, .875], ty1: [.83, .88], ty2: [.86, .91], ty3: [.895, .935], flood: [.952, .974] }
+  fx: { dis: [.74, .83], rev: [.76, .875], ty1: [.83, .88], ty2: [.86, .91], ty3: [.895, .935], flood: [.952, .974] }
 };
 
 /* ───────── Brazil 1–2 Belgium · De Bruyne 31′ ─────────
@@ -430,7 +352,7 @@ var KDB = {
     { ring: 1, at: 'kdb', color: 'y', glow: 1, p: [.60, .63], end: .72 },
     { text: 'far post', at: [100, 26], off: [-6, -5], voff: [-12, -3], color: 'y', p: [.612, .635], end: .72 }
   ],
-  fx: { flash: [.695, .71, .76], dis: [.73, .82], rev: [.75, .875], ty1: [.84, .89], ty2: [.87, .92], ty3: [.91, .955] }
+  fx: { dis: [.73, .82], rev: [.75, .875], ty1: [.84, .89], ty2: [.87, .92], ty3: [.91, .955] }
 };
 
-export const Board = { Pitch: Pitch, XI: XI, Replay: Replay, CHADLI: CHADLI, KDB: KDB };
+export const Board = { Pitch: Pitch, Replay: Replay, CHADLI: CHADLI, KDB: KDB };

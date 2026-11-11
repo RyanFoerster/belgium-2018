@@ -12,7 +12,7 @@ import Sticker from '../../ui/Sticker.astro';
     <p class="mono i-meta i-meta-c" data-o=".02 .08">Scroll to open it <span class="i-arrow">↓</span></p>
 
     <div class="i-ils" data-t=".02 .3" data-ease="i" aria-hidden="true">
-      <Sticker type="oval" a="RED DEVILS" b="BELGIUM" class="boot-fx" style="left:6vw;top:13vh;--iz:15vw;--d:.5s;--sx:-45vw;--sy:-45vh" /><Sticker type="star" class="boot-fx" style="left:31vw;top:79vh;--iz:7vw;--rot:14deg;--d:.8s;--sx:-20vw;--sy:50vh" /><Sticker type="star" class="y boot-fx" style="left:57vw;top:7vh;--iz:5.5vw;--rot:-12deg;--d:.9s;--sx:30vw;--sy:-45vh" /><Sticker type="flag" a="BEL" class="boot-fx" style="right:10vw;top:11vh;--iz:10vw;--d:.7s;--sx:45vw;--sy:-45vh" /><Sticker type="pent" a="2018" b="WORLD CUP" class="y boot-fx" style="right:19vw;bottom:11vh;--iz:9vw;--d:.9s;--sx:55vw;--sy:45vh" /><Sticker type="pill" a="RUSSIA" b="14.06 — 15.07" class="k boot-fx" style="left:13vw;bottom:17vh;--iz:14vw;--d:1.1s;--sx:-55vw;--sy:45vh" /><Sticker type="chk" class="boot-fx" style="right:4vw;top:47vh;--iz:10vw;--d:1.3s;--sx:55vw" />
+      <Sticker type="oval" a="RED DEVILS" b="BELGIUM" class="boot-fx" style="left:6vw;top:13vh;--iz:15vw;--d:.5s;--sx:-45vw;--sy:-45vh" /><Sticker type="star" class="boot-fx" style="left:31vw;top:79vh;--iz:7vw;--rot:14deg;--d:.8s;--sx:-20vw;--sy:50vh" /><Sticker type="star" class="y boot-fx" style="left:57vw;top:7vh;--iz:5.5vw;--rot:-12deg;--d:.9s;--sx:30vw;--sy:-45vh" /><Sticker type="flag" a="BEL" class="boot-fx" style="right:10vw;top:11vh;--iz:10vw;--d:.7s;--sx:45vw;--sy:-45vh" /><Sticker type="pent" a="2018" b="WORLD CUP" class="y boot-fx" style="right:19vw;bottom:11vh;--iz:9vw;--d:.9s;--sx:55vw;--sy:45vh" /><Sticker type="pill" a="RUSSIA" b="14.06 — 15.07" class="k boot-fx" style="left:13vw;bottom:17vh;--iz:14vw;--d:1.1s;--sx:-55vw;--sy:45vh" /><Sticker type="arc" class="boot-fx" style="right:4vw;top:47vh;--iz:9vw;--d:1.3s;--sx:55vw" />
     </div>
     <!-- one page, shown through three windows: the quarter you see first, then two flaps -->
     <div class="fp-c3" data-t="0 .5" data-ease="io"><div class="fp-c1" data-t=".04 .24" data-ease="io"><div class="fp-c2" data-t=".24 .5" data-ease="io">
@@ -40,6 +40,12 @@ import Sticker from '../../ui/Sticker.astro';
               </aside>
             </div>
           </div>
+          <!-- the outside of the folded sheet: the title, whole, before anything is opened -->
+          <div class="fp-cover" data-t=".04 .2" data-ease="io" aria-hidden="true">
+            <p class="mono fpc-top"><span>Russia · 14 June — 15 July 2018</span><span>Unofficial fanzine</span></p>
+            <div class="fpc-mid"><b class="d fpc-h">Belgium</b><span class="fpc-s">The Road to Glory</span><b class="d fpc-y">2018</b></div>
+            <p class="mono fpc-bot"><span>Seven matches · six wins · one bronze medal</span><span>Open it ↓</span></p>
+          </div>
         </div>
         <div class="fp-w fp-tr" data-t=".04 .24" data-ease="io" aria-hidden="true"></div>
         <div class="fp-w fp-bot" data-t=".24 .5" data-ease="io" aria-hidden="true"></div>
@@ -51,7 +57,7 @@ import Sticker from '../../ui/Sticker.astro';
     <svg class="scr c-y i-a1" data-t=".62 .72"><use href="#s-loop"/></svg>
     <span class="hand c-r i-a1t" data-t=".66 .76">golden generation</span>
     <Ticket match={13} class="i-tk fx-slide" data-at=".72" style="--rot:-8deg;--fx:-60vw" />
-    <PlayerSticker photo="hazard" number="10" name="E. Hazard" class="i-st" data-at=".78" style="--rot:7deg" />
+    <PlayerSticker photo="hazard" number="10" name="E. Hazard (C)" class="i-st" data-at=".78" style="--rot:7deg" />
     <Photo name="flag" print class="duo-y i-p1 fx-slap" caption="Moscow, 23.06" tape="t" data-at=".84" style="--rot:5deg" />
     <Sticker type="box" a="N°3" class="fx-slap" data-at=".8" style="left:58vw;top:37vh;--iz:11vw" /><Sticker type="bars" class="y" data-at=".87" style="left:1.5vw;top:10vh;--iz:5vw" />
     <span class="stamp i-stp" data-at=".9">Archive<small>Belgium · Russia 2018</small></span>

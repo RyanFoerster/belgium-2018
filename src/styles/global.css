@@ -1,6 +1,6 @@
 /* One stylesheet, three cascade layers:
    theme     — Tailwind's design tokens (the palette and the type below are the site's own)
-   site      — the hand-written art direction, in the order it was built: base → archive → collage → ink → poster
+   site      — the hand-written art direction, in the order it was built: base → archive → collage → ink → poster → players → motion
    utilities — Tailwind utilities, which therefore win over the site layer wherever they are used
    Tailwind's preflight is left out on purpose: base.css has its own reset. */
 @layer theme, site, utilities;
@@ -11,6 +11,8 @@
 @import "./collage.css" layer(site);
 @import "./ink.css" layer(site);
 @import "./poster.css" layer(site);
+@import "./players.css" layer(site);
+@import "./motion.css" layer(site);
 @import "tailwindcss/utilities.css" layer(utilities) source(none);
 @import "lenis/dist/lenis.css";
 

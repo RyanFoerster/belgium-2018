@@ -1,0 +1,149 @@
+/* ══════════════════════════════════════════════════════════
+   SEVENTH LAYER — the players
+   The squad pinned up as a wall of twenty-three stickers · the three individual awards as a deck of player cards
+   the cover of the folded newspaper · statements set on black bars · the captain's mark
+   Custom properties never reuse the colour token names (--k --w --y --r).
+   ══════════════════════════════════════════════════════════ */
+
+/* ═════════ a sticker without a photograph: the album's empty frame, the number alone ═════════ */
+.stk-blank{aspect-ratio:3/4;width:100%;display:grid;place-items:center;background:var(--y) repeating-linear-gradient(-45deg,transparent 0 9px,rgba(8,8,8,.12) 9px 11px);outline:1.5px solid #080808;outline-offset:-1px;color:#080808}
+.stk-blank b{font-size:62cqw;line-height:.8;letter-spacing:-.03em}
+.stk-none .stk-n{display:none}
+.slot .stk .stk-blank{flex:1;aspect-ratio:auto;min-height:0}
+
+/* ═════════ the captain: a seal with a C, never a star ═════════ */
+.slot-c{right:-17%;top:-13%;--iz:50%;z-index:3}
+
+/* ═════════ 02 — the twenty-three ═════════ */
+.sq-lab{position:absolute;left:var(--gut);top:calc(6.4*var(--vh));z-index:8}
+.sq-ttl{position:absolute;left:1.2vw;right:1.2vw;top:calc(10*var(--vh));margin:0;color:var(--w);z-index:1}
+.sq-wall{position:absolute;left:50%;top:calc(27*var(--vh));--sw:min(95vw,calc(152*var(--vh)));width:var(--sw);height:calc(70*var(--vh));margin:0 0 0 calc(var(--sw)/-2);padding:0;list-style:none;--su:min(9.6vw,calc(14*var(--vh)));z-index:3;
+  transform:perspective(1700px) rotateX(calc((var(--p,.5) - .5)*-7deg + var(--my,0)*-1.6deg)) rotateY(calc(var(--mx,0)*2.6deg));transition:transform .8s var(--eo)}
+.sq-i{position:absolute;left:calc(var(--ax)*1%);top:calc(var(--ay)*1%);width:var(--su);rotate:var(--rot,0deg);z-index:var(--wz,1);
+  translate:calc(-50% + var(--mx,0)*var(--dz,8)*1px) calc(-50% + var(--my,0)*var(--dz,8)*1px);transition:translate .8s var(--eo)}
+.sq-i:nth-child(3n){--dz:20} .sq-i:nth-child(3n+1){--dz:-8} .sq-i:nth-child(5n+2){--dz:30}
+.sq-i .stk{rotate:none;width:100%;transition:scale .5s var(--eo)}
+.sq-i:hover{z-index:60}
+.sq-i:hover .stk{scale:1.16}
+.sq-club{position:absolute;left:50%;top:calc(100% - 3px);translate:-50% 0;rotate:-3deg;background:var(--y);color:#080808;border:1.5px solid #080808;box-shadow:2px 2px 0 #080808;padding:2px 5px 1px;font-size:8.5px;line-height:1.1;white-space:nowrap;z-index:3}
+.sq-i:nth-child(even) .sq-club{rotate:2.5deg;background:var(--w)}
+.sq-c{right:-24%;top:-15%;--iz:52%;z-index:4}
+.sq-mgr .print{position:relative;display:block;width:108%;margin:0}
+.sq-mgr .print-cap{font-size:15px}
+.sq-s1{right:3vw;top:calc(8*var(--vh));--iz:min(15vw,calc(26*var(--vh)));z-index:70}
+.sq-cap{z-index:40!important}
+
+/* ═════════ 07 — the three awards: a deck of player cards ═════════ */
+.s-aw{color:var(--w)}
+.aw-lab{position:absolute;left:var(--gut);top:calc(6.4*var(--vh));z-index:8}
+/* the metal, edge to edge behind the card: its letters come up one by one when its turn comes */
+.aw-word{position:absolute;left:0;right:0;top:calc(13*var(--vh));text-align:center;font-size:min(46vw,calc(78*var(--vh)));line-height:.78;letter-spacing:-.035em;white-space:nowrap;color:#080808;z-index:1;pointer-events:none;-webkit-mask:var(--worn) 0 0/520px 520px;mask:var(--worn) 0 0/520px 520px;clip-path:inset(-4% -4% -6% -4%)}
+.aw-word span{display:inline-block;transform:translateY(118%) rotate(8deg);transform-origin:0 100%;transition:transform .55s var(--eio) calc(var(--i)*18ms)}
+.aw-word.on span{transform:none;transition:transform 1.05s var(--eo) calc(.12s + var(--i)*46ms)}
+.aw-deck{position:absolute;inset:0;margin:0;padding:0;list-style:none;z-index:3;--cw:min(27vw,calc(41*var(--vh)))}
+.aw-c{position:absolute;left:50%;top:calc(52*var(--vh));width:var(--cw);margin-left:calc(var(--cw)/-2);translate:var(--tx,115vw) calc(-50% + var(--ty,0px));rotate:var(--tr,14deg);scale:var(--ts,1);z-index:var(--tz,1);
+  transition:translate 1.1s var(--eo),rotate 1.1s var(--eo),scale 1.1s var(--eo)}
+.aw-card{position:relative;background:var(--w) var(--tx-paper) 0 0/420px;border:2px solid #080808;box-shadow:14px 16px 0 #080808;padding:9px 9px 0;color:#080808;container-type:inline-size}
+.aw-ph{aspect-ratio:4/5;width:100%;outline:2px solid #080808;outline-offset:-1px}
+.aw-ph .cred{display:none}
+.aw-no{position:absolute;left:0;top:0;z-index:2;background:var(--y);border:2px solid #080808;margin:-2px 0 0 -2px;padding:.1em .2em .02em;font-size:24cqw;line-height:.86}
+.aw-name{display:block;margin:0 -9px;padding:.34em .4em .22em;background:#080808;color:var(--w);font-size:11.5cqw;line-height:.86;white-space:nowrap;font-weight:400}
+.aw-name b{color:var(--y);font-weight:400}
+/* what belongs to the card on top only */
+.aw-obj{left:-28%;top:55%;font-size:calc(var(--cw)*.62);--rot:-9deg;z-index:5;color:var(--y);clip-path:inset(-40% 112% -40% -10%)}
+.aw-what{position:absolute;right:calc(100% + 3.2vw);top:6%;width:min(19vw,260px);text-align:right;display:grid;gap:8px;justify-items:end}
+.aw-what b{font-size:clamp(26px,3.5vw,58px);line-height:.84;background:#080808;color:var(--w);padding:.2em .28em .1em;rotate:-2deg;white-space:nowrap}
+.aw-what span{background:var(--w);color:#080808;border:1.5px solid #080808;padding:5px 8px 4px;max-width:100%}
+.aw-facts{position:absolute;left:calc(100% + 3.6vw);top:10%;display:grid;gap:calc(2.6*var(--vh));margin:0;padding:0;list-style:none}
+.aw-facts li{display:grid;justify-items:start;gap:0}
+.aw-facts li:nth-child(even){margin-left:3vw}
+.aw-facts b{font-size:min(13vw,calc(22*var(--vh)));line-height:.78;letter-spacing:-.03em;color:var(--y);-webkit-text-stroke:.016em #080808;paint-order:stroke fill;text-shadow:.014em .014em 0 #080808,.028em .028em 0 #080808,.042em .042em 0 #080808,.056em .056em 0 #080808,.07em .07em 0 #080808}
+.aw-facts li:nth-child(even) b{color:var(--w)}
+.aw-facts span{background:#080808;color:var(--w);padding:4px 8px 3px;margin-top:10px;rotate:-2deg}
+.aw-what,.aw-facts{opacity:0;transform:translateY(26px);transition:opacity .3s,transform .3s;pointer-events:none}
+/* where each card is, state by state: 1 Hazard · 2 Courtois · 3 Lukaku · 4 the three in a row */
+.s-aw[data-state="1"] .aw-c1,.s-aw[data-state="2"] .aw-c2,.s-aw[data-state="3"] .aw-c3{--tx:0px;--tr:-3deg;--tz:5}
+.s-aw[data-state="2"] .aw-c2{--tr:2.5deg} .s-aw[data-state="3"] .aw-c3{--tr:-2deg}
+.s-aw[data-state="2"] .aw-c1,.s-aw[data-state="3"] .aw-c1{--tx:-37vw;--ty:calc(22*var(--vh));--tr:-11deg;--ts:.44;--tz:2}
+.s-aw[data-state="3"] .aw-c2{--tx:37vw;--ty:calc(22*var(--vh));--tr:10deg;--ts:.44;--tz:2}
+.s-aw[data-state="4"] .aw-c{--ts:.8;--tz:3}
+.s-aw[data-state="4"] .aw-c1{--tx:-30vw;--tr:-5deg;--ty:calc(2*var(--vh))}
+.s-aw[data-state="4"] .aw-c2{--tx:0px;--tr:2deg;--ty:calc(-3*var(--vh));--tz:4}
+.s-aw[data-state="4"] .aw-c3{--tx:30vw;--tr:5deg;--ty:calc(3*var(--vh))}
+.s-aw[data-state="1"] .aw-c1 :is(.aw-what,.aw-facts),.s-aw[data-state="2"] .aw-c2 :is(.aw-what,.aw-facts),.s-aw[data-state="3"] .aw-c3 :is(.aw-what,.aw-facts){opacity:1;transform:none;transition:opacity .5s .45s,transform .9s var(--eo) .45s}
+.s-aw[data-state="1"] .aw-c1 .aw-obj,.s-aw[data-state="2"] .aw-c2 .aw-obj,.s-aw[data-state="3"] .aw-c3 .aw-obj,.s-aw[data-state="4"] .aw-obj{clip-path:inset(-40% -14% -40% -10%);transition:clip-path .9s var(--eio) .5s}
+.aw-s{--iz:min(13vw,calc(22*var(--vh)));z-index:6;visibility:hidden}
+.aw-s.on{visibility:visible;animation:stamp .34s cubic-bezier(.2,.9,.3,1) .7s backwards}
+.aw-s1{left:calc(50% + min(27vw,calc(41*var(--vh)))*.34);top:calc(13*var(--vh))}
+.aw-s2{left:calc(50% - min(27vw,calc(41*var(--vh)))*.86);top:calc(12*var(--vh))}
+.aw-s3{left:calc(50% + min(27vw,calc(41*var(--vh)))*.32);top:calc(14*var(--vh))}
+.aw-hand{position:absolute;left:50%;bottom:calc(4*var(--vh));translate:-50% 0;font-size:clamp(34px,5.6vw,92px);z-index:8;--rot:-4deg}
+.aw-dots{position:absolute;right:var(--gut);bottom:calc(4*var(--vh));display:flex;gap:6px;margin:0;padding:0;list-style:none;z-index:8;font-size:9.5px}
+.aw-dots li{border:1.5px solid #080808;background:var(--w);color:#080808;padding:4px 7px 3px;transition:background-color .3s,color .3s}
+.aw-dots li.on{background:#080808;color:var(--y)}
+
+/* ═════════ 01 — the cover of the folded newspaper: what you read before you open it ═════════ */
+.fp-tl{container-type:size}
+.fp-cover{position:absolute;inset:0;z-index:4;background:var(--w) var(--tx-paper) 0 0/420px;color:#080808;padding:4.5cqh 4cqw 4cqh;display:grid;grid-template-rows:auto 1fr auto;transform:scaleX(calc(1 - var(--t,0)));transform-origin:100% 50%;overflow:hidden}
+.fp-cover::after{content:"";position:absolute;inset:0;background:#080808;opacity:calc(var(--t,0)*.55);pointer-events:none}
+.fpc-top,.fpc-bot{display:flex;justify-content:space-between;gap:10px;font-size:clamp(7.5px,2.5cqh,12px);white-space:nowrap}
+.fpc-top{border-bottom:3px double #080808;padding-bottom:1.2cqh}
+.fpc-bot{border-top:1.5px solid #080808;padding-top:1.4cqh}
+.fpc-mid{position:relative;align-self:center}
+.fpc-h{display:block;font-size:min(34cqw,56cqh);line-height:.8;letter-spacing:-.03em;white-space:nowrap;margin-left:-.02em;-webkit-mask:var(--worn) 0 0/420px 420px;mask:var(--worn) 0 0/420px 420px}
+.fpc-y{position:absolute;right:1%;top:-14%;font-size:min(9cqw,17cqh);line-height:.8;background:var(--r);color:var(--w);border:2px solid #080808;box-shadow:.09em .1em 0 #080808;padding:.12em .2em .04em;rotate:-5deg}
+.fpc-s{position:absolute;left:-1%;top:70%;font:400 min(13cqw,21cqh)/1 var(--script);white-space:nowrap;color:var(--y);-webkit-text-stroke:.05em #080808;paint-order:stroke fill;text-shadow:.03em .045em 0 #080808;rotate:-6deg;padding:0 .2em}
+
+/* ═════════ statements: set on black bars, one bar per line — no more cut-out words ═════════ */
+.m-cut{position:absolute;margin:0;font-family:var(--display);font-weight:400;line-height:1.24;font-size-adjust:var(--dcap);font-synthesis:none;text-transform:uppercase;letter-spacing:-.005em;rotate:var(--rot,-1.5deg);z-index:5}
+.m-cut span{background:#080808;color:var(--w);padding:.1em .3em .02em;-webkit-box-decoration-break:clone;box-decoration-break:clone;box-shadow:.14em .16em 0 var(--bar2,var(--y))}
+.m-cut em{font-style:normal;color:var(--y)}
+.bg-y .m-cut span{--bar2:var(--r)}
+.bg-r .m-cut span{--bar2:var(--y)}
+
+/* ═════════ 06 — France: the last slip of the pile ═════════ */
+.fr-t3{--qx:36;--qy:50;--qw:27;z-index:7!important}
+
+/* ═════════ small screens ═════════ */
+@media (max-width:820px){
+  .sq-ttl{top:calc(11*var(--vh))}
+  .sq-wall{top:calc(20.5*var(--vh));height:calc(75*var(--vh));--sw:92vw;--su:min(18vw,calc(8.3*var(--vh)))}
+  .sq-i{left:calc(var(--bx)*1%);top:calc(var(--by)*1%);translate:-50% -50%}
+  .sq-club{display:none}
+  .sq-mgr .print-cap{font-size:11px}
+  .sq-s1{right:2vw;top:calc(4.2*var(--vh));--iz:21vw}
+  .aw-word{top:calc(11*var(--vh));font-size:41vw}
+  .aw-deck{--cw:min(58vw,calc(36*var(--vh)))}
+  .aw-c{top:calc(47*var(--vh))}
+  .aw-card{box-shadow:9px 11px 0 #080808;padding:6px 6px 0}
+  .aw-name{margin:0 -6px}
+  .aw-what{right:auto;left:-14%;top:auto;bottom:calc(100% + 10px);width:128%;text-align:left;justify-items:start;grid-template-columns:auto 1fr;align-items:center;display:none}
+  .aw-facts{left:-12%;right:-12%;top:calc(100% + 14px);grid-auto-flow:column;justify-content:space-between;gap:4vw}
+  .aw-facts li:nth-child(even){margin-left:0}
+  .aw-facts b{font-size:21vw}
+  .aw-facts span{font-size:9.5px;margin-top:6px}
+  .s-aw[data-state="2"] .aw-c1,.s-aw[data-state="3"] .aw-c1{--tx:-31vw;--ty:calc(-29*var(--vh));--ts:.36}
+  .s-aw[data-state="3"] .aw-c2{--tx:31vw;--ty:calc(-29*var(--vh));--ts:.36}
+  .s-aw[data-state="4"] .aw-c{--ts:.5}
+  .s-aw[data-state="4"] .aw-c1{--tx:-30vw} .s-aw[data-state="4"] .aw-c3{--tx:30vw}
+  .aw-s{--iz:26vw}
+  .aw-s1,.aw-s3{left:auto;right:3vw;top:calc(25*var(--vh))}
+  .aw-s2{left:3vw;top:calc(25*var(--vh))}
+  .aw-hand{font-size:9.5vw;bottom:calc(19*var(--vh))}
+  .aw-dots{left:var(--gut);right:auto;bottom:calc(2.4*var(--vh));font-size:8.5px}
+  .fpc-s{top:27%;z-index:2}
+  .fpc-y{position:relative;right:auto;top:auto;display:block;width:max-content;font-size:25cqw;margin:15cqw 0 0 2cqw}
+  .rm .aw-facts{position:relative;left:auto;right:auto;top:auto;margin-top:16px}
+  .fr-t3{--qx:22;--qy:48;--qw:75;--sz:3.5}
+}
+
+/* ═════════ reduced motion: every award shown at once, as a list ═════════ */
+.rm .s-aw .pin{height:auto;min-height:calc(100*var(--vh));padding:calc(16*var(--vh)) var(--gut) calc(8*var(--vh))}
+.rm .aw-word,.rm .aw-s,.rm .aw-dots{display:none}
+.rm .aw-deck{position:relative;inset:auto;display:grid;gap:calc(10*var(--vh));justify-items:center}
+.rm .aw-c{position:relative;left:auto;top:auto;margin:0;translate:none;rotate:none;scale:1;transition:none}
+.rm .aw-what,.rm .aw-facts{opacity:1;transform:none;transition:none}
+.rm .aw-obj{clip-path:none}
+.rm .aw-hand{position:relative;left:auto;bottom:auto;translate:none;display:block;width:max-content;margin:calc(6*var(--vh)) auto 0}
+.rm .fp-cover{display:none}
+.rm .sq-wall{transform:none}
