@@ -1,5 +1,5 @@
 ---
-/* A word that is an event: every letter its own size, tilt and typeface, printed in three inks that do not line up.
+/* A word that is an event: the display face, every letter with its own tilt.
    With data-t the letters fly in with the scroll, each from its own side; with data-in / data-at they land once.
    `ghost` repeats the word behind itself, offset — a second and third pass of the same screen. */
 import { rng } from '../../lib/rng';
@@ -16,15 +16,13 @@ interface Props {
 const { text, seed = 1, ghost = 0, class: cls, style = '', ...rest } = Astro.props;
 const q = rng(seed * 331 + 7);
 const chars = Array.from(text);
-const letters = chars.map((c, i) => {
-  const face = c === ' ' ? 0 : Math.floor(q() * 4);
-  return {
-    c, face,
-    style: `--i:${i};--sx:${(.82 + q() * .5).toFixed(2)};--sy:${(.84 + q() * .62).toFixed(2)};--rz:${((q() - .5) * 16).toFixed(1)}deg;--dy:${((q() - .5) * .16).toFixed(3)}em;--fx:${Math.round((q() - .5) * 150)}vw;--fy:${Math.round((q() - .5) * 130)}vh;--spin:${Math.round((q() - .5) * 150)}deg`,
-  };
-});
+// one face, one size: only the tilt and the baseline change from letter to letter
+const letters = chars.map((c, i) => ({
+  c,
+  style: `--i:${i};--rz:${((q() - .5) * 7).toFixed(1)}deg;--dy:${((q() - .5) * .1).toFixed(3)}em;--fx:${Math.round((q() - .5) * 150)}vw;--fy:${Math.round((q() - .5) * 130)}vh;--spin:${Math.round((q() - .5) * 150)}deg`,
+}));
 ---
 <div class:list={['shout', cls]} role="img" aria-label={text} style={`--n:${chars.length};${style}`} {...pass(rest)}>
   {Array.from({ length: ghost }, (_, g) => <span class="sh-g" aria-hidden="true" style={`--g:${g + 1}`}>{text}</span>)}
-  <span class="sh-w" aria-hidden="true">{letters.map((l) => l.c === ' ' ? <span class="sh-sp"> </span> : <span class:list={['sh-l', `sf${l.face}`]} style={l.style}>{l.c}</span>)}</span>
+  <span class="sh-w" aria-hidden="true">{letters.map((l) => l.c === ' ' ? <span class="sh-sp"> </span> : <span class="sh-l" style={l.style}>{l.c}</span>)}</span>
 </div>

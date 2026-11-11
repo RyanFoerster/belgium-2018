@@ -117,11 +117,8 @@ body::after{content:none}
 .sh-sp{display:inline-block;width:.24em}
 .sh-l{display:inline-block;transform-origin:50% 78%;margin:0 -.014em;translate:0 var(--dy,0em);text-transform:uppercase;-webkit-text-stroke:.03em #080808;paint-order:stroke fill;
   text-shadow:.036em .03em 0 var(--mr1,var(--r)),-.022em -.018em 0 #fff,.08em .085em 0 #080808;
-  transform:translate(calc((1 - var(--q))*var(--fx)),calc((1 - var(--q))*var(--fy))) rotate(calc(var(--rz) + (1 - var(--q))*var(--spin))) scale(calc(var(--sx)*(1 + (1 - var(--q))*1.5)),calc(var(--sy)*(1 + (1 - var(--q))*1.5)));opacity:clamp(0,calc(var(--q)*9),1)}
-.sf0{font-family:var(--display);font-size-adjust:var(--dcap);font-synthesis:none}
-.sf1{font-family:var(--sans);font-weight:900;font-stretch:125%;font-size:.74em}
-.sf2{font-family:var(--serif);font-weight:900;font-style:italic;font-size:.84em}
-.sf3{font-family:var(--hand);font-size:.8em}
+  transform:translate(calc((1 - var(--q))*var(--fx)),calc((1 - var(--q))*var(--fy))) rotate(calc(var(--rz) + (1 - var(--q))*var(--spin))) scale(calc(1 + (1 - var(--q))*1.5));opacity:clamp(0,calc(var(--q)*9),1);
+  font-family:var(--display);font-size-adjust:var(--dcap);font-synthesis:none}
 .sh-l:nth-child(3n+2){color:var(--sh2,var(--w))}
 .sh-l:nth-child(5n+4){color:var(--sh3,var(--r));--mr1:var(--y)}
 .shout[data-t] .sh-l{--q:clamp(0,calc(var(--t,0)*(1 + (var(--n) - 1)*.13) - var(--i)*.13),1)}

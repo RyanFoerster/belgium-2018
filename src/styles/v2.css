@@ -66,9 +66,8 @@
 .rm .hero-art *,.rm .hero-ui{animation:none!important}
 
 /* ═════════ things keep moving ═════════ */
-/* a sticker is never quite still while its section is on screen (its own pace and phase: --fd/--md, scripts/objects/stickers.js) */
-.vis .il > svg{animation:ilidle var(--fd,7s) ease-in-out calc(var(--md,0)*-.12s) infinite alternate}
-@keyframes ilidle{from{transform:rotate(-2.4deg) translateY(1.5%)}to{transform:rotate(2.8deg) translateY(-3%)}}
+/* a sticker moves like the hero's stars while its section is on screen: same turn and swell (hwob), 2.2s to 3.2s, each at its own phase (--md, scripts/objects/stickers.js) */
+.vis .il > svg{animation:hwob calc(2.7s + var(--md,0)*.025s) ease-in-out calc(var(--md,0)*-.12s) infinite}
 @keyframes objidle{from{rotate:calc(var(--rot,0deg) - 1.6deg)}to{rotate:calc(var(--rot,0deg) + 2.2deg)}}
 .rm .il > svg{animation:none}
 /* .py: an object drifts up or down with its scene's progress (--py, in vh over the whole scene) and is in its place at --pz */
