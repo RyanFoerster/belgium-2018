@@ -103,7 +103,11 @@ export function createEngine() {
       c.top = c.nx.getBoundingClientRect().top + y; c.o = Math.max(0, -parseFloat(getComputedStyle(c.nx).marginTop) || 0); c.last = c.lastL = -1;
       // the sheet underneath is let go by the scroll when the next one has this much of the screen left to climb
       c.rel = Math.max(.3, 1 - c.o / vh);
-      if (!c.pin) { var ph = c.pv.offsetHeight; c.lag = ph > vh * 1.2 && ph < vh * 2.6 ? c.pv : null; }
+      if (!c.pin) {
+        var ph = c.pv.offsetHeight, lag = ph > vh * 1.2 && ph < vh * 2.6 ? c.pv : null;
+        if (c.lag && !lag) c.lag.style.transform = ''; // no longer held back: it must not keep its last offset
+        c.lag = lag;
+      }
     });
     tilts = RM ? [] : $$('.clg').filter(function (n) { return !n.closest('[data-scene]'); }).map(function (n) { var r = n.getBoundingClientRect(); return { el: n, kids: [].slice.call(n.children), mid: r.top + y + r.height / 2, last: 9 }; });
   }

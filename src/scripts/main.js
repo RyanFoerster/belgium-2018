@@ -44,8 +44,10 @@ setupGroupStage(engine);
 var diagrams = setupDiagrams(engine), Board = diagrams.Board, replays = diagrams.replays;
 
 /* ── the way round the page: chapter index, rail, stubs, replay controls, things that answer when touched ── */
-setupNav(engine, replays);
-setupInteract(engine);
+// extras: if one of them throws, the page is still laid out and the loader still lets it go
+function opt(fn) { try { return fn(); } catch (e) { console.error(e); } }
+opt(function () { setupNav(engine, replays); });
+opt(function () { setupInteract(engine); });
 
 /* ── layout: everything that depends on sizes, redone when they change ── */
 var lastW = window.innerWidth, lastO = Board ? Board.Replay.orient() : 'h';
@@ -72,6 +74,6 @@ window.addEventListener('load', layout);
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
 
 /* ── pointer, wheel, and the press that releases the page ── */
-setupCursor();
-setupHero();
-runLoader(statics, setupGlide());
+opt(setupCursor);
+opt(setupHero);
+runLoader(statics, opt(setupGlide));

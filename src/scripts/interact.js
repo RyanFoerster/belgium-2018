@@ -49,7 +49,9 @@ export function setupInteract(engine) {
     s.dataset.cur = 'peel';
     var f = function () { var on = s.classList.toggle('peeled'); s.dataset.cur = on ? 'stick' : 'peel'; };
     s.addEventListener('click', f);
-    button(s, 'Sticker — peel it back', f);
+    // a button has to be announced: the sticker is decoration everywhere else, not here
+    s.removeAttribute('aria-hidden');
+    button(s, [s.dataset.a, s.dataset.b].filter(Boolean).join(' ') + ' sticker. Under it: ' + d.join(', '), f);
   });
 
   /* ── prints are picked up ── */
