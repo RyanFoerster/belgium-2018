@@ -1,0 +1,257 @@
+/* ══════════════════════════════════════════════════════════
+   FOURTH LAYER — the wall becomes the whole art direction
+   loader · full-width headlines with a handwritten note · typographic stickers
+   cut-paper prints · central collages · coloured grounds · crossing strips
+   Custom properties never reuse the colour token names (--k --w --y --r).
+   ══════════════════════════════════════════════════════════ */
+:root{--note:var(--script);--core:#d8d5cc}
+
+/* (the loader now lives in ink.css) */
+
+/* ═════════ headlines: edge to edge, solid, with a small handwritten word across them ═════════ */
+.ttl{position:relative;display:block;margin:calc(3*var(--vh)) calc(1.2vw - var(--gut)) 0;z-index:3}
+.ttl-l{position:relative;display:block;width:max-content;font:900 var(--fz,17vw)/.79 var(--sans);font-stretch:62%;text-transform:uppercase;letter-spacing:-.034em;white-space:nowrap}
+.ttl-s{position:relative;display:block;width:max-content;font:400 var(--nz,6vw)/.8 var(--note);text-transform:uppercase;letter-spacing:.03em;color:var(--y);margin:calc(var(--nz,6vw)*-.62) 0 calc(var(--nz,6vw)*-.18) var(--nx,24%);rotate:var(--rot,-2deg);z-index:4;filter:blur(.45px);pointer-events:none}
+.ttl-s.c-r{color:var(--r)} .ttl-s.c-w{color:var(--w)}
+.ttl-l.in,.ttl-l.on{animation:none}
+.ttl-s.in,.ttl-s.on{animation:scrawl .5s steps(8) calc(var(--d,0s) + .5s) backwards}
+.ttl-l .tc{display:inline-block;white-space:pre}
+/* 1 · sliced in three bands that arrive from opposite sides */
+.ttl-l .sl0{visibility:hidden}
+.ttl-l .sl{position:absolute;left:0;top:0;transform:translateX(var(--sx,-112vw)) skewX(-16deg)}
+.ttl-l .sl:nth-child(2){clip-path:inset(-20% -6% 66.4% -6%)}
+.ttl-l .sl:nth-child(3){clip-path:inset(33.3% -6% 33% -6%);--sx:112vw}
+.ttl-l .sl:nth-child(4){clip-path:inset(66.7% -6% -20% -6%)}
+.ttl-l.in .sl,.ttl-l.on .sl{transform:none;transition:transform .62s cubic-bezier(.2,.9,.2,1) calc(var(--d,0s) + var(--i)*95ms)}
+/* 2 · letters pushed up through the baseline */
+.ttl-l[data-fx="rise"]{clip-path:inset(-25% -4% -3% -4%)}
+.ttl-l[data-fx="rise"] .tc{transform:translateY(110%) rotate(7deg)}
+.ttl-l[data-fx="rise"].in .tc,.ttl-l[data-fx="rise"].on .tc{transform:none;transition:transform .5s cubic-bezier(.2,1.3,.3,1) calc(var(--d,0s) + var(--i)*26ms)}
+/* 3 · a departure board: each letter flips up on its own */
+.ttl-l[data-fx="flip"] .tc{transform:scaleY(0);transform-origin:50% 100%}
+.ttl-l[data-fx="flip"].in .tc,.ttl-l[data-fx="flip"].on .tc{transform:none;transition:transform .3s cubic-bezier(.2,1.7,.3,1) calc(var(--d,0s) + var(--i)*36ms)}
+
+/* ═════════ arrivals: pasted, cut, turned over, unrolled ═════════ */
+.fx-paste.in,.fx-paste.on{animation:paste .44s cubic-bezier(.2,.9,.3,1) var(--d,0s) backwards}
+@keyframes paste{0%{opacity:0;transform:translate(var(--pdx,-16px),-38px) rotate(var(--pdr,-9deg)) scale(1.3)}28%{opacity:1}60%{transform:rotate(1.4deg) scale(.972)}82%{transform:scale(1.012)}100%{transform:none}}
+.fx-cut.in,.fx-cut.on{animation:cutin .5s steps(6) var(--d,0s) backwards}
+@keyframes cutin{0%{clip-path:polygon(-12% -25%,-12% -25%,-34% 125%,-34% 125%);transform:translateX(-10px)}100%{clip-path:polygon(-12% -25%,136% -25%,114% 125%,-34% 125%);transform:none}}
+.fx-flip.in,.fx-flip.on{animation:flipin .62s cubic-bezier(.3,.8,.3,1) var(--d,0s) backwards;transform-origin:0 50%}
+@keyframes flipin{0%{opacity:0;transform:perspective(900px) rotateY(-88deg)}10%{opacity:1}58%{transform:perspective(900px) rotateY(15deg)}80%{transform:perspective(900px) rotateY(-5deg)}100%{transform:none}}
+.fx-unroll.in,.fx-unroll.on{animation:unroll .56s steps(7) var(--d,0s) backwards}
+@keyframes unroll{0%{clip-path:inset(-10% -10% 108% -10%);transform:skewX(-5deg)}55%{transform:skewX(2.4deg)}100%{clip-path:inset(-25% -25% -25% -25%);transform:none}}
+/* a print lands as blank paper, then the picture comes through band by band */
+.print.in .ph-i,.print.on .ph-i{animation:develop .52s steps(5) calc(var(--d,0s) + .32s) backwards}
+@keyframes develop{0%{clip-path:inset(0 0 100% 0);filter:contrast(2.6) brightness(1.5)}55%{filter:contrast(1.7) brightness(1.2)}100%{clip-path:inset(0 0 0 0);filter:none}}
+
+/* ═════════ photographs cut out by hand: the white margin is never square ═════════ */
+.print:not(.wi){background:none;box-shadow:none;isolation:isolate;filter:drop-shadow(0 2px 1px rgba(0,0,0,.32)) drop-shadow(0 13px 10px rgba(0,0,0,.4))}
+.print:not(.wi)::before{content:"";position:absolute;inset:-9px;z-index:-1;background:var(--w) var(--tx-paper) 0 0/420px;clip-path:var(--cut)}
+.print.stack:not(.wi)::after{content:"";position:absolute;inset:-7px;z-index:-2;background:var(--core);rotate:3.4deg;clip-path:var(--cut)}
+/* a strip of the photograph left in colour, torn and glued back on */
+.ph-c,.ph-cr{position:absolute;inset:0;z-index:1;clip-path:var(--tear);pointer-events:none}
+.ph-cr{background:var(--w);clip-path:var(--tear2)}
+.ph .ph-c img{filter:saturate(1.15) contrast(1.06);mix-blend-mode:normal}
+
+/* ═════════ central collages: one pile in the middle, everything measured from it ═════════ */
+.clg{position:relative;container-type:inline-size;width:min(94vw,calc(var(--cmax,150)*var(--vh)));aspect-ratio:var(--ca,16/10);margin:calc(5*var(--vh)) auto 0;z-index:2}
+.clg > *{position:absolute!important;left:calc(var(--qx,0)*1%)!important;top:calc(var(--qy,0)*1%)!important;right:auto!important;bottom:auto!important;margin:0!important}
+.clg > .print,.clg > .slip,.clg > .cutting,.clg > .disc,.clg > .fb,.clg > .scr{width:calc(var(--qw,20)*1cqw)}
+.clg > .il{--iz:calc(var(--qw,12)*1cqw)}
+.clg > .tkt{font-size:calc(var(--tz,.85)*1cqw)}
+.clg > .hand{font-size:calc(var(--hz,4)*1cqw);z-index:6}
+.clg > .stamp{font-size:calc(var(--hz,2.4)*1cqw)}
+.clg > .flag{--fz:calc(var(--qw,9)*1cqw)}
+.clg > .sc{gap:1cqw;z-index:4}
+.clg > .sc .cutn{font-size:calc(var(--h,12)*1cqw)}
+.clg > .slip{font-size:calc(var(--sz,1.3)*1cqw);line-height:1.38;padding:1.2em 1.3em .95em;z-index:5}
+.clg > .cutting{z-index:5;padding:1.3cqw 1.4cqw 1.1cqw}
+.clg > .cutting p{font-size:max(13px,calc(var(--sz,1.22)*1cqw))}
+.clg > .print{z-index:3}
+.disc{aspect-ratio:1;border-radius:49% 51% 50% 50%/51% 49% 52% 48%;background-image:var(--tx-paper);background-size:420px 420px;z-index:1}
+.disc.bg-k{background-image:var(--tx-dust)}
+.disc.dk{background-color:#b81f25}
+/* a name torn out of a programme */
+.lbl{display:block;width:max-content;clip-path:none;isolation:isolate;color:var(--k);padding:.42em .6em .26em;font:900 calc(var(--lz,3.4)*1cqw)/.82 var(--sans);font-stretch:62%;text-transform:uppercase;letter-spacing:-.015em;rotate:var(--rot,-3deg);filter:drop-shadow(0 6px 5px rgba(0,0,0,.4));z-index:6}
+.lbl::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--w) var(--tx-paper) 0 0/420px;clip-path:var(--torn)}
+.lbl b{display:block;color:var(--r);font-size:1.55em;line-height:.8}
+.lbl small{display:block;font:800 .25em/1.3 var(--sans);font-stretch:125%;letter-spacing:.09em;margin-bottom:.55em}
+
+/* 02 — the manager, on yellow */
+.s-open{padding-bottom:calc(16*var(--vh))}
+.oc-disc{--qx:29;--qy:3;--qw:43}
+.oc-a{--qx:27;--qy:13;--qw:45}
+.oc-l{--qx:5;--qy:1}
+.oc-b{--qx:67;--qy:52;--qw:27;z-index:4!important}
+.oc-f{--qx:71;--qy:5;--qw:25;display:grid;grid-template-columns:1fr 1fr;gap:.8em 1.1em}
+.oc-f dt{font-size:.66em;line-height:1.25}
+.oc-f dd{font:900 1.9em/.9 var(--sans);font-stretch:62%;letter-spacing:0;margin-top:.22em}
+.oc-t1{--qx:0;--qy:40;--qw:28}
+.oc-t2{--qx:31;--qy:78;--qw:34}
+.oc-s1{--qx:4;--qy:84;--qw:17}
+.oc-s2{--qx:88;--qy:41;--qw:11}
+.oc-s3{--qx:56;--qy:0;--qw:9}
+.oc-h{--qx:9;--qy:26;--hz:4.6;--rot:-7deg}
+.oc-arr{--qx:20;--qy:32;--qw:9;aspect-ratio:200/90;stroke-width:6;z-index:6;--rot:14deg}
+
+/* 06 — France: one pile on the table, added to as the night goes on */
+.s-fra .pin{background:var(--k) var(--tx-dust) 0 0/420px}
+.fra-lab{position:absolute;left:var(--gut);top:calc(6.4*var(--vh));z-index:8}
+.fra-ttl{position:absolute;left:1.2vw;right:1.2vw;top:calc(9.6*var(--vh));margin:0;color:var(--w);z-index:1}
+.fra-clg{position:absolute;left:50%;top:calc(25*var(--vh));--fcw:min(96vw,calc(128*var(--vh)));width:var(--fcw);margin:0 0 0 calc(var(--fcw)/-2);--ca:16/9}
+.fb{height:calc(var(--h,90)*1%);background:var(--fra) var(--tx-paper) 0 0/420px;rotate:var(--rot,0deg);z-index:1}
+.fb1{--qx:27;--qy:3;--qw:16.5;--h:92;--rot:-2deg}
+.fb2{--qx:42;--qy:0;--qw:16.5;--h:97;--rot:1deg;background-color:var(--w)}
+.fb3{--qx:57;--qy:4;--qw:16.5;--h:90;--rot:2.5deg;background-color:var(--fra2)}
+.fr-p1{--qx:1;--qy:5;--qw:27}
+.fr-tk{--qx:1;--qy:80;--tz:.76}
+.fr-p2{--qx:30;--qy:12;--qw:40}
+.fr-t1{--qx:2;--qy:43;--qw:25}
+.fr-p3{--qx:72;--qy:1;--qw:25}
+.fr-51{--qx:70;--qy:37;--h:11}
+.fr-p4{--qx:79;--qy:55;--qw:19}
+.fr-t2{--qx:59;--qy:76;--qw:28}
+.fr-um{--qx:46;--qy:68;--qw:13;z-index:6}
+.fr-sc{--qx:27;--qy:67;--h:13;z-index:6!important}
+.fr-p5{--qx:13;--qy:61;--qw:17;z-index:4!important}
+.fr-hand{--qx:35;--qy:89;--hz:4.8;--rot:-4deg}
+.fr-st{--qx:86;--qy:85;--hz:2.1;--sc:var(--w);background:var(--r)}
+/* "So close." — the same weight as every other headline, pulled apart by the tear */
+.close-h{font-weight:900;font-stretch:62%;letter-spacing:-.034em;font-size:min(22vw,calc(44*var(--vh)));line-height:.8}
+.close-h span:first-child{transform:translateX(calc(var(--t)*-7vw)) rotate(calc(var(--t)*-2deg))}
+.close-h span:last-child{transform:translateX(calc(var(--t)*7vw)) rotate(calc(var(--t)*1.5deg))}
+.close-note{position:absolute;left:50%;top:calc(50% + min(3.4vw,calc(7*var(--vh))));margin:0;translate:-50% 0;--nz:min(7vw,calc(13*var(--vh)));color:var(--r);clip-path:inset(-30% calc((1 - var(--t))*112%) -30% -10%);z-index:4}
+
+/* 07 — third place: the stadium in the middle, the medals on top */
+.s-third{min-height:0;padding-bottom:calc(20*var(--vh))}
+.third-clg{--ca:16/11}
+.th-disc{--qx:27;--qy:2;--qw:46}
+.th-p1{--qx:23;--qy:12;--qw:54}
+.th-sc{--qx:1;--qy:0;--h:15}
+.th-flag{--qx:88;--qy:4;--qw:9;--rot:8deg;z-index:4}
+.th-p2{--qx:5;--qy:37;--qw:19;z-index:4!important}
+.th-p3{--qx:77;--qy:41;--qw:19;z-index:4!important}
+.th-goals{--qx:29;--qy:67;width:max-content!important;padding:1cqw 1.5cqw .7cqw;z-index:6!important}
+.th-goals b{font-size:2.6cqw}
+.th-tk{--qx:57;--qy:72;--tz:.82;z-index:5}
+.th-txt{--qx:1;--qy:82;--qw:27}
+.th-hand{--qx:44;--qy:60;--hz:3.6;--rot:-4deg}
+.th-s1{--qx:83;--qy:82;--qw:15}
+.th-s2{--qx:47;--qy:88;--qw:5}
+
+/* ═════════ typographic stickers: flat colour, fat cream die-cut, type inside a shape ═════════ */
+.il{--c1:var(--r);--c2:var(--k);--c3:var(--y);--cf:#F5F3EE;aspect-ratio:auto;filter:drop-shadow(1px 3px 0 rgba(0,0,0,.26)) drop-shadow(0 9px 7px rgba(0,0,0,.34))}
+.il.y{--c1:var(--y);--c2:var(--k);--cf:#080808}
+.il.k{--c1:var(--k);--c2:var(--r);--cf:#F5F3EE}
+.il.o{--c1:var(--opp);--c2:var(--opp2,var(--k));--cf:#F5F3EE}
+.bd-cut{fill:#F5F3EE;stroke:#F5F3EE;stroke-width:10;stroke-linejoin:round}
+.bd-in{filter:url(#print)}
+.b1{fill:var(--c1)} .b2{fill:var(--c2)} .bw{fill:#F5F3EE} .bk{fill:#080808} .by{fill:#F7D417} .br{fill:#E52B32}
+.bo{fill:none;stroke:#F5F3EE;stroke-width:1.5}
+.bf{fill:none;stroke:var(--c1);stroke-width:4}
+.bf2{fill:none;stroke:var(--c1);stroke-width:2.4}
+.bt{font-family:var(--sans);text-anchor:middle;text-transform:uppercase}
+.bt.a{font-weight:900;font-stretch:62%;letter-spacing:-.01em}
+.bt.s{font-weight:800;font-stretch:125%;letter-spacing:.07em}
+.bt.f{fill:var(--cf)} .bt.k{fill:#080808} .bt.c{fill:var(--c1)}
+.bt.cutt{fill:#F5F3EE;stroke:#F5F3EE;stroke-width:10;stroke-linejoin:round}
+.bt.b2s{fill:var(--c2);stroke:var(--c2);stroke-width:1.3;stroke-linejoin:round}
+.chap{--iz:58px}
+.rp-il{--iz:min(30vw,calc(50*var(--vh)));top:calc(13*var(--vh))}
+.rp-il2{--iz:min(5vw,calc(9*var(--vh)))}
+.rp-c1{--iz:min(8vw,calc(13*var(--vh)))}
+.rp-c2{--iz:min(8vw,calc(13*var(--vh)))}
+.strip-row .il{--iz:16vw}
+.sheet-row{--rw:236vw}
+.sheet-row .il{--iz:19vw} .sheet-row .il:nth-child(3n){--iz:23vw}
+.sheet-row .il[data-il="bars"]{--iz:7vw} .sheet-row .il[data-il="jersey"],.sheet-row .il[data-il="flag"],.sheet-row .il[data-il="rnd"]{--iz:13vw}
+
+/* ═════════ coloured grounds ═════════ */
+.bg-y.paper::before,.bg-r.paper::before{opacity:.5}
+.strip-word{color:var(--k)}
+.s-strip .lab{opacity:1}
+.sheet-word{color:var(--k)}
+.sheet-scr{color:var(--r)}
+.g9 .nine-dl{border-top-color:currentColor}
+.plan-score{border-top-color:currentColor}
+.plan-ttl{margin-right:36vw}
+.s-plan .sheet-w{top:calc(13*var(--vh))}
+.s-zero,.s-tot{grid-template-columns:minmax(0,1fr)}
+.s-zero .ttl{margin-bottom:calc(2*var(--vh))}
+.s-tot .ttl{margin-bottom:calc(-2*var(--vh))}
+
+/* ═════════ between chapters ═════════ */
+/* the torn edge now has a paper core that slides out from under it */
+.rip{height:calc(6*var(--vh))}
+.rip-w{height:calc(6*var(--vh) + 20px);background:var(--core) var(--tx-paper) 0 0/420px;z-index:3}
+/* strips of tape crossing the join in opposite directions */
+.xf{position:relative;z-index:7;height:0;pointer-events:none}
+.xf-s{position:absolute;left:-80vw;width:260vw;top:var(--ty,-6vh);rotate:var(--rot,-2deg);display:flex;overflow:hidden;white-space:nowrap;padding:.15em 0 .07em;font:900 var(--xs,5.2vw)/.9 var(--sans);font-stretch:62%;text-transform:uppercase;letter-spacing:-.012em;background-image:var(--tx-paper);background-size:420px 420px}
+.xf-s span{flex:none;padding-right:.34em}
+.xf-s.bg-w{background-color:var(--w);color:var(--k)}
+.xf-c{--cs:2.4vw;height:calc(var(--cs)*2);padding:0;background:conic-gradient(var(--k) 25%,var(--w) 0 50%,var(--k) 0 75%,var(--w) 0) 0 0/calc(var(--cs)*2) calc(var(--cs)*2)}
+.xf-c.r{background-image:conic-gradient(var(--r) 25%,var(--w) 0 50%,var(--r) 0 75%,var(--w) 0)}
+
+/* ═════════ small screens ═════════ */
+@media (max-width:820px){
+  .xf-s{--xs:9vw}
+  .xf-c{--cs:4.4vw}
+  .plan-ttl{margin-right:calc(1.2vw - var(--gut))}
+  .chap{--iz:44px}
+  .strip-row .il{--iz:34vw}
+  .sheet-row{--rw:400vw}
+  .sheet-row .il{--iz:30vw} .sheet-row .il:nth-child(3n){--iz:36vw}
+  .sheet-row .il[data-il="bars"]{--iz:12vw} .sheet-row .il[data-il="jersey"],.sheet-row .il[data-il="flag"],.sheet-row .il[data-il="rnd"]{--iz:22vw}
+  .rp-il{--iz:62vw;right:6vw;top:calc(36*var(--vh))}
+  .rp-il2{--iz:9vw}
+
+  .open-clg{--ca:10/25}
+  .oc-disc{--qx:8;--qy:2;--qw:84}
+  .oc-a{--qx:5;--qy:5;--qw:90}
+  .oc-l{--qx:1;--qy:0;--lz:9}
+  .oc-h,.oc-arr{display:none}
+  .oc-b{--qx:2;--qy:35;--qw:52}
+  .oc-f{--qx:40;--qy:44;--qw:58;--sz:3}
+  .oc-t1{--qx:1;--qy:58;--qw:84}
+  .oc-t2{--qx:13;--qy:80;--qw:85}
+  .oc-s1{--qx:54;--qy:31;--qw:38}
+  .oc-s2{--qx:2;--qy:51;--qw:28}
+  .oc-s3{--qx:70;--qy:1;--qw:22}
+
+  .fra-lab{font-size:8.5px;right:var(--gut)}
+  .fra-ttl{top:calc(11*var(--vh))}
+  .fra-clg{top:calc(21*var(--vh));--fcw:96vw;--ca:10/17}
+  .fb1{--qx:10;--qy:6;--qw:28;--h:78} .fb2{--qx:36;--qy:4;--qw:28;--h:82} .fb3{--qx:62;--qy:7;--qw:28;--h:76}
+  .fr-p1,.fr-p4,.fr-p5{display:none}
+  .fr-tk{--qx:2;--qy:0;--tz:1.85}
+  .fr-p2{--qx:7;--qy:12;--qw:86}
+  .fr-t1{--qx:2;--qy:47;--qw:68;--sz:3.5}
+  .fr-p3{--qx:50;--qy:58;--qw:48}
+  .fr-51{--qx:4;--qy:63;--h:22}
+  .fr-t2{--qx:22;--qy:76;--qw:75;--sz:3.5}
+  .fr-um{--qx:1;--qy:77;--qw:25}
+  .fr-sc{--qx:8;--qy:87;--h:19}
+  .fr-hand{--qx:46;--qy:93;--hz:9}
+  .fr-st{--qx:58;--qy:1;--hz:4.4}
+  .close-h{font-size:33vw;letter-spacing:-.034em;line-height:.8}
+  .close-note{top:calc(50% + 24vw);--nz:13vw}
+
+  .third-clg{--ca:10/21;margin-bottom:46vw}
+  .th-disc{--qx:8;--qy:3;--qw:84}
+  .th-sc{--qx:2;--qy:0;--h:24}
+  .th-flag{--qx:76;--qy:1;--qw:18}
+  .th-p1{--qx:3;--qy:12;--qw:94}
+  .th-p2{--qx:4;--qy:39;--qw:44}
+  .th-p3{--qx:52;--qy:42;--qw:44}
+  .th-hand{--qx:30;--qy:33.5;--hz:8}
+  .th-goals{--qx:4;--qy:73;padding:3cqw 4cqw 2cqw} .th-goals b{font-size:7cqw}
+  .th-s1{--qx:60;--qy:72;--qw:37}
+  .th-s2{display:none}
+  .th-tk{--qx:22;--qy:82;--tz:1.85}
+  .th-txt{--qx:3;--qy:91;--qw:93;--sz:3.6}
+}
+
+/* ═════════ reduced motion ═════════ */
+.rm .ld{display:none!important}
+.rm .ttl-l .tc,.rm .ttl-l .sl{transform:none!important}
+.rm .close-note{clip-path:none}

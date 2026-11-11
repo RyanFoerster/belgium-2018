@@ -1,0 +1,12 @@
+---
+/* The script word laid across a <Title>. x: where it is centred along the line. */
+import { pass } from '../../lib/attrs';
+
+interface Props {
+  x?: string;
+  class?: string;
+  [attr: string]: unknown;
+}
+const { x, class: cls, ...rest } = Astro.props;
+---
+<span class:list={['ttl-s', cls]} aria-hidden="true" style={x ? `--nx:${x}` : undefined} {...pass(rest)}><slot /></span>

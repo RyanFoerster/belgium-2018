@@ -1,0 +1,72 @@
+---
+/* 02 · The sticker album: the 23, pasted in one state at a time. */
+import PlayerSticker from '../../ui/PlayerSticker.astro';
+import Sticker from '../../ui/Sticker.astro';
+import Proof from '../../ui/Proof.astro';
+---
+<!-- Sticker album -->
+<section class="scene s-roll bg-w paper" data-scene data-states="0 .17 .34 .5 .66 .82" data-poster="1" style="--len:3.3">
+  <div class="pin">
+    <p class="mono lab roll-lab">Sticker album — the 23 · not a line-up</p>
+
+    <div class="alb-side">
+      <div class="alb-cap" data-s="0">
+        <span class="d alb-n" aria-hidden="true">10</span>
+        <h3 class="d">Eden<br>Hazard</h3>
+        <p class="mono">Captain · Chelsea · 27</p>
+        <p class="alb-txt">The armband and the ball. Everything Belgium does in the final third starts at his feet.</p>
+        <span class="hand c-r alb-hand">capt.</span><Sticker type="rnd" a="10" b="CAPTAIN" class="alb-il" />
+      </div>
+      <div class="alb-cap" data-s="1">
+        <span class="d alb-n" aria-hidden="true">7</span>
+        <h3 class="d">Kevin<br>De&nbsp;Bruyne</h3>
+        <p class="mono">Manchester City · 26</p>
+        <p class="alb-txt">A league champion in May. He begins the tournament deep in midfield. He will not finish it there.</p>
+        <span class="hand c-r alb-hand">watch this one</span><Sticker type="pent" a="N°7" b="MIDFIELD" class="alb-il k" />
+      </div>
+      <div class="alb-cap" data-s="2">
+        <span class="d alb-n" aria-hidden="true">9</span>
+        <h3 class="d">Romelu<br>Lukaku</h3>
+        <p class="mono">Manchester United · 25</p>
+        <p class="alb-txt">Already his country's all-time top scorer. Four goals in his first two matches in Russia.</p>
+        <span class="hand c-r alb-hand">4 in 2</span><Sticker type="pill" a="4 IN 2" b="GOALS · GAMES" class="alb-il y" />
+      </div>
+      <div class="alb-cap" data-s="3">
+        <span class="d alb-n" aria-hidden="true">1</span>
+        <h3 class="d">Thibaut<br>Courtois</h3>
+        <p class="mono">Chelsea · 26</p>
+        <p class="alb-txt">One metre ninety-nine. He will leave Russia with the Golden Glove.</p>
+        <span class="hand c-r alb-hand">1,99 m</span><Sticker type="box" a="1,99 M" class="alb-il" />
+      </div>
+      <div class="alb-cap" data-s="4">
+        <span class="d alb-n ol" aria-hidden="true">4</span>
+        <h3 class="d">Vincent<br>Kompany</h3>
+        <p class="mono">Manchester City · 32</p>
+        <p class="alb-txt">Injured in the last friendly before the flight. Not ready for the opener. Back in time for the nights that matter.</p>
+        <span class="hand c-r alb-hand">fit?</span><Sticker type="jersey" a="4" class="alb-il" />
+      </div>
+      <div class="alb-cap alb-end" data-s="5">
+        <h3 class="d">And<br>eighteen<br>more.</h3><Sticker type="stack" a="+18" class="alb-il k" />
+        <p class="mono">Alderweireld · Vermaelen · Vertonghen · Witsel · Fellaini · Carrasco · Mignolet · Casteels · Mertens · Meunier · T. Hazard · Tielemans · Januzaj · Dembélé · Boyata · Batshuayi · Chadli · Dendoncker</p>
+      </div>
+    </div>
+
+    <div class="alb-grid">
+      <div class="slot"><span class="mono slot-l">1 · Courtois</span><PlayerSticker photo="courtois" number="1" name="Courtois" data-from="3" style="--rot:2deg" /></div>
+      <div class="slot"><span class="mono slot-l">2 · Alderweireld</span><PlayerSticker photo="alderweireld" number="2" name="Alderweireld" data-from="5" style="--rot:-3deg;--d:.05s" /></div>
+      <div class="slot"><span class="mono slot-l">4 · Kompany</span><PlayerSticker photo="kompany" number="4" name="Kompany" data-from="4" style="--rot:4deg" /><svg class="scr c-r slot-zig" data-from="4" style="--d:.35s"><use href="#s-zig"/></svg></div>
+      <div class="slot"><span class="mono slot-l">5 · Vertonghen</span><PlayerSticker photo="vertonghen" focus="62% 30%" number="5" name="Vertonghen" data-from="5" style="--rot:1.5deg;--d:.22s" /></div>
+      <div class="slot"><span class="mono slot-l">6 · Witsel</span><PlayerSticker photo="witsel" number="6" name="Witsel" data-from="5" style="--rot:-2deg;--d:.4s" /></div>
+      <div class="slot"><span class="mono slot-l">7 · De Bruyne</span><PlayerSticker photo="kdb" number="7" name="De Bruyne" data-from="1" style="--rot:-4deg" /></div>
+      <div class="slot slot-x"><span class="mono slot-l">8 · Fellaini</span><b class="d slot-q" aria-hidden="true">8</b></div>
+      <div class="slot"><span class="mono slot-l">9 · R. Lukaku</span><PlayerSticker photo="lukaku" number="9" name="R. Lukaku" data-from="2" style="--rot:3deg" /></div>
+      <div class="slot"><span class="mono slot-l">10 · E. Hazard</span><PlayerSticker photo="hazard" number="10" name="E. Hazard" data-from="0" style="--rot:-3deg" /><svg class="scr c-r slot-star" data-from="0" style="--d:.4s"><use href="#s-star"/></svg></div>
+      <div class="slot"><span class="mono slot-l">14 · Mertens</span><PlayerSticker photo="mertens" number="14" name="Mertens" data-from="5" style="--rot:2.5deg;--d:.12s" /></div>
+      <div class="slot"><span class="mono slot-l">15 · Meunier</span><PlayerSticker photo="meunier" number="15" name="Meunier" data-from="5" style="--rot:-1.5deg;--d:.3s" /></div>
+      <div class="slot slot-x"><span class="mono slot-l">22 · Chadli</span><b class="d slot-q" aria-hidden="true">22</b></div>
+      <span class="hand c-r alb-miss" data-from="5" style="--d:.6s">still missing: 8 &amp; 22</span>
+      <svg class="scr c-r alb-miss-a" data-from="5" style="--d:.9s"><use href="#s-curl"/></svg>
+    </div>
+    <Proof sheet={3} of={21} name="The 23" />
+  </div>
+</section>

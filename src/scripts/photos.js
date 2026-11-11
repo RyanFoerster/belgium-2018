@@ -1,0 +1,127 @@
+import { $, $$, rng, el } from './core.js';
+import { scissors, cutpx, tearBand } from './paper.js';
+import { PHOTOS, photoSrc, photoPage } from '../data/photos';
+
+// what the loader waits for: the first photographs of the page
+export var LOAD = { total: 0, done: 0 };
+
+export function setupPhotos() {
+  /* ── photographs: prints, tape, pencil captions, credits — and each one pulled as a screen print ── */
+  (function () {
+    var used = {}, P = PHOTOS, keys = {}, order = [], qi = 0, active = 0, nfig = 0, off = $$('#ld [data-photo]').length;
+    // [paper, spot colour]: black ink always; "a" leaves everything but the ink transparent
+    var TONE = { k: [[245, 243, 238], null], y: [[245, 243, 238], [247, 212, 23]], r: [[245, 243, 238], [229, 43, 50]], yk: [[247, 212, 23], null], rk: [[229, 43, 50], null], g: [[226, 223, 216], [112, 109, 104]], a: [null, null] };
+    function toneOf(fig, idx) {
+      if (fig.dataset.ink) return fig.dataset.ink;
+      if (/(^|\s)duo-/.test(fig.className)) return 'a';
+      if (fig.closest('.stk')) return ['yk', 'k', 'y', 'yk', 'k', 'r'][Math.abs(idx) % 6];
+      if (fig.classList.contains('print')) return ['yk', 'k', 'rk', 'y', 'yk', 'k', 'r'][Math.abs(idx) % 7];
+      return 'g';
+    }
+    // the photograph is cut down to one black ink: where it thins out it breaks into stipple; the mid-tones take the flat colour, the lights are bare paper
+    function ink(img, tone) {
+      var T = TONE[tone] || TONE.k, w = Math.min(tone === 'g' ? 1100 : 820, img.naturalWidth), h = Math.max(1, Math.round(w * img.naturalHeight / img.naturalWidth));
+      var c = document.createElement('canvas'); c.width = w; c.height = h;
+      var x = c.getContext('2d', { willReadFrequently: true }); x.drawImage(img, 0, 0, w, h);
+      var im = x.getImageData(0, 0, w, h), d = im.data, n = w * h, L = new Uint8Array(n), hist = new Uint32Array(256), i, v, o, nz;
+      for (i = 0; i < n; i++) { v = (d[i * 4] * 77 + d[i * 4 + 1] * 150 + d[i * 4 + 2] * 29) >> 8; L[i] = v; hist[v]++; }
+      function pct(q) { var a = 0; for (var k = 0; k < 256; k++) { a += hist[k]; if (a >= n * q) return k; } return 255; }
+      var t1 = pct(.41) * .62 + 104 * .38, t2 = pct(.75) * .62 + 176 * .38, s = (w * 40503 + h * 97 + tone.charCodeAt(0)) >>> 0, pa = T[0], sp = T[1], a1 = tone === 'g' ? 30 : 62, a2 = 34;
+      for (i = 0; i < n; i++) {
+        s = (s * 1664525 + 1013904223) >>> 0; nz = (s >>> 24) / 255 - .5; v = L[i]; o = i * 4;
+        if (v + nz * a1 < t1) { d[o] = d[o + 1] = d[o + 2] = 9; d[o + 3] = 255; }
+        else if (sp && v + nz * a2 < t2) { d[o] = sp[0]; d[o + 1] = sp[1]; d[o + 2] = sp[2]; d[o + 3] = 255; }
+        else if (pa) { d[o] = pa[0]; d[o + 1] = pa[1]; d[o + 2] = pa[2]; d[o + 3] = 255; }
+        else d[o + 3] = 0;
+      }
+      x.putImageData(im, 0, 0); return c;
+    }
+    var jobs = [], busy = false;
+    function work() {
+      if (busy || !jobs.length) return; busy = true;
+      var j = jobs.shift(), end = function (u) { busy = false; j.cb(u); setTimeout(work, 0); };
+      try { ink(j.img, j.tone).toBlob(function (b) { end(b ? URL.createObjectURL(b) : null); }, 'image/png'); } catch (e) { end(null); }
+    }
+    function loadKey(K) {
+      active++;
+      var im = new Image(), done = function () { active--; pump(); };
+      if (K.cors) im.crossOrigin = 'anonymous';
+      im.onload = function () {
+        var urls = {};
+        K.figs.forEach(function (f) {
+          var fin = function (u) {
+            f.img.onload = f.img.onerror = function () { f.img.onload = f.img.onerror = null; if (f.first) LOAD.done++; };
+            f.img.src = u || K.src; if (u) f.fig.classList.add('inked', 'ink-' + f.tone); if (f.col) f.col.src = K.src;
+          };
+          if (!K.cors || f.tone === 'none') return fin(null);
+          if (urls[f.tone] === undefined) { urls[f.tone] = []; (function (t) { jobs.push({ img: im, tone: t, cb: function (u) { var w = urls[t]; urls[t] = u || ''; w.forEach(function (g) { g(u); }); } }); })(f.tone); }
+          if (typeof urls[f.tone] === 'string') fin(urls[f.tone] || null); else urls[f.tone].push(fin);
+        });
+        work(); done();
+      };
+      im.onerror = function () {
+        // the plain link still works, without the ink
+        if (K.cors) { K.cors = false; K.src = photoSrc(K.p); active--; loadKey(K); return; }
+        K.figs.forEach(function (f) { f.fig.classList.add('missing'); f.img.remove(); if (f.first) LOAD.done++; }); done();
+      };
+      im.src = K.src;
+    }
+    function pump() { while (active < 5 && qi < order.length) loadKey(order[qi++]); }
+    $$('[data-photo]').forEach(function (fig, idx) {
+      idx -= off;
+      var key = fig.dataset.photo, p = P[key], inner = el('span', 'ph-i');
+      fig.appendChild(inner);
+      if (fig.dataset.cutout != null) fig.style.setProperty('--cut', scissors(rng(idx * 77 + 9)));
+      else if (fig.classList.contains('print') && !fig.classList.contains('wi')) fig.style.setProperty('--cut', cutpx(rng(idx * 41 + 5), 8));
+      if (fig.dataset.cap != null && fig.dataset.cap !== '') fig.appendChild(el('span', 'print-cap pencil', fig.dataset.cap));
+      if (fig.dataset.tape != null) { var t = el('i', 'tape ' + (fig.dataset.tape || 't')); fig.appendChild(t); if (fig.dataset.tape === 'x') fig.appendChild(el('i', 'tape tr')); }
+      if (fig.dataset.pin != null) fig.appendChild(el('i', 'pinhead'));
+      if (!p) { fig.classList.add('missing'); return; }
+      var img = new Image();
+      img.alt = fig.closest('[aria-hidden="true"]') ? '' : (p.alt || '');
+      img.loading = 'eager';
+      inner.appendChild(img);
+      inner.appendChild(el('span', 'cred', p.by + ' · ' + p.lic));
+      var col = null;
+      if (fig.dataset.color != null) {
+        var yy = (fig.dataset.color || '14 52').split(' ').map(Number), tb = tearBand(rng(idx * 19 + 3), yy[0], yy[1] || yy[0] + 36), rim = el('span', 'ph-cr'), cw = el('span', 'ph-c');
+        col = new Image(); col.alt = ''; cw.appendChild(col);
+        rim.style.setProperty('--tear2', tb[1]); cw.style.setProperty('--tear', tb[0]);
+        inner.appendChild(rim); inner.appendChild(cw);
+      }
+      var first = nfig++ < 12; if (first) LOAD.total++;
+      var K = keys[key]; if (!K) { K = keys[key] = { p: p, figs: [], src: '', cors: false }; order.push(K); }
+      K.figs.push({ fig: fig, img: img, tone: toneOf(fig, idx), col: col, first: first });
+      used[key] = p;
+    });
+    // one question to Commons gives every photograph an address a canvas may read; with no answer the plain links are used, un-inked
+    var started = false, nm = function (f) { return String(f).replace(/_/g, ' '); };
+    function start(map) {
+      if (started) return; started = true;
+      order.forEach(function (K) { var u = map && K.p.file && map[nm(K.p.file)]; if (u) { K.cors = true; K.src = u; } else K.src = photoSrc(K.p); });
+      pump();
+    }
+    var files = order.filter(function (K) { return K.p.file && !K.p.src; }).map(function (K) { return nm(K.p.file); }).slice(0, 50), cached = null;
+    try { cached = JSON.parse(sessionStorage.getItem('bel18.thumbs') || 'null'); } catch (e) {}
+    if (/[?&]ink=0/.test(location.search) || !window.fetch || !files.length) start(null);
+    else if (cached && files.every(function (f) { return cached[f]; })) start(cached);
+    else {
+      setTimeout(function () { start(null); }, 3200);
+      fetch('https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&prop=imageinfo&iiprop=url&iiurlwidth=960&titles=' + encodeURIComponent(files.map(function (f) { return 'File:' + f; }).join('|')))
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          var m = {}, pg = (j.query && j.query.pages) || {};
+          Object.keys(pg).forEach(function (id) { var q = pg[id]; if (q.imageinfo && q.imageinfo[0]) m[nm(q.title.replace(/^File:/, ''))] = q.imageinfo[0].thumburl || q.imageinfo[0].url; });
+          try { sessionStorage.setItem('bel18.thumbs', JSON.stringify(m)); } catch (e) {}
+          start(m);
+        })
+        .catch(function () { start(null); });
+    }
+    var ul = $('#credits');
+    if (ul) Object.keys(used).forEach(function (k) {
+      var p = used[k], li = el('li'), a = el('a', '', p.alt);
+      a.href = photoPage(p); a.target = '_blank'; a.rel = 'noopener';
+      li.appendChild(a); li.appendChild(document.createTextNode(' — ' + p.by + ', ' + p.lic)); ul.appendChild(li);
+    });
+  })();
+}

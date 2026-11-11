@@ -1,0 +1,36 @@
+---
+/* 06 · France — one central pile that builds up to a corner and a header. */
+import Photo from '../../ui/Photo.astro';
+import Ticket from '../../ui/Ticket.astro';
+import Sticker from '../../ui/Sticker.astro';
+import Title from '../../ui/Title.astro';
+import TitleLine from '../../ui/TitleLine.astro';
+import TitleNote from '../../ui/TitleNote.astro';
+import Proof from '../../ui/Proof.astro';
+---
+<!-- ═══════════ 06 — FRANCE: one pile in the middle of the table ═══════════ -->
+<section class="scene s-fra bg-k" data-scene data-chapter="06|France — So Close" data-poster="1" style="--len:4.4;--opp:var(--fra);--opp2:var(--fra2)">
+  <div class="pin">
+    <p class="mono lab fra-lab">06 — France · Semi-final · 10 July 2018 · Saint Petersburg Stadium · Att. 64,286</p>
+    <Title label="Saint Petersburg." class="fra-ttl"><TitleLine fit={22} fx="slice" tile={6} data-at=".02">Saint Petersburg</TitleLine><TitleNote x="60%" data-at=".08">The semi-final</TitleNote></Title>
+    <div class="clg fra-clg">
+      <i class="fb fb1 fx-drop" data-at=".05" data-torn="trbl" data-torn-d="8" aria-hidden="true"></i>
+      <i class="fb fb2 fx-drop" data-at=".08" data-torn="trbl" data-torn-d="8" aria-hidden="true"></i>
+      <i class="fb fb3 fx-drop" data-at=".11" data-torn="trbl" data-torn-d="8" aria-hidden="true"></i>
+      <Photo name="stadiumSP" print class="fr-p1 fx-slap" caption="the anthems" tape="tl" data-at=".16" style="--rot:-4deg;--ar:3/2;--fx:-40vw" />
+      <Ticket match={61} class="fr-tk fx-slide" data-at=".2" style="--rot:-6deg;--fx:-60vw" />
+      <Photo name="france" print class="fr-p2 fx-slap" caption="Hazard / Mbappé" tape="t" colour="30 78" data-at=".26" style="--rot:2deg;--ar:4/3" />
+      <p class="slip fr-t1 fx-slide" data-torn="tb" data-at=".33" style="--rot:-2deg;--fx:-50vw">For fifty minutes it is the most even match of the tournament. Hazard is unplayable down the left. Lloris saves from Alderweireld at full stretch.</p>
+      <Photo name="lloris" print class="fr-p3 fx-drop" caption="in front of Lloris" pin data-at=".4" style="--rot:5deg;--ar:4/3" />
+      <div class="sc d fr-51" data-at=".5" aria-hidden="true"><span class="cutn c-opp fx-stamp" data-at=".5" style="--rot:-5deg"><i>51′</i></span></div>
+      <Photo name="boot" print class="fr-p4 fx-slap" caption="the match ball" tape="tr" data-at=".54" style="--rot:-4deg;--ar:4/3;--fx:40vw" />
+      <p class="slip fr-t2 fx-slide" data-torn="tb" data-at=".6" style="--rot:1.6deg;--fx:50vw">A corner from the right. Griezmann, in-swinging, to the near post. Umtiti gets in front of Fellaini.</p>
+      <Sticker type="pent" a="UMTITI" b="51′ · HEADER" class="o fr-um fx-stamp" data-at=".66" style="--rot:-7deg" />
+      <div class="sc d fr-sc" role="img" aria-label="France 1, Belgium 0"><span class="cutn c-opp fx-drop" data-at=".72" style="--rot:-4deg"><i>1</i></span><span class="cutn c-bel fx-drop" data-at=".75" style="--rot:3deg"><i>0</i></span></div>
+      <Photo name="walkOff" print class="fr-p5 fx-slap" caption="no way through" data-at=".82" style="--rot:-6deg;--ar:4/3;--fx:-30vw;--fy:40vh" />
+      <span class="hand c-y fr-hand" data-at=".88">one corner.</span>
+      <span class="stamp fr-st" data-at=".93">Full time<small>France 1—0 Belgium</small></span>
+    </div>
+    <Proof sheet={14} of={21} name="Saint Petersburg" />
+  </div>
+</section>

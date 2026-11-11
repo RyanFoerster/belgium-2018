@@ -1,0 +1,61 @@
+---
+/* 01 · The Dream — a newspaper found at the bottom of the box, unfolded by the scroll. */
+import PlayerSticker from '../../ui/PlayerSticker.astro';
+import Photo from '../../ui/Photo.astro';
+import Ticket from '../../ui/Ticket.astro';
+import Sticker from '../../ui/Sticker.astro';
+import Proof from '../../ui/Proof.astro';
+---
+<!-- ═══════════ 01 — INTRO / THE FRONT PAGE ═══════════ -->
+<section class="scene s-intro bg-w paper" data-scene data-chapter="01|The Dream" data-poster=".92" style="--len:3.6">
+  <div class="pin">
+    <p class="mono i-meta i-meta-a" data-o=".02 .08">Found at the bottom of the box:<br>one newspaper, folded in four</p>
+    <p class="mono i-meta i-meta-c" data-o=".02 .08">Scroll to open it <span class="i-arrow">↓</span></p>
+
+    <div class="i-ils" data-t=".02 .3" data-ease="i" aria-hidden="true">
+      <Sticker type="oval" a="RED DEVILS" b="BELGIUM" class="boot-fx" style="left:6vw;top:13vh;--iz:15vw;--d:.5s;--sx:-45vw;--sy:-45vh" /><Sticker type="star" class="boot-fx" style="left:31vw;top:79vh;--iz:7vw;--rot:14deg;--d:.8s;--sx:-20vw;--sy:50vh" /><Sticker type="star" class="y boot-fx" style="left:57vw;top:7vh;--iz:5.5vw;--rot:-12deg;--d:.9s;--sx:30vw;--sy:-45vh" /><Sticker type="flag" a="BEL" class="boot-fx" style="right:10vw;top:11vh;--iz:10vw;--d:.7s;--sx:45vw;--sy:-45vh" /><Sticker type="pent" a="2018" b="WORLD CUP" class="y boot-fx" style="right:19vw;bottom:11vh;--iz:9vw;--d:.9s;--sx:55vw;--sy:45vh" /><Sticker type="pill" a="RUSSIA" b="14.06 — 15.07" class="k boot-fx" style="left:13vw;bottom:17vh;--iz:14vw;--d:1.1s;--sx:-55vw;--sy:45vh" /><Sticker type="chk" class="boot-fx" style="right:4vw;top:47vh;--iz:10vw;--d:1.3s;--sx:55vw" />
+    </div>
+    <!-- one page, shown through three windows: the quarter you see first, then two flaps -->
+    <div class="fp-c3" data-t="0 .5" data-ease="io"><div class="fp-c1" data-t=".04 .24" data-ease="io"><div class="fp-c2" data-t=".24 .5" data-ease="io">
+      <div class="fp boot-fx" style="--fx:30vw;--fy:-110vh;--spin:38deg;--d:.2s">
+        <i class="fp-under"></i><i class="fp-under b"></i>
+        <div class="fp-w fp-tl">
+          <div class="fp-page" id="fpPage">
+            <div class="fp-mast"><span class="mono">Russia · 14 June — 15 July 2018</span><b>The Road to Glory</b><span class="mono">Unofficial fanzine edition · No. 1 of 7</span></div>
+            <div class="fp-rule mono"><span>Seven matches</span><span>Six wins</span><span>Sixteen goals</span><span>One bronze medal</span></div>
+            <h1 class="fp-h" aria-label="One generation. One dream.">
+              <span class="d">One generation.</span>
+              <span class="d fp-h2"><span class="fp-deck">Hazard. De&nbsp;Bruyne. Lukaku. Courtois. Kompany. Born a few years apart, all reaching their peak in the same summer.</span><b>One dream.</b></span>
+            </h1>
+            <div class="fp-low">
+              <Photo name="team" class="fp-ph" />
+              <p class="fp-capt">Moscow, 23 June 2018. The eleven who start against Tunisia.</p>
+              <article class="fp-art">
+                <h3 class="d">The one they were supposed to win.</h3>
+                <p class="serif">Belgium had never finished higher than fourth at a World Cup. In June 2018 they were ranked third in the world, with a group of players who would not get many more summers like this one.</p>
+              </article>
+              <aside class="fp-art fp-idx">
+                <b class="d">N°3</b>
+                <span class="mono">FIFA ranking, June 2018</span>
+                <ol><li>01 The Dream</li><li>02 The Beginning</li><li>03 The Group Stage</li><li>04 Japan</li><li>05 Brazil</li><li>06 France</li><li>07 The Final Chapter</li><li>08 The Wall</li></ol>
+              </aside>
+            </div>
+          </div>
+        </div>
+        <div class="fp-w fp-tr" data-t=".04 .24" data-ease="io" aria-hidden="true"></div>
+        <div class="fp-w fp-bot" data-t=".24 .5" data-ease="io" aria-hidden="true"></div>
+      </div>
+    </div></div></div>
+
+    <!-- what was lying on top of it -->
+    <span class="scrawl i-scr" data-t=".54 .66" data-ease="s8" aria-hidden="true">Russia 2018</span>
+    <svg class="scr c-y i-a1" data-t=".62 .72"><use href="#s-loop"/></svg>
+    <span class="hand c-r i-a1t" data-t=".66 .76">golden generation</span>
+    <Ticket match={13} class="i-tk fx-slide" data-at=".72" style="--rot:-8deg;--fx:-60vw" />
+    <PlayerSticker photo="hazard" number="10" name="E. Hazard" class="i-st" data-at=".78" style="--rot:7deg" />
+    <Photo name="flag" print class="duo-y i-p1 fx-slap" caption="Moscow, 23.06" tape="t" data-at=".84" style="--rot:5deg" />
+    <Sticker type="box" a="N°3" class="fx-slap" data-at=".8" style="left:58vw;top:37vh;--iz:11vw" /><Sticker type="bars" class="y" data-at=".87" style="left:1.5vw;top:10vh;--iz:5vw" />
+    <span class="stamp i-stp" data-at=".9">Archive<small>Belgium · Russia 2018</small></span>
+    <Proof sheet={1} of={21} name="The Dream" />
+  </div>
+</section>

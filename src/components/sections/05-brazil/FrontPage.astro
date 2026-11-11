@@ -1,0 +1,57 @@
+---
+/* 05 · The morning after: a second front page. */
+import Photo from '../../ui/Photo.astro';
+import Ticket from '../../ui/Ticket.astro';
+import Proof from '../../ui/Proof.astro';
+---
+<!-- The morning paper: thrown down open, then a second sheet slides over it -->
+<section class="scene s-np bg-w paper" data-scene data-poster=".94" data-collect="58" style="--len:2.9">
+  <div class="pin">
+    <p class="mono lab np-lab">The morning after</p>
+    <div class="np" data-t="0 .26" data-ease="s12">
+      <div class="np-sheet">
+        <div class="np-bot">
+          <div class="np-botin">
+            <Photo name="braSalute" class="np-ph" />
+            <p class="serif np-capt">Kazan Arena, 6 July. The team salute the crowd.</p>
+            <article class="np-art np-a1">
+              <h4 class="d">Half-time: 0—2</h4>
+              <p class="serif">Nobody in the stadium quite knows what to do with the scoreline.</p>
+            </article>
+            <article class="np-art np-a2">
+              <h4 class="d">76′ Renato Augusto. 2—1.</h4>
+              <p class="serif">A header from Coutinho's cross. Fourteen minutes left, and all of them belong to Brazil.</p>
+            </article>
+            <article class="np-art np-a3">
+              <p class="mono">90+4′</p>
+              <h4 class="d">Courtois.<br><span class="ol">Fingertips.</span></h4>
+              <p class="serif">Over the bar.</p>
+            </article>
+          </div>
+        </div>
+        <div class="np-top">
+          <div class="np-mast"><span class="mono">No. 5 of 7</span><b>The Road to Glory</b><span class="mono">Kazan · Sat 7 July 2018</span></div>
+          <div class="np-rule mono"><span>Unofficial fanzine edition</span><span>Quarter-final special</span><span>Free — keep forever</span></div>
+          <h2 class="d np-h">Belgium are in<br>the <mark class="hl" data-t=".38 .5">semi-final.</mark></h2>
+          <p class="serif np-sub">Brazil 1—2 Belgium. The five-time champions are out, and Belgium reach the last four <span class="np-86">for the first time since 1986.</span></p>
+        </div>
+      </div>
+    </div>
+    <svg class="scr c-r np-circ" data-t=".3 .42"><use href="#s-loop2"/></svg>
+    <Ticket match={58} stamped class="np-tk fx-slide" data-at=".46" style="--rot:-9deg;--fx:-60vw" />
+
+    <div class="np2" data-t=".54 .72" data-ease="back">
+      <i class="tape"></i>
+      <p class="mono">Page 2 — the numbers after Kazan</p>
+      <div class="np2-row"><span class="d np2-n">5</span><p class="d np2-t">wins<br>out of five.</p></div>
+      <div class="np2-row"><span class="d np2-n ol">14</span><p class="d np2-t">goals.</p></div>
+      <p class="serif np2-p">Five of them against Japan and Brazil, in four days.</p>
+      <Photo name="kontich" class="np2-ph" />
+      <p class="serif np-capt">Kontich, 22:43. Back home.</p>
+      <span class="pencil np2-note" data-t=".8 .92">two games from the trophy.</span>
+    </div>
+    <svg class="scr c-r np2-tally" data-t=".72 .82"><use href="#s-tally"/></svg>
+    <span class="hand c-r np-hand" data-t=".82 .94">we can win this thing</span>
+    <Proof sheet={13} of={21} name="The Morning After" />
+  </div>
+</section>

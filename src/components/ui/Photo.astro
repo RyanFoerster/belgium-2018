@@ -1,0 +1,25 @@
+---
+/* A photograph from the manifest (data/photos.ts). The browser loads it, pulls it as a one-ink screen print
+   and adds the caption, tape or pin asked for here. `print` gives it a hand-cut paper margin. */
+import type { PhotoKey } from '../../data/photos';
+import { pass } from '../../lib/attrs';
+
+interface Props {
+  name: PhotoKey;
+  /** a paper print with a white margin, rather than a bare image */
+  print?: boolean;
+  /** pencil caption under a print */
+  caption?: string;
+  /** a strip of tape: top, top-left, top-right, or both corners */
+  tape?: 't' | 'tl' | 'tr' | 'x';
+  pin?: boolean;
+  /** "from to" in %: a torn band that keeps the photograph's own colour */
+  colour?: string;
+  /** force an ink: k, y, r (on paper) · yk, rk (on colour) · g (grey) · a (ink only) · none */
+  ink?: 'k' | 'y' | 'r' | 'yk' | 'rk' | 'g' | 'a' | 'none';
+  class?: string;
+  [attr: string]: unknown;
+}
+const { name, print = false, caption, tape, pin = false, colour, ink, class: cls, ...rest } = Astro.props;
+---
+<figure class:list={['ph', print && 'print', cls]} data-photo={name} data-cap={caption} data-tape={tape} data-pin={pin ? '' : undefined} data-color={colour} data-ink={ink} {...pass(rest)}></figure>

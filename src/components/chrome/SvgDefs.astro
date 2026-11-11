@@ -1,0 +1,65 @@
+---
+/* Shared SVG: the crayon filters (three "boil" frames), the print speckle, and the hand-drawn marks used as <use href>. */
+---
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="crayon" x="-8%" y="-14%" width="116%" height="128%">
+      <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="7" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="5" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="3" result="grain"/>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.4 2.5" result="holes"/>
+      <feComposite in="rough" in2="holes" operator="in"/>
+    </filter>
+    <filter id="crayon-b" x="-8%" y="-14%" width="116%" height="128%">
+      <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="23" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="5.6" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="9" result="grain"/>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.4 2.5" result="holes"/>
+      <feComposite in="rough" in2="holes" operator="in"/>
+    </filter>
+    <filter id="crayon-c" x="-8%" y="-14%" width="116%" height="128%">
+      <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="41" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="4.6" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="15" result="grain"/>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.4 2.5" result="holes"/>
+      <feComposite in="rough" in2="holes" operator="in"/>
+    </filter>
+    <filter id="pencil" x="-8%" y="-12%" width="116%" height="124%">
+      <feTurbulence type="fractalNoise" baseFrequency=".06" numOctaves="2" seed="11" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <!-- the second typographic voice: marker pushed around, slightly out of focus, ink missing in places -->
+    <filter id="smear" x="-10%" y="-25%" width="120%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency=".018 .05" numOctaves="2" seed="5" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="15" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+      <feGaussianBlur in="rough" stdDeviation="1.5" result="soft"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".62" numOctaves="2" seed="8" result="grain"/>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.7 2.15" result="holes"/>
+      <feComposite in="soft" in2="holes" operator="in"/>
+    </filter>
+    <symbol id="s-loop" viewBox="0 0 220 110"><path pathLength="1" d="M118 10C62 2 10 24 8 56c-2 34 52 48 104 46 54-2 104-18 102-52C212 22 150 4 92 12 70 15 52 22 40 30"/></symbol>
+    <!-- screen-print speckle for the illustrated stickers -->
+    <filter id="print" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="12" result="grain"/>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.4 2.3" result="holes"/>
+      <feComposite in="SourceGraphic" in2="holes" operator="in"/>
+    </filter>
+    <symbol id="s-loop2" viewBox="0 0 220 110"><path pathLength="1" d="M30 26C80 0 190 6 208 48c14 40-70 60-126 56C40 100-2 80 10 46 22 12 110 2 170 18c30 8 44 24 42 40"/></symbol>
+    <symbol id="s-line" viewBox="0 0 220 30"><path pathLength="1" d="M4 14C50 6 120 20 216 8M208 18C150 26 70 14 12 24"/></symbol>
+    <symbol id="s-wave" viewBox="0 0 220 30"><path pathLength="1" d="M4 16C24 2 34 28 54 14S86 2 104 16 136 28 154 14 186 2 216 14"/></symbol>
+    <symbol id="s-x" viewBox="0 0 100 100"><path pathLength="1" d="M10 12 90 88M88 10 14 92"/></symbol>
+    <symbol id="s-arrow" viewBox="0 0 200 90"><path pathLength="1" d="M6 70C50 14 120 8 186 44M150 22l38 23-34 28"/></symbol>
+    <symbol id="s-arrow2" viewBox="0 0 200 60"><path pathLength="1" d="M6 34C60 26 130 32 190 28M164 8l28 20-30 22"/></symbol>
+    <symbol id="s-curl" viewBox="0 0 100 140"><path pathLength="1" d="M70 6C20 20 10 70 44 78c30 6 34-30 8-28-30 4-30 60 6 78M34 110l22 26 18-30"/></symbol>
+    <symbol id="s-zig" viewBox="0 0 200 100"><path pathLength="1" d="M4 12 194 22 8 36 192 48 6 60 196 72 10 84 190 94"/></symbol>
+    <symbol id="s-hatch" viewBox="0 0 200 100"><path pathLength="1" d="M6 80 40 14 50 86 86 10 96 88 130 14 140 86 176 12 190 84"/></symbol>
+    <symbol id="s-star" viewBox="0 0 100 100"><path pathLength="1" d="M22 90 49 7 79 93 5 40 95 36 24 91"/></symbol>
+    <symbol id="s-tick" viewBox="0 0 100 100"><path pathLength="1" d="M8 56 36 86 94 12"/></symbol>
+    <symbol id="s-excl" viewBox="0 0 60 100"><path pathLength="1" d="M14 6 18 66M19 86 20 92M40 4 42 64M43 85 44 91"/></symbol>
+    <symbol id="s-box" viewBox="0 0 220 110"><path pathLength="1" d="M8 10 212 6 214 102 6 104 9 8M14 16 206 12"/></symbol>
+    <symbol id="s-tally" viewBox="0 0 250 100">
+      <path pathLength="1" d="M14 10 18 90M36 8 38 92M58 12 56 90M78 8 82 92M2 74 96 22"/>
+      <path pathLength="1" d="M140 10 144 90M162 8 164 92M184 12 182 90M204 8 208 92"/>
+    </symbol>
+  </defs>
+</svg>

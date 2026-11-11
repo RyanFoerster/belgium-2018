@@ -1,0 +1,36 @@
+---
+/* 04 · Chadli, 90+4′ — the counter-attack replayed pass by pass on the tactical board. */
+import Photo from '../../ui/Photo.astro';
+import Sticker from '../../ui/Sticker.astro';
+import Proof from '../../ui/Proof.astro';
+---
+<!-- Signature 02 + 04 — The Impossible Comeback / Archive transition -->
+<section class="scene s-replay bg-y paper" data-scene data-poster=".7" id="chadli" style="--len:6.4">
+  <div class="pin">
+    <p class="mono lab rp-lab">Rostov Arena · 90+4′ · 2—2<br>Reconstruction, simplified</p>
+    <div class="rp-stage"><i class="tape y rp-tp1"></i><i class="tape y rp-tp2"></i><Sticker type="rnd" a="94′" b="ROSTOV" class="y rp-c1" /><Sticker type="chk" class="k rp-c2" /><svg class="pitch" id="rpPitch" role="img" aria-label="Top-down reconstruction of Nacer Chadli's winning goal against Japan"></svg></div>
+    <ol class="rp-steps">
+      <li data-step="1"><b class="d">01</b><h4 class="d">The last corner</h4><p>Stoppage time. Honda swings Japan's corner in; Japan have thrown bodies forward for a winner. Courtois comes and catches.</p></li>
+      <li data-step="2"><b class="d">02</b><h4 class="d">The release</h4><p>He is running before he lands. To the edge of his area — and the ball is rolled into De&nbsp;Bruyne's stride.</p></li>
+      <li data-step="3"><b class="d">03</b><h4 class="d">The carry</h4><p>De&nbsp;Bruyne drives straight down the middle and across halfway. Japan can only back off.</p></li>
+      <li data-step="4"><b class="d">04</b><h4 class="d">The decoy</h4><p>Lukaku cuts inside and takes his marker with him. The right flank opens. De&nbsp;Bruyne slides the ball into it for Meunier.</p></li>
+      <li data-step="5"><b class="d">05</b><h4 class="d">The dummy</h4><p>Meunier crosses low, first time. Lukaku shapes to shoot — and steps over it. He never touches the ball.</p></li>
+      <li data-step="6"><b class="d">06</b><h4 class="d">The finish</h4><p>Chadli has run the length of the pitch. At the far post, he cannot miss.</p></li>
+    </ol>
+    <div class="rp-flash" aria-hidden="true"></div>
+    <Photo name="japan" class="rp-photo" />
+    <div class="rp-final"><Sticker type="stack" a="GOAL!" class="rp-il" /><Sticker type="bars" class="y rp-il2" />
+      <span class="d rp-94">94′</span>
+      <span class="d rp-ch">Chadli.</span>
+      <span class="hand c-y rp-imp">impossible.</span>
+      <svg class="scr c-y rp-under"><use href="#s-line"/></svg>
+    </div>
+    <div class="rp-flood bg-y">
+      <span class="d rp-32" aria-label="3-2">3—2</span>
+      <p class="mono rp-flood-m">Belgium — Japan<br>Full time</p>
+      <Photo name="street" print class="rp-flood-ph" caption="2.07.18 — that night" tape="t" style="--rot:-6deg;--ar:3/4;--op:50% 35%" />
+      <span class="hand c-r rp-flood-h">around ten seconds, box to box</span>
+    </div>
+    <Proof sheet={7} of={21} name="90+4" />
+  </div>
+</section>

@@ -1,0 +1,29 @@
+---
+/* 05 · Brazil — the photograph seen through the word, then the word swallows the screen. */
+import Photo from '../../ui/Photo.astro';
+import Ticket from '../../ui/Ticket.astro';
+import Proof from '../../ui/Proof.astro';
+---
+<!-- ═══════════ 05 — BRAZIL ═══════════ -->
+<section class="scene s-bra bg-k" data-scene data-chapter="05|Brazil — The Night We Believed" data-poster=".92" style="--len:3.2">
+  <div class="pin">
+    <Photo name="brazilTeam" class="bra-ph" />
+    <div class="bra-mask" id="braMask"><span class="d bra-word" id="braWord">Braz<span id="braPivot">i</span>l.</span></div>
+    <p class="mono m-meta bra-meta" data-o=".5 .6">Quarter-final · 6 July 2018<br>Kazan Arena · Att. 42,873</p>
+    <h2 class="bra-h" aria-label="The night we believed.">
+      <span class="d sp" data-split data-t=".56 .7">The night</span>
+      <span class="d sp" data-split data-t=".64 .78">we believed.</span>
+    </h2>
+    <svg class="scr c-y bra-s" data-t=".78 .9"><use href="#s-line"/></svg>
+    <span class="hand c-y bra-hand" data-t=".8 .92">five-time champions</span>
+    <div class="bra-fl" aria-hidden="true">
+      <i class="bra-g fx-slide" data-at=".52" data-torn="lb" data-torn-d="9"></i>
+      <i class="bra-y fx-drop" data-at=".58"></i>
+      <i class="bra-b fx-stamp" data-at=".64"></i>
+    </div>
+    <Ticket match={58} class="bra-tk fx-slide" data-at=".6" style="--rot:8deg;--fx:60vw;--spin:26deg" />
+    <Photo name="brazilAction" class="cutout bra-cut fx-slap" data-cutout data-at=".68" style="--op:50% 30%" />
+    <Photo name="braFan" print class="bra-fan fx-slap" caption="Kazan. he brought his own." tape="t" data-at=".72" style="--rot:-5deg;--ar:3/2" />
+    <Proof sheet={10} of={21} name="Kazan" />
+  </div>
+</section>

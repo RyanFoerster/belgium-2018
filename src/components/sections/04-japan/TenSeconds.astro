@@ -1,0 +1,28 @@
+---
+/* 04 · Ten seconds: the counter-attack in three figures. */
+import PlayerSticker from '../../ui/PlayerSticker.astro';
+import Sticker from '../../ui/Sticker.astro';
+import Rip from '../../ui/Rip.astro';
+import Title from '../../ui/Title.astro';
+import TitleLine from '../../ui/TitleLine.astro';
+import TitleNote from '../../ui/TitleNote.astro';
+import Proof from '../../ui/Proof.astro';
+---
+<section class="blk s-zero bg-w paper" data-collect="54">
+  <Rip colour="var(--y)" />
+  <p class="mono lab">The numbers — 90+4′</p>
+  <Title label="Ten seconds."><TitleLine fx="rise" tile={4} data-in>Ten seconds.</TitleLine><TitleNote x="54%" data-in>Box to box</TitleNote></Title>
+  <div class="zero-row" data-in><span class="d zero-n"><span data-count="3">3</span></span><p class="d zero-t">passes.</p><Sticker type="oval" a="3 PASSES" b="ROSTOV · 90+4′" class="k" style="right:5vw;top:2%;--iz:13vw" /></div>
+  <div class="zero-route" aria-label="Courtois to De Bruyne to Meunier to Chadli">
+    <PlayerSticker photo="courtois" number="1" name="Courtois" data-in style="--rot:-4deg" />
+    <svg class="scr c-r" data-in style="--d:.25s"><use href="#s-arrow2"/></svg>
+    <PlayerSticker photo="kdbJapan" number="7" name="De Bruyne" data-in style="--rot:3deg;--d:.3s" />
+    <svg class="scr c-r" data-in style="--d:.55s"><use href="#s-arrow2"/></svg>
+    <PlayerSticker photo="meunier" number="15" name="Meunier" data-in style="--rot:-2deg;--d:.6s" />
+    <svg class="scr c-r" data-in style="--d:.85s"><use href="#s-arrow2"/></svg>
+    <PlayerSticker photo="chadli" number="22" name="Chadli" data-in style="--rot:5deg;--d:.9s" />
+  </div>
+  <div class="zero-row zr2" data-in><span class="d zero-n"><span data-count="1">1</span></span><p class="d zero-t">dummy.</p><svg class="scr c-r zero-loop"><use href="#s-loop"/></svg></div>
+  <div class="zero-row zr3" data-in><span class="d zero-n ol">0</span><p class="d zero-t">touches<br>for Lukaku.</p><span class="hand c-r zero-hand">the best pass he never made</span><Sticker type="pill" a="DUMMY" b="LUKAKU" style="right:3vw;top:-12%;--iz:13vw" /></div>
+  <Proof sheet={8} of={21} name="Ten Seconds" />
+</section>

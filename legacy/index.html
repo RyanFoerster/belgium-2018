@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Belgium 2018 — The Road to Glory</title>
+<meta name="description" content="A scrapbook documentary of Belgium's 2018 World Cup: seven matches, one generation, third place.">
+<meta name="theme-color" content="#080808">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=Just+Another+Hand&family=Permanent+Marker&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,900&family=Reenie+Beanie&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=14">
+<link rel="stylesheet" href="css/archive.css?v=14">
+<link rel="stylesheet" href="css/collage.css?v=14">
+<link rel="stylesheet" href="css/ink.css?v=14">
+<script>document.documentElement.classList.add('ld-on');if(!/[?&]ld=hold/.test(location.search))setTimeout(function(){document.documentElement.classList.add('ready','ld-x')},10000)</script>
+</head>
+<body>
+
+<!-- Shared SVG: crayon filters (three "boil" frames) + hand-drawn marks -->
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="crayon" x="-8%" y="-14%" width="116%" height="128%">
+      <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="7" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="5" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="3" result="grain"/>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.4 2.5" result="holes"/>
+      <feComposite in="rough" in2="holes" operator="in"/>
+    </filter>
+    <filter id="crayon-b" x="-8%" y="-14%" width="116%" height="128%">
+      <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="23" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="5.6" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="9" result="grain"/>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.4 2.5" result="holes"/>
+      <feComposite in="rough" in2="holes" operator="in"/>
+    </filter>
+    <filter id="crayon-c" x="-8%" y="-14%" width="116%" height="128%">
+      <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="41" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="4.6" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="15" result="grain"/>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.4 2.5" result="holes"/>
+      <feComposite in="rough" in2="holes" operator="in"/>
+    </filter>
+    <filter id="pencil" x="-8%" y="-12%" width="116%" height="124%">
+      <feTurbulence type="fractalNoise" baseFrequency=".06" numOctaves="2" seed="11" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <!-- the second typographic voice: marker pushed around, slightly out of focus, ink missing in places -->
+    <filter id="smear" x="-10%" y="-25%" width="120%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency=".018 .05" numOctaves="2" seed="5" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="15" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+      <feGaussianBlur in="rough" stdDeviation="1.5" result="soft"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".62" numOctaves="2" seed="8" result="grain"/>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.7 2.15" result="holes"/>
+      <feComposite in="soft" in2="holes" operator="in"/>
+    </filter>
+    <symbol id="s-loop" viewBox="0 0 220 110"><path pathLength="1" d="M118 10C62 2 10 24 8 56c-2 34 52 48 104 46 54-2 104-18 102-52C212 22 150 4 92 12 70 15 52 22 40 30"/></symbol>
+    <!-- screen-print speckle for the illustrated stickers -->
+    <filter id="print" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="12" result="grain"/>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.4 2.3" result="holes"/>
+      <feComposite in="SourceGraphic" in2="holes" operator="in"/>
+    </filter>
+    <symbol id="s-loop2" viewBox="0 0 220 110"><path pathLength="1" d="M30 26C80 0 190 6 208 48c14 40-70 60-126 56C40 100-2 80 10 46 22 12 110 2 170 18c30 8 44 24 42 40"/></symbol>
+    <symbol id="s-line" viewBox="0 0 220 30"><path pathLength="1" d="M4 14C50 6 120 20 216 8M208 18C150 26 70 14 12 24"/></symbol>
+    <symbol id="s-wave" viewBox="0 0 220 30"><path pathLength="1" d="M4 16C24 2 34 28 54 14S86 2 104 16 136 28 154 14 186 2 216 14"/></symbol>
+    <symbol id="s-x" viewBox="0 0 100 100"><path pathLength="1" d="M10 12 90 88M88 10 14 92"/></symbol>
+    <symbol id="s-arrow" viewBox="0 0 200 90"><path pathLength="1" d="M6 70C50 14 120 8 186 44M150 22l38 23-34 28"/></symbol>
+    <symbol id="s-arrow2" viewBox="0 0 200 60"><path pathLength="1" d="M6 34C60 26 130 32 190 28M164 8l28 20-30 22"/></symbol>
+    <symbol id="s-curl" viewBox="0 0 100 140"><path pathLength="1" d="M70 6C20 20 10 70 44 78c30 6 34-30 8-28-30 4-30 60 6 78M34 110l22 26 18-30"/></symbol>
+    <symbol id="s-zig" viewBox="0 0 200 100"><path pathLength="1" d="M4 12 194 22 8 36 192 48 6 60 196 72 10 84 190 94"/></symbol>
+    <symbol id="s-hatch" viewBox="0 0 200 100"><path pathLength="1" d="M6 80 40 14 50 86 86 10 96 88 130 14 140 86 176 12 190 84"/></symbol>
+    <symbol id="s-star" viewBox="0 0 100 100"><path pathLength="1" d="M22 90 49 7 79 93 5 40 95 36 24 91"/></symbol>
+    <symbol id="s-tick" viewBox="0 0 100 100"><path pathLength="1" d="M8 56 36 86 94 12"/></symbol>
+    <symbol id="s-excl" viewBox="0 0 60 100"><path pathLength="1" d="M14 6 18 66M19 86 20 92M40 4 42 64M43 85 44 91"/></symbol>
+    <symbol id="s-box" viewBox="0 0 220 110"><path pathLength="1" d="M8 10 212 6 214 102 6 104 9 8M14 16 206 12"/></symbol>
+    <symbol id="s-tally" viewBox="0 0 250 100">
+      <path pathLength="1" d="M14 10 18 90M36 8 38 92M58 12 56 90M78 8 82 92M2 74 96 22"/>
+      <path pathLength="1" d="M140 10 144 90M162 8 164 92M184 12 182 90M204 8 208 92"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- loader: the poster is screen-printed in three passes — yellow, red, black — while the page arrives; then the sheet is pulled off the press -->
+<div class="ld" id="ld" aria-hidden="true" data-pass="1">
+  <i class="ld-c ld-c3" data-torn="b" data-torn-d="24"></i>
+  <i class="ld-c ld-c2" data-torn="b" data-torn-d="24"></i>
+  <div class="ld-p" data-torn="b" data-torn-d="24">
+    <div class="ld-top"><span>BEL—18 · The Road to Glory</span><span>Three-colour print · Yellow / Red / Black</span></div>
+    <div class="ld-art" id="ldArt">
+      <div class="ld-ly ld-yu"><i class="ld-tile"></i><i class="ld-blk ld-f1"></i></div>
+      <div class="ld-ly ld-ru"><i class="ld-blk ld-f2"></i></div>
+      <div class="ld-ly ld-kk">
+        <i class="ld-tile"></i>
+        <b class="ld-h" id="ldH">Bel<span id="ldG">g</span>ium</b>
+        <svg class="ld-star ld-s1" viewBox="0 0 100 96"><path class="sh" d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg><svg class="ld-star ld-s2" viewBox="0 0 100 96"><path class="sh" d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg><svg class="ld-star ld-s3" viewBox="0 0 100 96"><path class="sh" d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg>
+        <b class="ld-num">18</b>
+        <figure class="ph ld-ph ld-f1" data-photo="team" data-ink="a"></figure>
+        <figure class="ph ld-ph ld-f2" data-photo="hazard" data-ink="a"></figure>
+        <span class="ld-scr">The Road to Glory</span>
+        <span class="ld-lbl">Red Devils</span>
+        <span class="ld-cap ld-cap1">FIFA World Cup · Russia<br>14 June — 15 July 2018</span>
+        <span class="ld-cap ld-cap2">Seven matches<br>Sixteen goals</span>
+      </div>
+      <div class="ld-ly ld-yo"><span class="ld-scr">The Road to Glory</span><b class="ld-num">18</b><svg class="ld-star ld-s2" viewBox="0 0 100 96"><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg></div>
+      <div class="ld-ly ld-ro"><svg class="ld-star ld-s1" viewBox="0 0 100 96"><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg><svg class="ld-star ld-s3" viewBox="0 0 100 96"><path d="M50 4 61 37 96 37 68 58 79 92 50 71 21 92 32 58 4 37 39 37Z"/></svg><span class="ld-lbl">Red Devils</span></div>
+      <i class="ld-sq"></i><i class="ld-crop c1"></i><i class="ld-crop c2"></i><i class="ld-crop c3"></i><i class="ld-crop c4"></i><i class="ld-reg t"></i><i class="ld-reg b"></i>
+    </div>
+    <div class="ld-ui"><div class="ld-bar"><i class="by"><b></b></i><i class="br"><b></b></i><i class="bk"><b></b></i></div><span class="ld-pass" id="ldPass">Pass 1/3 — Yellow</span><b class="ld-n" id="ldN">000</b></div>
+  </div>
+</div>
+
+<header class="hud" aria-hidden="true">
+  <span class="hud-l">BEL—18</span>
+  <span class="hud-c"><b id="hudNo">01</b>/08 — <i id="hudName">The Dream</i></span>
+  <span class="hud-r">Russia · 14.06—15.07.2018</span>
+</header>
+<div class="bar" aria-hidden="true"><i id="bar"></i></div>
+<div class="col" id="col" aria-hidden="true"><span>Stubs</span><i data-c="13">13</i><i data-c="29">29</i><i data-c="45">45</i><i data-c="54">54</i><i data-c="58">58</i><i data-c="61">61</i><i data-c="63">63</i></div>
+<i class="il y chap" id="chapSt" data-il="rnd" data-a="01" data-b="CHAPTER"></i>
+
+<main>
+
+<!-- ═══════════ 01 — INTRO / THE FRONT PAGE ═══════════ -->
+<section class="scene s-intro bg-k" data-scene data-chapter="01|The Dream" data-poster=".92" style="--len:3.6">
+  <div class="pin">
+    <p class="mono i-meta i-meta-a" data-o=".02 .08">Found at the bottom of the box:<br>one newspaper, folded in four</p>
+    <p class="mono i-meta i-meta-c" data-o=".02 .08">Scroll to open it <span class="i-arrow">↓</span></p>
+
+    <div class="i-ils" data-t=".02 .3" data-ease="i" aria-hidden="true">
+      <i class="il boot-fx" data-il="oval" data-a="RED DEVILS" data-b="BELGIUM" style="left:6vw;top:13vh;--iz:15vw;--d:.5s;--sx:-45vw;--sy:-45vh"></i><i class="il boot-fx" data-il="flag" data-a="BEL" style="right:10vw;top:11vh;--iz:10vw;--d:.7s;--sx:45vw;--sy:-45vh"></i><i class="il y boot-fx" data-il="pent" data-a="2018" data-b="WORLD CUP" style="right:19vw;bottom:11vh;--iz:9vw;--d:.9s;--sx:55vw;--sy:45vh"></i><i class="il k boot-fx" data-il="pill" data-a="RUSSIA" data-b="14.06 — 15.07" style="left:13vw;bottom:17vh;--iz:14vw;--d:1.1s;--sx:-55vw;--sy:45vh"></i><i class="il boot-fx" data-il="chk" style="right:4vw;top:47vh;--iz:10vw;--d:1.3s;--sx:55vw"></i>
+    </div>
+    <!-- one page, shown through three windows: the quarter you see first, then two flaps -->
+    <div class="fp-c3" data-t="0 .5" data-ease="io"><div class="fp-c1" data-t=".04 .24" data-ease="io"><div class="fp-c2" data-t=".24 .5" data-ease="io">
+      <div class="fp boot-fx" style="--fx:30vw;--fy:-110vh;--spin:38deg;--d:.2s">
+        <i class="fp-under"></i><i class="fp-under b"></i>
+        <div class="fp-w fp-tl">
+          <div class="fp-page" id="fpPage">
+            <div class="fp-mast"><span class="mono">Russia · 14 June — 15 July 2018</span><b>The Road to Glory</b><span class="mono">Unofficial fanzine edition · No. 1 of 7</span></div>
+            <div class="fp-rule mono"><span>Seven matches</span><span>Six wins</span><span>Sixteen goals</span><span>One bronze medal</span></div>
+            <h1 class="fp-h" aria-label="One generation. One dream.">
+              <span class="d">One generation.</span>
+              <span class="d fp-h2"><span class="fp-deck">Hazard. De&nbsp;Bruyne. Lukaku. Courtois. Kompany. Born a few years apart, all reaching their peak in the same summer.</span><b>One dream.</b></span>
+            </h1>
+            <div class="fp-low">
+              <figure class="ph fp-ph" data-photo="team"></figure>
+              <p class="fp-capt">Moscow, 23 June 2018. The eleven who start against Tunisia.</p>
+              <article class="fp-art">
+                <h3 class="d">The one they were supposed to win.</h3>
+                <p class="serif">Belgium had never finished higher than fourth at a World Cup. In June 2018 they were ranked third in the world, with a group of players who would not get many more summers like this one.</p>
+              </article>
+              <aside class="fp-art fp-idx">
+                <b class="d">N°3</b>
+                <span class="mono">FIFA ranking, June 2018</span>
+                <ol><li>01 The Dream</li><li>02 The Beginning</li><li>03 The Group Stage</li><li>04 Japan</li><li>05 Brazil</li><li>06 France</li><li>07 The Final Chapter</li><li>08 The Wall</li></ol>
+              </aside>
+            </div>
+          </div>
+        </div>
+        <div class="fp-w fp-tr" data-t=".04 .24" data-ease="io" aria-hidden="true"></div>
+        <div class="fp-w fp-bot" data-t=".24 .5" data-ease="io" aria-hidden="true"></div>
+      </div>
+    </div></div></div>
+
+    <!-- what was lying on top of it -->
+    <span class="scrawl i-scr" data-t=".54 .66" data-ease="s8" aria-hidden="true">Russia 2018</span>
+    <svg class="scr c-y i-a1" data-t=".62 .72"><use href="#s-loop"/></svg>
+    <span class="hand c-r i-a1t" data-t=".66 .76">golden generation</span>
+    <div class="tkt i-tk fx-slide" data-tkt="13" data-at=".72" style="--rot:-8deg;--fx:-60vw"></div>
+    <div class="stk i-st" data-at=".78" style="--rot:7deg"><figure class="ph" data-photo="hazard"></figure><b class="d stk-n">10</b><span class="d stk-nm">E. Hazard</span></div>
+    <figure class="ph print duo-y i-p1 fx-slap" data-at=".84" data-photo="flag" data-cap="Moscow, 23.06" data-tape="t" style="--rot:5deg"></figure>
+    <i class="il fx-slap" data-il="box" data-a="N°3" data-at=".8" style="left:58vw;top:37vh;--iz:11vw"></i><i class="il y" data-il="bars" data-at=".87" style="left:1.5vw;top:10vh;--iz:5vw"></i>
+    <span class="stamp i-stp" data-at=".9">Archive<small>Belgium · Russia 2018</small></span>
+  </div>
+</section>
+
+<div class="xf" aria-hidden="true">
+  <div class="xf-s bg-r" data-torn="tb" data-torn-d="6" data-parx=".45" style="--rot:-2.5deg;--ty:-9vh"><span>02 — The Beginning — Twenty-three players — One manager — </span><span>02 — The Beginning — Twenty-three players — One manager — </span><span>02 — The Beginning — Twenty-three players — One manager — </span><span>02 — The Beginning — Twenty-three players — One manager — </span><span>02 — The Beginning — Twenty-three players — One manager — </span></div>
+  <div class="xf-s xf-c " data-parx="-.5" style="--rot:1.6deg;--ty:1vh"></div>
+</div>
+
+<!-- ═══════════ 02 — THE BEGINNING ═══════════ -->
+<section class="blk s-open bg-y paper" data-chapter="02|The Beginning">
+  <i class="rip" data-torn="b" data-torn-d="18"></i>
+  <p class="mono lab">02 — The Beginning</p>
+  <h2 class="ttl" aria-label="Twenty-three players. One manager. No excuses.">
+    <span class="ttl-l" data-fit data-fx="slice" data-in>23 players.</span>
+    <span class="ttl-s c-r" data-in aria-hidden="true" style="--nx:46%">Now or never</span>
+    <span class="ttl-l" data-fit data-fx="rise" data-tile="4" data-in>One manager.</span>
+    <span class="ttl-l" data-fit data-fx="flip" data-in>No excuses.</span>
+  </h2>
+
+  <div class="clg open-clg">
+    <i class="disc bg-k oc-disc fx-paste" data-in aria-hidden="true"></i>
+    <figure class="ph print oc-a fx-slap" data-in data-color="8 46" data-photo="martinez" data-cap="R. Martínez — Kazan, 6.07" data-tape="tl" style="--rot:-3deg;--ar:4/3;--op:50% 40%"></figure>
+    <div class="lbl oc-l fx-slide" data-in data-torn="trbl" data-torn-d="5" style="--fx:-60vw"><small>The manager</small>Roberto<b>Martínez</b></div>
+    <svg class="scr c-r oc-arr" data-in style="--d:.7s"><use href="#s-arrow"/></svg>
+    <span class="hand c-r oc-h" data-in style="--d:.9s">the boss</span>
+    <dl class="slip mono oc-f fx-drop" data-in data-torn="tb" style="--rot:3deg;--d:.2s">
+      <div><dt>Qualifying</dt><dd>W9 · D1</dd></div>
+      <div><dt>Goals scored</dt><dd>43</dd></div>
+      <div><dt>FIFA ranking, June 2018</dt><dd>3rd</dd></div>
+      <div><dt>Best World Cup before</dt><dd>4th, 1986</dd></div>
+    </dl>
+    <figure class="ph print oc-b fx-drop" data-in data-photo="team" data-cap="Moscow, 23.06" data-pin style="--rot:5deg;--ar:3/2;--d:.15s"></figure>
+    <div class="cutting oc-t1 fx-slide" data-in data-torn="tb" style="--rot:-1.6deg;--fx:-60vw"><p class="serif">Roberto Martínez had the squad every Belgian coach before him could only imagine, and Thierry Henry beside him on the bench. They arrived in Russia unbeaten in qualifying: nine wins, one draw, forty-three goals. The first European side to book a ticket.</p></div>
+    <div class="cutting oc-t2 fx-slide" data-in data-torn="trb" style="--rot:1.3deg;--fx:60vw;--d:.14s"><p class="serif">The talk at home was no longer about getting out of the group. It was about what a generation owes itself when it knows it will not get many more summers like this.</p><i class="staple"></i></div>
+    <i class="il k oc-s1" data-il="pill" data-a="43 GOALS" data-b="QUALIFYING" data-in></i>
+    <i class="il oc-s2" data-il="box" data-a="N°3" data-in style="--d:.3s"></i>
+    <i class="il k oc-s3" data-il="chk" data-in style="--d:.4s"></i>
+  </div>
+</section>
+
+<!-- Sticker album -->
+<section class="scene s-roll bg-w paper" data-scene data-states="0 .17 .34 .5 .66 .82" data-poster="1" style="--len:3.3">
+  <div class="pin">
+    <p class="mono lab roll-lab">Sticker album — the 23 · not a line-up</p>
+
+    <div class="alb-side">
+      <div class="alb-cap" data-s="0">
+        <span class="d alb-n" aria-hidden="true">10</span>
+        <h3 class="d">Eden<br>Hazard</h3>
+        <p class="mono">Captain · Chelsea · 27</p>
+        <p class="alb-txt">The armband and the ball. Everything Belgium does in the final third starts at his feet.</p>
+        <span class="hand c-r alb-hand">capt.</span><i class="il alb-il" data-il="rnd" data-a="10" data-b="CAPTAIN"></i>
+      </div>
+      <div class="alb-cap" data-s="1">
+        <span class="d alb-n" aria-hidden="true">7</span>
+        <h3 class="d">Kevin<br>De&nbsp;Bruyne</h3>
+        <p class="mono">Manchester City · 26</p>
+        <p class="alb-txt">A league champion in May. He begins the tournament deep in midfield. He will not finish it there.</p>
+        <span class="hand c-r alb-hand">watch this one</span><i class="il alb-il k" data-il="pent" data-a="N°7" data-b="MIDFIELD"></i>
+      </div>
+      <div class="alb-cap" data-s="2">
+        <span class="d alb-n" aria-hidden="true">9</span>
+        <h3 class="d">Romelu<br>Lukaku</h3>
+        <p class="mono">Manchester United · 25</p>
+        <p class="alb-txt">Already his country's all-time top scorer. Four goals in his first two matches in Russia.</p>
+        <span class="hand c-r alb-hand">4 in 2</span><i class="il alb-il y" data-il="pill" data-a="4 IN 2" data-b="GOALS · GAMES"></i>
+      </div>
+      <div class="alb-cap" data-s="3">
+        <span class="d alb-n" aria-hidden="true">1</span>
+        <h3 class="d">Thibaut<br>Courtois</h3>
+        <p class="mono">Chelsea · 26</p>
+        <p class="alb-txt">One metre ninety-nine. He will leave Russia with the Golden Glove.</p>
+        <span class="hand c-r alb-hand">1,99 m</span><i class="il alb-il" data-il="box" data-a="1,99 M"></i>
+      </div>
+      <div class="alb-cap" data-s="4">
+        <span class="d alb-n ol" aria-hidden="true">4</span>
+        <h3 class="d">Vincent<br>Kompany</h3>
+        <p class="mono">Manchester City · 32</p>
+        <p class="alb-txt">Injured in the last friendly before the flight. Not ready for the opener. Back in time for the nights that matter.</p>
+        <span class="hand c-r alb-hand">fit?</span><i class="il alb-il" data-il="jersey" data-a="4"></i>
+      </div>
+      <div class="alb-cap alb-end" data-s="5">
+        <h3 class="d">And<br>eighteen<br>more.</h3><i class="il alb-il k" data-il="stack" data-a="+18"></i>
+        <p class="mono">Alderweireld · Vermaelen · Vertonghen · Witsel · Fellaini · Carrasco · Mignolet · Casteels · Mertens · Meunier · T. Hazard · Tielemans · Januzaj · Dembélé · Boyata · Batshuayi · Chadli · Dendoncker</p>
+      </div>
+    </div>
+
+    <div class="alb-grid">
+      <div class="slot"><span class="mono slot-l">1 · Courtois</span><div class="stk" data-from="3" style="--rot:2deg"><figure class="ph" data-photo="courtois"></figure><b class="d stk-n">1</b><span class="d stk-nm">Courtois</span></div></div>
+      <div class="slot"><span class="mono slot-l">2 · Alderweireld</span><div class="stk" data-from="5" style="--rot:-3deg;--d:.05s"><figure class="ph" data-photo="alderweireld"></figure><b class="d stk-n">2</b><span class="d stk-nm">Alderweireld</span></div></div>
+      <div class="slot"><span class="mono slot-l">4 · Kompany</span><div class="stk" data-from="4" style="--rot:4deg"><figure class="ph" data-photo="kompany"></figure><b class="d stk-n">4</b><span class="d stk-nm">Kompany</span></div><svg class="scr c-r slot-zig" data-from="4" style="--d:.35s"><use href="#s-zig"/></svg></div>
+      <div class="slot"><span class="mono slot-l">5 · Vertonghen</span><div class="stk" data-from="5" style="--rot:1.5deg;--d:.22s"><figure class="ph" data-photo="vertonghen" style="--op:62% 30%"></figure><b class="d stk-n">5</b><span class="d stk-nm">Vertonghen</span></div></div>
+      <div class="slot"><span class="mono slot-l">6 · Witsel</span><div class="stk" data-from="5" style="--rot:-2deg;--d:.4s"><figure class="ph" data-photo="witsel"></figure><b class="d stk-n">6</b><span class="d stk-nm">Witsel</span></div></div>
+      <div class="slot"><span class="mono slot-l">7 · De Bruyne</span><div class="stk" data-from="1" style="--rot:-4deg"><figure class="ph" data-photo="kdb"></figure><b class="d stk-n">7</b><span class="d stk-nm">De Bruyne</span></div></div>
+      <div class="slot slot-x"><span class="mono slot-l">8 · Fellaini</span><b class="d slot-q" aria-hidden="true">8</b></div>
+      <div class="slot"><span class="mono slot-l">9 · R. Lukaku</span><div class="stk" data-from="2" style="--rot:3deg"><figure class="ph" data-photo="lukaku"></figure><b class="d stk-n">9</b><span class="d stk-nm">R. Lukaku</span></div></div>
+      <div class="slot"><span class="mono slot-l">10 · E. Hazard</span><div class="stk" data-from="0" style="--rot:-3deg"><figure class="ph" data-photo="hazard"></figure><b class="d stk-n">10</b><span class="d stk-nm">E. Hazard</span></div><svg class="scr c-r slot-star" data-from="0" style="--d:.4s"><use href="#s-star"/></svg></div>
+      <div class="slot"><span class="mono slot-l">14 · Mertens</span><div class="stk" data-from="5" style="--rot:2.5deg;--d:.12s"><figure class="ph" data-photo="mertens"></figure><b class="d stk-n">14</b><span class="d stk-nm">Mertens</span></div></div>
+      <div class="slot"><span class="mono slot-l">15 · Meunier</span><div class="stk" data-from="5" style="--rot:-1.5deg;--d:.3s"><figure class="ph" data-photo="meunier"></figure><b class="d stk-n">15</b><span class="d stk-nm">Meunier</span></div></div>
+      <div class="slot slot-x"><span class="mono slot-l">22 · Chadli</span><b class="d slot-q" aria-hidden="true">22</b></div>
+      <span class="hand c-r alb-miss" data-from="5" style="--d:.6s">still missing: 8 &amp; 22</span>
+      <svg class="scr c-r alb-miss-a" data-from="5" style="--d:.9s"><use href="#s-curl"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- Signature 01 — The Starting XI -->
+<section class="scene s-xi bg-k" data-scene data-poster="1" id="xi" style="--len:4.4">
+  <div class="pin">
+    <div class="xi-type">
+      <p class="mono lab">The starting XI<br>v Panama · Sochi · 18.06.2018</p>
+      <div class="d xi-num" id="xiNum" aria-hidden="true">1</div>
+      <div class="d xi-name" id="xiName">Courtois</div>
+      <div class="mono xi-role" id="xiRole">Goalkeeper · Chelsea</div>
+      <ol class="mono xi-list" id="xiList"></ol>
+    </div>
+    <div class="d xi-shape" data-t=".8 .88" data-ease="back" aria-label="3-4-2-1">3–4–2–1</div>
+    <div class="xi-stage"><i class="tape y xi-tp1"></i><i class="tape y xi-tp2"></i><svg class="pitch" id="xiPitch" role="img" aria-label="Belgium's starting eleven against Panama in a 3-4-2-1 formation"></svg></div>
+  </div>
+</section>
+
+<!-- ═══════════ 03 — THE GROUP STAGE: one horizontal timeline ═══════════ -->
+<section class="scene s-grp bg-k" data-scene data-track data-chapter="03|The Group Stage" data-poster="1" style="--len:5.8">
+  <div class="pin">
+    <div class="track">
+
+      <div class="panel g0 bg-w paper">
+        <p class="mono lab g0-lab">03 — The Group Stage<br>Sochi → Moscow → Kaliningrad</p>
+        <h2 class="g0-h" aria-label="Group G."><span class="d mega sp" data-split data-in>Group</span><span class="d g0-g fx-stamp" data-in style="--d:.4s"><i>G.</i></span></h2>
+        <span class="scrawl g0-scr fx-scrawl" data-in style="--d:.7s" aria-hidden="true">ten days</span>
+        <div class="tkt g0-t1 fx-slide" data-tkt="13" data-in style="--rot:-7deg;--fx:-70vw;--d:.2s"></div>
+        <div class="tkt g0-t2 fx-drop" data-tkt="29" data-in style="--rot:4deg;--d:.42s"></div>
+        <div class="tkt g0-t3 fx-slide" data-tkt="45" data-in style="--rot:-3deg;--fx:80vw;--spin:20deg;--d:.6s"></div>
+        <i class="il fx-slap" data-il="oval" data-a="GROUP G" data-b="RUSSIA 2018" data-in style="right:4vw;top:9vh;--iz:12vw;--d:.9s"></i><i class="il k" data-il="dia" data-a="3 GAMES" data-in style="left:62vw;top:48vh;--iz:13vw;--d:1.1s"></i><i class="il y" data-il="bars" data-in style="left:1.5vw;top:44vh;--iz:4vw;--d:1.3s"></i>
+        <figure class="ph print stack g0-ph fx-slap" data-in data-photo="walk" data-cap="walking to the ground" data-tape="tr" style="--rot:5deg;--d:.5s"></figure>
+        <span class="hand c-r g0-hand" data-in style="--d:1s">three games →</span>
+      </div>
+
+      <!-- Panama -->
+      <div class="panel gp bg-w paper" data-torn="l" data-torn-d="12" data-collect="13" style="--opp:var(--pan);--opp2:var(--pan2)">
+        <p class="mono m-meta">Match 13 · 18 June 2018<br>Fisht Stadium, Sochi<br>Att. 43,257</p>
+        <div class="d mega mt-opp px" style="--px:-18" aria-hidden="true">Panama</div>
+        <div class="sc d" role="img" aria-label="Belgium 3, Panama 0">
+          <span class="cutn c-bel fx-stamp" data-at=".14" style="--h:64;--rot:-4deg"><i><span data-count="3" data-count-at=".16">3</span></i></span>
+          <span class="cutn c-opp fx-stamp" data-at=".2" style="--h:38;--rot:5deg"><i>0</i></span>
+        </div>
+        <i class="flag f-pan fx-drop" data-at=".24" aria-hidden="true"><b></b><b></b><b></b><b></b></i>
+        <div class="tkt gp-tk fx-slide" data-tkt="13" data-stamp data-at=".26" style="--rot:-6deg;--fx:-50vw"></div>
+        <span class="pencil gp-n1" data-at=".3">0–0 at half-time. Nerves.</span>
+        <figure class="ph print crease gp-ph fx-slap" data-at=".3" data-photo="mertens" data-cap="Mertens — 47′" data-tape="t" style="--rot:6deg;--ar:3/4;--fx:40vw;--fy:-50vh"></figure>
+        <i class="il y gp-n2 fx-stamp" data-il="hex" data-a="VOLLEY!" data-b="47′" data-at=".34" style="--rot:-10deg"></i><i class="il o fx-drop" data-il="pent" data-a="PAN" data-b="MATCH 13" data-at=".28" style="left:2vw;top:44vh;--iz:7vw"></i>
+        <svg class="scr c-r gp-s2" data-at=".34"><use href="#s-arrow2"/></svg>
+        <ul class="m-goals slip" data-torn="tb" data-at=".34" style="--rot:-1.5deg">
+          <li><b class="d">Mertens</b><span class="mono">47′</span></li>
+          <li><b class="d">Lukaku</b><span class="mono">69′ · 75′</span></li>
+        </ul>
+        <p class="m-cut gp-cut" data-cut data-at=".38">Forty-five minutes of nothing.</p>
+        <p class="m-txt slip" data-torn="tb" data-at=".42" style="--rot:1.2deg">Against a team playing its first World Cup match. Then Mertens swings his right foot at a dropping ball on the corner of the box, and the summer begins.</p>
+      </div>
+
+      <!-- Tunisia -->
+      <div class="panel gt bg-k" data-torn="l" data-torn-d="12" data-collect="29" style="--opp:var(--tun);--opp2:var(--w)">
+        <p class="mono m-meta">Match 29 · 23 June 2018<br>Spartak Stadium, Moscow<br>Att. 44,190</p>
+        <div class="d mega mt-opp px" style="--px:-18" aria-hidden="true">Tunisia</div>
+        <div class="sc d" role="img" aria-label="Belgium 5, Tunisia 2">
+          <span class="cutn c-bel fx-drop" data-at=".14" style="--rot:-5deg"><i><span data-count="5" data-count-at=".16">5</span></i></span>
+          <span class="cutn c-opp pale fx-drop" data-at=".2" style="--rot:6deg;--d:.1s"><i>2</i></span>
+        </div>
+        <i class="flag f-tun fx-slap" data-at=".24" aria-hidden="true"><b></b></i><i class="il o fx-drop" data-il="pent" data-a="TUN" data-b="MATCH 29" data-at=".3" style="left:50vw;top:50vh;--iz:7vw"></i><i class="il y" data-il="rnd" data-a="5—2" data-b="MOSCOW" data-at=".3" style="left:38vw;top:42vh;--iz:7vw"></i><i class="il fx-stamp" data-il="box" data-a="PEN. 6′" data-at=".33" style="left:27vw;top:56vh;--iz:11vw"></i>
+        <figure class="ph print gt-ph fx-slap" data-at=".26" data-photo="penalty" data-cap="6′ — Hazard, from the spot" data-tape="t" style="--rot:-3deg;--ar:16/10"></figure>
+        <svg class="scr c-r gt-x" data-at=".32"><use href="#s-loop"/></svg>
+        <figure class="ph print duo-y stack gt-ph2 fx-drop" data-at=".34" data-photo="fansMoscow" data-cap="Moscow, 23.06" style="--rot:6deg;--ar:3/2"></figure>
+        <ul class="m-goals slip" data-torn="tb" data-at=".36" style="--rot:1.6deg">
+          <li><b class="d">E. Hazard</b><span class="mono">6′ pen. · 51′</span></li>
+          <li><b class="d">Lukaku</b><span class="mono">16′ · 45+3′</span></li>
+          <li><b class="d">Batshuayi</b><span class="mono">90′</span></li>
+          <li class="dim"><b class="d">Bronn · Khazri</b><span class="mono">18′ · 90+3′</span></li>
+        </ul>
+        <div class="tkt gt-tk fx-slide" data-tkt="29" data-stamp data-at=".38" style="--rot:5deg;--fx:50vw;--spin:18deg"></div>
+        <span class="hand c-y gt-n2" data-at=".42">qualified with a game to spare</span>
+        <svg class="scr c-y gt-s2" data-at=".44"><use href="#s-line"/></svg>
+      </div>
+
+      <!-- England -->
+      <div class="panel ge bg-w paper" data-torn="l" data-torn-d="12" data-collect="45" style="--opp:var(--eng);--opp2:var(--w)">
+        <p class="mono m-meta">Match 45 · 28 June 2018<br>Kaliningrad Stadium<br>Att. 33,973</p>
+        <div class="d mega mt-opp px" style="--px:-18" aria-hidden="true">England</div>
+        <figure class="ph ge-ph rough" data-photo="januzaj" data-t=".12 .34" data-ease="s12"></figure>
+        <div class="sc d" role="img" aria-label="England 0, Belgium 1">
+          <span class="cutn c-opp fx-slide" data-at=".16" style="--h:40;--rot:-5deg;--fx:60vw"><i>0</i></span>
+          <span class="cutn c-bel fx-slide" data-at=".2" style="--h:62;--rot:4deg;--fx:60vw;--d:.08s"><i>1</i></span>
+        </div>
+        <i class="flag f-eng fx-drop" data-at=".24" aria-hidden="true"></i><i class="il o fx-drop" data-il="pent" data-a="ENG" data-b="MATCH 45" data-at=".3" style="right:14vw;top:62vh;--iz:7vw"></i><i class="il k" data-il="chk" data-at=".34" style="left:49vw;top:6vh;--iz:7vw"></i>
+        <span class="hand c-r ge-n1" data-at=".28">9 changes</span>
+        <svg class="scr c-r ge-s1" data-at=".3"><use href="#s-x"/></svg>
+        <figure class="ph print ge-ph2 fx-slap" data-at=".32" data-photo="hazardBench" data-cap="Hazard: rested" data-pin style="--rot:7deg;--ar:1/1;--fx:30vw;--fy:50vh;--spin:-30deg"></figure>
+        <ul class="m-goals slip" data-torn="tb" data-at=".34" style="--rot:-2deg"><li><b class="d">Januzaj</b><span class="mono">51′</span></li></ul>
+        <div class="tkt ge-tk fx-slide" data-tkt="45" data-stamp data-at=".38" style="--rot:-5deg;--fx:-50vw"></div>
+        <p class="m-txt slip" data-torn="tb" data-at=".42" style="--rot:-1deg">Both sides are already through, and both rest almost everyone. Only Courtois and Boyata keep their places. Januzaj cuts in from the right and bends one into the top corner with his left foot. First place — and the harder half of the draw.</p>
+      </div>
+
+      <!-- nine out of nine -->
+      <div class="panel g9 bg-y paper" data-torn="l" data-torn-d="12">
+        <div class="d mega nine-n"><span data-count="9" data-count-at=".2">9</span></div>
+        <p class="d nine-h fx-slam" data-at=".22" style="--fx:60vw">Goals in<br>three games.</p>
+        <svg class="scr c-r nine-tally" data-at=".28"><use href="#s-tally"/></svg>
+        <figure class="ph print dog nine-ph fx-slap" data-at=".32" data-photo="fanCup" data-cap="he already believes" data-tape="tr" style="--rot:5deg;--ar:5/4"></figure>
+        <span class="hand c-r nine-hand" data-at=".36">and 9 points out of 9</span><i class="il fx-stamp" data-il="rnd" data-a="9/9" data-b="POINTS" data-at=".38" style="left:31vw;top:6vh;--iz:11vw"></i><i class="il k" data-il="pill" data-a="3 WINS" data-b="GROUP G" data-at=".4" style="right:29vw;top:33vh;--iz:10vw"></i><i class="il" data-il="bars" data-at=".42" style="left:38vw;bottom:9vh;--iz:3.5vw"></i>
+        <dl class="mono nine-dl" data-at=".4">
+          <div><dt>Won</dt><dd>3</dd></div><div><dt>Drawn</dt><dd>0</dd></div><div><dt>Lost</dt><dd>0</dd></div><div><dt>Conceded</dt><dd>2</dd></div>
+        </dl>
+      </div>
+
+    </div>
+    <div class="trk-rail" aria-hidden="true"><span>18.06 · Sochi</span><span>23.06 · Moscow</span><span>28.06 · Kaliningrad</span><span>scroll →</span></div>
+  </div>
+</section>
+
+<div class="xf" aria-hidden="true">
+  <div class="xf-s bg-r" data-torn="tb" data-torn-d="6" data-parx=".45" style="--rot:-2.2deg;--ty:-10vh"><span>Next: Japan — Rostov-on-Don — Round of 16 — </span><span>Next: Japan — Rostov-on-Don — Round of 16 — </span><span>Next: Japan — Rostov-on-Don — Round of 16 — </span><span>Next: Japan — Rostov-on-Don — Round of 16 — </span><span>Next: Japan — Rostov-on-Don — Round of 16 — </span></div>
+  <div class="xf-s bg-y" data-torn="tb" data-torn-d="6" data-parx="-.5" style="--rot:1.8deg;--ty:-1vh"><span>2 July 2018 — Rostov Arena — </span><span>2 July 2018 — Rostov Arena — </span><span>2 July 2018 — Rostov Arena — </span><span>2 July 2018 — Rostov Arena — </span><span>2 July 2018 — Rostov Arena — </span></div>
+  <div class="xf-s xf-c " data-parx=".3" style="--rot:-1deg;--ty:7vh"></div>
+</div>
+
+<!-- ═══════════ 04 — THE MOMENT — JAPAN ═══════════ -->
+<section class="scene s-jp" data-scene data-chapter="04|The Moment — Japan" data-states="0 .14 .28 .42 .56 .7 .85" data-poster=".92" style="--len:4.8">
+  <div class="pin">
+    <div class="d mega jp-mega" aria-hidden="true">Japan</div>
+    <i class="jp-sun" aria-hidden="true"></i>
+    <i class="jp-bel" aria-hidden="true"><b></b><b></b><b></b></i>
+    <p class="mono jp-meta">Round of 16 · 2 July 2018<br>Rostov Arena · Att. 41,466</p>
+    <div class="d jp-min"><span id="jpMin">45</span>′</div>
+    <div class="d jp-score" id="jpScore" role="img" aria-label="Belgium 0, Japan 0">
+      <span class="rollw"><span class="roll roll-b"><i>0</i><i>1</i><i>2</i></span></span>
+      <span class="jp-dash">—</span>
+      <span class="rollw"><span class="roll roll-j"><i>0</i><i>1</i><i>2</i></span></span>
+    </div>
+    <p class="mono jp-teams"><span>Belgium</span><span>Japan</span></p>
+
+    <div class="tkt jp-tk fx-slide" data-tkt="54" data-from="0" data-to="0" style="--rot:-7deg;--fx:60vw"></div>
+    <i class="il" data-il="jersey" data-a="10" data-from="0" data-to="0" style="left:19vw;top:30vh;--iz:10vw;--rot:-8deg"></i><i class="il" data-il="pill" data-a="JAPAN" data-b="ROUND OF 16" data-from="0" data-to="0" style="right:17vw;top:32vh;--iz:13vw;--rot:7deg;--c1:var(--jpn)"></i><i class="il k" data-il="hex" data-a="0—2" data-b="52′" data-from="2" data-to="2" style="left:6vw;top:24vh;--iz:12vw;--d:.2s"></i><i class="il y" data-il="rnd" data-a="69′" data-b="1—2" data-from="5" data-to="5" style="left:44vw;top:7vh;--iz:8vw;--d:.2s"></i>
+    <svg class="scr c-r jp-hatch" data-from="2" data-to="2"><use href="#s-hatch"/></svg>
+
+    <div class="jp-cap" data-s="0"><h3 class="d">Half-time.</h3><p>Nothing in it. A quiet evening by the Don. Scroll slowly; it is the last calm minute of the night.</p></div>
+    <div class="jp-cap" data-s="1"><h3 class="d">Haraguchi.</h3><p>Shibasaki slides a pass through the left side of the Belgian defence. Haraguchi runs on and shoots across Courtois.</p></div>
+    <div class="jp-cap" data-s="2"><h3 class="d">Inui.</h3><p>Twenty-five yards out. A yard of space. Bottom corner.</p>
+      <span class="hand c-y jp-four">four minutes.</span><svg class="scr c-y jp-zig"><use href="#s-zig"/></svg></div>
+    <div class="jp-cap jp-cap-wide" data-s="3"><h3 class="jp-fact" data-cut="k">No team had come back from two goals down to win a World Cup knockout match inside ninety minutes since 1966.</h3></div>
+    <div class="jp-cap" data-s="4"><h3 class="d jp-sub"><s>Mertens</s> Fellaini.<br><s>Carrasco</s> Chadli.</h3><p>A double change. It looks like a gamble. It is the whole story.</p><span class="hand c-y jp-plan">plan B</span></div>
+    <div class="jp-cap" data-s="5"><h3 class="d">Vertonghen.</h3><p>A half-cleared corner. A header looped from the left of the box, over Kawashima, into the far corner. Nobody is quite sure he meant it.</p></div>
+    <div class="jp-cap" data-s="6"><h3 class="d">Fellaini.</h3><p>Hazard twists on the left and crosses. Fellaini climbs above his marker. Level. Sixteen minutes to play.</p><span class="hand c-r jp-on">game on</span></div>
+
+    <!-- the two stickers the album was missing -->
+    <div class="stk jp-st1" data-from="4" data-to="4" style="--rot:-7deg;--d:.25s"><figure class="ph" data-photo="fellaini"></figure><b class="d stk-n">8</b><span class="d stk-nm">Fellaini</span></div>
+    <div class="stk jp-st2" data-from="4" data-to="4" style="--rot:6deg;--d:.5s"><figure class="ph" data-photo="chadli"></figure><b class="d stk-n">22</b><span class="d stk-nm">Chadli</span></div>
+    <span class="pencil jp-got" data-from="4" data-to="4" style="--d:.8s">got them. 65′</span>
+    <figure class="ph print jp-ph fx-slap" data-from="5" data-to="5" data-photo="vertonghen" data-cap="Vertonghen, Rostov" data-tape="t" style="--rot:4deg;--ar:4/3;--d:.15s"></figure>
+    <figure class="ph print jp-ph jp-ph6 fx-drop" data-from="6" data-photo="kdbJapan" data-cap="watch De Bruyne" data-pin style="--rot:-5deg;--ar:3/4;--d:.2s"></figure>
+  </div>
+</section>
+
+<!-- Signature 02 + 04 — The Impossible Comeback / Archive transition -->
+<section class="scene s-replay bg-k" data-scene data-poster=".7" id="chadli" style="--len:6.4">
+  <div class="pin">
+    <p class="mono lab rp-lab">Rostov Arena · 90+4′ · 2—2<br>Reconstruction, simplified</p>
+    <div class="rp-stage"><i class="tape y rp-tp1"></i><i class="tape y rp-tp2"></i><i class="il y rp-c1" data-il="rnd" data-a="94′" data-b="ROSTOV"></i><i class="il k rp-c2" data-il="chk"></i><svg class="pitch" id="rpPitch" role="img" aria-label="Top-down reconstruction of Nacer Chadli's winning goal against Japan"></svg></div>
+    <ol class="rp-steps">
+      <li data-step="1"><b class="d">01</b><h4 class="d">The last corner</h4><p>Stoppage time. Honda swings Japan's corner in; Japan have thrown bodies forward for a winner. Courtois comes and catches.</p></li>
+      <li data-step="2"><b class="d">02</b><h4 class="d">The release</h4><p>He is running before he lands. To the edge of his area — and the ball is rolled into De&nbsp;Bruyne's stride.</p></li>
+      <li data-step="3"><b class="d">03</b><h4 class="d">The carry</h4><p>De&nbsp;Bruyne drives straight down the middle and across halfway. Japan can only back off.</p></li>
+      <li data-step="4"><b class="d">04</b><h4 class="d">The decoy</h4><p>Lukaku cuts inside and takes his marker with him. The right flank opens. De&nbsp;Bruyne slides the ball into it for Meunier.</p></li>
+      <li data-step="5"><b class="d">05</b><h4 class="d">The dummy</h4><p>Meunier crosses low, first time. Lukaku shapes to shoot — and steps over it. He never touches the ball.</p></li>
+      <li data-step="6"><b class="d">06</b><h4 class="d">The finish</h4><p>Chadli has run the length of the pitch. At the far post, he cannot miss.</p></li>
+    </ol>
+    <div class="rp-flash" aria-hidden="true"></div>
+    <figure class="ph rp-photo" data-photo="japan"></figure>
+    <div class="rp-final"><i class="il rp-il" data-il="stack" data-a="GOAL!"></i><i class="il y rp-il2" data-il="bars"></i>
+      <span class="d rp-94">94′</span>
+      <span class="d rp-ch">Chadli.</span>
+      <span class="hand c-y rp-imp">impossible.</span>
+      <svg class="scr c-y rp-under"><use href="#s-line"/></svg>
+    </div>
+    <div class="rp-flood bg-y">
+      <span class="d rp-32" aria-label="3-2">3—2</span>
+      <p class="mono rp-flood-m">Belgium — Japan<br>Full time</p>
+      <figure class="ph print rp-flood-ph" data-photo="street" data-cap="2.07.18 — that night" data-tape="t" style="--rot:-6deg;--ar:3/4;--op:50% 35%"></figure>
+      <span class="hand c-r rp-flood-h">around ten seconds, box to box</span>
+    </div>
+  </div>
+</section>
+
+<section class="blk s-zero bg-w paper" data-collect="54">
+  <i class="rip" data-torn="b" data-torn-d="18" style="--c:var(--y)"></i>
+  <p class="mono lab">The numbers — 90+4′</p>
+  <h2 class="ttl" aria-label="Ten seconds."><span class="ttl-l" data-fit data-fx="rise" data-tile="4" data-in>Ten seconds.</span><span class="ttl-s" data-in aria-hidden="true" style="--nx:54%">Box to box</span></h2>
+  <div class="zero-row" data-in><span class="d zero-n"><span data-count="3">3</span></span><p class="d zero-t">passes.</p><i class="il k" data-il="oval" data-a="3 PASSES" data-b="ROSTOV · 90+4′" style="right:5vw;top:2%;--iz:13vw"></i></div>
+  <div class="zero-route" aria-label="Courtois to De Bruyne to Meunier to Chadli">
+    <div class="stk" data-in style="--rot:-4deg"><figure class="ph" data-photo="courtois"></figure><b class="d stk-n">1</b><span class="d stk-nm">Courtois</span></div>
+    <svg class="scr c-r" data-in style="--d:.25s"><use href="#s-arrow2"/></svg>
+    <div class="stk" data-in style="--rot:3deg;--d:.3s"><figure class="ph" data-photo="kdbJapan"></figure><b class="d stk-n">7</b><span class="d stk-nm">De Bruyne</span></div>
+    <svg class="scr c-r" data-in style="--d:.55s"><use href="#s-arrow2"/></svg>
+    <div class="stk" data-in style="--rot:-2deg;--d:.6s"><figure class="ph" data-photo="meunier"></figure><b class="d stk-n">15</b><span class="d stk-nm">Meunier</span></div>
+    <svg class="scr c-r" data-in style="--d:.85s"><use href="#s-arrow2"/></svg>
+    <div class="stk" data-in style="--rot:5deg;--d:.9s"><figure class="ph" data-photo="chadli"></figure><b class="d stk-n">22</b><span class="d stk-nm">Chadli</span></div>
+  </div>
+  <div class="zero-row zr2" data-in><span class="d zero-n"><span data-count="1">1</span></span><p class="d zero-t">dummy.</p><svg class="scr c-r zero-loop"><use href="#s-loop"/></svg></div>
+  <div class="zero-row zr3" data-in><span class="d zero-n ol">0</span><p class="d zero-t">touches<br>for Lukaku.</p><span class="hand c-r zero-hand">the best pass he never made</span><i class="il" data-il="pill" data-a="DUMMY" data-b="LUKAKU" style="right:3vw;top:-12%;--iz:13vw"></i></div>
+</section>
+
+<!-- the stands: a line of prints that travels sideways as you scroll -->
+<section class="blk s-strip bg-r paper">
+  <i class="rip" data-torn="b" data-torn-d="18" style="--c:var(--w)"></i>
+  <p class="mono lab">In the stands — Moscow, Kaliningrad, and the night of 2 July</p>
+  <div class="d mega strip-word" data-parx=".42" aria-hidden="true">Red everywhere</div>
+  <svg class="scr strip-string" data-in preserveAspectRatio="none"><use href="#s-line"/></svg>
+  <span class="scrawl on-k strip-scr fx-scrawl" data-in style="--d:.3s" aria-hidden="true">the 12th man</span>
+  <div class="strip-row" data-parx="1">
+    <figure class="ph print duo-y" data-photo="flag" data-cap="Moscow, 23.06" data-tape="t" style="--rot:-4deg;--ar:3/2"></figure>
+    <figure class="ph print stack" data-photo="fansOutside" data-cap="outside Spartak" data-pin style="--rot:5deg;--ar:3/2"></figure>
+    <i class="il k" data-il="oval" data-a="RED DEVILS" data-b="THE 12TH MAN"></i>
+    <figure class="ph cutout" data-cutout data-photo="fansKal" style="--rot:-6deg;--op:50% 30%"></figure>
+    <figure class="ph print crease" data-photo="wall" data-cap="Kaliningrad, 28.06" data-tape="tl" style="--rot:3deg;--ar:3/2"></figure>
+    <i class="il" data-il="flag" data-a="BEL"></i>
+    <figure class="ph print duo-r" data-photo="benchKal" data-cap="the bench, same night" data-tape="t" style="--rot:-3deg;--ar:3/2"></figure>
+    <figure class="ph print dog" data-photo="street" data-cap="2.07.18" data-pin style="--rot:6deg;--ar:3/4;--op:50% 35%"></figure>
+  </div>
+</section>
+
+<div class="xf" aria-hidden="true">
+  <div class="xf-s bg-y" data-torn="tb" data-torn-d="6" data-parx="-.45" style="--rot:2.2deg;--ty:-10vh"><span>Quarter-final — Kazan Arena — 6 July 2018 — </span><span>Quarter-final — Kazan Arena — 6 July 2018 — </span><span>Quarter-final — Kazan Arena — 6 July 2018 — </span><span>Quarter-final — Kazan Arena — 6 July 2018 — </span><span>Quarter-final — Kazan Arena — 6 July 2018 — </span></div>
+  <div class="xf-s bg-w" data-torn="tb" data-torn-d="6" data-parx=".5" style="--rot:-1.6deg;--ty:-1vh"><span>Brazil — five-time champions — </span><span>Brazil — five-time champions — </span><span>Brazil — five-time champions — </span><span>Brazil — five-time champions — </span><span>Brazil — five-time champions — </span></div>
+</div>
+
+<!-- ═══════════ 05 — BRAZIL ═══════════ -->
+<section class="scene s-bra bg-k" data-scene data-chapter="05|Brazil — The Night We Believed" data-poster=".92" style="--len:3.2">
+  <div class="pin">
+    <figure class="ph bra-ph" data-photo="brazilTeam"></figure>
+    <div class="bra-mask" id="braMask"><span class="d bra-word" id="braWord">Braz<span id="braPivot">i</span>l.</span></div>
+    <p class="mono m-meta bra-meta" data-o=".5 .6">Quarter-final · 6 July 2018<br>Kazan Arena · Att. 42,873</p>
+    <h2 class="bra-h" aria-label="The night we believed.">
+      <span class="d sp" data-split data-t=".56 .7">The night</span>
+      <span class="d sp" data-split data-t=".64 .78">we believed.</span>
+    </h2>
+    <svg class="scr c-y bra-s" data-t=".78 .9"><use href="#s-line"/></svg>
+    <span class="hand c-y bra-hand" data-t=".8 .92">five-time champions</span>
+    <div class="bra-fl" aria-hidden="true">
+      <i class="bra-g fx-slide" data-at=".52" data-torn="lb" data-torn-d="9"></i>
+      <i class="bra-y fx-drop" data-at=".58"></i>
+      <i class="bra-b fx-stamp" data-at=".64"></i>
+    </div>
+    <div class="tkt bra-tk fx-slide" data-tkt="58" data-at=".6" style="--rot:8deg;--fx:60vw;--spin:26deg"></div>
+    <figure class="ph cutout bra-cut fx-slap" data-cutout data-at=".68" data-photo="brazilAction" style="--op:50% 30%"></figure>
+    <figure class="ph print bra-fan fx-slap" data-at=".72" data-photo="braFan" data-cap="Kazan. he brought his own." data-tape="t" style="--rot:-5deg;--ar:3/2"></figure>
+  </div>
+</section>
+
+<section class="blk s-plan bg-y paper">
+  <i class="rip" data-torn="b" data-torn-d="18"></i>
+  <p class="mono lab">The plan</p>
+  <h3 class="ttl plan-ttl" aria-label="Martínez tears up the team sheet.">
+    <span class="ttl-l" data-fit data-fx="flip" data-tile="3" data-in>Martínez</span>
+    <span class="ttl-l" data-fit data-fx="slice" data-in>tears up the</span>
+    <span class="ttl-s c-r" data-in aria-hidden="true" style="--nx:48%">Kazan, 6.07</span>
+    <span class="ttl-l" data-fit data-fx="rise" data-in>team sheet.</span>
+  </h3>
+  <div class="sheet-w" data-in>
+    <div class="sheet" data-rip>
+      <p class="mono sheet-h">Team sheet — as v Japan, 2.07<br>amended for Kazan, 6.07</p>
+      <ol class="sheet-l">
+        <li><i>1</i>Courtois</li>
+        <li><i>2</i>Alderweireld</li>
+        <li><i>4</i>Kompany</li>
+        <li><i>5</i>Vertonghen</li>
+        <li><i>15</i>Meunier</li>
+        <li><i>6</i>Witsel</li>
+        <li class="chg"><i>7</i>De Bruyne <span class="hand c-r">false nine</span></li>
+        <li class="out"><i>11</i><s>Carrasco</s> <span class="hand c-r">22 Chadli</span></li>
+        <li class="out"><i>14</i><s>Mertens</s> <span class="hand c-r">8 Fellaini</span></li>
+        <li><i>10</i>E. Hazard (c)</li>
+        <li class="chg"><i>9</i>R. Lukaku <span class="hand c-r">right wing</span></li>
+      </ol>
+    </div>
+  </div>
+  <div class="plan-cols">
+    <p class="pr" data-in>Fellaini and Chadli, the two substitutes who turned Rostov, both start. De&nbsp;Bruyne leaves midfield and plays as the central forward. Lukaku — a number nine all his life — goes out to the right, into the space behind Marcelo.</p>
+    <p class="pr" data-in style="--d:.15s">Thirteen minutes in, Chadli's corner, Kompany's flick, Fernandinho's arm: an own goal, and Belgium lead.</p>
+  </div>
+  <div class="plan-score" data-in><span class="mono">13′ · Fernandinho o.g.</span><span class="d">1—0</span></div>
+  <svg class="scr c-r plan-ex" data-in style="--d:.4s"><use href="#s-excl"/></svg>
+</section>
+
+<!-- Replay 2: De Bruyne 31' -->
+<section class="scene s-replay s-replay-b bg-k" data-scene data-poster=".66" id="kdb" style="--len:4.2">
+  <div class="pin">
+    <p class="mono lab rp-lab">Kazan Arena · 31′ · 1—0<br>Reconstruction, simplified</p>
+    <div class="rp-stage"><i class="tape y rp-tp1"></i><i class="tape y rp-tp2"></i><i class="il y rp-c1" data-il="rnd" data-a="31′" data-b="KAZAN"></i><i class="il k rp-c2" data-il="chk"></i><svg class="pitch" id="kdbPitch" role="img" aria-label="Top-down reconstruction of Kevin De Bruyne's goal against Brazil"></svg></div>
+    <ol class="rp-steps">
+      <li data-step="1"><b class="d">01</b><h4 class="d">Out of the box</h4><p>A Brazil corner is cleared. Lukaku wins the ball deep in his own half and turns.</p></li>
+      <li data-step="2"><b class="d">02</b><h4 class="d">Forty yards</h4><p>He just keeps running. Through the middle of Brazil's midfield, yellow shirts bouncing off him.</p></li>
+      <li data-step="3"><b class="d">03</b><h4 class="d">The strike</h4><p>The pass goes right. De&nbsp;Bruyne takes it to the edge of the area and hits it low, across Alisson, inside the far post.</p></li>
+    </ol>
+    <div class="rp-flash" aria-hidden="true"></div>
+    <figure class="ph rp-photo" data-photo="kdbJoy"></figure>
+    <div class="rp-final"><i class="il rp-il" data-il="stack" data-a="GOAL!"></i><i class="il y rp-il2" data-il="bars"></i>
+      <span class="d rp-94">31′</span>
+      <span class="d rp-ch">De&nbsp;Bruyne.</span>
+      <span class="hand c-y rp-imp">2—0. to Belgium.</span>
+      <svg class="scr c-y rp-under"><use href="#s-line"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- The morning paper: thrown down open, then a second sheet slides over it -->
+<section class="scene s-np bg-k" data-scene data-poster=".94" data-collect="58" style="--len:2.9">
+  <div class="pin">
+    <p class="mono lab np-lab">The morning after</p>
+    <div class="np" data-t="0 .26" data-ease="s12">
+      <div class="np-sheet">
+        <div class="np-bot">
+          <div class="np-botin">
+            <figure class="ph np-ph" data-photo="braSalute"></figure>
+            <p class="serif np-capt">Kazan Arena, 6 July. The team salute the crowd.</p>
+            <article class="np-art np-a1">
+              <h4 class="d">Half-time: 0—2</h4>
+              <p class="serif">Nobody in the stadium quite knows what to do with the scoreline.</p>
+            </article>
+            <article class="np-art np-a2">
+              <h4 class="d">76′ Renato Augusto. 2—1.</h4>
+              <p class="serif">A header from Coutinho's cross. Fourteen minutes left, and all of them belong to Brazil.</p>
+            </article>
+            <article class="np-art np-a3">
+              <p class="mono">90+4′</p>
+              <h4 class="d">Courtois.<br><span class="ol">Fingertips.</span></h4>
+              <p class="serif">Over the bar.</p>
+            </article>
+          </div>
+        </div>
+        <div class="np-top">
+          <div class="np-mast"><span class="mono">No. 5 of 7</span><b>The Road to Glory</b><span class="mono">Kazan · Sat 7 July 2018</span></div>
+          <div class="np-rule mono"><span>Unofficial fanzine edition</span><span>Quarter-final special</span><span>Free — keep forever</span></div>
+          <h2 class="d np-h">Belgium are in<br>the <mark class="hl" data-t=".38 .5">semi-final.</mark></h2>
+          <p class="serif np-sub">Brazil 1—2 Belgium. The five-time champions are out, and Belgium reach the last four <span class="np-86">for the first time since 1986.</span></p>
+        </div>
+      </div>
+    </div>
+    <svg class="scr c-r np-circ" data-t=".3 .42"><use href="#s-loop2"/></svg>
+    <div class="tkt np-tk fx-slide" data-tkt="58" data-stamp data-at=".46" style="--rot:-9deg;--fx:-60vw"></div>
+
+    <div class="np2" data-t=".54 .72" data-ease="back">
+      <i class="tape"></i>
+      <p class="mono">Page 2 — the numbers after Kazan</p>
+      <div class="np2-row"><span class="d np2-n">5</span><p class="d np2-t">wins<br>out of five.</p></div>
+      <div class="np2-row"><span class="d np2-n ol">14</span><p class="d np2-t">goals.</p></div>
+      <p class="serif np2-p">Five of them against Japan and Brazil, in four days.</p>
+      <figure class="ph np2-ph" data-photo="kontich"></figure>
+      <p class="serif np-capt">Kontich, 22:43. Back home.</p>
+      <span class="pencil np2-note" data-t=".8 .92">two games from the trophy.</span>
+    </div>
+    <svg class="scr c-r np2-tally" data-t=".72 .82"><use href="#s-tally"/></svg>
+    <span class="hand c-r np-hand" data-t=".82 .94">we can win this thing</span>
+  </div>
+</section>
+
+<div class="xf" aria-hidden="true">
+  <div class="xf-s bg-y" data-torn="tb" data-torn-d="6" data-parx=".45" style="--rot:-2.4deg;--ty:-10vh"><span>Semi-final — Saint Petersburg — 10 July 2018 — </span><span>Semi-final — Saint Petersburg — 10 July 2018 — </span><span>Semi-final — Saint Petersburg — 10 July 2018 — </span><span>Semi-final — Saint Petersburg — 10 July 2018 — </span><span>Semi-final — Saint Petersburg — 10 July 2018 — </span></div>
+  <div class="xf-s " data-torn="tb" data-torn-d="6" data-parx="-.5" style="--rot:1.8deg;--ty:-1vh;background-color:var(--fra);color:var(--w)"><span>France — Belgium — </span><span>France — Belgium — </span><span>France — Belgium — </span><span>France — Belgium — </span><span>France — Belgium — </span></div>
+</div>
+
+<!-- ═══════════ 06 — FRANCE: one pile in the middle of the table ═══════════ -->
+<section class="scene s-fra bg-k" data-scene data-chapter="06|France — So Close" data-poster="1" style="--len:4.4;--opp:var(--fra);--opp2:var(--fra2)">
+  <div class="pin">
+    <p class="mono lab fra-lab">06 — France · Semi-final · 10 July 2018 · Saint Petersburg Stadium · Att. 64,286</p>
+    <h2 class="ttl fra-ttl" aria-label="Saint Petersburg."><span class="ttl-l" data-fit="22" data-fx="slice" data-tile="6" data-at=".02">Saint Petersburg</span><span class="ttl-s" data-at=".08" aria-hidden="true" style="--nx:60%">The semi-final</span></h2>
+    <div class="clg fra-clg">
+      <i class="fb fb1 fx-drop" data-at=".05" data-torn="trbl" data-torn-d="8" aria-hidden="true"></i>
+      <i class="fb fb2 fx-drop" data-at=".08" data-torn="trbl" data-torn-d="8" aria-hidden="true"></i>
+      <i class="fb fb3 fx-drop" data-at=".11" data-torn="trbl" data-torn-d="8" aria-hidden="true"></i>
+      <figure class="ph print fr-p1 fx-slap" data-at=".16" data-photo="stadiumSP" data-cap="the anthems" data-tape="tl" style="--rot:-4deg;--ar:3/2;--fx:-40vw"></figure>
+      <div class="tkt fr-tk fx-slide" data-tkt="61" data-at=".2" style="--rot:-6deg;--fx:-60vw"></div>
+      <figure class="ph print fr-p2 fx-slap" data-at=".26" data-color="30 78" data-photo="france" data-cap="Hazard / Mbappé" data-tape="t" style="--rot:2deg;--ar:4/3"></figure>
+      <p class="slip fr-t1 fx-slide" data-torn="tb" data-at=".33" style="--rot:-2deg;--fx:-50vw">For fifty minutes it is the most even match of the tournament. Hazard is unplayable down the left. Lloris saves from Alderweireld at full stretch.</p>
+      <figure class="ph print fr-p3 fx-drop" data-at=".4" data-photo="lloris" data-cap="in front of Lloris" data-pin style="--rot:5deg;--ar:4/3"></figure>
+      <div class="sc d fr-51" data-at=".5" aria-hidden="true"><span class="cutn c-opp fx-stamp" data-at=".5" style="--rot:-5deg"><i>51′</i></span></div>
+      <figure class="ph print fr-p4 fx-slap" data-at=".54" data-photo="boot" data-cap="the match ball" data-tape="tr" style="--rot:-4deg;--ar:4/3;--fx:40vw"></figure>
+      <p class="slip fr-t2 fx-slide" data-torn="tb" data-at=".6" style="--rot:1.6deg;--fx:50vw">A corner from the right. Griezmann, in-swinging, to the near post. Umtiti gets in front of Fellaini.</p>
+      <i class="il o fr-um fx-stamp" data-il="pent" data-a="UMTITI" data-b="51′ · HEADER" data-at=".66" style="--rot:-7deg"></i>
+      <div class="sc d fr-sc" role="img" aria-label="France 1, Belgium 0"><span class="cutn c-opp fx-drop" data-at=".72" style="--rot:-4deg"><i>1</i></span><span class="cutn c-bel fx-drop" data-at=".75" style="--rot:3deg"><i>0</i></span></div>
+      <figure class="ph print fr-p5 fx-slap" data-at=".82" data-photo="walkOff" data-cap="no way through" style="--rot:-6deg;--ar:4/3;--fx:-30vw;--fy:40vh"></figure>
+      <span class="hand c-y fr-hand" data-at=".88">one corner.</span>
+      <span class="stamp fr-st" data-at=".93">Full time<small>France 1—0 Belgium</small></span>
+    </div>
+  </div>
+</section>
+
+<section class="scene s-close bg-w paper" data-scene data-poster=".7" data-collect="61" style="--len:2.2">
+  <div class="pin">
+    <i class="close-rip" aria-hidden="true"></i>
+    <h2 class="close-h" aria-label="So close."><span data-t="0 1">So</span> <span data-t="0 1">close.</span></h2>
+    <span class="ttl-s close-note" data-t=".3 .5" aria-hidden="true">Saint Petersburg, 10.07</span>
+    <p class="close-p" data-t=".5 .7">Belgium have the ball for the rest of the night and never find the way through. It is their first defeat in almost two years.</p>
+    <p class="mono close-m" data-t=".7 .85">France 1—0 Belgium · Umtiti 51′</p>
+  </div>
+</section>
+
+<div class="xf" aria-hidden="true">
+  <div class="xf-s bg-r" data-torn="tb" data-torn-d="6" data-parx="-.45" style="--rot:2deg;--ty:-10vh"><span>Third-place play-off — 14 July 2018 — Belgium v England — </span><span>Third-place play-off — 14 July 2018 — Belgium v England — </span><span>Third-place play-off — 14 July 2018 — Belgium v England — </span><span>Third-place play-off — 14 July 2018 — Belgium v England — </span><span>Third-place play-off — 14 July 2018 — Belgium v England — </span></div>
+  <div class="xf-s bg-y" data-torn="tb" data-torn-d="6" data-parx=".5" style="--rot:-1.8deg;--ty:-1vh"><span>Same stadium — four days later — </span><span>Same stadium — four days later — </span><span>Same stadium — four days later — </span><span>Same stadium — four days later — </span><span>Same stadium — four days later — </span></div>
+</div>
+
+<!-- ═══════════ 07 — THE FINAL CHAPTER ═══════════ -->
+<section class="blk s-third bg-k" data-chapter="07|The Final Chapter" style="--opp:var(--eng);--opp2:var(--w)">
+  <i class="rip" data-torn="b" data-torn-d="18" style="--c:var(--w)"></i>
+  <p class="mono lab">07 — The Final Chapter · Third-place play-off · 14 July 2018<br>Saint Petersburg Stadium · Att. 64,406</p>
+  <h2 class="ttl" aria-label="The final chapter."><span class="ttl-l" data-fit data-fx="flip" data-tile="4" data-in>The final chapter</span><span class="ttl-s" data-in aria-hidden="true" style="--nx:30%">England, again</span></h2>
+  <div class="clg third-clg">
+    <i class="disc bg-r th-disc fx-paste" data-in aria-hidden="true"></i>
+    <figure class="ph print th-p1 fx-slap" data-in data-color="52 96" data-photo="stadium3" data-cap="same pitch, four days later" data-tape="t" style="--rot:-2deg;--ar:16/9"></figure>
+    <div class="sc d th-sc" role="img" aria-label="Belgium 2, England 0"><span class="cutn c-bel fx-stamp" data-in style="--rot:-4deg"><i><span data-count="2">2</span></i></span><span class="cutn c-opp pale fx-stamp" data-in style="--rot:5deg;--d:.12s"><i>0</i></span></div>
+    <i class="flag f-eng th-flag fx-drop" data-in aria-hidden="true"></i>
+    <figure class="ph print th-p2 fx-slap" data-in data-photo="meunierMedal" data-cap="Meunier" style="--rot:-6deg;--ar:3/4;--d:.2s;--fx:-30vw"></figure>
+    <figure class="ph print th-p3 fx-drop" data-in data-photo="vertMedal" data-cap="Vertonghen" data-pin style="--rot:5deg;--ar:4/5;--d:.4s"></figure>
+    <span class="hand c-y th-hand" data-in style="--d:.5s">four minutes in</span>
+    <ul class="m-goals slip th-goals" data-torn="tb" data-in style="--rot:-1.5deg">
+      <li><b class="d">Meunier</b><span class="mono">4′</span></li>
+      <li><b class="d">E. Hazard</b><span class="mono">82′</span></li>
+    </ul>
+    <div class="tkt th-tk fx-slide" data-tkt="63" data-stamp data-in style="--rot:5deg;--fx:60vw"></div>
+    <p class="slip th-txt" data-torn="tb" data-in style="--rot:-1.2deg">Four days after Saint Petersburg broke them, they come back to the same pitch and play as if it matters. Because it does. Chadli crosses, Meunier scores — the tenth different Belgian to score in Russia. Hazard, late, makes sure.</p>
+    <i class="il y th-s1" data-il="pill" data-a="10TH SCORER" data-b="MEUNIER 4′" data-in></i>
+    <i class="il th-s2" data-il="bars" data-in></i>
+  </div>
+</section>
+
+<section class="scene s-end bg-r" data-scene data-poster=".92" data-collect="63" style="--len:2.8">
+  <div class="pin">
+    <div class="d end-3" data-t="0 .46" data-ease="s8" aria-hidden="true">3<sup>rd</sup></div>
+    <figure class="ph print end-ph" data-photo="bronze" data-cap="bronze." data-tape="t" data-t=".26 .48" data-ease="back" style="--ar:3/4"></figure>
+    <svg class="scr c-y end-x" data-t=".46 .56"><use href="#s-loop"/></svg>
+    <i class="il y fx-stamp" data-il="rnd" data-a="3" data-b="THIRD PLACE" data-at=".5" style="right:27vw;bottom:8vh;--iz:12vw"></i>
+    <h2 class="end-h" aria-label="Not the ending we wanted. But a generation we'll never forget.">
+      <span class="d sp" data-split data-t=".32 .46">Not the ending</span>
+      <span class="d sp" data-split data-t=".4 .52">we wanted.</span>
+      <span class="d sp end-k" data-split data-t=".56 .7">But a generation</span>
+      <span class="d sp end-k" data-split data-t=".64 .78">we'll never forget.</span>
+    </h2>
+    <span class="hand end-hand" data-t=".78 .9">the best Belgium has ever done</span>
+    <p class="mono end-m" data-t=".8 .9">Third place · FIFA World Cup Russia 2018<br>Belgium's best finish in history</p>
+  </div>
+</section>
+
+<section class="blk s-tot bg-w paper">
+  <i class="rip" data-torn="b" data-torn-d="18" style="--c:var(--r)"></i>
+  <p class="mono lab">The numbers</p>
+  <h2 class="ttl" aria-label="The whole road."><span class="ttl-l" data-fit data-fx="slice" data-tile="10" data-in>The whole road.</span><span class="ttl-s" data-in aria-hidden="true" style="--nx:40%">Seven matches</span></h2>
+  <div class="tot tot-a" data-in><span class="d tot-n sway"><span data-count="16">16</span></span><p class="d tot-t">goals.</p><p class="mono tot-m">More than any other team<br>at the tournament.</p><i class="il fx-stamp" data-il="box" data-a="N°1" style="left:44vw;top:-3%;--iz:12vw"></i><svg class="scr c-r tot-s"><use href="#s-loop"/></svg></div>
+  <div class="tot tot-b" data-in><span class="d tot-n ol"><span data-count="10">10</span></span><p class="d tot-t">different<br>scorers.</p><p class="mono tot-m">Mertens · Lukaku · E. Hazard · Batshuayi · Januzaj<br>Vertonghen · Fellaini · Chadli · De Bruyne · Meunier</p></div>
+  <div class="tot tot-c" data-in><span class="d tot-n"><span data-count="6">6</span></span><p class="d tot-t">wins<br>out of seven.</p><svg class="scr c-r tot-tally"><use href="#s-tally"/></svg></div>
+  <i class="il k fx-drop" data-il="pent" data-a="BRONZE" data-b="14.07.2018" data-in style="right:6vw;margin-top:-10vw;--iz:13vw"></i>
+  <ul class="tot-awards">
+    <li data-in><div class="stk" style="--rot:-4deg"><figure class="ph" data-photo="hazard"></figure></div><span class="mono">Silver Ball</span><b class="d">Eden Hazard</b></li>
+    <li data-in style="--d:.12s"><div class="stk" style="--rot:3deg"><figure class="ph" data-photo="courtois"></figure></div><span class="mono">Golden Glove</span><b class="d">Thibaut Courtois</b></li>
+    <li data-in style="--d:.24s"><div class="stk" style="--rot:-2deg"><figure class="ph" data-photo="lukaku"></figure></div><span class="mono">Bronze Boot</span><b class="d">Romelu Lukaku</b></li>
+  </ul>
+  <span class="hand c-r tot-hand" data-in>bronze. real, heavy bronze.</span>
+</section>
+
+<!-- the swap pile: two rows of stickers crossing in opposite directions -->
+<section class="blk s-sheet bg-y paper">
+  <i class="rip" data-torn="b" data-torn-d="18" style="--c:var(--w)"></i>
+  <p class="mono lab">The swap pile</p>
+  <div class="d mega sheet-word" data-parx=".5" aria-hidden="true">Got, got, need.</div>
+  <div class="sheet-row" data-parx=".8" aria-hidden="true"><i class="il" data-il="oval" data-a="RED DEVILS" data-b="BELGIUM"></i><i class="il" data-il="jersey" data-a="10"></i><i class="il k" data-il="pent" data-a="2018" data-b="WORLD CUP"></i><i class="il" data-il="stack" data-a="GOAL!"></i><i class="il k" data-il="dia" data-a="ROSTOV"></i><i class="il" data-il="flag" data-a="BEL"></i><i class="il k" data-il="pill" data-a="16 GOALS" data-b="7 MATCHES"></i><i class="il" data-il="box" data-a="KAZAN"></i><i class="il k" data-il="rnd" data-a="94′" data-b="CHADLI"></i><i class="il" data-il="hex" data-a="GOT, GOT" data-b="NEED"></i></div>
+  <div class="sheet-row" data-parx="-.8" aria-hidden="true"><div class="stk" style="--rot:-3deg"><figure class="ph" data-photo="hazard"></figure><b class="d stk-n">10</b><span class="d stk-nm">E. Hazard</span></div><i class="il k" data-il="chk"></i><div class="stk" style="--rot:3deg"><figure class="ph" data-photo="kdb"></figure><b class="d stk-n">7</b><span class="d stk-nm">De Bruyne</span></div><div class="stk" style="--rot:-4deg"><figure class="ph" data-photo="lukaku"></figure><b class="d stk-n">9</b><span class="d stk-nm">R. Lukaku</span></div><i class="il" data-il="bars"></i><div class="stk" style="--rot:-3deg"><figure class="ph" data-photo="courtois"></figure><b class="d stk-n">1</b><span class="d stk-nm">Courtois</span></div><div class="stk" style="--rot:0deg"><figure class="ph" data-photo="chadli"></figure><b class="d stk-n">22</b><span class="d stk-nm">Chadli</span></div><i class="il" data-il="rnd" data-a="3" data-b="THIRD PLACE"></i><div class="stk" style="--rot:4deg"><figure class="ph" data-photo="fellaini"></figure><b class="d stk-n">8</b><span class="d stk-nm">Fellaini</span></div><div class="stk" style="--rot:2deg"><figure class="ph" data-photo="meunier"></figure><b class="d stk-n">15</b><span class="d stk-nm">Meunier</span></div></div>
+  <span class="scrawl on-k sheet-scr fx-scrawl" data-in aria-hidden="true">swaps?</span>
+</section>
+
+<div class="xf" aria-hidden="true">
+  <div class="xf-s bg-r" data-torn="tb" data-torn-d="6" data-parx=".45" style="--rot:-2.2deg;--ty:-10vh"><span>08 — The Wall — Everything that was in the box — </span><span>08 — The Wall — Everything that was in the box — </span><span>08 — The Wall — Everything that was in the box — </span><span>08 — The Wall — Everything that was in the box — </span><span>08 — The Wall — Everything that was in the box — </span></div>
+  <div class="xf-s xf-c r" data-parx="-.5" style="--rot:1.6deg;--ty:0vh"></div>
+</div>
+
+<!-- ═══════════ 08 — THE WALL OF MEMORIES ═══════════ -->
+<section class="scene s-wall bg-k" data-scene data-chapter="08|The Wall" data-poster="1" style="--len:3.8">
+  <div class="pin">
+    <p class="mono lab wall-lab">08 — Everything that was in the box</p>
+    <!-- filled by js/main.js: every ticket, sticker, print, score and note met on the way, in the order they were found -->
+    <div class="wall" id="wall" aria-hidden="true"></div>
+    <h2 class="wall-h" aria-label="Belgium. 2018.">
+      <span class="d wall-s1 fx-slam" data-at=".74" data-torn="tb" data-torn-d="10">Belgium.</span>
+      <span class="d wall-s2 fx-slam" data-at=".81" data-torn="tb" data-torn-d="10">2018.</span>
+    </h2>
+    <span class="hand c-r wall-hand" data-t=".86 .96">merci · dank u · danke</span>
+    <span class="stamp wall-st" data-at=".9">Third place<small>FIFA World Cup · Russia 2018</small></span>
+  </div>
+</section>
+
+<section class="blk s-out bg-k">
+  <ol class="mono out-list" data-in>
+    <li>1 Courtois</li><li>2 Alderweireld</li><li>3 Vermaelen</li><li>4 Kompany</li><li>5 Vertonghen</li><li>6 Witsel</li>
+    <li>7 De Bruyne</li><li>8 Fellaini</li><li>9 R. Lukaku</li><li>10 E. Hazard</li><li>11 Carrasco</li><li>12 Mignolet</li>
+    <li>13 Casteels</li><li>14 Mertens</li><li>15 Meunier</li><li>16 T. Hazard</li><li>17 Tielemans</li><li>18 Januzaj</li>
+    <li>19 Dembélé</li><li>20 Boyata</li><li>21 Batshuayi</li><li>22 Chadli</li><li>23 Dendoncker</li><li>— R. Martínez</li>
+  </ol>
+  <footer class="mono colophon">
+    <p>An unofficial editorial tribute. Not affiliated with FIFA or the Royal Belgian FA. Match facts: FIFA match reports and contemporary press. Tactical reconstructions are simplified: positions and timings are approximate, the order of events is as it happened. The newspaper pages, tickets, stamps, stickers, team sheet and paper flags are drawn for this page; they are not reproductions of real objects.</p>
+    <p>Paper textures are real scans from Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:Old_paper6.jpg" target="_blank" rel="noopener">Old paper6</a> (public domain) and <a href="https://commons.wikimedia.org/wiki/File:Free_crumpled_paper_texture_for_layers_(2978651767).jpg" target="_blank" rel="noopener">Free crumpled paper texture for layers</a> by Pink Sherbet Photography (CC BY 2.0).</p>
+    <p>Photographs from Wikimedia Commons, cropped and redrawn in the browser as one-ink screen prints — black over paper, yellow or red (a few keep a torn strip of their own colour) — used under their original licences:</p>
+    <ul id="credits"></ul>
+  </footer>
+</section>
+
+</main>
+
+<script src="js/photos.js?v=14"></script>
+<script src="js/pitch.js?v=14"></script>
+<script src="js/main.js?v=14"></script>
+</body>
+</html>

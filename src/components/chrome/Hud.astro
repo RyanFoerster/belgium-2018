@@ -1,0 +1,12 @@
+---
+/* What stays on screen: the running head, the progress bar, the ticket stubs collected so far, the chapter badge. */
+import Sticker from '../ui/Sticker.astro';
+---
+<header class="hud" aria-hidden="true">
+  <span class="hud-l">BEL—18</span>
+  <span class="hud-c"><b id="hudNo">01</b>/08 — <i id="hudName">The Dream</i></span>
+  <span class="hud-r">Russia · 14.06—15.07.2018</span>
+</header>
+<div class="bar" aria-hidden="true"><i id="bar"></i></div>
+<div class="col" id="col" aria-hidden="true"><span>Stubs</span><i data-c="13">13</i><i data-c="29">29</i><i data-c="45">45</i><i data-c="54">54</i><i data-c="58">58</i><i data-c="61">61</i><i data-c="63">63</i></div>
+<Sticker type="rnd" a="01" b="CHAPTER" class="y chap" id="chapSt" />

@@ -1,0 +1,19 @@
+---
+/* 08 · The Wall — everything met on the way, pinned up by scripts/objects/wall.js. */
+import Proof from '../../ui/Proof.astro';
+---
+<!-- ═══════════ 08 — THE WALL OF MEMORIES ═══════════ -->
+<section class="scene s-wall bg-w paper" data-scene data-chapter="08|The Wall" data-poster="1" style="--len:3.8">
+  <div class="pin">
+    <p class="mono lab wall-lab">08 — Everything that was in the box</p>
+    <!-- filled by js/main.js: every ticket, sticker, print, score and note met on the way, in the order they were found -->
+    <div class="wall" id="wall" aria-hidden="true"></div>
+    <h2 class="wall-h" aria-label="Belgium. 2018.">
+      <span class="d wall-s1 fx-slam" data-at=".74" data-torn="tb" data-torn-d="10">Belgium.</span>
+      <span class="d wall-s2 fx-slam" data-at=".81" data-torn="tb" data-torn-d="10">2018.</span>
+    </h2>
+    <span class="hand c-r wall-hand" data-t=".86 .96">merci · dank u · danke</span>
+    <span class="stamp wall-st" data-at=".9">Third place<small>FIFA World Cup · Russia 2018</small></span>
+    <Proof sheet={20} of={21} name="The Wall" />
+  </div>
+</section>

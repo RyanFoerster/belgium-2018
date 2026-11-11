@@ -1,0 +1,45 @@
+---
+/* 04 · Japan — 0–2 down in Rostov, then the two substitutes: a scene in seven states. */
+import PlayerSticker from '../../ui/PlayerSticker.astro';
+import Photo from '../../ui/Photo.astro';
+import Ticket from '../../ui/Ticket.astro';
+import Sticker from '../../ui/Sticker.astro';
+import Proof from '../../ui/Proof.astro';
+---
+<!-- ═══════════ 04 — THE MOMENT — JAPAN ═══════════ -->
+<section class="scene s-jp" data-scene data-chapter="04|The Moment — Japan" data-states="0 .14 .28 .42 .56 .7 .85" data-poster=".92" style="--len:4.8">
+  <div class="pin">
+    <div class="d mega jp-mega" aria-hidden="true">Japan</div>
+    <i class="jp-sun" aria-hidden="true"></i>
+    <i class="jp-bel" aria-hidden="true"><b></b><b></b><b></b></i>
+    <p class="mono jp-meta">Round of 16 · 2 July 2018<br>Rostov Arena · Att. 41,466</p>
+    <div class="d jp-min"><span id="jpMin">45</span>′</div>
+    <div class="d jp-score" id="jpScore" role="img" aria-label="Belgium 0, Japan 0">
+      <span class="rollw"><span class="roll roll-b"><i>0</i><i>1</i><i>2</i></span></span>
+      <span class="jp-dash">—</span>
+      <span class="rollw"><span class="roll roll-j"><i>0</i><i>1</i><i>2</i></span></span>
+    </div>
+    <p class="mono jp-teams"><span>Belgium</span><span>Japan</span></p>
+
+    <Ticket match={54} class="jp-tk fx-slide" data-from="0" data-to="0" style="--rot:-7deg;--fx:60vw" />
+    <Sticker type="jersey" a="10" data-from="0" data-to="0" style="left:19vw;top:30vh;--iz:10vw;--rot:-8deg" /><Sticker type="pill" a="JAPAN" b="ROUND OF 16" data-from="0" data-to="0" style="right:17vw;top:32vh;--iz:13vw;--rot:7deg;--c1:var(--jpn)" /><Sticker type="hex" a="0—2" b="52′" class="k" data-from="2" data-to="2" style="left:6vw;top:24vh;--iz:12vw;--d:.2s" /><Sticker type="rnd" a="69′" b="1—2" class="y" data-from="5" data-to="5" style="left:44vw;top:7vh;--iz:8vw;--d:.2s" />
+    <svg class="scr c-r jp-hatch" data-from="2" data-to="2"><use href="#s-hatch"/></svg>
+
+    <div class="jp-cap" data-s="0"><h3 class="d">Half-time.</h3><p>Nothing in it. A quiet evening by the Don. Scroll slowly; it is the last calm minute of the night.</p></div>
+    <div class="jp-cap" data-s="1"><h3 class="d">Haraguchi.</h3><p>Shibasaki slides a pass through the left side of the Belgian defence. Haraguchi runs on and shoots across Courtois.</p></div>
+    <div class="jp-cap" data-s="2"><h3 class="d">Inui.</h3><p>Twenty-five yards out. A yard of space. Bottom corner.</p>
+      <span class="hand c-y jp-four">four minutes.</span><svg class="scr c-y jp-zig"><use href="#s-zig"/></svg></div>
+    <div class="jp-cap jp-cap-wide" data-s="3"><h3 class="jp-fact" data-cut="k">No team had come back from two goals down to win a World Cup knockout match inside ninety minutes since 1966.</h3></div>
+    <div class="jp-cap" data-s="4"><h3 class="d jp-sub"><s>Mertens</s> Fellaini.<br><s>Carrasco</s> Chadli.</h3><p>A double change. It looks like a gamble. It is the whole story.</p><span class="hand c-y jp-plan">plan B</span></div>
+    <div class="jp-cap" data-s="5"><h3 class="d">Vertonghen.</h3><p>A half-cleared corner. A header looped from the left of the box, over Kawashima, into the far corner. Nobody is quite sure he meant it.</p></div>
+    <div class="jp-cap" data-s="6"><h3 class="d">Fellaini.</h3><p>Hazard twists on the left and crosses. Fellaini climbs above his marker. Level. Sixteen minutes to play.</p><span class="hand c-r jp-on">game on</span></div>
+
+    <!-- the two stickers the album was missing -->
+    <PlayerSticker photo="fellaini" number="8" name="Fellaini" class="jp-st1" data-from="4" data-to="4" style="--rot:-7deg;--d:.25s" />
+    <PlayerSticker photo="chadli" number="22" name="Chadli" class="jp-st2" data-from="4" data-to="4" style="--rot:6deg;--d:.5s" />
+    <span class="pencil jp-got" data-from="4" data-to="4" style="--d:.8s">got them. 65′</span>
+    <Photo name="vertonghen" print class="jp-ph fx-slap" caption="Vertonghen, Rostov" tape="t" data-from="5" data-to="5" style="--rot:4deg;--ar:4/3;--d:.15s" />
+    <Photo name="kdbJapan" print class="jp-ph jp-ph6 fx-drop" caption="watch De Bruyne" pin data-from="6" style="--rot:-5deg;--ar:3/4;--d:.2s" />
+    <Proof sheet={6} of={21} name="Rostov" />
+  </div>
+</section>

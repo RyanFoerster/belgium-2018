@@ -1,0 +1,43 @@
+---
+/* 05 · The plan: Martínez tears up the team sheet. */
+import Rip from '../../ui/Rip.astro';
+import Title from '../../ui/Title.astro';
+import TitleLine from '../../ui/TitleLine.astro';
+import TitleNote from '../../ui/TitleNote.astro';
+import Proof from '../../ui/Proof.astro';
+---
+<section class="blk s-plan bg-y paper">
+  <Rip />
+  <p class="mono lab">The plan</p>
+  <Title label="Martínez tears up the team sheet." as="h3" class="plan-ttl">
+    <TitleLine fx="flip" tile={3} data-in>Martínez</TitleLine>
+    <TitleLine fx="slice" data-in>tears up the</TitleLine>
+    <TitleNote x="48%" data-in class="c-r">Kazan, 6.07</TitleNote>
+    <TitleLine fx="rise" data-in>team sheet.</TitleLine>
+  </Title>
+  <div class="sheet-w" data-in>
+    <div class="sheet" data-rip>
+      <p class="mono sheet-h">Team sheet — as v Japan, 2.07<br>amended for Kazan, 6.07</p>
+      <ol class="sheet-l">
+        <li><i>1</i>Courtois</li>
+        <li><i>2</i>Alderweireld</li>
+        <li><i>4</i>Kompany</li>
+        <li><i>5</i>Vertonghen</li>
+        <li><i>15</i>Meunier</li>
+        <li><i>6</i>Witsel</li>
+        <li class="chg"><i>7</i>De Bruyne <span class="hand c-r">false nine</span></li>
+        <li class="out"><i>11</i><s>Carrasco</s> <span class="hand c-r">22 Chadli</span></li>
+        <li class="out"><i>14</i><s>Mertens</s> <span class="hand c-r">8 Fellaini</span></li>
+        <li><i>10</i>E. Hazard (c)</li>
+        <li class="chg"><i>9</i>R. Lukaku <span class="hand c-r">right wing</span></li>
+      </ol>
+    </div>
+  </div>
+  <div class="plan-cols">
+    <p class="pr" data-in>Fellaini and Chadli, the two substitutes who turned Rostov, both start. De&nbsp;Bruyne leaves midfield and plays as the central forward. Lukaku — a number nine all his life — goes out to the right, into the space behind Marcelo.</p>
+    <p class="pr" data-in style="--d:.15s">Thirteen minutes in, Chadli's corner, Kompany's flick, Fernandinho's arm: an own goal, and Belgium lead.</p>
+  </div>
+  <div class="plan-score" data-in><span class="mono">13′ · Fernandinho o.g.</span><span class="d">1—0</span></div>
+  <svg class="scr c-r plan-ex" data-in style="--d:.4s"><use href="#s-excl"/></svg>
+  <Proof sheet={11} of={21} name="The Plan" />
+</section>

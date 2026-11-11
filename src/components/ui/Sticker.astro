@@ -1,0 +1,21 @@
+---
+/* A typographic sticker: type inside a flat shape with a fat cream die-cut.
+   Drawn at build time; the browser only gives it its tilt and squeezes words that are too wide.
+   class: "y" yellow · "k" black · "o" opponent colour · default red. Anything else (data-in, data-at, style…) goes to the root. */
+import { badge, type BadgeType } from '../../lib/badges';
+import { pass } from '../../lib/attrs';
+
+interface Props {
+  type: BadgeType;
+  /** the big word */
+  a?: string;
+  /** the small line */
+  b?: string;
+  class?: string;
+  style?: string;
+  [attr: string]: unknown;
+}
+const { type, a = '', b = '', class: cls, style = '', ...rest } = Astro.props;
+const g = badge(type, a, b);
+---
+<i class:list={['il', cls]} data-il={type} data-a={a || undefined} data-b={b || undefined} aria-hidden="true" style={`aspect-ratio:${g.w}/${g.h};${style}`} set:html={g.svg} {...pass(rest)} />

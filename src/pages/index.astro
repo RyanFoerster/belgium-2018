@@ -1,0 +1,72 @@
+---
+/* The whole story is one page: eight chapters, each made of sections, with a <Join> wherever one chapter climbs over the last. */
+import Base from '../layouts/Base.astro';
+import SvgDefs from '../components/chrome/SvgDefs.astro';
+import Loader from '../components/chrome/Loader.astro';
+import Hud from '../components/chrome/Hud.astro';
+import Join from '../components/ui/Join.astro';
+import { JOINS } from '../data/joins';
+import Intro from '../components/sections/01-dream/Intro.astro';
+import Opening from '../components/sections/02-beginning/Opening.astro';
+import StickerAlbum from '../components/sections/02-beginning/StickerAlbum.astro';
+import StartingEleven from '../components/sections/02-beginning/StartingEleven.astro';
+import GroupStage from '../components/sections/03-group-stage/GroupStage.astro';
+import Japan from '../components/sections/04-japan/Japan.astro';
+import ChadliReplay from '../components/sections/04-japan/ChadliReplay.astro';
+import TenSeconds from '../components/sections/04-japan/TenSeconds.astro';
+import TwelfthMan from '../components/sections/04-japan/TwelfthMan.astro';
+import Brazil from '../components/sections/05-brazil/Brazil.astro';
+import ThePlan from '../components/sections/05-brazil/ThePlan.astro';
+import DeBruyneReplay from '../components/sections/05-brazil/DeBruyneReplay.astro';
+import FrontPage from '../components/sections/05-brazil/FrontPage.astro';
+import France from '../components/sections/06-france/France.astro';
+import SoClose from '../components/sections/06-france/SoClose.astro';
+import ThirdPlace from '../components/sections/07-final-chapter/ThirdPlace.astro';
+import Bronze from '../components/sections/07-final-chapter/Bronze.astro';
+import Totals from '../components/sections/07-final-chapter/Totals.astro';
+import SwapPile from '../components/sections/07-final-chapter/SwapPile.astro';
+import Wall from '../components/sections/08-wall/Wall.astro';
+import Colophon from '../components/sections/08-wall/Colophon.astro';
+---
+<Base title="Belgium 2018 — The Road to Glory" description="A scrapbook documentary of Belgium's 2018 World Cup: seven matches, one generation, third place.">
+  <!-- before anything paints: the loader is up; if the scripts never arrive, the page is released anyway -->
+  <script is:inline slot="head">document.documentElement.classList.add('ld-on');if(!/[?&]ld=hold/.test(location.search))setTimeout(function(){document.documentElement.classList.add('ready','ld-x')},10000)</script>
+
+  <SvgDefs />
+  <Loader />
+  <Hud />
+
+  <main>
+    <Intro />
+    <Join strips={JOINS.beginning} />
+    <Opening />
+    <StickerAlbum />
+    <StartingEleven />
+    <GroupStage />
+    <Join strips={JOINS.japan} />
+    <Japan />
+    <ChadliReplay />
+    <TenSeconds />
+    <TwelfthMan />
+    <Join strips={JOINS.brazil} />
+    <Brazil />
+    <ThePlan />
+    <DeBruyneReplay />
+    <FrontPage />
+    <Join strips={JOINS.france} />
+    <France />
+    <SoClose />
+    <Join strips={JOINS.thirdPlace} />
+    <ThirdPlace />
+    <Bronze />
+    <Totals />
+    <SwapPile />
+    <Join strips={JOINS.wall} />
+    <Wall />
+    <Colophon />
+  </main>
+
+  <script>
+    import '../scripts/main.js';
+  </script>
+</Base>

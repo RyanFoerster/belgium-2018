@@ -1,0 +1,31 @@
+/* One stylesheet, three cascade layers:
+   theme     — Tailwind's design tokens (the palette and the type below are the site's own)
+   site      — the hand-written art direction, in the order it was built: base → archive → collage → ink → poster
+   utilities — Tailwind utilities, which therefore win over the site layer wherever they are used
+   Tailwind's preflight is left out on purpose: base.css has its own reset. */
+@layer theme, site, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "./base.css" layer(site);
+@import "./archive.css" layer(site);
+@import "./collage.css" layer(site);
+@import "./ink.css" layer(site);
+@import "./poster.css" layer(site);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+@import "lenis/dist/lenis.css";
+
+/* Tailwind only reads the files named here. The story's own markup has class names of its own (end-3, col, bar…)
+   that must never be mistaken for utilities: add a file to this list when it is written with Tailwind. */
+@source "../pages/404.astro";
+
+@theme {
+  --color-ink: #080808;
+  --color-paper: #F5F3EE;
+  --color-sun: #F7D417;
+  --color-devil: #E52B32;
+  --font-display: "Archivo Variable", "Archivo", "Arial Narrow", Arial, sans-serif;
+  --font-caption: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-script: "Pinyon Script", "Snell Roundhand", cursive;
+  --font-marker: "Permanent Marker", cursive;
+}

@@ -1,0 +1,104 @@
+---
+/* 03 · The Group Stage — a horizontal track: Panama, Tunisia, England, nine points out of nine. */
+import Photo from '../../ui/Photo.astro';
+import Ticket from '../../ui/Ticket.astro';
+import Sticker from '../../ui/Sticker.astro';
+import Proof from '../../ui/Proof.astro';
+---
+<!-- ═══════════ 03 — THE GROUP STAGE: one horizontal timeline ═══════════ -->
+<section class="scene s-grp bg-w paper" data-scene data-track data-chapter="03|The Group Stage" data-poster="1" style="--len:5.8">
+  <div class="pin">
+    <div class="track">
+
+      <div class="panel g0 bg-w paper">
+        <p class="mono lab g0-lab">03 — The Group Stage<br>Sochi → Moscow → Kaliningrad</p>
+        <h2 class="g0-h" aria-label="Group G."><span class="d mega sp" data-split data-in>Group</span><span class="d g0-g fx-stamp" data-in style="--d:.4s"><i>G.</i></span></h2>
+        <span class="scrawl g0-scr fx-scrawl" data-in style="--d:.7s" aria-hidden="true">ten days</span>
+        <Ticket match={13} class="g0-t1 fx-slide" data-in style="--rot:-7deg;--fx:-70vw;--d:.2s" />
+        <Ticket match={29} class="g0-t2 fx-drop" data-in style="--rot:4deg;--d:.42s" />
+        <Ticket match={45} class="g0-t3 fx-slide" data-in style="--rot:-3deg;--fx:80vw;--spin:20deg;--d:.6s" />
+        <Sticker type="oval" a="GROUP G" b="RUSSIA 2018" class="fx-slap" data-in style="right:4vw;top:9vh;--iz:12vw;--d:.9s" /><Sticker type="dia" a="3 GAMES" class="k" data-in style="left:62vw;top:48vh;--iz:13vw;--d:1.1s" /><Sticker type="bars" class="y" data-in style="left:1.5vw;top:44vh;--iz:4vw;--d:1.3s" />
+        <Photo name="walk" print class="stack g0-ph fx-slap" caption="walking to the ground" tape="tr" data-in style="--rot:5deg;--d:.5s" />
+        <span class="hand c-r g0-hand" data-in style="--d:1s">three games →</span>
+      </div>
+
+      <!-- Panama -->
+      <div class="panel gp bg-w paper" data-torn="l" data-torn-d="12" data-collect="13" style="--opp:var(--pan);--opp2:var(--pan2)">
+        <p class="mono m-meta">Match 13 · 18 June 2018<br>Fisht Stadium, Sochi<br>Att. 43,257</p>
+        <div class="d mega mt-opp px" style="--px:-18" aria-hidden="true">Panama</div>
+        <div class="sc d" role="img" aria-label="Belgium 3, Panama 0">
+          <span class="cutn c-bel fx-stamp" data-at=".14" style="--h:64;--rot:-4deg"><i><span data-count="3" data-count-at=".16">3</span></i></span>
+          <span class="cutn c-opp fx-stamp" data-at=".2" style="--h:38;--rot:5deg"><i>0</i></span>
+        </div>
+        <i class="flag f-pan fx-drop" data-at=".24" aria-hidden="true"><b></b><b></b><b></b><b></b></i>
+        <Ticket match={13} stamped class="gp-tk fx-slide" data-at=".26" style="--rot:-6deg;--fx:-50vw" />
+        <span class="pencil gp-n1" data-at=".3">0–0 at half-time. Nerves.</span>
+        <Photo name="mertens" print class="crease gp-ph fx-slap" caption="Mertens — 47′" tape="t" data-at=".3" style="--rot:6deg;--ar:3/4;--fx:40vw;--fy:-50vh" />
+        <Sticker type="hex" a="VOLLEY!" b="47′" class="y gp-n2 fx-stamp" data-at=".34" style="--rot:-10deg" /><Sticker type="pent" a="PAN" b="MATCH 13" class="o fx-drop" data-at=".28" style="left:2vw;top:44vh;--iz:7vw" />
+        <svg class="scr c-r gp-s2" data-at=".34"><use href="#s-arrow2"/></svg>
+        <ul class="m-goals slip" data-torn="tb" data-at=".34" style="--rot:-1.5deg">
+          <li><b class="d">Mertens</b><span class="mono">47′</span></li>
+          <li><b class="d">Lukaku</b><span class="mono">69′ · 75′</span></li>
+        </ul>
+        <p class="m-cut gp-cut" data-cut data-at=".38">Forty-five minutes of nothing.</p>
+        <p class="m-txt slip" data-torn="tb" data-at=".42" style="--rot:1.2deg">Against a team playing its first World Cup match. Then Mertens swings his right foot at a dropping ball on the corner of the box, and the summer begins.</p>
+      </div>
+
+      <!-- Tunisia -->
+      <div class="panel gt bg-k" data-torn="l" data-torn-d="12" data-collect="29" style="--opp:var(--tun);--opp2:var(--w)">
+        <p class="mono m-meta">Match 29 · 23 June 2018<br>Spartak Stadium, Moscow<br>Att. 44,190</p>
+        <div class="d mega mt-opp px" style="--px:-18" aria-hidden="true">Tunisia</div>
+        <div class="sc d" role="img" aria-label="Belgium 5, Tunisia 2">
+          <span class="cutn c-bel fx-drop" data-at=".14" style="--rot:-5deg"><i><span data-count="5" data-count-at=".16">5</span></i></span>
+          <span class="cutn c-opp pale fx-drop" data-at=".2" style="--rot:6deg;--d:.1s"><i>2</i></span>
+        </div>
+        <i class="flag f-tun fx-slap" data-at=".24" aria-hidden="true"><b></b></i><Sticker type="pent" a="TUN" b="MATCH 29" class="o fx-drop" data-at=".3" style="left:50vw;top:50vh;--iz:7vw" /><Sticker type="rnd" a="5—2" b="MOSCOW" class="y" data-at=".3" style="left:38vw;top:42vh;--iz:7vw" /><Sticker type="box" a="PEN. 6′" class="fx-stamp" data-at=".33" style="left:27vw;top:56vh;--iz:11vw" />
+        <Photo name="penalty" print class="gt-ph fx-slap" caption="6′ — Hazard, from the spot" tape="t" data-at=".26" style="--rot:-3deg;--ar:16/10" />
+        <svg class="scr c-r gt-x" data-at=".32"><use href="#s-loop"/></svg>
+        <Photo name="fansMoscow" print class="duo-y stack gt-ph2 fx-drop" caption="Moscow, 23.06" data-at=".34" style="--rot:6deg;--ar:3/2" />
+        <ul class="m-goals slip" data-torn="tb" data-at=".36" style="--rot:1.6deg">
+          <li><b class="d">E. Hazard</b><span class="mono">6′ pen. · 51′</span></li>
+          <li><b class="d">Lukaku</b><span class="mono">16′ · 45+3′</span></li>
+          <li><b class="d">Batshuayi</b><span class="mono">90′</span></li>
+          <li class="dim"><b class="d">Bronn · Khazri</b><span class="mono">18′ · 90+3′</span></li>
+        </ul>
+        <Ticket match={29} stamped class="gt-tk fx-slide" data-at=".38" style="--rot:5deg;--fx:50vw;--spin:18deg" />
+        <span class="hand c-y gt-n2" data-at=".42">qualified with a game to spare</span>
+        <svg class="scr c-y gt-s2" data-at=".44"><use href="#s-line"/></svg>
+      </div>
+
+      <!-- England -->
+      <div class="panel ge bg-w paper" data-torn="l" data-torn-d="12" data-collect="45" style="--opp:var(--eng);--opp2:var(--w)">
+        <p class="mono m-meta">Match 45 · 28 June 2018<br>Kaliningrad Stadium<br>Att. 33,973</p>
+        <div class="d mega mt-opp px" style="--px:-18" aria-hidden="true">England</div>
+        <Photo name="januzaj" class="ge-ph rough" data-t=".12 .34" data-ease="s12" />
+        <div class="sc d" role="img" aria-label="England 0, Belgium 1">
+          <span class="cutn c-opp fx-slide" data-at=".16" style="--h:40;--rot:-5deg;--fx:60vw"><i>0</i></span>
+          <span class="cutn c-bel fx-slide" data-at=".2" style="--h:62;--rot:4deg;--fx:60vw;--d:.08s"><i>1</i></span>
+        </div>
+        <i class="flag f-eng fx-drop" data-at=".24" aria-hidden="true"></i><Sticker type="pent" a="ENG" b="MATCH 45" class="o fx-drop" data-at=".3" style="right:14vw;top:62vh;--iz:7vw" /><Sticker type="chk" class="k" data-at=".34" style="left:49vw;top:6vh;--iz:7vw" />
+        <span class="hand c-r ge-n1" data-at=".28">9 changes</span>
+        <svg class="scr c-r ge-s1" data-at=".3"><use href="#s-x"/></svg>
+        <Photo name="hazardBench" print class="ge-ph2 fx-slap" caption="Hazard: rested" pin data-at=".32" style="--rot:7deg;--ar:1/1;--fx:30vw;--fy:50vh;--spin:-30deg" />
+        <ul class="m-goals slip" data-torn="tb" data-at=".34" style="--rot:-2deg"><li><b class="d">Januzaj</b><span class="mono">51′</span></li></ul>
+        <Ticket match={45} stamped class="ge-tk fx-slide" data-at=".38" style="--rot:-5deg;--fx:-50vw" />
+        <p class="m-txt slip" data-torn="tb" data-at=".42" style="--rot:-1deg">Both sides are already through, and both rest almost everyone. Only Courtois and Boyata keep their places. Januzaj cuts in from the right and bends one into the top corner with his left foot. First place — and the harder half of the draw.</p>
+      </div>
+
+      <!-- nine out of nine -->
+      <div class="panel g9 bg-y paper" data-torn="l" data-torn-d="12">
+        <div class="d mega nine-n"><span data-count="9" data-count-at=".2">9</span></div>
+        <p class="d nine-h fx-slam" data-at=".22" style="--fx:60vw">Goals in<br>three games.</p>
+        <svg class="scr c-r nine-tally" data-at=".28"><use href="#s-tally"/></svg>
+        <Photo name="fanCup" print class="dog nine-ph fx-slap" caption="he already believes" tape="tr" data-at=".32" style="--rot:5deg;--ar:5/4" />
+        <span class="hand c-r nine-hand" data-at=".36">and 9 points out of 9</span><Sticker type="rnd" a="9/9" b="POINTS" class="fx-stamp" data-at=".38" style="left:31vw;top:6vh;--iz:11vw" /><Sticker type="pill" a="3 WINS" b="GROUP G" class="k" data-at=".4" style="right:29vw;top:33vh;--iz:10vw" /><Sticker type="bars" data-at=".42" style="left:38vw;bottom:9vh;--iz:3.5vw" />
+        <dl class="mono nine-dl" data-at=".4">
+          <div><dt>Won</dt><dd>3</dd></div><div><dt>Drawn</dt><dd>0</dd></div><div><dt>Lost</dt><dd>0</dd></div><div><dt>Conceded</dt><dd>2</dd></div>
+        </dl>
+      </div>
+
+    </div>
+    <div class="trk-rail" aria-hidden="true"><span>18.06 · Sochi</span><span>23.06 · Moscow</span><span>28.06 · Kaliningrad</span><span>scroll →</span></div>
+    <Proof sheet={5} of={21} name="Group G" />
+  </div>
+</section>

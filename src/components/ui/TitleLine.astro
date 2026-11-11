@@ -1,0 +1,14 @@
+---
+/* One line of a <Title>, scaled to the full width of its box.
+   fx: how its letters arrive · tile: index of the letter that sits on a tilted block · fit: cap on its height, in vh. */
+import { pass } from '../../lib/attrs';
+
+interface Props {
+  fx?: 'rise' | 'slice' | 'flip';
+  tile?: number;
+  fit?: number;
+  [attr: string]: unknown;
+}
+const { fx = 'rise', tile, fit, ...rest } = Astro.props;
+---
+<span class="ttl-l" data-fit={fit ?? ''} data-fx={fx} data-tile={tile} {...pass(rest)}><slot /></span>

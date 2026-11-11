@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+.dev.vars
+.DS_Store
+
+# reference images and screen recordings collected for the art direction: third-party material, kept local
+refs/

@@ -1,0 +1,19 @@
+---
+/* The squad list, the sources and the photo credits (filled in by scripts/photos.js). */
+import Proof from '../../ui/Proof.astro';
+---
+<section class="blk s-out bg-k">
+  <ol class="mono out-list" data-in>
+    <li>1 Courtois</li><li>2 Alderweireld</li><li>3 Vermaelen</li><li>4 Kompany</li><li>5 Vertonghen</li><li>6 Witsel</li>
+    <li>7 De Bruyne</li><li>8 Fellaini</li><li>9 R. Lukaku</li><li>10 E. Hazard</li><li>11 Carrasco</li><li>12 Mignolet</li>
+    <li>13 Casteels</li><li>14 Mertens</li><li>15 Meunier</li><li>16 T. Hazard</li><li>17 Tielemans</li><li>18 Januzaj</li>
+    <li>19 Dembélé</li><li>20 Boyata</li><li>21 Batshuayi</li><li>22 Chadli</li><li>23 Dendoncker</li><li>— R. Martínez</li>
+  </ol>
+  <footer class="mono colophon">
+    <p>An unofficial editorial tribute. Not affiliated with FIFA or the Royal Belgian FA. Match facts: FIFA match reports and contemporary press. Tactical reconstructions are simplified: positions and timings are approximate, the order of events is as it happened. The newspaper pages, tickets, stamps, stickers, team sheet and paper flags are drawn for this page; they are not reproductions of real objects.</p>
+    <p>Paper textures are real scans from Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:Old_paper6.jpg" target="_blank" rel="noopener">Old paper6</a> (public domain) and <a href="https://commons.wikimedia.org/wiki/File:Free_crumpled_paper_texture_for_layers_(2978651767).jpg" target="_blank" rel="noopener">Free crumpled paper texture for layers</a> by Pink Sherbet Photography (CC BY 2.0).</p>
+    <p>Photographs from Wikimedia Commons, cropped and redrawn in the browser as one-ink screen prints — black over paper, yellow or red (a few keep a torn strip of their own colour) — used under their original licences:</p>
+    <ul id="credits"></ul>
+  </footer>
+  <Proof sheet={21} of={21} name="Colophon" />
+</section>

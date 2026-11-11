@@ -1,0 +1,9 @@
+---
+/* The torn top edge of a section: a strip in the colour of the section above it. */
+interface Props {
+  /** colour of the paper above (any CSS colour); black when left out */
+  colour?: string;
+}
+const { colour } = Astro.props;
+---
+<i class="rip" data-torn="b" data-torn-d="18" style={colour ? `--c:${colour}` : undefined}></i>

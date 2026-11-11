@@ -1,0 +1,15 @@
+---
+/* A match ticket, printed from data/matches.ts. `stamped` adds the full-time score as a rubber stamp. */
+import { MATCHES, type MatchNo } from '../../data/matches';
+import { ticketHTML } from '../../lib/ticket';
+import { pass } from '../../lib/attrs';
+
+interface Props {
+  match: MatchNo;
+  stamped?: boolean;
+  class?: string;
+  [attr: string]: unknown;
+}
+const { match, stamped = false, class: cls, ...rest } = Astro.props;
+---
+<div class:list={['tkt', cls, MATCHES[match].cls]} data-tkt={match} data-stamp={stamped ? '' : undefined} set:html={ticketHTML(match, stamped)} {...pass(rest)} />

@@ -1,0 +1,35 @@
+---
+/* 07 · The Final Chapter — England again, four days later. */
+import Photo from '../../ui/Photo.astro';
+import Ticket from '../../ui/Ticket.astro';
+import Sticker from '../../ui/Sticker.astro';
+import Rip from '../../ui/Rip.astro';
+import Title from '../../ui/Title.astro';
+import TitleLine from '../../ui/TitleLine.astro';
+import TitleNote from '../../ui/TitleNote.astro';
+import Proof from '../../ui/Proof.astro';
+---
+<!-- ═══════════ 07 — THE FINAL CHAPTER ═══════════ -->
+<section class="blk s-third bg-y paper" data-chapter="07|The Final Chapter" style="--opp:var(--eng);--opp2:var(--w)">
+  <Rip colour="var(--w)" />
+  <p class="mono lab">07 — The Final Chapter · Third-place play-off · 14 July 2018<br>Saint Petersburg Stadium · Att. 64,406</p>
+  <Title label="The final chapter."><TitleLine fx="flip" tile={4} data-in>The final chapter</TitleLine><TitleNote x="30%" data-in>England, again</TitleNote></Title>
+  <div class="clg third-clg">
+    <i class="disc bg-r th-disc fx-paste" data-in aria-hidden="true"></i>
+    <Photo name="stadium3" print class="th-p1 fx-slap" caption="same pitch, four days later" tape="t" colour="52 96" data-in style="--rot:-2deg;--ar:16/9" />
+    <div class="sc d th-sc" role="img" aria-label="Belgium 2, England 0"><span class="cutn c-bel fx-stamp" data-in style="--rot:-4deg"><i><span data-count="2">2</span></i></span><span class="cutn c-opp pale fx-stamp" data-in style="--rot:5deg;--d:.12s"><i>0</i></span></div>
+    <i class="flag f-eng th-flag fx-drop" data-in aria-hidden="true"></i>
+    <Photo name="meunierMedal" print class="th-p2 fx-slap" caption="Meunier" data-in style="--rot:-6deg;--ar:3/4;--d:.2s;--fx:-30vw" />
+    <Photo name="vertMedal" print class="th-p3 fx-drop" caption="Vertonghen" pin data-in style="--rot:5deg;--ar:4/5;--d:.4s" />
+    <span class="hand c-y th-hand" data-in style="--d:.5s">four minutes in</span>
+    <ul class="m-goals slip th-goals" data-torn="tb" data-in style="--rot:-1.5deg">
+      <li><b class="d">Meunier</b><span class="mono">4′</span></li>
+      <li><b class="d">E. Hazard</b><span class="mono">82′</span></li>
+    </ul>
+    <Ticket match={63} stamped class="th-tk fx-slide" data-in style="--rot:5deg;--fx:60vw" />
+    <p class="slip th-txt" data-torn="tb" data-in style="--rot:-1.2deg">Four days after Saint Petersburg broke them, they come back to the same pitch and play as if it matters. Because it does. Chadli crosses, Meunier scores — the tenth different Belgian to score in Russia. Hazard, late, makes sure.</p>
+    <Sticker type="pill" a="10TH SCORER" b="MEUNIER 4′" class="y th-s1" data-in />
+    <Sticker type="bars" class="th-s2" data-in />
+  </div>
+  <Proof sheet={16} of={21} name="The Final Chapter" />
+</section>

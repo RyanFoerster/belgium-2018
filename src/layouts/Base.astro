@@ -1,0 +1,41 @@
+---
+/* The document shell: metadata, self-hosted fonts, the stylesheet. Pages put what must run before first paint in the "head" slot. */
+import '@fontsource-variable/archivo/wdth.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '@fontsource/permanent-marker/400.css';
+import '@fontsource/pinyon-script/400.css';
+import '@fontsource/playfair-display/400.css';
+import '@fontsource/playfair-display/400-italic.css';
+import '@fontsource/playfair-display/900.css';
+import '@fontsource/playfair-display/900-italic.css';
+import '@fontsource/reenie-beanie/400.css';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title}</title>
+<meta name="description" content={description}>
+<meta name="theme-color" content="#080808">
+<link rel="canonical" href={canonical}>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:url" content={canonical}>
+<slot name="head" />
+</head>
+<body>
+<slot />
+</body>
+</html>

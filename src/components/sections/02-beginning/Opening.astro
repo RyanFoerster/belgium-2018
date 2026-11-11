@@ -1,0 +1,42 @@
+---
+/* 02 · The Beginning — the manager, the qualifying campaign, the squad photograph. */
+import Photo from '../../ui/Photo.astro';
+import Sticker from '../../ui/Sticker.astro';
+import Rip from '../../ui/Rip.astro';
+import Title from '../../ui/Title.astro';
+import TitleLine from '../../ui/TitleLine.astro';
+import TitleNote from '../../ui/TitleNote.astro';
+import Proof from '../../ui/Proof.astro';
+---
+<!-- ═══════════ 02 — THE BEGINNING ═══════════ -->
+<section class="blk s-open bg-y paper" data-chapter="02|The Beginning">
+  <Rip colour="var(--w)" />
+  <p class="mono lab">02 — The Beginning</p>
+  <Title label="Twenty-three players. One manager. No excuses.">
+    <TitleLine fx="slice" data-in>23 players.</TitleLine>
+    <TitleNote x="46%" data-in class="c-r">Now or never</TitleNote>
+    <TitleLine fx="rise" tile={4} data-in>One manager.</TitleLine>
+    <TitleLine fx="flip" data-in>No excuses.</TitleLine>
+  </Title>
+
+  <div class="clg open-clg">
+    <i class="disc bg-k oc-disc fx-paste" data-in aria-hidden="true"></i>
+    <Photo name="martinez" print class="oc-a fx-slap" caption="R. Martínez — Kazan, 6.07" tape="tl" colour="8 46" data-in style="--rot:-3deg;--ar:4/3;--op:50% 40%" />
+    <div class="lbl oc-l fx-slide" data-in data-torn="trbl" data-torn-d="5" style="--fx:-60vw"><small>The manager</small>Roberto<b>Martínez</b></div>
+    <svg class="scr c-r oc-arr" data-in style="--d:.7s"><use href="#s-arrow"/></svg>
+    <span class="hand c-r oc-h" data-in style="--d:.9s">the boss</span>
+    <dl class="slip mono oc-f fx-drop" data-in data-torn="tb" style="--rot:3deg;--d:.2s">
+      <div><dt>Qualifying</dt><dd>W9 · D1</dd></div>
+      <div><dt>Goals scored</dt><dd>43</dd></div>
+      <div><dt>FIFA ranking, June 2018</dt><dd>3rd</dd></div>
+      <div><dt>Best World Cup before</dt><dd>4th, 1986</dd></div>
+    </dl>
+    <Photo name="team" print class="oc-b fx-drop" caption="Moscow, 23.06" pin data-in style="--rot:5deg;--ar:3/2;--d:.15s" />
+    <div class="cutting oc-t1 fx-slide" data-in data-torn="tb" style="--rot:-1.6deg;--fx:-60vw"><p class="serif">Roberto Martínez had the squad every Belgian coach before him could only imagine, and Thierry Henry beside him on the bench. They arrived in Russia unbeaten in qualifying: nine wins, one draw, forty-three goals. The first European side to book a ticket.</p></div>
+    <div class="cutting oc-t2 fx-slide" data-in data-torn="trb" style="--rot:1.3deg;--fx:60vw;--d:.14s"><p class="serif">The talk at home was no longer about getting out of the group. It was about what a generation owes itself when it knows it will not get many more summers like this.</p><i class="staple"></i></div>
+    <Sticker type="pill" a="43 GOALS" b="QUALIFYING" class="k oc-s1" data-in />
+    <Sticker type="box" a="N°3" class="oc-s2" data-in style="--d:.3s" />
+    <Sticker type="chk" class="k oc-s3" data-in style="--d:.4s" />
+  </div>
+  <Proof sheet={2} of={21} name="The Beginning" />
+</section>

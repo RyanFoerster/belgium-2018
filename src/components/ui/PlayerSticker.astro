@@ -1,0 +1,17 @@
+---
+/* An album sticker: a portrait, and — when given — the shirt number and the name printed under it. */
+import type { PhotoKey } from '../../data/photos';
+import { pass } from '../../lib/attrs';
+
+interface Props {
+  photo: PhotoKey;
+  number?: number | string;
+  name?: string;
+  /** where the portrait is centred in its frame (object-position) */
+  focus?: string;
+  class?: string;
+  [attr: string]: unknown;
+}
+const { photo, number, name, focus, class: cls, ...rest } = Astro.props;
+---
+<div class:list={['stk', cls]} {...pass(rest)}><figure class="ph" data-photo={photo} style={focus ? `--op:${focus}` : undefined}></figure>{number != null && <b class="d stk-n">{number}</b>}{name && <span class="d stk-nm">{name}</span>}</div>

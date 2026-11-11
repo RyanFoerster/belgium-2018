@@ -1,0 +1,20 @@
+// Cloudflare Workers, static assets only: no Worker script, just the files Astro writes to dist/.
+//   npm run deploy      → astro build && wrangler deploy
+//   npm run cf:preview  → astro build && wrangler dev (the same thing, locally)
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "belgium-2018",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    // unknown addresses get dist/404.html with a 404 status
+    "not_found_handling": "404-page"
+  },
+  // Custom domain: the zone ryanfoerster.dev must be on the same Cloudflare account.
+  // Wrangler creates the DNS record and the certificate on the first deploy.
+  "routes": [
+    { "pattern": "belgium.ryanfoerster.dev", "custom_domain": true }
+  ],
+  // keep the *.workers.dev address off once the real domain answers
+  "workers_dev": false
+}

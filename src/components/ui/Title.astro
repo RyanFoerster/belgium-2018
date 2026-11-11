@@ -1,0 +1,11 @@
+---
+/* A poster headline: lines fitted edge to edge (<TitleLine>) with a script word across them (<TitleNote>).
+   The lines are split into letters in the browser, so the heading carries its text as a label. */
+interface Props {
+  label: string;
+  as?: 'h2' | 'h3';
+  class?: string;
+}
+const { label, as: Tag = 'h2', class: cls } = Astro.props;
+---
+<Tag class:list={['ttl', cls]} aria-label={label}><slot /></Tag>
