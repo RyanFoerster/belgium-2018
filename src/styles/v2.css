@@ -433,6 +433,43 @@ main .il,main .dd{pointer-events:auto;cursor:pointer}
 }
 .rm .bz-tk{position:relative;left:auto;right:auto;top:auto;visibility:visible;margin:0 auto}
 
+/* ═════════ 04 · full time, 3—2: the yellow sheet arrives and everything goes up with it ═════════ */
+.rp-32{position:relative;z-index:1}
+.rp-fl-conf{left:50%;top:50%;translate:-50% -50%;--mz:min(128vw,calc(190*var(--vh)));--m1:var(--w);--m3:var(--r);z-index:0}
+/* over the confetti the two lines of text sit on their own ground */
+.rp-flood-m{background:#080808;color:var(--w);padding:6px 9px 5px}
+.rp-flood-h{background:var(--y);padding:.1em .3em 0;box-shadow:0 0 0 2px #080808}
+.rp-flood :is(.rp-flood-m,.rp-flood-ph,.rp-flood-h,.il,.dd){z-index:2}
+.rp-flood-p2{left:auto;right:6vw;bottom:auto;top:calc(10*var(--vh));width:min(20vw,280px);transform:translateY(calc((1 - var(--f2))*-90*var(--vh))) rotate(calc((1 - var(--f2))*22deg))}
+.rp-fl-s1{left:25vw;bottom:calc(9*var(--vh));--iz:min(17vw,calc(30*var(--vh)))}
+.rp-fl-s2{left:43vw;top:calc(7*var(--vh));--iz:min(11vw,calc(19*var(--vh)))}
+.rp-fl-d1{left:23vw;top:calc(13*var(--vh));--dz:min(10vw,calc(17*var(--vh)));--rot:-14deg}
+.rp-fl-d2{right:29vw;top:calc(16*var(--vh));--dz:min(7vw,calc(12*var(--vh)));--rot:12deg}
+.rp-fl-d3{right:8vw;bottom:calc(27*var(--vh));--dz:min(8vw,calc(14*var(--vh)));--rot:8deg}
+@media (max-width:820px){
+  .rp-flood-p2{right:5vw;top:calc(13*var(--vh));width:40vw}
+  .rp-fl-s1{left:auto;right:5vw;bottom:calc(22*var(--vh));--iz:38vw}
+  .rp-fl-s2{left:8vw;top:calc(14*var(--vh));--iz:24vw}
+  .rp-fl-d1{left:36vw;top:calc(30*var(--vh));--dz:20vw}
+  .rp-fl-d2{right:8vw;top:calc(34*var(--vh));--dz:15vw}
+  .rp-fl-d3{right:auto;left:52vw;bottom:calc(38*var(--vh));--dz:16vw}
+}
+
+/* ═════════ 04 · the stands: the screen is held and the scroll pulls the line of prints across it, first to last ═════════ */
+.s-strip{padding:0;overflow:visible}
+.s-strip .pin{box-sizing:border-box;padding-top:calc(10*var(--vh))}
+.strip-row{left:0;width:max-content;margin-left:0;padding:0 6vw;transform:translateX(calc(var(--t,0)*(100vw - 100%)));will-change:transform}
+.strip-word{transform:translateX(calc(var(--t,0)*-110vw))}
+/* held in one screen, a print is never taller than the room under the headline */
+.strip-row .print{max-width:calc(46*var(--vh))} .strip-row .cutout{max-width:calc(44*var(--vh))}
+@media (max-width:820px){
+  /* a tall screen: the line sits in the middle of it, not under the top edge */
+  .s-strip .pin{padding-top:calc(22*var(--vh))} .strip-scr{top:calc(25*var(--vh))} .strip-string{top:calc(39*var(--vh))}
+}
+.rm .strip-row{width:auto;padding:0 var(--gut);transform:none}
+.rm .strip-word{transform:none}
+.rm .s-strip .pin{height:auto;padding-bottom:calc(10*var(--vh))}
+
 /* ═════════ small screens ═════════ */
 @media (max-width:820px){
   .rail{display:none}

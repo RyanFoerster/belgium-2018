@@ -5,6 +5,7 @@
 import Photo from '../../ui/Photo.astro';
 import Sticker from '../../ui/Sticker.astro';
 import Doodle from '../../ui/Doodle.astro';
+import Marks from '../../ui/Marks.astro';
 import GoalCard from '../../ui/GoalCard.astro';
 ---
 <!-- Signature 02 + 04 — The Impossible Comeback -->
@@ -28,10 +29,18 @@ import GoalCard from '../../ui/GoalCard.astro';
       <Sticker type="rnd" a="94′" b="ROSTOV" class="y rp-fs1" />
     </div>
     <div class="rp-flood bg-y">
+      <!-- full time: the sheet comes up and everything is thrown in the air -->
+      <Marks kind="shards" seed={9} n={28} class="rp-fl-conf" data-at=".962" />
       <span class="d rp-32" aria-label="3-2">3—2</span>
       <p class="mono rp-flood-m">Belgium — Japan<br>Full time</p>
       <Photo name="street" print class="rp-flood-ph" caption="2.07.18 — that night" tape="t" style="--rot:-6deg;--ar:3/4;--op:50% 35%" />
-      <span class="hand c-r rp-flood-h">around ten seconds, box to box</span>
+      <Photo name="japan" print class="rp-flood-ph rp-flood-p2" caption="Rostov Arena" pin style="--rot:5deg;--ar:3/2" />
+      <Sticker type="pill" a="QUARTER-FINAL" b="BRAZIL NEXT" class="k fx-stamp rp-fl-s1" data-at=".972" style="--rot:-6deg" />
+      <Sticker type="rnd" a="0—2" b="TO 3—2" class="fx-stamp rp-fl-s2" data-at=".978" style="--rot:9deg" />
+      <Doodle name="megaphone" class="r rp-fl-d1" data-at=".968" />
+      <Doodle name="star" class="rp-fl-d2" data-at=".974" />
+      <Doodle name="flame" class="r rp-fl-d3" data-at=".98" />
+      <span class="hand rp-flood-h">around ten seconds, box to box</span>
     </div>
   </div>
 </section>

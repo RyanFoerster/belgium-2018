@@ -1,24 +1,34 @@
 ---
-/* 04 · The 12th man — a strip of supporters sliding sideways. */
+/* 04 · The 12th man — the screen is held while a long line of supporters is pulled across it, first print to last. */
 import Photo from '../../ui/Photo.astro';
 import Sticker from '../../ui/Sticker.astro';
 import Doodle from '../../ui/Doodle.astro';
 ---
-<!-- the stands: a line of prints that travels sideways as you scroll -->
-<section class="blk s-strip bg-r paper">
-  <p class="mono lab">In the stands — Moscow, Kaliningrad, and the night of 2 July</p>
-  <div class="d mega strip-word" data-parx=".42" aria-hidden="true">Red everywhere</div>
-  <svg class="scr strip-string" data-in preserveAspectRatio="none"><use href="#s-line"/></svg>
-  <span class="scrawl on-k strip-scr fx-scrawl" data-in style="--d:.3s" aria-hidden="true">the 12th man</span>
-  <div class="strip-row" data-parx="1">
-    <Photo name="flag" print class="duo-y" caption="Moscow, 23.06" tape="t" style="--rot:-4deg;--ar:3/2" />
-    <Photo name="fansOutside" print class="stack" caption="outside Spartak" pin style="--rot:5deg;--ar:3/2" />
-    <Doodle name="megaphone" />
-    <Sticker type="oval" a="RED DEVILS" b="THE 12TH MAN" class="k" />
-    <Photo name="fansKal" class="cutout" data-cutout style="--rot:-6deg;--op:50% 30%" />
-    <Photo name="wall" print class="crease" caption="Kaliningrad, 28.06" tape="tl" style="--rot:3deg;--ar:3/2" />
-    <Doodle name="flag" />
-    <Photo name="bench" print class="duo-r" caption="the bench, Saint Petersburg" tape="t" style="--rot:-3deg;--ar:3/2" />
-    <Photo name="street" print class="dog" caption="2.07.18" pin style="--rot:6deg;--ar:3/4;--op:50% 35%" />
+<!-- the stands: a line of prints that the scroll pulls sideways -->
+<section class="scene s-strip bg-r paper" data-scene data-poster="0" style="--len:4">
+  <div class="pin">
+    <p class="mono lab">In the stands and in the streets — Moscow, Kaliningrad, Kazan, Saint Petersburg, Kontich</p>
+    <div class="d mega strip-word" data-t="0 1" aria-hidden="true">Red everywhere</div>
+    <svg class="scr strip-string" data-in preserveAspectRatio="none"><use href="#s-line"/></svg>
+    <span class="scrawl on-k strip-scr fx-scrawl" data-in style="--d:.3s" aria-hidden="true">the 12th man</span>
+    <div class="strip-row" data-t=".03 .97">
+      <Photo name="flag" print class="duo-y" caption="Moscow, 23.06" tape="t" style="--rot:-4deg;--ar:3/2" />
+      <Photo name="fansOutside" print class="stack" caption="outside Spartak" pin style="--rot:5deg;--ar:3/2" />
+      <Doodle name="megaphone" />
+      <Photo name="fansMoscow" print caption="in the stands, Moscow" tape="tr" style="--rot:-2deg;--ar:3/2" />
+      <Sticker type="oval" a="RED DEVILS" b="THE 12TH MAN" class="k" />
+      <Photo name="fansKal" class="cutout" data-cutout style="--rot:-6deg;--op:50% 30%" />
+      <Photo name="wall" print class="crease" caption="Kaliningrad, 28.06" tape="tl" style="--rot:3deg;--ar:3/2" />
+      <Photo name="fanCup" print class="dog" caption="he brought a cup" pin style="--rot:-5deg;--ar:3/2" />
+      <Doodle name="flag" />
+      <Photo name="walk" print class="duo-r" caption="Moscow, on the way" tape="t" style="--rot:4deg;--ar:3/2" />
+      <Photo name="street" print class="dog" caption="2.07.18" pin style="--rot:6deg;--ar:4/5;--op:50% 35%" />
+      <Photo name="bench" print class="duo-r" caption="the bench, Saint Petersburg" tape="t" style="--rot:-3deg;--ar:3/2" />
+      <Doodle name="star" />
+      <Photo name="braFan" print class="stack" caption="Kazan, 6.07" tape="tl" style="--rot:5deg;--ar:3/2" />
+      <Photo name="kontich" print class="crease" caption="Kontich, 22:43" pin style="--rot:-4deg;--ar:3/2" />
+      <Photo name="fanWig" print class="duo-y" caption="Saint Petersburg, 10.07" tape="t" style="--rot:3deg;--ar:3/2" />
+      <Photo name="braSalute" print caption="Kazan — saluting the end" tape="tr" style="--rot:-3deg;--ar:3/2" />
+    </div>
   </div>
 </section>
